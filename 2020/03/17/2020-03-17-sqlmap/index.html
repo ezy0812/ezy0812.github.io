@@ -1,0 +1,556 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>sqlmap详解 - ezy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="blog ezy,"> 
+    <meta name="description" content="ezy-blog,关于sqlmap的使用
+
+获取目标系统信息 –bannerpython sqlmap.py -u &amp;quot;http://127.0.0.1/sqli/less-1/?id=1&amp;quot; --b,"> 
+    <meta name="author" content="ezy"> 
+    
+    <link rel="icon" href="/img/logo.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">ezy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/logo.png" alt="" data-url="http://yoursite.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">sqlmap详解</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/信息安全"><b>「
+                    </b>信息安全<b> 」</b></a>
+                
+                三月 17, 2020
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/03/17/2020-03-17-sqlmap/" title="sqlmap详解" class="">sqlmap详解</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    12k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    10 mins.
+                </span>
+                
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/sqlmap/" rel="tag">sqlmap</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/" rel="tag">渗透工具</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="关于sqlmap的使用"><a href="#关于sqlmap的使用" class="headerlink" title="关于sqlmap的使用"></a><center>关于sqlmap的使用</center></h2><a id="more"></a>
+
+<h2 id="获取目标系统信息-–banner"><a href="#获取目标系统信息-–banner" class="headerlink" title="获取目标系统信息 –banner"></a>获取目标系统信息 –banner</h2><pre><code class="cmd">python sqlmap.py -u &quot;http://127.0.0.1/sqli/less-1/?id=1&quot; --batch --banner</code></pre>
+<hr>
+<h2 id="对多个目标进行探测"><a href="#对多个目标进行探测" class="headerlink" title="对多个目标进行探测"></a>对多个目标进行探测</h2><ul>
+<li>Sqlmap支持从不同类型的文件中读取目标进行Sql注入探测</li>
+</ul>
+<ol>
+<li><p>-l 从Burpsuite proxy或WebScarab proxy中读取Http请求日志文件</p>
+<blockquote>
+<h3 id="设置日志过滤目标"><a href="#设置日志过滤目标" class="headerlink" title="设置日志过滤目标"></a>设置日志过滤目标</h3><p>与使用选项-l使用从提供的日志解析的所有主机不同，您可以指定有效的Python正则表达式，用于过滤所需的日志</p>
+</blockquote>
+<pre><code class="cmd">python sqlmap.py -l burp.log --scope=&quot;(www)?\.target\.(com|net|org)&quot;</code></pre>
+<p>–skip-urlencode 不进行URL编码</p>
+</li>
+<li><p>-x 从sitemap.xml站点地图文件中读取目标探测。  </p>
+</li>
+<li><p>-m 从多行文本格式文件读取多个目标，对多个目标进行探测。  </p>
+</li>
+<li><p>-r 从文本文件中读取Http请求作为Sql注入探测的目标。  </p>
+</li>
+<li><p>-c 从配置文件sqlmap.conf中读取目标探测。</p>
+</li>
+</ol>
+<h3 id="burpsuite保存日志文件"><a href="#burpsuite保存日志文件" class="headerlink" title="burpsuite保存日志文件"></a>burpsuite保存日志文件</h3><p><img src="/images/images_of_sqlmap/sqlmap_f1.png" alt="f1"></p>
+<p>将日志文件复制到sqlmap文件目录下</p>
+<p><img src="%3C!--%EF%BF%BC0--%3E/assets/images/images_of_sqlmap/sqlmap_f2.png" alt="f2"></p>
+<pre><code class="cmd">python sqlmap.py -l test</code></pre>
+<p>在探测完一个目标后，会继续询问是否探测文件中的下一个目标</p>
+<h3 id="m，对txt文件探测"><a href="#m，对txt文件探测" class="headerlink" title="-m，对txt文件探测"></a>-m，对txt文件探测</h3><p><img src="%3C!--%EF%BF%BC1--%3E/assets/images/images_of_sqlmap/sqlmap_f3.png" alt=""></p>
+<pre><code class="cmd">python sqlmap.py -m 1.txt</code></pre>
+<h3 id="通过谷歌批量探测"><a href="#通过谷歌批量探测" class="headerlink" title="通过谷歌批量探测"></a>通过谷歌批量探测</h3><pre><code class="cmd">python sqlmap.py -g &quot;inurl:.php?id=&quot;</code></pre>
+<hr>
+<h2 id="设置请求参数"><a href="#设置请求参数" class="headerlink" title="设置请求参数"></a>设置请求参数</h2><h3 id="设置HTTP请求方法"><a href="#设置HTTP请求方法" class="headerlink" title="设置HTTP请求方法"></a>设置HTTP请求方法</h3><p>sqlmap会自动在探测过程中使用适合的HTTP请求方法，但是在某些具体情况下，需要强制使用具体的请求方法，如PUT请求方法，因为PUT不会自动使用</p>
+<pre><code class="cmd">--method=PUT</code></pre>
+<h3 id="设置POST提交参数"><a href="#设置POST提交参数" class="headerlink" title="设置POST提交参数"></a>设置POST提交参数</h3><p>默认情况下，HTTP请求的方法是GET，但是可以在提供POST请求中发送的数据隐式地将其更改为POST</p>
+<pre><code class="cmd">python sqlmap.py -u &quot;http://192.168.0.100/sqli/Less-11/&quot; --data &quot;uname=admin&amp;passwd=admin&amp;submit=Submit&quot; -f --banner --dbs --users</code></pre>
+<blockquote>
+<p>这里-f是指 fingerprint 指纹信息</p>
+</blockquote>
+<h3 id="设置参数分隔符"><a href="#设置参数分隔符" class="headerlink" title="设置参数分隔符"></a>设置参数分隔符</h3><p>有时候需要覆盖默认的参数分隔符，才能正确地分隔和和单独处理每个参数</p>
+<pre><code class="cmd">python sqlmap.py -u &quot;http://192.168.0.100/sqli/Less-11/&quot; --data &quot;uname=admin&amp;passwd=admin&amp;submit=Submit&quot; --param-del=&quot;&amp;&quot; -f --banner --dbs --users</code></pre>
+<h3 id="设置Cookie头"><a href="#设置Cookie头" class="headerlink" title="设置Cookie头"></a>设置Cookie头</h3><pre><code class="cmd">python sqlmap.py -u &quot;http://www.target.com/?id=1&quot; --cookie &quot;security=low; PHPSESSID=lajsoguwekl021&quot; --banner</code></pre>
+<ul>
+<li>如果在通信过程中，web应用程序使用Set-Cookie标头进行响应，sqlmap将在所有进一步的HTTP请求中自动使用其值作为Cookie标头。sqlmap还将为SQL注入自动测试这些值。这可以通过提供–drop-set-cookie—sqlmap将忽略任何即将到来的Set-Cookie头来避免。  </li>
+<li>反之亦然，如果提供了一个带有选项的HTTP Cookie报头—Cookie和目标URL在任何时候发送一个HTTP set-Cookie报头，sqlmap将询问您要为以下HTTP请求使用哪组Cookie。  </li>
+<li>load-cookie，可以用来提供包含Netscape/wget格式的cookie的特殊文件  <blockquote>
+<p>注意：如果需要对HTTP Cookie值进行SQL注入探测，需要设置 –level 2以上（3）</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="设置user-agent"><a href="#设置user-agent" class="headerlink" title="设置user-agent"></a>设置user-agent</h3><h4 id="指定user-agent"><a href="#指定user-agent" class="headerlink" title="指定user-agent"></a>指定user-agent</h4><pre><code class="cmd">python sqlmap.py -u &quot;http://www.target.com/?id=1&quot; --user-agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36&quot; --banner</code></pre>
+<h4 id="也可以随机筛选"><a href="#也可以随机筛选" class="headerlink" title="也可以随机筛选"></a>也可以随机筛选</h4><pre><code class="cmd">python sqlmap.py -u &quot;http://www.target.com/?id=1&quot; --random-agent --banner</code></pre>
+<blockquote>
+<p>针对user-agent注入的值，要设置–level为3</p>
+</blockquote>
+<h3 id="设置Host头"><a href="#设置Host头" class="headerlink" title="设置Host头"></a>设置Host头</h3><p>可以手动设置HTTP主机头的值，可在host最后加一个*，表示对host探测是否存在注入</p>
+<blockquote>
+<p>若 –level 设置为5，将对HTTP主机头进行SQL注入检测 </p>
+</blockquote>
+<h3 id="设置Referer"><a href="#设置Referer" class="headerlink" title="设置Referer"></a>设置Referer</h3><p>默认情况下，不会发送HTTP引用头</p>
+<blockquote>
+<p>若 –level 设置为3或以上，将针对HTTP引用头进行SQL注入测试</p>
+</blockquote>
+<h3 id="设置额外HTTP头"><a href="#设置额外HTTP头" class="headerlink" title="设置额外HTTP头"></a>设置额外HTTP头</h3><p>设置选项–header，可以提供额外的HTTP标头，每个标头必须用换行符\n分隔  </p>
+<p>从配置文件sqlmap.conf中提供它们会更容易</p>
+<pre><code class="cmd">python sqlmap.py -u &quot;http://www.target.com/?id=1&quot; --headers=&quot;Host:www.target.com\nUser-agent:Firefox 1.0&quot; -v 5</code></pre>
+<blockquote>
+<p>设置单个用 -H, 多个用 –headers</p>
+</blockquote>
+<h3 id="设置HTTP协议认证"><a href="#设置HTTP协议认证" class="headerlink" title="设置HTTP协议认证"></a>设置HTTP协议认证</h3><p>Sqlmap中设置HTTP协议认证的参数：–auth-type和–auth-cred, 其中–auth-type支持 Basic、Digest、NTLM<br>–auth-cred认证语法为：username:password</p>
+<pre><code class="cmd">python sqlmap.py -u &quot;http://url/arit.php?id=1&quot; --auth-type Basic --auth-cred &quot;testuser:testpass&quot;</code></pre>
+<h3 id="设置HTTP代理"><a href="#设置HTTP代理" class="headerlink" title="设置HTTP代理"></a>设置HTTP代理</h3><ul>
+<li>Sqlmap中设置代理的参数：–proxy, –proxy-cred, –proxy-file, –ignore-proxy  </li>
+<li>其中–proxy用来设置HTTP代理服务器位置 格式：–proxy http(s)://ip[:端口]  </li>
+<li>–proxy-cred用来设置HTTP代理服务器认证信息 格式：–proxy-cred username:password  </li>
+<li>–proxy-file用来设置多条代理在文件中  </li>
+<li>–ignore-proxy当您希望通过忽略系统范围内的HTTP(S)代理服务器设置来针对本地网络的目标部分运行sqlmap时，应该使用这种方法。</li>
+</ul>
+<p><img src="%3C!--%EF%BF%BC2--%3E/assets/images/images_of_sqlmap/sqlmap_f4.png" alt=""></p>
+<pre><code class="cmd">python sqlmap.py -u &quot;http://url/arit.php?id=1&quot; --proxy &quot;http://122.5.190.206:9999&quot; --banner</code></pre>
+<h3 id="设置延迟"><a href="#设置延迟" class="headerlink" title="设置延迟"></a>设置延迟</h3><p>–delay 0.5 延迟0.5秒</p>
+<pre><code class="cmd">python sqlmap.py -u &quot;http://url/arit.php?id=1&quot; --delay 0.5 --banner</code></pre>
+<h3 id="设置超时"><a href="#设置超时" class="headerlink" title="设置超时"></a>设置超时</h3><p>指定等待响应的秒数，默认为30秒</p>
+<pre><code class="cmd">--timeout 10</code></pre>
+<h3 id="设置重试次数"><a href="#设置重试次数" class="headerlink" title="设置重试次数"></a>设置重试次数</h3><p>默认重试3次<br>通常结合timeout参数使用</p>
+<pre><code class="cmd">--retries 4 --timeout 5</code></pre>
+<h3 id="忽略401"><a href="#忽略401" class="headerlink" title="忽略401"></a>忽略401</h3><p>忽略返回HTTP错误401(未经授权的)的站点</p>
+<pre><code class="cmd">--ignore-401</code></pre>
+<h3 id="设置HTTP协议私钥"><a href="#设置HTTP协议私钥" class="headerlink" title="设置HTTP协议私钥"></a>设置HTTP协议私钥</h3><p>当web服务器需要适当的客户端证书和用于身份验证的私钥时，应该使用此选项。提供的值应该是一个PEM格式的key_file，其中包含证书和私钥。</p>
+<pre><code class="cmd">--auth-file 文件名</code></pre>
+<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p>有时，如果执行了一定数量的不成功请求，则在此期间的web应用程序或检查技术会销毁会话。这可能发生在sqlmap的检测阶段或利用任何盲SQL注入类型时。原因是SQL有效负载不一定返回输出，因此可能会向应用程序会话管理或检查技术发出信号。</p>
+<pre><code class="cmd">--safe-url, --safe-post, --safe-req  --safe-freq</code></pre>
+<hr>
+<h2 id="sqlmap性能优化"><a href="#sqlmap性能优化" class="headerlink" title="sqlmap性能优化"></a>sqlmap性能优化</h2><h3 id="设置持久HTTP连接，在一定程度上避免服务器受到探测影响"><a href="#设置持久HTTP连接，在一定程度上避免服务器受到探测影响" class="headerlink" title="设置持久HTTP连接，在一定程度上避免服务器受到探测影响"></a>设置持久HTTP连接，在一定程度上避免服务器受到探测影响</h3><p>设置连接为持久连接，即在HTTP报文中设置Connection: Keep-Alive</p>
+<pre><code class="cmd">--keep-alive</code></pre>
+<h3 id="不接收HTTP-Body"><a href="#不接收HTTP-Body" class="headerlink" title="不接收HTTP Body"></a>不接收HTTP Body</h3><p>设置空连接，表示不接受HTTP中的Body，常用于盲注</p>
+<pre><code class="cmd">--null-connection</code></pre>
+<h3 id="设置多线程"><a href="#设置多线程" class="headerlink" title="设置多线程"></a>设置多线程</h3><p>默认3个多线程，最大为10</p>
+<pre><code class="cmd">--thread 10</code></pre>
+<blockquote>
+<p>注意探测过快会影响服务器性能</p>
+</blockquote>
+<h3 id="设置预测输出"><a href="#设置预测输出" class="headerlink" title="设置预测输出"></a>设置预测输出</h3><p>在推理算法中用于检索值字符的顺序统计预测</p>
+<pre><code class="cmd">--predict-output</code></pre>
+<blockquote>
+<p>注意与–thread不兼容</p>
+</blockquote>
+<h3 id="一键优化"><a href="#一键优化" class="headerlink" title="一键优化"></a>一键优化</h3><pre><code class="cmd">-o</code></pre>
+<p>添加此参数相当于同时添加下列三个优化参数：</p>
+<ul>
+<li>–keep-alive  </li>
+<li>–null-connection  </li>
+<li>–threads=3 （如果没有设置一个更好的值）</li>
+</ul>
+<hr>
+<h2 id="指定位置注入"><a href="#指定位置注入" class="headerlink" title="指定位置注入"></a>指定位置注入</h2><h3 id="指定具体探测的参数"><a href="#指定具体探测的参数" class="headerlink" title="指定具体探测的参数"></a>指定具体探测的参数</h3><pre><code class="cmd">-p &quot;id,user-agent&quot;</code></pre>
+<h3 id="忽略探测具体的参数"><a href="#忽略探测具体的参数" class="headerlink" title="忽略探测具体的参数"></a>忽略探测具体的参数</h3><pre><code class="cmd">--skip &quot;user-agent,referer&quot;</code></pre>
+<h3 id="忽略包含具体内容的参数"><a href="#忽略包含具体内容的参数" class="headerlink" title="忽略包含具体内容的参数"></a>忽略包含具体内容的参数</h3><p>如不对包含token或session的参数进行探测</p>
+<pre><code class="cmd">--param-exclude=&quot;token|session&quot;</code></pre>
+<h3 id="忽略静态参数"><a href="#忽略静态参数" class="headerlink" title="忽略静态参数"></a>忽略静态参数</h3><pre><code class="cmd">--skip-static</code></pre>
+<h3 id="设置URL注入位置"><a href="#设置URL注入位置" class="headerlink" title="设置URL注入位置"></a>设置URL注入位置</h3><p>当注入点位于URL本身内部时，要手动指向URL路径，否则sqlmap不会对URL路径执行任何自动测试，必须在命令行中添加星号(*)来指定这些注入点<br>当使用Apache web服务器的mod_rewrite模块或其他类似的技术时，这就显得特别有用了</p>
+<pre><code class="cmd">python sqlmap.py -u &quot;http://targeturl/param1/value1*/param2/value2/&quot;</code></pre>
+<h3 id="不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号-即可"><a href="#不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号-即可" class="headerlink" title="不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号(*)即可"></a>不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号(*)即可</h3><hr>
+<h2 id="注入参数"><a href="#注入参数" class="headerlink" title="注入参数"></a>注入参数</h2><h3 id="强制设置DBMS-数据库管理系统"><a href="#强制设置DBMS-数据库管理系统" class="headerlink" title="强制设置DBMS(数据库管理系统)"></a>强制设置DBMS(数据库管理系统)</h3><p>默认会自动识别DBMS，以下是sqlmap完全支持的DBMS种类</p>
+<blockquote>
+<p>Mysql、Oracle、Microsoft SQL Server、IBM DB2、SQLite、Firebird、Sybase、SAP MaxDB、HSQLDB、Informix</p>
+</blockquote>
+<p>强制指定，可以避免再探测是否是其他的数据库，可以加快探测速度</p>
+<p>–dbms 数据库管理系统名称 [版本号]</p>
+<pre><code class="cmd">--dbms microsoft sql server 05</code></pre>
+<h3 id="强制设置OS系统"><a href="#强制设置OS系统" class="headerlink" title="强制设置OS系统"></a>强制设置OS系统</h3><pre><code class="cmd">--os windows
+--os linux</code></pre>
+<blockquote>
+<p>强烈建议只在完全确定底层操作系统的后端数据库管理系统时才使用它<br>如果不知道它，让sqlmap自动为您识别</p>
+</blockquote>
+<h3 id="关闭负载转换机制"><a href="#关闭负载转换机制" class="headerlink" title="关闭负载转换机制"></a>关闭负载转换机制</h3><p>在检索结果时，sqlmap使用一种机制，在这种机制中，所有条目都被转换为字符串类型，并在NULL值的情况下用空格字符替换。这样做是为了防止出现任何错误状态(例如，将空值与字符串值连接起来)，并简化数据检索过程本身。尽管如此，还是有报告的案例(例如MySQL DBMS的旧版本)由于数据检索本身的问题(例<br>如没有返回值)需要关闭这种机制(使用此开关)</p>
+<pre><code class="cmd">--no-cast</code></pre>
+<h3 id="关闭字符转义机制"><a href="#关闭字符转义机制" class="headerlink" title="关闭字符转义机制"></a>关闭字符转义机制</h3><p>在sqlmap需要在有效负载中使用(单引号分隔)字符串值(例如，选择’foobar’)时，这些值将自动转义(例如，选择CHAR(102)+CHAR(111)+CHAR(111)+CHAR(98)+CHAR(97)+CHAR(114)) </p>
+<p>这样做的原因有两个:混淆有效负载内容和防止后端服务器上查询转义机制(例如magic_quotes<br>和/或mysql_real_escape_string)的潜在问题。用户可以使用这个开关关闭它(可以减少有效负载大小)</p>
+<pre><code class="cmd">--no-escape</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/music/Bloom.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/ezy.jpg" height=300 width=300></img>
+                    <p>ezy</p>
+                    <span>也曾鲜衣怒马少年时</span>
+                    <dl>
+                        <dd><a href="https://github.com/ezy0812" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">12 <p>文章</p></a></li>
+                    <li><a href="/categories">4 <p>分类</p></a></li>
+                    <li><a href="/tags">10 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于sqlmap的使用"><span class="toc-number">1.</span> <span class="toc-text">关于sqlmap的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取目标系统信息-–banner"><span class="toc-number">2.</span> <span class="toc-text">获取目标系统信息 –banner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对多个目标进行探测"><span class="toc-number">3.</span> <span class="toc-text">对多个目标进行探测</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置日志过滤目标"><span class="toc-number">3.1.</span> <span class="toc-text">设置日志过滤目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#burpsuite保存日志文件"><span class="toc-number">3.2.</span> <span class="toc-text">burpsuite保存日志文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#m，对txt文件探测"><span class="toc-number">3.3.</span> <span class="toc-text">-m，对txt文件探测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过谷歌批量探测"><span class="toc-number">3.4.</span> <span class="toc-text">通过谷歌批量探测</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置请求参数"><span class="toc-number">4.</span> <span class="toc-text">设置请求参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置HTTP请求方法"><span class="toc-number">4.1.</span> <span class="toc-text">设置HTTP请求方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置POST提交参数"><span class="toc-number">4.2.</span> <span class="toc-text">设置POST提交参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置参数分隔符"><span class="toc-number">4.3.</span> <span class="toc-text">设置参数分隔符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置Cookie头"><span class="toc-number">4.4.</span> <span class="toc-text">设置Cookie头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置user-agent"><span class="toc-number">4.5.</span> <span class="toc-text">设置user-agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置Host头"><span class="toc-number">4.6.</span> <span class="toc-text">设置Host头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置Referer"><span class="toc-number">4.7.</span> <span class="toc-text">设置Referer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置额外HTTP头"><span class="toc-number">4.8.</span> <span class="toc-text">设置额外HTTP头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置HTTP协议认证"><span class="toc-number">4.9.</span> <span class="toc-text">设置HTTP协议认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置HTTP代理"><span class="toc-number">4.10.</span> <span class="toc-text">设置HTTP代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置延迟"><span class="toc-number">4.11.</span> <span class="toc-text">设置延迟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置超时"><span class="toc-number">4.12.</span> <span class="toc-text">设置超时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置重试次数"><span class="toc-number">4.13.</span> <span class="toc-text">设置重试次数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略401"><span class="toc-number">4.14.</span> <span class="toc-text">忽略401</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置HTTP协议私钥"><span class="toc-number">4.15.</span> <span class="toc-text">设置HTTP协议私钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置"><span class="toc-number">4.16.</span> <span class="toc-text">设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqlmap性能优化"><span class="toc-number">5.</span> <span class="toc-text">sqlmap性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置持久HTTP连接，在一定程度上避免服务器受到探测影响"><span class="toc-number">5.1.</span> <span class="toc-text">设置持久HTTP连接，在一定程度上避免服务器受到探测影响</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不接收HTTP-Body"><span class="toc-number">5.2.</span> <span class="toc-text">不接收HTTP Body</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置多线程"><span class="toc-number">5.3.</span> <span class="toc-text">设置多线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置预测输出"><span class="toc-number">5.4.</span> <span class="toc-text">设置预测输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一键优化"><span class="toc-number">5.5.</span> <span class="toc-text">一键优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指定位置注入"><span class="toc-number">6.</span> <span class="toc-text">指定位置注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#指定具体探测的参数"><span class="toc-number">6.1.</span> <span class="toc-text">指定具体探测的参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略探测具体的参数"><span class="toc-number">6.2.</span> <span class="toc-text">忽略探测具体的参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略包含具体内容的参数"><span class="toc-number">6.3.</span> <span class="toc-text">忽略包含具体内容的参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略静态参数"><span class="toc-number">6.4.</span> <span class="toc-text">忽略静态参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置URL注入位置"><span class="toc-number">6.5.</span> <span class="toc-text">设置URL注入位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号-即可"><span class="toc-number">6.6.</span> <span class="toc-text">不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号(*)即可</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注入参数"><span class="toc-number">7.</span> <span class="toc-text">注入参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#强制设置DBMS-数据库管理系统"><span class="toc-number">7.1.</span> <span class="toc-text">强制设置DBMS(数据库管理系统)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#强制设置OS系统"><span class="toc-number">7.2.</span> <span class="toc-text">强制设置OS系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭负载转换机制"><span class="toc-number">7.3.</span> <span class="toc-text">关闭负载转换机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭字符转义机制"><span class="toc-number">7.4.</span> <span class="toc-text">关闭字符转义机制</span></a></li></ol></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <span class="gradient-text">
+            ezy
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+
+
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["也曾鲜衣怒马少年时", "一夜忘尽长安花"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+
+
+</html>

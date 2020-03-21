@@ -1,0 +1,520 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Computer Architecture Notes L1 - ezy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="blog ezy,"> 
+    <meta name="description" content="ezy-blog,Concepts of Computer ArchitectureThe order of this hierarchy should be understood   
+
+e.g. The uppe,"> 
+    <meta name="author" content="ezy"> 
+    
+    <link rel="icon" href="/img/logo.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">ezy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/logo.png" alt="" data-url="http://yoursite.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Computer Architecture Notes L1</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/Learning_Notes"><b>「
+                    </b>LEARNING_NOTES<b> 」</b></a>
+                
+                二月 28, 2020
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/02/28/2020-02-28-CA_notes_L1/" title="Computer Architecture Notes L1" class="">Computer Architecture Notes L1</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    7.5k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    7 mins.
+                </span>
+                
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Computer-Architecture/" rel="tag">Computer Architecture</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Lecture-notes/" rel="tag">Lecture notes</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="Concepts-of-Computer-Architecture"><a href="#Concepts-of-Computer-Architecture" class="headerlink" title="Concepts of Computer Architecture"></a><center>Concepts of Computer Architecture</center></h2><h2 id="The-order-of-this-hierarchy-should-be-understood"><a href="#The-order-of-this-hierarchy-should-be-understood" class="headerlink" title="The order of this hierarchy should be understood"></a>The order of this hierarchy should be understood</h2><p>   <img src="%3C!--%EF%BF%BC0--%3E/assets/images/images_of_blog/CA_notes_L1_f1.png" alt="f1"></p>
+<blockquote>
+<p>e.g. The upper layer of the Operating System is Programming language**</p>
+</blockquote>
+<hr>
+<h2 id="What-is-the-interface-between-hardware-and-software"><a href="#What-is-the-interface-between-hardware-and-software" class="headerlink" title="What is the interface between hardware and software?"></a>What is the interface between hardware and software?</h2><p>  Operating System</p>
+<hr>
+<h2 id="The-defination-of-computer-architecture"><a href="#The-defination-of-computer-architecture" class="headerlink" title="The defination of computer architecture"></a>The defination of computer architecture</h2><p>  The attributes of a computing system as seen by the <strong><em>Machine Language Designer</em></strong> or <strong><em>Compile Program Designer.</em></strong></p>
+<hr>
+<h2 id="Transparency"><a href="#Transparency" class="headerlink" title="Transparency"></a>Transparency</h2><p>   何为透明？<br>   对于使用高级编程语言编写Application应用程序的程序员来说，他们看不到硬件如何运作，也就是说，硬件的运作对于程序员来说是透明的。</p>
+<hr>
+<h2 id="Computer-Architecture-Organization-and-implementation"><a href="#Computer-Architecture-Organization-and-implementation" class="headerlink" title="Computer Architecture, Organization and implementation"></a>Computer Architecture, Organization and implementation</h2><ul>
+<li>Computer Architecture - the attributes of a  computing system as seen by the Machine Language Designer </li>
+<li>Computer Organization - Logical Implementation of Computer Architecture</li>
+<li>Computer Implementation - Physical Implementation of Computer Organization</li>
+<li>CA –&gt; function of computer<br>CO –&gt; performance of computer</li>
+</ul>
+<hr>
+<h2 id="区分每一类人员的工作"><a href="#区分每一类人员的工作" class="headerlink" title="区分每一类人员的工作"></a>区分每一类人员的工作</h2><p>   <img src="%3C!--%EF%BF%BC1--%3E/assets/images/images_of_blog/CA_notes_L1_f2.PNG" alt="f2"><br>   <img src="%3C!--%EF%BF%BC2--%3E/assets/images/images_of_blog/CA_notes_L1_f3.PNG" alt="f3"><br>   <img src="%3C!--%EF%BF%BC3--%3E/assets/images/images_of_blog/CA_notes_L1_f4.PNG" alt="f4"></p>
+<hr>
+<h2 id="Classification-of-Computer-Architecture-FLYNN-Classification"><a href="#Classification-of-Computer-Architecture-FLYNN-Classification" class="headerlink" title="Classification of Computer Architecture - FLYNN Classification"></a>Classification of Computer Architecture - FLYNN Classification</h2><p>based on the different organization of <strong><em>instruction flow</em></strong> and <strong><em>data flow</em></strong></p>
+<hr>
+<h2 id="The-Design-Principle-of-the-Computer-System"><a href="#The-Design-Principle-of-the-Computer-System" class="headerlink" title="The Design Principle of the Computer System"></a>The Design Principle of the Computer System</h2><ul>
+<li>To Accelerate High Frequency Used Components</li>
+<li>Amdahl’s Law</li>
+<li>Program Access Locality Principle</li>
+</ul>
+<hr>
+<h2 id="Amdahl’s-Law"><a href="#Amdahl’s-Law" class="headerlink" title="Amdahl’s Law"></a>Amdahl’s Law</h2><p>Measured by speedup ratio($S_P$)  </p>
+<p>   $$S_p=\frac{Extime_{old}}{Extime{new}}=\frac{T_e}{T_o}=\frac{1}{1-f_e+(\frac{f_e}{r_e})}$$  </p>
+<p>   $f_e$指$\frac{被改良性能的组件在程序中运行的时间}{整个程序运行的总时间}$，即百分比<br>   $r_e$指被改良性能的组件相较于改良之前加速了几倍  </p>
+<blockquote>
+<p>If we make a function’s operation speed increased by 10 times, but this function’s operation time accounts for 40% of the entire system execution time. After this enhancement method is adopted, how many can be improved the performance of the whole system?  </p>
+</blockquote>
+<p>   The answer:</p>
+<blockquote>
+<p>$f_e$= 40%, $r_e$= 10, $S_p$=$\frac{1}{1-f_e+(\frac{f_e}{r_e})}$= 1.5625</p>
+</blockquote>
+<hr>
+<h2 id="Program-Access-Locality-Principle"><a href="#Program-Access-Locality-Principle" class="headerlink" title="Program Access Locality Principle"></a>Program Access Locality Principle</h2><ul>
+<li><strong><em>Temporal locality</em></strong>  <strong>空间局部性</strong><br>Recently accessed code, probably will soon be accessed again</li>
+</ul>
+<blockquote>
+<p>e.g. The loop in the advanced programming language could be an example.</p>
+</blockquote>
+<pre><code class="C">      for(i=0;i&lt;10;++i){
+         a=i;
+         c=a+1;
+      }</code></pre>
+<blockquote>
+<p>The code in this code block could be executed 10 times, which reflects the temporal locality.</p>
+</blockquote>
+<ul>
+<li><strong><em>Spatial locality</em></strong>  <strong>时间局部性</strong><br>The code with adjacent address may be continuous accessed</li>
+</ul>
+<blockquote>
+<p>e.g. The cache in the computer could be an example. Some data which be stored in the cache can be accessed repeatedly, reflecting the spatical locality.</p>
+</blockquote>
+<hr>
+<h2 id="Some-calculations"><a href="#Some-calculations" class="headerlink" title="Some calculations"></a>Some calculations</h2><p>   $$CPU\ time = the\ number\ of\ instructions \times clock\ cycles\ per\ instruction\ (CPI) \times clock\ cycle\ time$$  </p>
+<p>   $$CPI= \sum_{i=1}^n{CPI_i\times Feq_i}$$</p>
+<blockquote>
+<p>e.g.A kind of computer only uses the Load/Store instructions to read or write memory. According to the results of the program tracking experiment, the proportion of each instruction and CPU clock cycles are as follows: </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">Instruction Type</th>
+<th align="center">Proportion</th>
+<th align="center">CPI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ALU</td>
+<td align="center">43%</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">LOAD</td>
+<td align="center">21%</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">STORE</td>
+<td align="center">12%</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">J</td>
+<td align="center">24%</td>
+<td align="center">2</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Please try to get the value of average CPI. </p>
+</blockquote>
+<p>   $$CPI=1\times0.43+2\times0.21+2\times0.12+2\times0.24=1.57$$<br>   $$MIPS(million\ instructions\ per\ second)=\frac{The\ number\ of\ instructions}{CPU\ time\times10^6}=\frac{R_c(The\ frequency\ of\ CPU)}{CPI\times10^6}$$</p>
+<hr>
+<h2 id="An-exam-question"><a href="#An-exam-question" class="headerlink" title="An exam question"></a>An exam question</h2><p>  <img src="%3C!--%EF%BF%BC4--%3E/assets/images/images_of_blog/CA_notes_L1_f5.png" alt="f5"></p>
+<blockquote>
+<ol>
+<li>According to the formula of MIPS<br>$$MIPS=\frac{R_c}{CPI\times 10^6}$$<br>$$10=\frac{15\times10^6}{CPI\times10^6}\Longrightarrow CPI=1.5$$ </li>
+<li>The $\color{red}{key}$ is to calculate the increase of CPI<br>Before: 1 clock cycle for each memory access<br>After:  2 clock cycle for each memory access<br>The 30% instruction needs 1 memory access, so the increase could be (2-1)=1 clock cycle<br>The 5% instruction needs 2 memory access, so the increase could be 2$\times$(2-1)=2 clock cycles<br>Then the increase of CPI is<br>$$\color{red}{1\times 30%} \color{grey}{+} \color{aqua}{2\times 5%}\color{grey}{+}\color{pink}{1.5}=1.9$$</li>
+</ol>
+</blockquote>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/music/Bloom.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/ezy.jpg" height=300 width=300></img>
+                    <p>ezy</p>
+                    <span>也曾鲜衣怒马少年时</span>
+                    <dl>
+                        <dd><a href="https://github.com/ezy0812" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">12 <p>文章</p></a></li>
+                    <li><a href="/categories">4 <p>分类</p></a></li>
+                    <li><a href="/tags">10 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Concepts-of-Computer-Architecture"><span class="toc-number">1.</span> <span class="toc-text">Concepts of Computer Architecture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-order-of-this-hierarchy-should-be-understood"><span class="toc-number">2.</span> <span class="toc-text">The order of this hierarchy should be understood</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-the-interface-between-hardware-and-software"><span class="toc-number">3.</span> <span class="toc-text">What is the interface between hardware and software?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-defination-of-computer-architecture"><span class="toc-number">4.</span> <span class="toc-text">The defination of computer architecture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Transparency"><span class="toc-number">5.</span> <span class="toc-text">Transparency</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Computer-Architecture-Organization-and-implementation"><span class="toc-number">6.</span> <span class="toc-text">Computer Architecture, Organization and implementation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区分每一类人员的工作"><span class="toc-number">7.</span> <span class="toc-text">区分每一类人员的工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Classification-of-Computer-Architecture-FLYNN-Classification"><span class="toc-number">8.</span> <span class="toc-text">Classification of Computer Architecture - FLYNN Classification</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Design-Principle-of-the-Computer-System"><span class="toc-number">9.</span> <span class="toc-text">The Design Principle of the Computer System</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Amdahl’s-Law"><span class="toc-number">10.</span> <span class="toc-text">Amdahl’s Law</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Program-Access-Locality-Principle"><span class="toc-number">11.</span> <span class="toc-text">Program Access Locality Principle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Some-calculations"><span class="toc-number">12.</span> <span class="toc-text">Some calculations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#An-exam-question"><span class="toc-number">13.</span> <span class="toc-text">An exam question</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <span class="gradient-text">
+            ezy
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+
+
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["也曾鲜衣怒马少年时", "一夜忘尽长安花"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+
+
+</html>

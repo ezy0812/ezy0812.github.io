@@ -1,0 +1,501 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Computer Network Notes L1 - ezy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="blog ezy,"> 
+    <meta name="description" content="ezy-blog,Computer Networks and the InternetInternet - “nuts and bolts”（具体细节，基本要点）view
+hosts = end systems
+tr,"> 
+    <meta name="author" content="ezy"> 
+    
+    <link rel="icon" href="/img/logo.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">ezy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/logo.png" alt="" data-url="http://yoursite.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Computer Network Notes L1</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/Learning_Notes"><b>「
+                    </b>LEARNING_NOTES<b> 」</b></a>
+                
+                三月 02, 2020
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/03/02/2020-02-28-CN_notes_L1/" title="Computer Network Notes L1" class="">Computer Network Notes L1</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    5.7k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    5 mins.
+                </span>
+                
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Computer-Network/" rel="tag">Computer Network</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Lecture-notes/" rel="tag">Lecture notes</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="Computer-Networks-and-the-Internet"><a href="#Computer-Networks-and-the-Internet" class="headerlink" title="Computer Networks and the Internet"></a><center>Computer Networks and the Internet</center></h2><h2 id="Internet-“nuts-and-bolts”（具体细节，基本要点）view"><a href="#Internet-“nuts-and-bolts”（具体细节，基本要点）view" class="headerlink" title="Internet - “nuts and bolts”（具体细节，基本要点）view"></a>Internet - “nuts and bolts”（具体细节，基本要点）view</h2><ul>
+<li>hosts = end systems</li>
+<li>transmission rate: bandwidth(bps)<blockquote>
+<p>计算机网络中的带宽是指传输速率，单位为比特每秒，不同于其他领域如信号处理和通信原理中的带宽指频率之差，单位为Hz.</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 id="Protocol"><a href="#Protocol" class="headerlink" title="Protocol"></a>Protocol</h2><blockquote>
+<p>Protocols define <strong><em>format</em></strong>, <strong><em>order of messages sent and received among network entities</em></strong>, and <strong><em>actions taken on message transmission, receipt</em></strong>.</p>
+</blockquote>
+<hr>
+<h2 id="network-structure"><a href="#network-structure" class="headerlink" title="network structure"></a>network structure</h2><h3 id="network-edge"><a href="#network-edge" class="headerlink" title="network edge"></a>network edge</h3><ul>
+<li>hosts </li>
+<li>servers  </li>
+</ul>
+<h3 id="access-networks-physical-media"><a href="#access-networks-physical-media" class="headerlink" title="access networks, physical media"></a>access networks, physical media</h3><ul>
+<li>wired, wireless communication links  </li>
+</ul>
+<h3 id="network-core"><a href="#network-core" class="headerlink" title="network core"></a><strong><em>network core</em></strong></h3><ul>
+<li>interconnected routers</li>
+<li>network of networks</li>
+</ul>
+<hr>
+<h2 id="How-to-access-networks-physical-media"><a href="#How-to-access-networks-physical-media" class="headerlink" title="How to access networks, physical media"></a>How to access networks, physical media</h2><h3 id="digital-subscriber-line-DSL"><a href="#digital-subscriber-line-DSL" class="headerlink" title="digital subscriber line (DSL)"></a>digital subscriber line (DSL)</h3><ul>
+<li>use existing telephone line to central office DSLAM(数字用户线路接入复用器)</li>
+<li>upstream transmission rate: &lt; 2.5 Mbps (typically &lt; 1 Mbps)</li>
+<li>downstream transmission rate: &lt; 24 Mbps (typically &lt; 10 Mbps)  </li>
+</ul>
+<h3 id="cable-network-有线网络"><a href="#cable-network-有线网络" class="headerlink" title="cable network (有线网络)"></a>cable network (有线网络)</h3><ul>
+<li>frequency division multiplexing (FDM) - different channels transmitted in different frenquency bands<br><img src="%3C!--%EF%BF%BC0--%3E/assets/images/images_of_blog/CN_notes_L1_f1.png" alt="f1"><blockquote>
+<p>network of cable, fiber attaches homes to ISP router</p>
+<ul>
+<li>homes share access network to cable headend</li>
+<li>unlike DSL, which has dedicated access to central office</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 id="network-core-1"><a href="#network-core-1" class="headerlink" title="network - core"></a>network - core</h2><h3 id="Two-key-functions"><a href="#Two-key-functions" class="headerlink" title="Two key functions"></a>Two key functions</h3><ul>
+<li>routing: determines source-destination route taken by packets</li>
+<li>forwarding: move packets from router’s input to appropriate router output  </li>
+</ul>
+<h3 id="circuit-switching"><a href="#circuit-switching" class="headerlink" title="circuit switching"></a>circuit switching</h3><blockquote>
+<p>FDM: 每个用户的数据被调制成不同的频率被同时发送<br>TDM: 时间被切分成时间片，每个时间片再被分成N（用户数）个小时隙，每个用户只能在自己的时隙内发送数据<br><img src="%3C!--%EF%BF%BC1--%3E/assets/images/images_of_blog/CN_notes_L1_f2.png" alt="f2">  </p>
+</blockquote>
+<h3 id="packet-switching-vs-circuit-switching"><a href="#packet-switching-vs-circuit-switching" class="headerlink" title="packet switching vs circuit switching"></a>packet switching vs circuit switching</h3><ul>
+<li>packet switching allows more users to use network!</li>
+<li>Advantages: great for bursty data<ul>
+<li>resource sharing</li>
+<li>simpler, no call setup</li>
+</ul>
+</li>
+<li>Disadvantages: excessive congestion possible, packet delay and loss<ul>
+<li>protocols needed for reliable data transfer, congestion control</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="dalay-loss-throughput-in-networks"><a href="#dalay-loss-throughput-in-networks" class="headerlink" title="dalay, loss, throughput in networks"></a>dalay, loss, throughput in networks</h2><h3 id="How-do-loss-and-delay-occur"><a href="#How-do-loss-and-delay-occur" class="headerlink" title="How do loss and delay occur?"></a>How do loss and delay occur?</h3><ul>
+<li>packets queue in router buffers<ul>
+<li>packet arrival rate to link(temporarily) exceeds output link capacity</li>
+<li>packets queue, wait for turn  </li>
+</ul>
+</li>
+</ul>
+<h3 id="Throughput"><a href="#Throughput" class="headerlink" title="Throughput"></a>Throughput</h3><ul>
+<li>rate(bits/time unit) at which bits transferred between sender/receiver  </li>
+</ul>
+<hr>
+<h2 id="protocol-layers"><a href="#protocol-layers" class="headerlink" title="protocol layers"></a>protocol layers</h2><h3 id="Why-layering"><a href="#Why-layering" class="headerlink" title="Why layering?"></a>Why layering?</h3><blockquote>
+<p>dealing with complex systems:</p>
+<ul>
+<li>explicit structure allows identification, relationship of complex system’s pieces<ul>
+<li>layered reference model</li>
+</ul>
+</li>
+<li>modularization eases maintenance, updating of system<ul>
+<li>change of implementation of layer’s service transparent to rest of system</li>
+<li>e.g. change in gate procedure doesn’t affect rest of system</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p><img src="%3C!--%EF%BF%BC2--%3E/assets/images/images_of_blog/CN_notes_L1_f3.png" alt="f3">  </p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/music/Bloom.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/ezy.jpg" height=300 width=300></img>
+                    <p>ezy</p>
+                    <span>也曾鲜衣怒马少年时</span>
+                    <dl>
+                        <dd><a href="https://github.com/ezy0812" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">12 <p>文章</p></a></li>
+                    <li><a href="/categories">4 <p>分类</p></a></li>
+                    <li><a href="/tags">10 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Computer-Networks-and-the-Internet"><span class="toc-number">1.</span> <span class="toc-text">Computer Networks and the Internet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Internet-“nuts-and-bolts”（具体细节，基本要点）view"><span class="toc-number">2.</span> <span class="toc-text">Internet - “nuts and bolts”（具体细节，基本要点）view</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Protocol"><span class="toc-number">3.</span> <span class="toc-text">Protocol</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#network-structure"><span class="toc-number">4.</span> <span class="toc-text">network structure</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#network-edge"><span class="toc-number">4.1.</span> <span class="toc-text">network edge</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#access-networks-physical-media"><span class="toc-number">4.2.</span> <span class="toc-text">access networks, physical media</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#network-core"><span class="toc-number">4.3.</span> <span class="toc-text">network core</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-access-networks-physical-media"><span class="toc-number">5.</span> <span class="toc-text">How to access networks, physical media</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#digital-subscriber-line-DSL"><span class="toc-number">5.1.</span> <span class="toc-text">digital subscriber line (DSL)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cable-network-有线网络"><span class="toc-number">5.2.</span> <span class="toc-text">cable network (有线网络)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#network-core-1"><span class="toc-number">6.</span> <span class="toc-text">network - core</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Two-key-functions"><span class="toc-number">6.1.</span> <span class="toc-text">Two key functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#circuit-switching"><span class="toc-number">6.2.</span> <span class="toc-text">circuit switching</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#packet-switching-vs-circuit-switching"><span class="toc-number">6.3.</span> <span class="toc-text">packet switching vs circuit switching</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dalay-loss-throughput-in-networks"><span class="toc-number">7.</span> <span class="toc-text">dalay, loss, throughput in networks</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#How-do-loss-and-delay-occur"><span class="toc-number">7.1.</span> <span class="toc-text">How do loss and delay occur?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Throughput"><span class="toc-number">7.2.</span> <span class="toc-text">Throughput</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#protocol-layers"><span class="toc-number">8.</span> <span class="toc-text">protocol layers</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-layering"><span class="toc-number">8.1.</span> <span class="toc-text">Why layering?</span></a></li></ol></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <span class="gradient-text">
+            ezy
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+
+
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["也曾鲜衣怒马少年时", "一夜忘尽长安花"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+
+
+</html>

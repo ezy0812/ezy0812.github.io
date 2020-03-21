@@ -1,0 +1,728 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Computer Network Notes L2 - ezy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="blog ezy,"> 
+    <meta name="description" content="ezy-blog,Application Layer——Part 1
+
+Application architecturesclient-server
+server
+
+always-on host
+permanent ,"> 
+    <meta name="author" content="ezy"> 
+    
+    <link rel="icon" href="/img/logo.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">ezy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/logo.png" alt="" data-url="http://yoursite.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Computer Network Notes L2</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/Learning_Notes"><b>「
+                    </b>LEARNING_NOTES<b> 」</b></a>
+                
+                三月 10, 2020
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/03/10/2020-03-10-CN_notes_L2/" title="Computer Network Notes L2" class="">Computer Network Notes L2</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    12k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    11 mins.
+                </span>
+                
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Computer-Network/" rel="tag">Computer Network</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Lecture-notes/" rel="tag">Lecture notes</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="Application-Layer——Part-1"><a href="#Application-Layer——Part-1" class="headerlink" title="Application Layer——Part 1"></a><center>Application Layer——Part 1</center></h2><a id="more"></a>
+
+<h2 id="Application-architectures"><a href="#Application-architectures" class="headerlink" title="Application architectures"></a>Application architectures</h2><h3 id="client-server"><a href="#client-server" class="headerlink" title="client-server"></a>client-server</h3><ul>
+<li><p>server</p>
+<ul>
+<li>always-on host</li>
+<li>permanent IP address</li>
+<li>data centers for scaling</li>
+</ul>
+</li>
+<li><p>clients</p>
+<ul>
+<li>communicate with server</li>
+<li>may be intermittently connected</li>
+<li>may have dynamic IP addresses</li>
+<li>do not communicate directly with each other</li>
+</ul>
+</li>
+</ul>
+<h3 id="peer-to-peer-P2P"><a href="#peer-to-peer-P2P" class="headerlink" title="peer-to-peer(P2P)"></a>peer-to-peer(P2P)</h3><ul>
+<li><p>no always-on server</p>
+</li>
+<li><p>arbitrary end systems directly communicate</p>
+</li>
+<li><p>peers request service from other peers, provide service in return to other peers</p>
+<ul>
+<li>self scalability - new peers bring new service capacity, as well as new service demands</li>
+</ul>
+</li>
+<li><p>peers are intermittently connected and change IP addresses</p>
+<ul>
+<li>complex management</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="App-layer-protocol-defines"><a href="#App-layer-protocol-defines" class="headerlink" title="App-layer protocol defines"></a>App-layer protocol defines</h2><ul>
+<li><p>types of messages exchanged</p>
+<ul>
+<li>e.g. request, response</li>
+</ul>
+</li>
+<li><p>message syntax</p>
+<ul>
+<li>what fields in messages &amp; how fields are delineated</li>
+</ul>
+</li>
+<li><p>message semantics</p>
+<ul>
+<li>meaning of information in fields</li>
+</ul>
+</li>
+<li><p>rules for when and how processes sent &amp; respond to messages</p>
+</li>
+</ul>
+<hr>
+<h2 id="What-transport-service-does-an-app-need"><a href="#What-transport-service-does-an-app-need" class="headerlink" title="What transport service does an app need?"></a>What transport service does an app need?</h2><ul>
+<li><p>data integrity</p>
+<ul>
+<li>some apps(e.g. file transfer, web transactionis) require 100% reliable data transfer</li>
+<li>other apps(e.g. audio) can tolerate some loss</li>
+</ul>
+</li>
+<li><p>timing</p>
+<ul>
+<li>some apps(e.g. Internet telephony, interactive games) require low delay to be “effective”</li>
+</ul>
+</li>
+<li><p>throughput</p>
+<ul>
+<li>some apps(e.g. multimedia) require minimum amount of throughput to be effective</li>
+<li>other apps(“elastic apps”) make use of whatever throughput they get</li>
+</ul>
+</li>
+<li><p>security</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>*<center>$\color{red}{common; apps}$</center>*</strong><br><img src="%3C!--%EF%BF%BC0--%3E/assets/images/images_of_blog/CN_notes_L2_f1.png" alt="f1"></p>
+</blockquote>
+<hr>
+<h2 id="Internet-transport-protocols-services"><a href="#Internet-transport-protocols-services" class="headerlink" title="Internet transport protocols services"></a>Internet transport protocols services</h2><h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><ul>
+<li>reliable transport between sending and receiving process</li>
+<li>flow control: sender won’t overwhelm receiver</li>
+<li>congestion control: throttle sender when network overloaded</li>
+<li>does not provide: timing, minimum throughput guarantee, security</li>
+<li>connection-oriented: setup required etween client and server processes</li>
+</ul>
+<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><ul>
+<li>unreliable data transfer between sending and receiving process</li>
+<li>does not provede: reliability, flow control, congestion control, timing, throughput guarantee, security, or connection setup</li>
+</ul>
+<blockquote>
+<p><strong>*<center>$\color{red}{protocols}$</center>*</strong><br><img src="%3C!--%EF%BF%BC1--%3E/assets/images/images_of_blog/CN_notes_L2_f2.png" alt="f2"></p>
+</blockquote>
+<hr>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><h3 id="uses-TCP"><a href="#uses-TCP" class="headerlink" title="uses TCP"></a>uses TCP</h3><ul>
+<li>client initiates TCP connection(creates socket) to server, port 80</li>
+<li>server accepts TCP connection from client</li>
+<li>HTTP messages(application-layer protocol messages) exchanged between browser and Web server</li>
+<li>TCP connection closed</li>
+</ul>
+<h3 id="stateless"><a href="#stateless" class="headerlink" title="stateless"></a>stateless</h3><ul>
+<li>server maintains no information about past client requests</li>
+</ul>
+<blockquote>
+<p>protocols that maintain “state” are complex!  </p>
+<ul>
+<li>past history(state) must be maintained</li>
+<li>if server/client crashes, their views of “state” may be inconsistent, must be reconciled.</li>
+</ul>
+</blockquote>
+<h3 id="HTTP-connections"><a href="#HTTP-connections" class="headerlink" title="HTTP connections"></a>HTTP connections</h3><ul>
+<li><p>non persistent HTTP</p>
+<ul>
+<li><p>at most one object sent over TCP connection</p>
+<ul>
+<li>connection then closed</li>
+</ul>
+</li>
+<li><p>downloading multiple objects required multiple connections</p>
+<blockquote>
+<p><strong>*<center>$\color{red}{an; example}$</center>*</strong><br><img src="%3C!--%EF%BF%BC2--%3E/assets/images/images_of_blog/CN_notes_L2_f3.png" alt="f3"><br><img src="%3C!--%EF%BF%BC3--%3E/assets/images/images_of_blog/CN_notes_L2_f4.png" alt="f4">  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>*<center>$\color{red}{The; response; time}$</center>*</strong><br><img src="%3C!--%EF%BF%BC4--%3E/assets/images/images_of_blog/CN_notes_L2_f5.png" alt="f5">  </p>
+<ul>
+<li>The issues:<ul>
+<li>requires 2 RTTs per object</li>
+<li>OS overhead for each TCP connection</li>
+<li>browsers often open parallel TCP connections to fetch referenced objects</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>persistent HTTP</p>
+<ul>
+<li>multiple objects can be sent over single TCP connection between client, server</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>server leaves connection open after sending response</li>
+<li>subsequent HTTP messages between same client/server sent over open connection</li>
+<li>client sends requests as soon as it encounters a referenced object</li>
+<li>as little as one RTT for all the referenced objects</li>
+</ul>
+</blockquote>
+<h3 id="HTTP-requests"><a href="#HTTP-requests" class="headerlink" title="HTTP requests"></a>HTTP requests</h3><ul>
+<li><p>POST method:</p>
+<ul>
+<li>web page often includes form input</li>
+<li>input is uploaded to server in entity body</li>
+</ul>
+</li>
+<li><p>URL method:</p>
+<ul>
+<li><p>uses GET method</p>
+</li>
+<li><p>input is uploaded in URL field of request line:</p>
+<p>  <img src="%3C!--%EF%BF%BC5--%3E/assets/images/images_of_blog/CN_notes_L2_f6.png" alt="f6"> </p>
+</li>
+</ul>
+</li>
+<li><p>Some other methods<br><img src="%3C!--%EF%BF%BC6--%3E/assets/images/images_of_blog/CN_notes_L2_f7.png" alt="f7"></p>
+</li>
+</ul>
+<h3 id="HTTP-response-codes"><a href="#HTTP-response-codes" class="headerlink" title="HTTP response codes"></a>HTTP response codes</h3><p><img src="%3C!--%EF%BF%BC7--%3E/assets/images/images_of_blog/CN_notes_L2_f8.png" alt="f8"></p>
+<h3 id="cookies"><a href="#cookies" class="headerlink" title="cookies"></a>cookies</h3><ul>
+<li><p>four components:</p>
+<ul>
+<li>cookie header line of HTTP $\color{red}{response}$ message</li>
+<li>cookie header line in next HTTP $\color{red}{request}$ message</li>
+<li>cookie file kept on user’s host, managed by user’s browser</li>
+<li>back-end database at Website</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>*<center>$\color{red}{example}$</center>*</strong><br><img src="%3C!--%EF%BF%BC8--%3E/assets/images/images_of_blog/CN_notes_L2_f9.png" alt="f9"></p>
+</blockquote>
+<ul>
+<li><p>cookies can be used for:</p>
+<ul>
+<li>authorization</li>
+<li>shopping carts</li>
+<li>recommendations</li>
+<li>user session state(Web e-mail)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>cookies and privacy:  </p>
+<ul>
+<li>cookies permit sites to learn a lot about you</li>
+<li>you may supply name and e-mail to sites</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="Web-caches-proxy-server"><a href="#Web-caches-proxy-server" class="headerlink" title="Web caches(proxy server)"></a>Web caches(proxy server)</h2><h3 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h3><p>satisfy client request without involving origin server</p>
+<h3 id="working-principle"><a href="#working-principle" class="headerlink" title="working principle"></a>working principle</h3><ul>
+<li><p>user sets browser: Web accesses via cache</p>
+</li>
+<li><p>browser sends all HTTP requests to cache</p>
+<ul>
+<li>object in cache: cache returns object</li>
+<li>else cache requests object from origin server, then returns object to client</li>
+</ul>
+</li>
+<li><p>cache acts as both client and server</p>
+<ul>
+<li>server for original requesting client</li>
+<li>client to origin server</li>
+</ul>
+</li>
+</ul>
+<h3 id="Why-Web-caching"><a href="#Why-Web-caching" class="headerlink" title="Why Web caching?"></a>Why Web caching?</h3><ul>
+<li>reduce response time for client request</li>
+<li>reduce traffic on an institution’s access link</li>
+<li>Internet dense with caches: enables “poor” content providers to effectively deliver content(so too does P2P file sharing)</li>
+</ul>
+<h3 id="Conditional-GET"><a href="#Conditional-GET" class="headerlink" title="Conditional GET"></a>Conditional GET</h3><ul>
+<li><p>$\color{red}{goal:}$ don’t send object if cache has up-to-date cached version  </p>
+<ul>
+<li>no object transmission delay</li>
+<li>lower link utilization</li>
+</ul>
+</li>
+<li><p>cache: specify date of cached copy in HTTP request</p>
+</li>
+</ul>
+<pre><code class="shell">If-modified-since: &lt;date&gt;</code></pre>
+<ul>
+<li>server: response contains no object if cached copy is up-to-date:</li>
+</ul>
+<pre><code class="shell">HTTP/1.0 304 Not Modified</code></pre>
+<p><img src="%3C!--%EF%BF%BC9--%3E/assets/images/images_of_blog/CN_notes_L2_f10.png" alt="f10"></p>
+<hr>
+<h2 id="electronic-mail"><a href="#electronic-mail" class="headerlink" title="electronic mail"></a>electronic mail</h2><blockquote>
+<p><strong>*<center>$\color{red}{3; major; components}$</center>*</strong></p>
+<ul>
+<li>user agents</li>
+<li>mail servers</li>
+<li>simple mail transfer protocol: SMTP (between mail servers to send email messages)</li>
+</ul>
+</blockquote>
+<h3 id="SMTP"><a href="#SMTP" class="headerlink" title="SMTP"></a>SMTP</h3><ul>
+<li>port 25</li>
+<li>uses TCP</li>
+<li>messages must be in 7-bit ASCII</li>
+</ul>
+<blockquote>
+<p><strong>*<center>$\color{red}{example}$</center>*</strong><br><img src="%3C!--%EF%BF%BC10--%3E/assets/images/images_of_blog/CN_notes_L2_f11.png" alt="f11"></p>
+</blockquote>
+<ul>
+<li>uses persistent connections<blockquote>
+<p><strong>*<center>$\color{red}{comparison; with; HTTP}$</center>*</strong></p>
+</blockquote>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">HTTP</th>
+<th align="center">SMTP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">pull</td>
+<td align="center">push</td>
+</tr>
+<tr>
+<td align="center">each objectencapsulated in its own response message</td>
+<td align="center">multiple objects sent in multipart message</td>
+</tr>
+</tbody></table>
+<blockquote>
+<ul>
+<li>both have ASCII command/response interaction, status codes</li>
+</ul>
+</blockquote>
+<h3 id="Mail-access-protocols"><a href="#Mail-access-protocols" class="headerlink" title="Mail access protocols"></a>Mail access protocols</h3><p><img src="%3C!--%EF%BF%BC11--%3E/assets/images/images_of_blog/CN_notes_L2_f12.png" alt="f12">  </p>
+<ul>
+<li><p>POP3</p>
+<ul>
+<li>stateless across sessions</li>
+<li>“download-and-keep”——copies of messages on different clients</li>
+</ul>
+</li>
+<li><p>IMAP</p>
+<ul>
+<li><p>keeps all messages in one place: at server</p>
+</li>
+<li><p>allows user to organize messages in folders</p>
+</li>
+<li><p>keeps user state across sessions</p>
+<blockquote>
+<p><strong>names of folders and mappings between message IDs and folder name</strong></p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/music/Bloom.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/ezy.jpg" height=300 width=300></img>
+                    <p>ezy</p>
+                    <span>也曾鲜衣怒马少年时</span>
+                    <dl>
+                        <dd><a href="https://github.com/ezy0812" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">12 <p>文章</p></a></li>
+                    <li><a href="/categories">4 <p>分类</p></a></li>
+                    <li><a href="/tags">10 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Application-Layer——Part-1"><span class="toc-number">1.</span> <span class="toc-text">Application Layer——Part 1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Application-architectures"><span class="toc-number">2.</span> <span class="toc-text">Application architectures</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#client-server"><span class="toc-number">2.1.</span> <span class="toc-text">client-server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#peer-to-peer-P2P"><span class="toc-number">2.2.</span> <span class="toc-text">peer-to-peer(P2P)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#App-layer-protocol-defines"><span class="toc-number">3.</span> <span class="toc-text">App-layer protocol defines</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-transport-service-does-an-app-need"><span class="toc-number">4.</span> <span class="toc-text">What transport service does an app need?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Internet-transport-protocols-services"><span class="toc-number">5.</span> <span class="toc-text">Internet transport protocols services</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP"><span class="toc-number">5.1.</span> <span class="toc-text">TCP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UDP"><span class="toc-number">5.2.</span> <span class="toc-text">UDP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP"><span class="toc-number">6.</span> <span class="toc-text">HTTP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#uses-TCP"><span class="toc-number">6.1.</span> <span class="toc-text">uses TCP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stateless"><span class="toc-number">6.2.</span> <span class="toc-text">stateless</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-connections"><span class="toc-number">6.3.</span> <span class="toc-text">HTTP connections</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-requests"><span class="toc-number">6.4.</span> <span class="toc-text">HTTP requests</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-response-codes"><span class="toc-number">6.5.</span> <span class="toc-text">HTTP response codes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookies"><span class="toc-number">6.6.</span> <span class="toc-text">cookies</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-caches-proxy-server"><span class="toc-number">7.</span> <span class="toc-text">Web caches(proxy server)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Goal"><span class="toc-number">7.1.</span> <span class="toc-text">Goal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#working-principle"><span class="toc-number">7.2.</span> <span class="toc-text">working principle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-Web-caching"><span class="toc-number">7.3.</span> <span class="toc-text">Why Web caching?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conditional-GET"><span class="toc-number">7.4.</span> <span class="toc-text">Conditional GET</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#electronic-mail"><span class="toc-number">8.</span> <span class="toc-text">electronic mail</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SMTP"><span class="toc-number">8.1.</span> <span class="toc-text">SMTP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mail-access-protocols"><span class="toc-number">8.2.</span> <span class="toc-text">Mail access protocols</span></a></li></ol></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <span class="gradient-text">
+            ezy
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+
+
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["也曾鲜衣怒马少年时", "一夜忘尽长安花"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+
+
+</html>

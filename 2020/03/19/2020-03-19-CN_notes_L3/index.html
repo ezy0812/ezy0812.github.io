@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Computer Network Notes L3 - ezy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="blog ezy,"> 
+    <meta name="description" content="ezy-blog,Application Layer——Part 2
+
+DNS(domain name system)application-layer protocol
+core Internet function,"> 
+    <meta name="author" content="ezy"> 
+    
+    <link rel="icon" href="/img/logo.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">ezy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/logo.png" alt="" data-url="http://yoursite.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Computer Network Notes L3</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/Learning_Notes"><b>「
+                    </b>LEARNING_NOTES<b> 」</b></a>
+                
+                三月 19, 2020
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/03/19/2020-03-19-CN_notes_L3/" title="Computer Network Notes L3" class="">Computer Network Notes L3</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    4.6k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    4 mins.
+                </span>
+                
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Computer-Network/" rel="tag">Computer Network</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Lecture-notes/" rel="tag">Lecture notes</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="Application-Layer——Part-2"><a href="#Application-Layer——Part-2" class="headerlink" title="Application Layer——Part 2"></a><center>Application Layer——Part 2</center></h2><a id="more"></a>
+
+<h2 id="DNS-domain-name-system"><a href="#DNS-domain-name-system" class="headerlink" title="DNS(domain name system)"></a>DNS(domain name system)</h2><h3 id="application-layer-protocol"><a href="#application-layer-protocol" class="headerlink" title="application-layer protocol"></a>application-layer protocol</h3><ul>
+<li>core Internet function, implemented as application-layer procotol</li>
+</ul>
+<h3 id="DNS-services"><a href="#DNS-services" class="headerlink" title="DNS services"></a>DNS services</h3><ul>
+<li>hostname to IP address translation</li>
+<li>host aliasing<ul>
+<li>canonical, alias names</li>
+</ul>
+</li>
+<li>mail server aliasing</li>
+<li>load distribution<ul>
+<li>replicated Web servers: many IP addresses correspond to one name</li>
+</ul>
+</li>
+</ul>
+<h3 id="Why-not-centralize-DNS"><a href="#Why-not-centralize-DNS" class="headerlink" title="Why not centralize DNS?"></a>Why not centralize DNS?</h3><ul>
+<li>single point of failure</li>
+<li>traffic volume</li>
+<li>distant centralized databse</li>
+<li>maintenance</li>
+</ul>
+<h3 id="root-name-servers"><a href="#root-name-servers" class="headerlink" title="root name servers"></a>root name servers</h3><ul>
+<li>contacted by local name server that can not resolve name</li>
+<li>contacts authoritative name server if name mapping not known </li>
+<li>gets mapping</li>
+<li>returns mapping to local name server</li>
+</ul>
+<h3 id="top-level-domain-TLD-servers"><a href="#top-level-domain-TLD-servers" class="headerlink" title="top-level domain(TLD) servers"></a>top-level domain(TLD) servers</h3><ul>
+<li>responsible for com, org, edu,net, aero, jobs, museums and all top-level country domains, e.g. uk, fr, ca, jp</li>
+<li>network solutions mains servers for .com TLD</li>
+<li>educause for .edu TLD</li>
+</ul>
+<h3 id="authoritative-DNS-servers"><a href="#authoritative-DNS-servers" class="headerlink" title="authoritative DNS servers"></a>authoritative DNS servers</h3><ul>
+<li>organization’s own DNS server(s), providing authoritative hostname to IP mappings for organization’s named hosts</li>
+<li>can be maintained by organization or service provider</li>
+</ul>
+<h3 id="local-DNS-name-server"><a href="#local-DNS-name-server" class="headerlink" title="local DNS name server"></a>local DNS name server</h3><ul>
+<li>does not strictly belong to hierarchy</li>
+<li>each ISP has one<ul>
+<li>also called “dafult name server”</li>
+</ul>
+</li>
+<li>when host makes DNS query, query is sent to its local DNS server<ul>
+<li>has local cache of recent name-to-address translation pairs(but may be out of date!)</li>
+<li>acts as proxy, forwards query into hierarchy</li>
+</ul>
+</li>
+</ul>
+<h3 id="DNS-name-resolution-example"><a href="#DNS-name-resolution-example" class="headerlink" title="DNS name resolution example"></a>DNS name resolution example</h3><h4 id="iterated-query"><a href="#iterated-query" class="headerlink" title="iterated query"></a>iterated query</h4><ul>
+<li>contacted server replies with name of server to contact</li>
+</ul>
+<h4 id="recursive-query"><a href="#recursive-query" class="headerlink" title="recursive query"></a>recursive query</h4><ul>
+<li>puts burden of name resolution on resolution on contacted name server</li>
+<li>heavy load at upper levels of hierarchy</li>
+</ul>
+<h3 id="DNS-records"><a href="#DNS-records" class="headerlink" title="DNS records"></a>DNS records</h3><p>distributed database storing resource records(RR)</p>
+<p>RR format:<code>(name,value,type,ttl)</code></p>
+<ul>
+<li>type=A(name=hostname, value=IP address)</li>
+<li>type=NS(name=domain, value=hostname of authoritative name server for this domain)</li>
+<li>type=CNAME(name=aliasing name for “canonical”(real) name(<code>www.ibm.com</code> is really <code>servereast.backup2.ibm.com</code>), value is canonical name)</li>
+<li>type=MX(value=name of mailserver associated with <strong>name</strong>)</li>
+</ul>
+<h2 id="P2P-architecture"><a href="#P2P-architecture" class="headerlink" title="P2P architecture"></a>P2P architecture</h2><h3 id="features"><a href="#features" class="headerlink" title="features"></a>features</h3><ul>
+<li>no always-on server</li>
+<li>arbitrary end systems directly communicate</li>
+<li>peers are intermittently connected and change IP addresses</li>
+</ul>
+<h3 id="file-distribution-time"><a href="#file-distribution-time" class="headerlink" title="file distribution time"></a>file distribution time</h3>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/music/Bloom.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/ezy.jpg" height=300 width=300></img>
+                    <p>ezy</p>
+                    <span>也曾鲜衣怒马少年时</span>
+                    <dl>
+                        <dd><a href="https://github.com/ezy0812" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">12 <p>文章</p></a></li>
+                    <li><a href="/categories">4 <p>分类</p></a></li>
+                    <li><a href="/tags">10 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Application-Layer——Part-2"><span class="toc-number">1.</span> <span class="toc-text">Application Layer——Part 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-domain-name-system"><span class="toc-number">2.</span> <span class="toc-text">DNS(domain name system)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#application-layer-protocol"><span class="toc-number">2.1.</span> <span class="toc-text">application-layer protocol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-services"><span class="toc-number">2.2.</span> <span class="toc-text">DNS services</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-not-centralize-DNS"><span class="toc-number">2.3.</span> <span class="toc-text">Why not centralize DNS?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#root-name-servers"><span class="toc-number">2.4.</span> <span class="toc-text">root name servers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#top-level-domain-TLD-servers"><span class="toc-number">2.5.</span> <span class="toc-text">top-level domain(TLD) servers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#authoritative-DNS-servers"><span class="toc-number">2.6.</span> <span class="toc-text">authoritative DNS servers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#local-DNS-name-server"><span class="toc-number">2.7.</span> <span class="toc-text">local DNS name server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-name-resolution-example"><span class="toc-number">2.8.</span> <span class="toc-text">DNS name resolution example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-records"><span class="toc-number">2.9.</span> <span class="toc-text">DNS records</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P2P-architecture"><span class="toc-number">3.</span> <span class="toc-text">P2P architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#features"><span class="toc-number">3.1.</span> <span class="toc-text">features</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-distribution-time"><span class="toc-number">3.2.</span> <span class="toc-text">file distribution time</span></a></li></ol></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <span class="gradient-text">
+            ezy
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+
+
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["也曾鲜衣怒马少年时", "一夜忘尽长安花"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+
+
+</html>
