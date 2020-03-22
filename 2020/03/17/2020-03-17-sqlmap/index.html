@@ -5,14 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>sqlmap详解 - ezy</title>
+    <title>sqlmap详解 - ezy 闲敲棋子落灯花</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="blog ezy,"> 
-    <meta name="description" content="ezy-blog,关于sqlmap的使用
-
-获取目标系统信息 –bannerpython sqlmap.py -u &amp;quot;http://127.0.0.1/sqli/less-1/?id=1&amp;quot; --b,"> 
+    <meta name="description" content="ezy-blog,获取目标系统信息 –bannerpython sqlmap.py -u &amp;quot;http://127.0.0.1/sqli/less-1/?id=1&amp;quot; --batch --banner,"> 
     <meta name="author" content="ezy"> 
     
     <link rel="icon" href="/img/favicon.png"> 
@@ -50,14 +48,14 @@
             <div></div>
         </div>
     </div>
-    <span id="config-title" style="display:none">ezy</span>
+    <span id="config-title" style="display:none">ezy 闲敲棋子落灯花</span>
     <div id="loader"></div>
     <div id="single">
     <div class="scrollbar gradient-bg-rev"></div>
 <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
     <div class="navigation animated fadeIn fast delay-1s">
-        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://yoursite.com">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://ezysec.cn">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
         <h3 class="subtitle">sqlmap详解</h3>
         <div class="social">
@@ -101,7 +99,7 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    12k
+                    11k
                 </span>
                 
                 
@@ -136,9 +134,7 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="关于sqlmap的使用"><a href="#关于sqlmap的使用" class="headerlink" title="关于sqlmap的使用"></a><center>关于sqlmap的使用</center></h2><a id="more"></a>
-
-<h2 id="获取目标系统信息-–banner"><a href="#获取目标系统信息-–banner" class="headerlink" title="获取目标系统信息 –banner"></a>获取目标系统信息 –banner</h2><pre><code class="cmd">python sqlmap.py -u &quot;http://127.0.0.1/sqli/less-1/?id=1&quot; --batch --banner</code></pre>
+            <h2 id="获取目标系统信息-–banner"><a href="#获取目标系统信息-–banner" class="headerlink" title="获取目标系统信息 –banner"></a>获取目标系统信息 –banner</h2><pre><code class="cmd">python sqlmap.py -u &quot;http://127.0.0.1/sqli/less-1/?id=1&quot; --batch --banner</code></pre>
 <hr>
 <h2 id="对多个目标进行探测"><a href="#对多个目标进行探测" class="headerlink" title="对多个目标进行探测"></a>对多个目标进行探测</h2><ul>
 <li>Sqlmap支持从不同类型的文件中读取目标进行Sql注入探测</li>
@@ -160,12 +156,12 @@
 <li><p>-c 从配置文件sqlmap.conf中读取目标探测。</p>
 </li>
 </ol>
-<h3 id="burpsuite保存日志文件"><a href="#burpsuite保存日志文件" class="headerlink" title="burpsuite保存日志文件"></a>burpsuite保存日志文件</h3><p><img src="/images/images_of_sqlmap/sqlmap_f1.png" alt="f1"></p>
+<h3 id="burpsuite保存日志文件"><a href="#burpsuite保存日志文件" class="headerlink" title="burpsuite保存日志文件"></a>burpsuite保存日志文件</h3><p><img src="/images/images_of_sqlmap/sqlmap_f1.png" alt=""></p>
 <p>将日志文件复制到sqlmap文件目录下</p>
-<p><img src="%3C!--%EF%BF%BC0--%3E/assets/images/images_of_sqlmap/sqlmap_f2.png" alt="f2"></p>
+<p><img src="/images/images_of_sqlmap/sqlmap_f2.png" alt=""></p>
 <pre><code class="cmd">python sqlmap.py -l test</code></pre>
 <p>在探测完一个目标后，会继续询问是否探测文件中的下一个目标</p>
-<h3 id="m，对txt文件探测"><a href="#m，对txt文件探测" class="headerlink" title="-m，对txt文件探测"></a>-m，对txt文件探测</h3><p><img src="%3C!--%EF%BF%BC1--%3E/assets/images/images_of_sqlmap/sqlmap_f3.png" alt=""></p>
+<h3 id="m，对txt文件探测"><a href="#m，对txt文件探测" class="headerlink" title="-m，对txt文件探测"></a>-m，对txt文件探测</h3><p><img src="/images/images_of_sqlmap/sqlmap_f3.png" alt=""></p>
 <pre><code class="cmd">python sqlmap.py -m 1.txt</code></pre>
 <h3 id="通过谷歌批量探测"><a href="#通过谷歌批量探测" class="headerlink" title="通过谷歌批量探测"></a>通过谷歌批量探测</h3><pre><code class="cmd">python sqlmap.py -g &quot;inurl:.php?id=&quot;</code></pre>
 <hr>
@@ -215,7 +211,7 @@
 <li>–proxy-file用来设置多条代理在文件中  </li>
 <li>–ignore-proxy当您希望通过忽略系统范围内的HTTP(S)代理服务器设置来针对本地网络的目标部分运行sqlmap时，应该使用这种方法。</li>
 </ul>
-<p><img src="%3C!--%EF%BF%BC2--%3E/assets/images/images_of_sqlmap/sqlmap_f4.png" alt=""></p>
+<p><img src="/images/images_of_sqlmap/sqlmap_f4.png" alt=""></p>
 <pre><code class="cmd">python sqlmap.py -u &quot;http://url/arit.php?id=1&quot; --proxy &quot;http://122.5.190.206:9999&quot; --banner</code></pre>
 <h3 id="设置延迟"><a href="#设置延迟" class="headerlink" title="设置延迟"></a>设置延迟</h3><p>–delay 0.5 延迟0.5秒</p>
 <pre><code class="cmd">python sqlmap.py -u &quot;http://url/arit.php?id=1&quot; --delay 0.5 --banner</code></pre>
@@ -300,20 +296,22 @@
                 <div class="subbox">
                     <img src="/img/ezy.jpg" height=300 width=300></img>
                     <p>ezy</p>
-                    <span>也曾鲜衣怒马少年时</span>
-                    <dl>
+                    <span>What's the feeling of loving someone? Like a dog, like a god</span>
+                    <a href="https://github.com/ezy0812" target="_blank"><span
+                        class=" iconfont icon-github"></span></a>
+                    <!-- <dl>
                         <dd><a href="https://github.com/ezy0812" target="_blank"><span
                                     class=" iconfont icon-github"></span></a></dd>
                         <dd><a href="" target="_blank"><span
                                     class=" iconfont icon-twitter"></span></a></dd>
                         <dd><a href="" target="_blank"><span
                                     class=" iconfont icon-stack-overflow"></span></a></dd>
-                    </dl>
+                    </dl> -->
                 </div>
                 <ul>
                     <li><a href="/">12 <p>文章</p></a></li>
-                    <li><a href="/categories">4 <p>分类</p></a></li>
-                    <li><a href="/tags">10 <p>标签</p></a></li>
+                    <li><a href="/categories">5 <p>分类</p></a></li>
+                    <li><a href="/tags">11 <p>标签</p></a></li>
                 </ul>
             </div>
             
@@ -322,7 +320,7 @@
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于sqlmap的使用"><span class="toc-number">1.</span> <span class="toc-text">关于sqlmap的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取目标系统信息-–banner"><span class="toc-number">2.</span> <span class="toc-text">获取目标系统信息 –banner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对多个目标进行探测"><span class="toc-number">3.</span> <span class="toc-text">对多个目标进行探测</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置日志过滤目标"><span class="toc-number">3.1.</span> <span class="toc-text">设置日志过滤目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#burpsuite保存日志文件"><span class="toc-number">3.2.</span> <span class="toc-text">burpsuite保存日志文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#m，对txt文件探测"><span class="toc-number">3.3.</span> <span class="toc-text">-m，对txt文件探测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过谷歌批量探测"><span class="toc-number">3.4.</span> <span class="toc-text">通过谷歌批量探测</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置请求参数"><span class="toc-number">4.</span> <span class="toc-text">设置请求参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置HTTP请求方法"><span class="toc-number">4.1.</span> <span class="toc-text">设置HTTP请求方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置POST提交参数"><span class="toc-number">4.2.</span> <span class="toc-text">设置POST提交参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置参数分隔符"><span class="toc-number">4.3.</span> <span class="toc-text">设置参数分隔符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置Cookie头"><span class="toc-number">4.4.</span> <span class="toc-text">设置Cookie头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置user-agent"><span class="toc-number">4.5.</span> <span class="toc-text">设置user-agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置Host头"><span class="toc-number">4.6.</span> <span class="toc-text">设置Host头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置Referer"><span class="toc-number">4.7.</span> <span class="toc-text">设置Referer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置额外HTTP头"><span class="toc-number">4.8.</span> <span class="toc-text">设置额外HTTP头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置HTTP协议认证"><span class="toc-number">4.9.</span> <span class="toc-text">设置HTTP协议认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置HTTP代理"><span class="toc-number">4.10.</span> <span class="toc-text">设置HTTP代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置延迟"><span class="toc-number">4.11.</span> <span class="toc-text">设置延迟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置超时"><span class="toc-number">4.12.</span> <span class="toc-text">设置超时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置重试次数"><span class="toc-number">4.13.</span> <span class="toc-text">设置重试次数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略401"><span class="toc-number">4.14.</span> <span class="toc-text">忽略401</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置HTTP协议私钥"><span class="toc-number">4.15.</span> <span class="toc-text">设置HTTP协议私钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置"><span class="toc-number">4.16.</span> <span class="toc-text">设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqlmap性能优化"><span class="toc-number">5.</span> <span class="toc-text">sqlmap性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置持久HTTP连接，在一定程度上避免服务器受到探测影响"><span class="toc-number">5.1.</span> <span class="toc-text">设置持久HTTP连接，在一定程度上避免服务器受到探测影响</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不接收HTTP-Body"><span class="toc-number">5.2.</span> <span class="toc-text">不接收HTTP Body</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置多线程"><span class="toc-number">5.3.</span> <span class="toc-text">设置多线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置预测输出"><span class="toc-number">5.4.</span> <span class="toc-text">设置预测输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一键优化"><span class="toc-number">5.5.</span> <span class="toc-text">一键优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指定位置注入"><span class="toc-number">6.</span> <span class="toc-text">指定位置注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#指定具体探测的参数"><span class="toc-number">6.1.</span> <span class="toc-text">指定具体探测的参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略探测具体的参数"><span class="toc-number">6.2.</span> <span class="toc-text">忽略探测具体的参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略包含具体内容的参数"><span class="toc-number">6.3.</span> <span class="toc-text">忽略包含具体内容的参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略静态参数"><span class="toc-number">6.4.</span> <span class="toc-text">忽略静态参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置URL注入位置"><span class="toc-number">6.5.</span> <span class="toc-text">设置URL注入位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号-即可"><span class="toc-number">6.6.</span> <span class="toc-text">不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号(*)即可</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注入参数"><span class="toc-number">7.</span> <span class="toc-text">注入参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#强制设置DBMS-数据库管理系统"><span class="toc-number">7.1.</span> <span class="toc-text">强制设置DBMS(数据库管理系统)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#强制设置OS系统"><span class="toc-number">7.2.</span> <span class="toc-text">强制设置OS系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭负载转换机制"><span class="toc-number">7.3.</span> <span class="toc-text">关闭负载转换机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭字符转义机制"><span class="toc-number">7.4.</span> <span class="toc-text">关闭字符转义机制</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取目标系统信息-–banner"><span class="toc-number">1.</span> <span class="toc-text">获取目标系统信息 –banner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对多个目标进行探测"><span class="toc-number">2.</span> <span class="toc-text">对多个目标进行探测</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置日志过滤目标"><span class="toc-number">2.1.</span> <span class="toc-text">设置日志过滤目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#burpsuite保存日志文件"><span class="toc-number">2.2.</span> <span class="toc-text">burpsuite保存日志文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#m，对txt文件探测"><span class="toc-number">2.3.</span> <span class="toc-text">-m，对txt文件探测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过谷歌批量探测"><span class="toc-number">2.4.</span> <span class="toc-text">通过谷歌批量探测</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置请求参数"><span class="toc-number">3.</span> <span class="toc-text">设置请求参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置HTTP请求方法"><span class="toc-number">3.1.</span> <span class="toc-text">设置HTTP请求方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置POST提交参数"><span class="toc-number">3.2.</span> <span class="toc-text">设置POST提交参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置参数分隔符"><span class="toc-number">3.3.</span> <span class="toc-text">设置参数分隔符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置Cookie头"><span class="toc-number">3.4.</span> <span class="toc-text">设置Cookie头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置user-agent"><span class="toc-number">3.5.</span> <span class="toc-text">设置user-agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置Host头"><span class="toc-number">3.6.</span> <span class="toc-text">设置Host头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置Referer"><span class="toc-number">3.7.</span> <span class="toc-text">设置Referer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置额外HTTP头"><span class="toc-number">3.8.</span> <span class="toc-text">设置额外HTTP头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置HTTP协议认证"><span class="toc-number">3.9.</span> <span class="toc-text">设置HTTP协议认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置HTTP代理"><span class="toc-number">3.10.</span> <span class="toc-text">设置HTTP代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置延迟"><span class="toc-number">3.11.</span> <span class="toc-text">设置延迟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置超时"><span class="toc-number">3.12.</span> <span class="toc-text">设置超时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置重试次数"><span class="toc-number">3.13.</span> <span class="toc-text">设置重试次数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略401"><span class="toc-number">3.14.</span> <span class="toc-text">忽略401</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置HTTP协议私钥"><span class="toc-number">3.15.</span> <span class="toc-text">设置HTTP协议私钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置"><span class="toc-number">3.16.</span> <span class="toc-text">设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqlmap性能优化"><span class="toc-number">4.</span> <span class="toc-text">sqlmap性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置持久HTTP连接，在一定程度上避免服务器受到探测影响"><span class="toc-number">4.1.</span> <span class="toc-text">设置持久HTTP连接，在一定程度上避免服务器受到探测影响</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不接收HTTP-Body"><span class="toc-number">4.2.</span> <span class="toc-text">不接收HTTP Body</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置多线程"><span class="toc-number">4.3.</span> <span class="toc-text">设置多线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置预测输出"><span class="toc-number">4.4.</span> <span class="toc-text">设置预测输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一键优化"><span class="toc-number">4.5.</span> <span class="toc-text">一键优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指定位置注入"><span class="toc-number">5.</span> <span class="toc-text">指定位置注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#指定具体探测的参数"><span class="toc-number">5.1.</span> <span class="toc-text">指定具体探测的参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略探测具体的参数"><span class="toc-number">5.2.</span> <span class="toc-text">忽略探测具体的参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略包含具体内容的参数"><span class="toc-number">5.3.</span> <span class="toc-text">忽略包含具体内容的参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略静态参数"><span class="toc-number">5.4.</span> <span class="toc-text">忽略静态参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置URL注入位置"><span class="toc-number">5.5.</span> <span class="toc-text">设置URL注入位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号-即可"><span class="toc-number">5.6.</span> <span class="toc-text">不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号(*)即可</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注入参数"><span class="toc-number">6.</span> <span class="toc-text">注入参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#强制设置DBMS-数据库管理系统"><span class="toc-number">6.1.</span> <span class="toc-text">强制设置DBMS(数据库管理系统)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#强制设置OS系统"><span class="toc-number">6.2.</span> <span class="toc-text">强制设置OS系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭负载转换机制"><span class="toc-number">6.3.</span> <span class="toc-text">关闭负载转换机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭字符转义机制"><span class="toc-number">6.4.</span> <span class="toc-text">关闭字符转义机制</span></a></li></ol></li></ol>
                 </div>
             </div>
             
@@ -534,7 +532,7 @@
         var typedTextEl = $('.typed-text');
         if (typedTextEl && typedTextEl.length > 0) {
             var typed = new Typed('.typed-text', {
-                strings: ["也曾鲜衣怒马少年时", "一夜忘尽长安花"],
+                strings: ["Nothing is impossible for a willing heart", "心之所愿，无所不成"],
                 typeSpeed: 90,
                 loop: true,
                 loopCount: Infinity,
