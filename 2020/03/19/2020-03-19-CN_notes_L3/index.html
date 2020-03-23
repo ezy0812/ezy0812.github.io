@@ -103,13 +103,13 @@ cor,">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    8k
+                    8.8k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    7 mins.
+                    8 mins.
                 </span>
                 
                 
@@ -228,11 +228,29 @@ cor,">
 <li>chooses maximum coding rate sustainable given current bandwidth  </li>
 <li>can choose different coding rates at different points in time (depending on available bandwidth at time)<h4 id="“intelligence”-at-client-client-determines"><a href="#“intelligence”-at-client-client-determines" class="headerlink" title="“intelligence” at client: client determines"></a>“intelligence” at client: client determines</h4>when to request chunk (so that buffer starvation, or overflow does not occur)<br>what encoding rate to request (higher quality when more bandwidth available)<br>where to request chunk (can request from URL server that is “close” to client or has high available bandwidth)</li>
 </ul>
-<h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>challenge: how to stream content (selected from millions of videos) to hundreds of thousands of simultaneous users?  </p>
+<h3 id="CDN-content-distribution-networks"><a href="#CDN-content-distribution-networks" class="headerlink" title="CDN(content distribution networks)"></a>CDN(content distribution networks)</h3><blockquote>
+<p>challenge: how to stream content (selected from millions of videos) to hundreds of thousands of simultaneous users?  </p>
+</blockquote>
 <p>store/serve multiple copies of videos at multiple geographically distributed sites (CDN)</p>
 <ul>
-<li>enter deep: push CDN servers deep into many access networks close to users<br>used by Akamai, 1700 locations<br>bring home: smaller number (10’s) of larger clusters in<br>POPs near (but not within) access networks<br>used by Limelight</li>
+<li>enter deep: push CDN servers deep into many access networks <ul>
+<li>close to users</li>
+<li>used by Akamai, 1700 locations</li>
 </ul>
+</li>
+<li>bring home: smaller number (10’s) of larger clusters in POPs near (but not within) access networks<ul>
+<li>used by Limelight</li>
+</ul>
+</li>
+</ul>
+<p>CDN nodes stores copies of content<br>subscriber requests content from CDN  </p>
+<ul>
+<li>directed to nearby copy, retrieves content</li>
+<li>may choose different copy if network path congested  </li>
+</ul>
+<hr>
+<h2 id="socket-programming"><a href="#socket-programming" class="headerlink" title="socket programming"></a>socket programming</h2><p><strong>goal:</strong> learn how to build client/server applications that communicate using sockets<br><strong>socket:</strong> door between application process and end-end-transport protocol  </p>
+<p>TCP需要创建两次sockets<br>UDP需要一次</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -272,7 +290,7 @@ cor,">
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-domain-name-system"><span class="toc-number">1.</span> <span class="toc-text">DNS(domain name system)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#application-layer-protocol"><span class="toc-number">1.1.</span> <span class="toc-text">application-layer protocol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-services"><span class="toc-number">1.2.</span> <span class="toc-text">DNS services</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-not-centralize-DNS"><span class="toc-number">1.3.</span> <span class="toc-text">Why not centralize DNS?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#root-name-servers"><span class="toc-number">1.4.</span> <span class="toc-text">root name servers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#top-level-domain-TLD-servers"><span class="toc-number">1.5.</span> <span class="toc-text">top-level domain(TLD) servers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#authoritative-DNS-servers"><span class="toc-number">1.6.</span> <span class="toc-text">authoritative DNS servers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#local-DNS-name-server"><span class="toc-number">1.7.</span> <span class="toc-text">local DNS name server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-name-resolution-example"><span class="toc-number">1.8.</span> <span class="toc-text">DNS name resolution example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-records"><span class="toc-number">1.9.</span> <span class="toc-text">DNS records</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P2P-architecture"><span class="toc-number">2.</span> <span class="toc-text">P2P architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#features"><span class="toc-number">2.1.</span> <span class="toc-text">features</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-distribution-time"><span class="toc-number">2.2.</span> <span class="toc-text">file distribution time</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BitTorrent"><span class="toc-number">2.3.</span> <span class="toc-text">BitTorrent</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#video-streaming-and-CDN"><span class="toc-number">3.</span> <span class="toc-text">video streaming and CDN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#coding-image"><span class="toc-number">3.1.</span> <span class="toc-text">coding image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DASH-dynamic-adaptive-streaming-over-HTTP"><span class="toc-number">3.2.</span> <span class="toc-text">DASH: dynamic, adaptive streaming over HTTP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CDN"><span class="toc-number">3.3.</span> <span class="toc-text">CDN</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-domain-name-system"><span class="toc-number">1.</span> <span class="toc-text">DNS(domain name system)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#application-layer-protocol"><span class="toc-number">1.1.</span> <span class="toc-text">application-layer protocol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-services"><span class="toc-number">1.2.</span> <span class="toc-text">DNS services</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-not-centralize-DNS"><span class="toc-number">1.3.</span> <span class="toc-text">Why not centralize DNS?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#root-name-servers"><span class="toc-number">1.4.</span> <span class="toc-text">root name servers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#top-level-domain-TLD-servers"><span class="toc-number">1.5.</span> <span class="toc-text">top-level domain(TLD) servers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#authoritative-DNS-servers"><span class="toc-number">1.6.</span> <span class="toc-text">authoritative DNS servers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#local-DNS-name-server"><span class="toc-number">1.7.</span> <span class="toc-text">local DNS name server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-name-resolution-example"><span class="toc-number">1.8.</span> <span class="toc-text">DNS name resolution example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-records"><span class="toc-number">1.9.</span> <span class="toc-text">DNS records</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P2P-architecture"><span class="toc-number">2.</span> <span class="toc-text">P2P architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#features"><span class="toc-number">2.1.</span> <span class="toc-text">features</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-distribution-time"><span class="toc-number">2.2.</span> <span class="toc-text">file distribution time</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BitTorrent"><span class="toc-number">2.3.</span> <span class="toc-text">BitTorrent</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#video-streaming-and-CDN"><span class="toc-number">3.</span> <span class="toc-text">video streaming and CDN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#coding-image"><span class="toc-number">3.1.</span> <span class="toc-text">coding image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DASH-dynamic-adaptive-streaming-over-HTTP"><span class="toc-number">3.2.</span> <span class="toc-text">DASH: dynamic, adaptive streaming over HTTP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CDN-content-distribution-networks"><span class="toc-number">3.3.</span> <span class="toc-text">CDN(content distribution networks)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#socket-programming"><span class="toc-number">4.</span> <span class="toc-text">socket programming</span></a></li></ol>
                 </div>
             </div>
             
