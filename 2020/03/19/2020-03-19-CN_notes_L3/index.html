@@ -10,8 +10,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="blog ezy,"> 
-    <meta name="description" content="ezy-blog,DNS(domain name system)application-layer protocol
-core Internet function, implemented as applicatio,"> 
+    <meta name="description" content="ezy-blog,
+除掉他们的勇气！教会他们什么是恐惧！暴力即是优雅，犹豫即是死亡——暗裔剑魔·亚托克斯 
+
+DNS(domain name system)application-layer protocol
+cor,"> 
     <meta name="author" content="ezy"> 
     
     <link rel="icon" href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/favicon.png"> 
@@ -83,7 +86,7 @@ core Internet function, implemented as applicatio,">
             animation-duration: 1.2s;
             background-image: 
                 radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-                url(https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/cover.jpg) ">
+                url(https://cdn.jsdelivr.net/gh/ezy0812/CDN/cover/cover-CN-notes-L3.jpg) ">
         </div>
         <div class="else">
             <p class="animated fadeInDown">
@@ -100,13 +103,13 @@ core Internet function, implemented as applicatio,">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    4.4k
+                    8k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    4 mins.
+                    7 mins.
                 </span>
                 
                 
@@ -135,7 +138,10 @@ core Internet function, implemented as applicatio,">
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="DNS-domain-name-system"><a href="#DNS-domain-name-system" class="headerlink" title="DNS(domain name system)"></a>DNS(domain name system)</h2><h3 id="application-layer-protocol"><a href="#application-layer-protocol" class="headerlink" title="application-layer protocol"></a>application-layer protocol</h3><ul>
+            <blockquote>
+<p>除掉他们的勇气！教会他们什么是恐惧！暴力即是优雅，犹豫即是死亡——暗裔剑魔·亚托克斯 </p>
+</blockquote>
+<h2 id="DNS-domain-name-system"><a href="#DNS-domain-name-system" class="headerlink" title="DNS(domain name system)"></a>DNS(domain name system)</h2><h3 id="application-layer-protocol"><a href="#application-layer-protocol" class="headerlink" title="application-layer protocol"></a>application-layer protocol</h3><ul>
 <li>core Internet function, implemented as application-layer procotol</li>
 </ul>
 <h3 id="DNS-services"><a href="#DNS-services" class="headerlink" title="DNS services"></a>DNS services</h3><ul>
@@ -198,25 +204,41 @@ core Internet function, implemented as applicatio,">
 <li>type=CNAME(name=aliasing name for “canonical”(real) name(<code>www.ibm.com</code> is really <code>servereast.backup2.ibm.com</code>), value is canonical name)</li>
 <li>type=MX(value=name of mailserver associated with <strong>name</strong>)</li>
 </ul>
+<hr>
 <h2 id="P2P-architecture"><a href="#P2P-architecture" class="headerlink" title="P2P architecture"></a>P2P architecture</h2><h3 id="features"><a href="#features" class="headerlink" title="features"></a>features</h3><ul>
 <li>no always-on server</li>
 <li>arbitrary end systems directly communicate</li>
 <li>peers are intermittently connected and change IP addresses</li>
 </ul>
-<h3 id="file-distribution-time"><a href="#file-distribution-time" class="headerlink" title="file distribution time"></a>file distribution time</h3>
+<h3 id="file-distribution-time"><a href="#file-distribution-time" class="headerlink" title="file distribution time"></a>file distribution time</h3><p>for the CS, time is<br>$$D_{c-s}\geq max{\frac{NF}{u_s},\frac{F}{d_{min}}}$$</p>
+<p>for P2P, time is<br>$$D_{P2P}\geq max{\frac{F}{u_s},\frac{F}{d_{min},\frac{NF}{(u_s+\sum ui)}}}$$</p>
+<h3 id="BitTorrent"><a href="#BitTorrent" class="headerlink" title="BitTorrent"></a>BitTorrent</h3><p>file divided into 256Kb chunks<br>peers in torrent send/receive file chunks<br>peer may change peers with whom it exchanges chunks<br>churn: peers may come and go</p>
+<blockquote>
+<p>requesting chunks<br>at any given time, different peers have different subsets of file chunks<br>periodically, Alice asks each peer for list of chunks that they have<br>Alice requests missing chunks from peers, <strong>rarest first</strong></p>
+</blockquote>
+<blockquote>
+<p>sending chunks: tit-for-tat<br>Alice sends chunks to those four peers currently sending her chunks at highest rate(top 4 peers)<br>every 30 secs: randomly select another peer, starts sending chunks</p>
+</blockquote>
+<hr>
+<h2 id="video-streaming-and-CDN"><a href="#video-streaming-and-CDN" class="headerlink" title="video streaming and CDN"></a>video streaming and CDN</h2><h3 id="coding-image"><a href="#coding-image" class="headerlink" title="coding image"></a>coding image</h3><h4 id="spatial"><a href="#spatial" class="headerlink" title="spatial"></a>spatial</h4><p>instead of sending N values of same color (all purple), send only two values: color value (purple) and number of repeated values (N)</p>
+<h4 id="temporal"><a href="#temporal" class="headerlink" title="temporal"></a>temporal</h4><p>instead of sending complete frame at i+1, send only differences from frame i</p>
+<h3 id="DASH-dynamic-adaptive-streaming-over-HTTP"><a href="#DASH-dynamic-adaptive-streaming-over-HTTP" class="headerlink" title="DASH: dynamic, adaptive streaming over HTTP"></a>DASH: dynamic, adaptive streaming over HTTP</h3><h4 id="server"><a href="#server" class="headerlink" title="server:"></a>server:</h4><p>divides video file into multiple chunks<br>each chunk stored, encoded at different rates<br>manifest file: provides URLs for different chunks  </p>
+<h4 id="client"><a href="#client" class="headerlink" title="client:"></a>client:</h4><p>periodically measures server-to-client bandwidth<br>consulting manifest, requests one chunk at a time  </p>
+<ul>
+<li>chooses maximum coding rate sustainable given current bandwidth  </li>
+<li>can choose different coding rates at different points in time (depending on available bandwidth at time)<h4 id="“intelligence”-at-client-client-determines"><a href="#“intelligence”-at-client-client-determines" class="headerlink" title="“intelligence” at client: client determines"></a>“intelligence” at client: client determines</h4>when to request chunk (so that buffer starvation, or overflow does not occur)<br>what encoding rate to request (higher quality when more bandwidth available)<br>where to request chunk (can request from URL server that is “close” to client or has high available bandwidth)</li>
+</ul>
+<h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>challenge: how to stream content (selected from millions of videos) to hundreds of thousands of simultaneous users?  </p>
+<p>store/serve multiple copies of videos at multiple geographically distributed sites (CDN)</p>
+<ul>
+<li>enter deep: push CDN servers deep into many access networks close to users<br>used by Akamai, 1700 locations<br>bring home: smaller number (10’s) of larger clusters in<br>POPs near (but not within) access networks<br>used by Limelight</li>
+</ul>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
                 data-autoplay="true">
-                <source type="audio/mpeg" src="">
+                <source type="audio/mpeg" src="https://cdn.jsdelivr.net/gh/ezy0812/CDN-music/Ensemble.mp3">
             </audio>
-            
-            <ul id="audio-list" style="display:none">
-                
-                
-                <li title='0' data-url='https://cdn.jsdelivr.net/gh/ezy0812/CDN-music/Bloom.mp3'></li>
-                
-                    
-            </ul>
             
             
             
@@ -250,7 +272,7 @@ core Internet function, implemented as applicatio,">
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-domain-name-system"><span class="toc-number">1.</span> <span class="toc-text">DNS(domain name system)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#application-layer-protocol"><span class="toc-number">1.1.</span> <span class="toc-text">application-layer protocol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-services"><span class="toc-number">1.2.</span> <span class="toc-text">DNS services</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-not-centralize-DNS"><span class="toc-number">1.3.</span> <span class="toc-text">Why not centralize DNS?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#root-name-servers"><span class="toc-number">1.4.</span> <span class="toc-text">root name servers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#top-level-domain-TLD-servers"><span class="toc-number">1.5.</span> <span class="toc-text">top-level domain(TLD) servers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#authoritative-DNS-servers"><span class="toc-number">1.6.</span> <span class="toc-text">authoritative DNS servers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#local-DNS-name-server"><span class="toc-number">1.7.</span> <span class="toc-text">local DNS name server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-name-resolution-example"><span class="toc-number">1.8.</span> <span class="toc-text">DNS name resolution example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-records"><span class="toc-number">1.9.</span> <span class="toc-text">DNS records</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P2P-architecture"><span class="toc-number">2.</span> <span class="toc-text">P2P architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#features"><span class="toc-number">2.1.</span> <span class="toc-text">features</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-distribution-time"><span class="toc-number">2.2.</span> <span class="toc-text">file distribution time</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-domain-name-system"><span class="toc-number">1.</span> <span class="toc-text">DNS(domain name system)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#application-layer-protocol"><span class="toc-number">1.1.</span> <span class="toc-text">application-layer protocol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-services"><span class="toc-number">1.2.</span> <span class="toc-text">DNS services</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-not-centralize-DNS"><span class="toc-number">1.3.</span> <span class="toc-text">Why not centralize DNS?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#root-name-servers"><span class="toc-number">1.4.</span> <span class="toc-text">root name servers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#top-level-domain-TLD-servers"><span class="toc-number">1.5.</span> <span class="toc-text">top-level domain(TLD) servers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#authoritative-DNS-servers"><span class="toc-number">1.6.</span> <span class="toc-text">authoritative DNS servers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#local-DNS-name-server"><span class="toc-number">1.7.</span> <span class="toc-text">local DNS name server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-name-resolution-example"><span class="toc-number">1.8.</span> <span class="toc-text">DNS name resolution example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-records"><span class="toc-number">1.9.</span> <span class="toc-text">DNS records</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P2P-architecture"><span class="toc-number">2.</span> <span class="toc-text">P2P architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#features"><span class="toc-number">2.1.</span> <span class="toc-text">features</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-distribution-time"><span class="toc-number">2.2.</span> <span class="toc-text">file distribution time</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BitTorrent"><span class="toc-number">2.3.</span> <span class="toc-text">BitTorrent</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#video-streaming-and-CDN"><span class="toc-number">3.</span> <span class="toc-text">video streaming and CDN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#coding-image"><span class="toc-number">3.1.</span> <span class="toc-text">coding image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DASH-dynamic-adaptive-streaming-over-HTTP"><span class="toc-number">3.2.</span> <span class="toc-text">DASH: dynamic, adaptive streaming over HTTP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CDN"><span class="toc-number">3.3.</span> <span class="toc-text">CDN</span></a></li></ol></li></ol>
                 </div>
             </div>
             
