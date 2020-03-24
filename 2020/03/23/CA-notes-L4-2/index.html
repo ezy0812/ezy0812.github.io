@@ -5,21 +5,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2020春季OS(Tsinghua) Notes L1 - 操作系统概述 - ezy 闲敲棋子落灯花</title>
+    <title>Computer Architecture Notes L4-2 - Machine language-2 - ezy 闲敲棋子落灯花</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="blog ezy,"> 
-    <meta name="description" content="ezy-blog,Definition
-操作系统没有公认的精确定义  
-操作系统是一个控制程序
-一个系统软件
-控制程序执行过程，防止错误
-执行用户程序，给程序提供服务
-方便用户使用计算机系统
+    <meta name="description" content="ezy-blog,
+月亮将会升起，夜晚将会永存 – 皎月女神·黛安娜
 
-
-操作系统是一个资源管,"> 
+Instruction FormatsI-Format: instructions with immediateslw/sw (offset i,"> 
     <meta name="author" content="ezy"> 
     
     <link rel="icon" href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/favicon.png"> 
@@ -66,7 +60,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/favicon.png" alt="" data-url="http://ezysec.cn">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">2020春季OS(Tsinghua) Notes L1 - 操作系统概述</h3>
+        <h3 class="subtitle">Computer Architecture Notes L4-2 - Machine language-2</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -91,30 +85,30 @@
             animation-duration: 1.2s;
             background-image: 
                 radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-                url(https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/cover.jpg) ">
+                url(https://cdn.jsdelivr.net/gh/ezy0812/CDN/cover/cover-CA-notes-L4-2.jpg) ">
         </div>
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/计算机基础"><b>「
-                    </b>计算机基础<b> 」</b></a>
+                <a href="/categories/Learning_Notes"><b>「
+                    </b>LEARNING_NOTES<b> 」</b></a>
                 
-                三月 11, 2020
+                三月 23, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2020/03/11/2020-03-11-OS(Tsinghua)_notes_L1/" title="2020春季OS(Tsinghua) Notes L1 - 操作系统概述" class="">2020春季OS(Tsinghua) Notes L1 - 操作系统概述</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/03/23/CA-notes-L4-2/" title="Computer Architecture Notes L4-2 - Machine language-2" class="">Computer Architecture Notes L4-2 - Machine language-2</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    3.2k
+                    5.5k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    3 mins.
+                    5 mins.
                 </span>
                 
                 
@@ -122,7 +116,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/OS/" rel="tag">OS</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Computer-Architecture/" rel="tag">Computer Architecture</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Lecture-notes/" rel="tag">Lecture notes</a></li></ul>
             
         </div>
     </div>
@@ -143,135 +137,149 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><ul>
-<li>操作系统没有公认的精确定义  </li>
-<li>操作系统是一个控制程序<ul>
-<li>一个系统软件</li>
-<li>控制程序执行过程，防止错误</li>
-<li>执行用户程序，给程序提供服务</li>
-<li>方便用户使用计算机系统</li>
-</ul>
-</li>
-<li>操作系统是一个资源管理程序<ul>
-<li>应用程序与硬件之间的中间层</li>
-<li>管理各种软硬件资源</li>
-<li>提供访问软硬件资源的高效手段</li>
-<li>解决访问冲突，确保公平使用</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="OS抽象"><a href="#OS抽象" class="headerlink" title="OS抽象"></a>OS抽象</h2><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/OS_notes_L1_f1.png" alt=""></p>
+            <blockquote>
+<p>月亮将会升起，夜晚将会永存 – 皎月女神·黛安娜</p>
+</blockquote>
+<h2 id="Instruction-Formats"><a href="#Instruction-Formats" class="headerlink" title="Instruction Formats"></a>Instruction Formats</h2><h3 id="I-Format-instructions-with-immediates"><a href="#I-Format-instructions-with-immediates" class="headerlink" title="I-Format: instructions with immediates"></a>I-Format: instructions with immediates</h3><p>lw/sw (offset is immediate), and beq/bne</p>
 <blockquote>
-<ul>
-<li>OS负责CPU资源的管理，CPU提供计算功能，OS抽象出数据结构-&gt;进程控制块，也就是进程，进程描述一个程序如何被加载到计算机系统中，OS如何给它分配它所需要的资源，占用CPU执行，同时负责如果多个程序在执行时，它们的暂停和恢复</li>
-<li>磁盘上的数据在OS中被抽象成文件，文件是操作系统中访问的$\color{red}{基本单位}$，去访问某个文件时需要知道文件的位置，往文件里写数据时需要知道文件存到哪，这是OS要解决的问题</li>
-<li>对于内存，是临时性存数据的地方，被抽象成地址空间，多个应用程序交替执行时，就会有“我到底把哪块空间分配给哪个进程来执行”</li>
-</ul>
+<p>But not the shift instructions  </p>
 </blockquote>
+<h3 id="J-Format-j-and-jal"><a href="#J-Format-j-and-jal" class="headerlink" title="J-Format: j and jal"></a>J-Format: j and jal</h3><blockquote>
+<p>But not jr  </p>
+</blockquote>
+<h3 id="R-Format-all-other-instructions"><a href="#R-Format-all-other-instructions" class="headerlink" title="R-Format: all other instructions"></a>R-Format: all other instructions</h3><hr>
+<h2 id="R-Format"><a href="#R-Format" class="headerlink" title="R-Format"></a>R-Format</h2><table>
+<thead>
+<tr>
+<th align="center">opcode</th>
+<th align="center">rs</th>
+<th align="center">rt</th>
+<th align="center">rd</th>
+<th align="center">shamt</th>
+<th align="center">funct</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">set 000 000 for all R-format instructions</td>
+<td align="center">source register</td>
+<td align="center">target register</td>
+<td align="center">destination register</td>
+<td align="center">set to 0 in all but the shift instructions</td>
+<td align="center">specifies the instruction,can encode $2^6=64$ instructions</td>
+</tr>
+<tr>
+<td align="center">&gt; add dst,src1,src2 $\rightarrow$ add rd,rs,rt</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
 <hr>
-<h2 id="OS内核特征"><a href="#OS内核特征" class="headerlink" title="OS内核特征"></a>OS内核特征</h2><ul>
-<li>并发：计算机系统中同时存在多个运行程序</li>
-<li>共享：程序间“同时”访问互斥共享各种资源</li>
-<li>虚拟：每个程序“独占”一个完整的计算机</li>
-<li>异步：服务的完成时间不确定，也可能失败</li>
+<h2 id="I-Format"><a href="#I-Format" class="headerlink" title="I-Format"></a>I-Format</h2><table>
+<thead>
+<tr>
+<th align="center">opcode</th>
+<th align="center">rs</th>
+<th align="center">rt</th>
+<th align="center">immediate</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="center">specifies the instruction</td>
+<td align="center">source register</td>
+<td align="center">target register</td>
+<td align="center">2’s complement number</td>
+</tr>
+<tr>
+<td align="center">&gt; addi $21,$22,-50 $\rightarrow$ addi R[rt]=R[rs]+signExtImm</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">&gt; field representation (decimal)</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">&gt; opcode</td>
+<td align="center">rs</td>
+<td align="center">rt</td>
+<td align="center">immediate</td>
+</tr>
+<tr>
+<td align="center">&gt; :-:</td>
+<td align="center">:-:</td>
+<td align="center">:-:</td>
+<td align="center">:-:</td>
+</tr>
+<tr>
+<td align="center">&gt; 8</td>
+<td align="center">22</td>
+<td align="center">21</td>
+<td align="center">-50</td>
+</tr>
+</tbody></table>
+<h3 id="dealing-with-large-immediates"><a href="#dealing-with-large-immediates" class="headerlink" title="dealing with large immediates"></a>dealing with large immediates</h3><p>$\color{red}{lui(Load; Upper; immediate)}$<br>lui reg,imm</p>
+<blockquote>
+<p>move 16-bit into upper half(bits 16-31) of reg and zeros the lower half(bits 0-15)</p>
+</blockquote>
+<h3 id="lui-example"><a href="#lui-example" class="headerlink" title="lui example"></a>lui example</h3><p>addi $t0, $t0, 0xababcdcd<br>translates into</p>
+<blockquote>
+<p>lui $at, 0xabab<br>ori $at, $at, 0xcdcd<br>add $t0, $t0, $at</p>
+</blockquote>
+<h3 id="beq-and-bne"><a href="#beq-and-bne" class="headerlink" title="beq and bne"></a>beq and bne</h3><p>immediate is the number of instructions to jump</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CA_notes_L4-2_f1.png" alt=""><br>opcode|rs|rt|immediate<br>:-:|:-:|:-:|:-:<br>4|9|0|3</p>
+<h3 id="Questions-on-PC-addressing"><a href="#Questions-on-PC-addressing" class="headerlink" title="Questions on PC-addressing"></a>Questions on PC-addressing</h3><p>Does the value in branch immediate field change if we move the code?</p>
+<ul>
+<li>If moving individual lines of code, then yes</li>
+<li>If moving all of code, then no</li>
 </ul>
+<p>If destination is &gt; $2^{15}$ instructions away from branch</p>
+<pre><code>beq $s0, $0, far
+# next instru ...</code></pre><p>$$\Downarrow$$</p>
+<pre><code>bne $s0, $0, next
+j far
+next: next instru ...</code></pre><hr>
+<h2 id="J-Format"><a href="#J-Format" class="headerlink" title="J-Format"></a>J-Format</h2><table>
+<thead>
+<tr>
+<th align="center">opcode</th>
+<th align="center">target address</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">6</td>
+<td align="center">26</td>
+</tr>
+</tbody></table>
+<p>We can specify $2^{26}$ addresses, and because of word-aligned, it brings us to 28 bits address</p>
+<p>Take the 4 highest order bits from the PC</p>
+<p>New PC={(PC+4)[31:28], target address, 00}</p>
 <hr>
-<h2 id="从OS角度看计算机系统"><a href="#从OS角度看计算机系统" class="headerlink" title="从OS角度看计算机系统"></a>从OS角度看计算机系统</h2><h3 id="程序调用的特征"><a href="#程序调用的特征" class="headerlink" title="程序调用的特征"></a>程序调用的特征</h3><ul>
-<li><p>好处：  </p>
-<ol>
-<li>执行很快；</li>
-<li>灵活-易于传递和返回复杂数据类型；</li>
-<li>程序员熟悉的机制</li>
-</ol>
-</li>
-<li><p>坏处：  </p>
-<ul>
-<li>应用程序不可靠，可能有恶意，有崩溃的风险</li>
-</ul>
-</li>
-</ul>
-<h3 id="隔离"><a href="#隔离" class="headerlink" title="隔离"></a>隔离</h3><p>若有多个应用程序在一个CPU上交替运行，隔离就应该是要做的主要的事情  </p>
-<ul>
-<li><p>$\color{red}{目的：}$为整个系统的可用性、可靠性、安全提供保障</p>
-</li>
-<li><p>运行的程序通常是隔离的单元</p>
-</li>
-<li><p>$\color{red}{目标：}$  </p>
-<ol>
-<li>防止程序X破坏或监视程序Y<ul>
-<li>如读/写内存，使用100%的CPU，更改文件描述符</li>
-</ul>
-</li>
-<li>防止进程干扰操作系统</li>
-<li>防止恶意程序、病毒、木马和BUG<ul>
-<li>错误的过程可能会试图欺骗硬件或内核</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>$\color{red}{主要方法：}$   </p>
-<ol>
-<li>地址空间    <ul>
-<li>一个程序仅寻址其自己的内存</li>
-<li>每个程序若无许可，则无法访问不属于自己的内存<blockquote>
-<p>$\color{red}{通过在内存中建立页表，查询页表找到对应的物理位置}$<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/OS_notes_L1_f2.png" alt=""><br>$\color{red}{为了加快查询速度，建立快表，相当于缓存}$<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/OS_notes_L1_f3.png" alt=""></p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>CPU硬件中的特权模式/中断机制<ul>
-<li>防止应用程序访问设备和敏感的CPU寄存器</li>
-<li>如地址空间配置寄存器</li>
-<li>如打断一直占用CPU的应用程序<blockquote>
-<p>$\color{red}{Kernel; Mode; VS; User; Mode}$ </p>
-<ul>
-<li>Kernel Mode 可以执行User Mode 无法执行的特权操作<ul>
-<li>访问外设</li>
-<li>配置地址空间（虚拟内存）</li>
-<li>读/写特殊系统级寄存器</li>
-</ul>
-</li>
-<li>OS kernel运行在Kernel Mode,应用程序运行在User Mode</li>
-<li>每个重要的微处理器都有类似的用户/内核模式标志    </li>
-</ul>
-<p>$\color{red}{中断机制}$  </p>
-<ul>
-<li>CPU硬件支持中断/异常的处理  </li>
-<li>中断是异步（因为硬件中断不是由任何一条专门的CPU指令造成）发生，是来自处理器外部的I/O设备的信号的结果。</li>
-<li>硬件中断的异常处理程序——中断处理程序（interrupt handle）<ul>
-<li>I/O设备通过向处理器芯片的一个引脚发信号，并将异常号放到系统总线上，以触发中断；</li>
-<li>在当前指令执行完后，处理器从系统总线读取异常号，保存现场，切换到Kernel Mode；</li>
-<li>调用中断处理程序，当中断处理程序完成后，它将控制返回给下一条本来要执行的指令</li>
-</ul>
-</li>
-<li>Timer可以稳定定时地产生中断<ul>
-<li>防止应用程序死占着CPU不放</li>
-<li>让OS kernel能周期性地进行资源管理</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-
+<h3 id="Branches-use-PC-relative-addressing-Jumps-use-absolute-addressing"><a href="#Branches-use-PC-relative-addressing-Jumps-use-absolute-addressing" class="headerlink" title="Branches use PC-relative addressing, Jumps use absolute addressing"></a>Branches use PC-relative addressing, Jumps use absolute addressing</h3>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
                 data-autoplay="true">
-                <source type="audio/mpeg" src="">
+                <source type="audio/mpeg" src="https://cdn.jsdelivr.net/gh/ezy0812/CDN-music/Fragments.mp3">
             </audio>
-            
-            <ul id="audio-list" style="display:none">
-                
-                
-                <li title='0' data-url='https://cdn.jsdelivr.net/gh/ezy0812/CDN-music/Bloom.mp3'></li>
-                
-                    
-            </ul>
             
             
             
@@ -305,7 +313,7 @@
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Definition"><span class="toc-number">1.</span> <span class="toc-text">Definition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OS抽象"><span class="toc-number">2.</span> <span class="toc-text">OS抽象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OS内核特征"><span class="toc-number">3.</span> <span class="toc-text">OS内核特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从OS角度看计算机系统"><span class="toc-number">4.</span> <span class="toc-text">从OS角度看计算机系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#程序调用的特征"><span class="toc-number">4.1.</span> <span class="toc-text">程序调用的特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#隔离"><span class="toc-number">4.2.</span> <span class="toc-text">隔离</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Instruction-Formats"><span class="toc-number">1.</span> <span class="toc-text">Instruction Formats</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#I-Format-instructions-with-immediates"><span class="toc-number">1.1.</span> <span class="toc-text">I-Format: instructions with immediates</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#J-Format-j-and-jal"><span class="toc-number">1.2.</span> <span class="toc-text">J-Format: j and jal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#R-Format-all-other-instructions"><span class="toc-number">1.3.</span> <span class="toc-text">R-Format: all other instructions</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#R-Format"><span class="toc-number">2.</span> <span class="toc-text">R-Format</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-Format"><span class="toc-number">3.</span> <span class="toc-text">I-Format</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dealing-with-large-immediates"><span class="toc-number">3.1.</span> <span class="toc-text">dealing with large immediates</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lui-example"><span class="toc-number">3.2.</span> <span class="toc-text">lui example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#beq-and-bne"><span class="toc-number">3.3.</span> <span class="toc-text">beq and bne</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Questions-on-PC-addressing"><span class="toc-number">3.4.</span> <span class="toc-text">Questions on PC-addressing</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#J-Format"><span class="toc-number">4.</span> <span class="toc-text">J-Format</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Branches-use-PC-relative-addressing-Jumps-use-absolute-addressing"><span class="toc-number">4.1.</span> <span class="toc-text">Branches use PC-relative addressing, Jumps use absolute addressing</span></a></li></ol></li></ol>
                 </div>
             </div>
             
