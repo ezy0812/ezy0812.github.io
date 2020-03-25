@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Database-homework</title>
+      <link href="/2020/03/25/Database-homework/"/>
+      <url>/2020/03/25/Database-homework/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>If not me, Who? If not now, When?</p></blockquote><h2 id="worksheet-1"><a href="#worksheet-1" class="headerlink" title="worksheet 1"></a>worksheet 1</h2><p>Add a new attribute to the table created in the previous question using the <strong>alter</strong> command. The new attribute should have the domain <strong>time</strong> and be named <strong>attime</strong></p><pre><code class="sql">alter table q1 add attime TIME;</code></pre><hr><h2 id="worksheet-2"><a href="#worksheet-2" class="headerlink" title="worksheet 2"></a>worksheet 2</h2><p>List the names of all customers who have never placed an order</p><pre><code class="sql">SELECT customerName, orderNumber FROM customers LEFT JOIN orders USING(customerNumber) WHERE orderNumber IS NULL;</code></pre><p>List the names of all employees who work for Gerard Bondur (Hint: the “reportsTo” attribute in the “employees” table contains the employeeNumber of the person each employee works for).</p><pre><code class="sql">SELECT e.employeeNumber, e.firstName, e.lastName FROM employees AS e JOIN employees AS m ON e.reportsTo=m.employeeNumber WHERE m.firstName=&#39;Gerard&#39; AND m.lastName=&#39;Bondur&#39;;</code></pre><p>The employee named George Vanauf has moved to the Paris office. Make a change to the database to record this information.</p><pre><code class="sql">UPDATE employees SET officeCode=(SELECT officeCode FROM offices WHERE city=&#39;Paris&#39;) WHERE firstname=&#39;George&#39; AND lastname=&#39;Vanauf&#39;;</code></pre><hr><h2 id="worksheet-3"><a href="#worksheet-3" class="headerlink" title="worksheet 3"></a>worksheet 3</h2><p>Write an SQL statement to display the detail of the payment with the highest amount</p><pre><code class="sql">SELECT * FROM payments ORDER BY amount DESC limit 1;</code></pre><p>How much money did the company earn from orders of Classic Car models in 2004?</p><pre><code class="sql">SELECT SUM(quantityOrdered*priceEach) FROM orders INNER JOIN orderdetails USING(orderNumber) INNER JOIN products USING(productCode) WHERE orderDate LIKE &#39;2004%&#39; AND productLine=&#39;Classic Cars&#39;;</code></pre><p>Name the customer(s), product and quantity ordered which represents the largest quantity of any item ordered?</p><pre><code class="sql">SELECT customerName, productCode, quantityOrdered FROM orderdetails INNER JOIN orders USING(orderNumber) INNER JOIN customers USING(customerNumber) WHERE quantityOrdered=(SELECT MAX(quantityOrdered) FROM orderdetails);</code></pre><p>List the number of products in each product line.</p><pre><code class="sql">SELECT productLine, COUNT(*) FROM products GROUP BY productLine;</code></pre><p>What is the average quantity of model ordered for each product line?</p><pre><code class="sql">SELECT productLine, AVG(quantityOrdered) FROM products INNER JOIN orderdetails USING(productCode) GROUP BY productLine;</code></pre><p>List those product lines, and the number of products they have, who have more than ten products in the line</p><pre><code class="sql">SELECT productLine, COUNT(*) FROM products GROUP BY productLine HAVING COUNT(*)&gt;10;</code></pre><p>List the name and price of the 10 most expensive products (according to the MSRP price), in order</p><pre><code class="sql">SELECT productName, MSRP FROM products ORDER BY MSRP DESC LIMIT 10;</code></pre><p>Create a view, based on the products table, that only contains model ships. This can be named ‘ships’</p><pre><code class="sql">CREATE VIEW ships AS SELECT * FROM products WHERE productLine=&#39;Ships&#39;;</code></pre><p>List the customer name and the total amount paid by any customer who has paid more than 250000 in total.</p><pre><code class="sql">SELECT customerName, SUM(amount) FROM payments INNER JOIN customers USING(customerNumber) GROUP BY customerNumber HAVING SUM(amount) &gt; 250000;</code></pre><p>Using a nested query, list the name and city of any customer that is based in a city that the company has an office in.</p><pre><code class="sql">SELECT customerName, city FROM customers WHERE city = ANY(SELECT city FROM offices);</code></pre><p>Or use join</p><pre><code class="sql">SELECT customerName, city FROM customers INNER JOIN offices USING(city);</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Learning_Notes </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Lecture notes </tag>
+            
+            <tag> homework </tag>
+            
+            <tag> Databases_and_Info_systems </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Computer Network Notes L4 - Transport Layer</title>
       <link href="/2020/03/25/CN-notes-L4/"/>
       <url>/2020/03/25/CN-notes-L4/</url>
