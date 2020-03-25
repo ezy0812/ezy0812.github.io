@@ -229,7 +229,13 @@
         <div class="md-content animated fadeIn">
             
                 <h2 id="SQL注入绕过"><a href="#SQL注入绕过" class="headerlink" title="SQL注入绕过"></a>SQL注入绕过</h2><h3 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h3><blockquote>
-<p>程序中设置了过滤关键字，但没有对关键字组成深入分析过滤，可以通过修改关键字...</p></blockquote>
+<p>程序中设置了过滤关键字，但没有对关键字组成深入分析过滤，可以通过修改关键字内字母大小写来绕过过滤措施。<br>如：AnD 1=1 （将某些字母大写）</p>
+</blockquote>
+<h3 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h3><blockquote>
+<p>在程序中设置出现关键字之后替换为空，可以双写绕过<br>uniunionOn(也可结合大小写绕过使用)</p>
+</blockquote>
+<h3 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h3><blockquote>
+<p>利用URL编...</p></blockquote>
             
             <span class="read-more"><a href="/2020/03/16/2020-03-16-mysql-injection-2/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
@@ -275,7 +281,7 @@
         
         <div class="md-content animated fadeIn">
             
-                <h2 id="mysql的目录结构"><a href="#mysql的目录结构" class="headerlink" title="mysql的目录结构"></a>mysql的目录结构</h2><p>mysql 5.0以上的版本中，默认定义了$\color{red}{information...</p>
+                <h2 id="mysql的目录结构"><a href="#mysql的目录结构" class="headerlink" title="mysql的目录结构"></a>mysql的目录结构</h2><p>mysql 5.0以上的版本中，默认定义了$\color{red}{information}$_$\color{red}{schema}$数据库，其中包含有表$\color{red}{schemata}$(数据库名)、$\color{red}{tables}$(表名)、$\color...</p>
             
             <span class="read-more"><a href="/2020/03/15/2020-03-15-mysql-injection-1/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>

@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>CA homework integration</title>
-      <link href="/2020/03/24/CA-homework-integration/"/>
-      <url>/2020/03/24/CA-homework-integration/</url>
+      <title>Computer Network Notes L4 - Transport Layer</title>
+      <link href="/2020/03/25/CN-notes-L4/"/>
+      <url>/2020/03/25/CN-notes-L4/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<blockquote></blockquote><h2 id="transport-layer-services"><a href="#transport-layer-services" class="headerlink" title="transport-layer services"></a>transport-layer services</h2><p>provide logical communication between <strong>app processes</strong> running on different hosts</p><p>transport protocols run in <strong>end systems</strong></p><ul><li>send side: break app messages into segments, passes to network layer</li><li>receive side: reassembles segments into messages, passes to app layer</li></ul><p>more than one transport protocol available to apps<br>Internet: TCP and UDP</p><h3 id="transport-vs-network-layer"><a href="#transport-vs-network-layer" class="headerlink" title="transport vs network layer"></a>transport vs network layer</h3><p>network layer: logical communication between hosts  </p><p>transport layer: logical communication between processes</p><ul><li>relies on, enhances network layer services</li></ul><h3 id="About-the-transport-layer-protocols"><a href="#About-the-transport-layer-protocols" class="headerlink" title="About the transport-layer protocols"></a>About the transport-layer protocols</h3><p>reliable, in-order delivery: TCP</p><ul><li>congestion control</li><li>flow control</li><li>connection setup</li></ul><p>unreliable, unordered delivery: UDP </p><ul><li>no-frills extension of “best-effort” IP</li></ul><p>services not available:</p><ul><li>delay guarantees</li><li>bandwidth guarantees</li></ul><hr><h2 id="multiplexing-and-demultiplexing"><a href="#multiplexing-and-demultiplexing" class="headerlink" title="multiplexing and demultiplexing"></a>multiplexing and demultiplexing</h2><p>multiplexing at sender:<br>handle data from multiple sockets, add transport header</p><p>demultiplexing at receiver:<br>use header into to deliver received segments to correct socket</p><p>host uses <strong>IP addresses and port numbers</strong> to direct segment to direct segment to appropriate socket  </p><p>Each IP datagrams:<br>has source IP address, destination IP address<br>carries one transport-layer segment<br>has source, destination port number</p><h3 id="connectionless-demultiplexing"><a href="#connectionless-demultiplexing" class="headerlink" title="connectionless demultiplexing"></a>connectionless demultiplexing</h3><p>when host receives UDP segment:<br>IP datagrams with same dest.port number, but different source IP addresses and/or source port number will be directed to same socket at dest</p><h3 id="connection-oriented-demultiplexing"><a href="#connection-oriented-demultiplexing" class="headerlink" title="connection-oriented demultiplexing"></a>connection-oriented demultiplexing</h3><p>TCP socket identified by 4-tuple:  </p><ul><li>source IP address</li><li>source port number</li><li>dest IP address</li><li>dest port number</li></ul><h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>“best effort” service, UDP segments may be:  </p><ul><li>lost</li><li>delivered out-of-order to app</li></ul><p>reliable transfer over UDP:  </p><ul><li>add reliability at application layer</li><li>application-specific error recovery</li></ul><h3 id="segment-header"><a href="#segment-header" class="headerlink" title="segment header"></a>segment header</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L4-f1.png" alt=""></p><h3 id="why-is-there-UDP"><a href="#why-is-there-UDP" class="headerlink" title="why is there UDP?"></a>why is there UDP?</h3><ul><li>no connection establishment(which can add delay)</li><li>simple: no connection state at sender, receiver</li><li>small header size</li><li>no congestion control: UDP can blast away as fast as desired</li></ul><h3 id="checksum"><a href="#checksum" class="headerlink" title="checksum"></a>checksum</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L4-f2.png" alt=""></p><hr><h2 id="principles-of-reliable-data-transfer"><a href="#principles-of-reliable-data-transfer" class="headerlink" title="principles of reliable data transfer"></a>principles of reliable data transfer</h2><h3 id="rdt3-0-channels-with-errors-and-loss"><a href="#rdt3-0-channels-with-errors-and-loss" class="headerlink" title="rdt3.0: channels with errors and loss"></a>rdt3.0: channels with errors and loss</h3><h4 id="sender"><a href="#sender" class="headerlink" title="sender"></a>sender</h4><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L4-f3.png" alt=""></p><h4 id="in-action"><a href="#in-action" class="headerlink" title="in action"></a>in action</h4><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L4-f4.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L4-f5.png" alt=""></p><h4 id="performance"><a href="#performance" class="headerlink" title="performance"></a>performance</h4><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L4-f6.png" alt=""></p><h3 id="pipelined-protocols"><a href="#pipelined-protocols" class="headerlink" title="pipelined protocols"></a>pipelined protocols</h3><h4 id="go-back-N"><a href="#go-back-N" class="headerlink" title="go-back-N"></a>go-back-N</h4><ul><li>sender can have up to N unacked packets in pipeline</li><li>receiver only sends cumulative ack<ul><li>doesn’t ack packet if there’s a gap</li></ul></li><li>sender has timer for oldest unacked packet<ul><li>when timer expires, retransmit all unacked packets</li></ul></li></ul><h5 id="sender-1"><a href="#sender-1" class="headerlink" title="sender"></a>sender</h5><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L4-f7.png" alt=""></p><h5 id="receiver"><a href="#receiver" class="headerlink" title="receiver"></a>receiver</h5><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L4-f8.png" alt=""></p><h5 id="in-action-1"><a href="#in-action-1" class="headerlink" title="in action"></a>in action</h5><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L4-f9.png" alt=""></p><h4 id="selective-repeat"><a href="#selective-repeat" class="headerlink" title="selective repeat"></a>selective repeat</h4><ul><li>sender can have up to N unack’ed packets in pipeline</li><li>rcvr sends individual ack for each packet</li><li>sender maintains timer for each unacked packet<ul><li>when timer expires, retransmit only that unacked packet</li></ul></li></ul><h5 id="sender-2"><a href="#sender-2" class="headerlink" title="sender"></a>sender</h5><p>data from above:  </p><ul><li>if next available seq number in window, send pkt</li></ul><p>timeout(n):</p><ul><li>resend pkt n, restart timer </li></ul><p>ACK(n) in [sendbase,sendbase+N]:</p><ul><li>mark pkt n as received</li><li>if n smallest unACKed pkt, advance window base tonext unACKed seq number</li></ul><h5 id="receiver-1"><a href="#receiver-1" class="headerlink" title="receiver"></a>receiver</h5><p>pkt n in [rcvbase, rcvbase+N-1]</p><ul><li>send ACK(n)</li><li>out-of-order: buffer</li><li>in-order: deliver (also deliver buffered, in-order pkts), advance window to next not-yet-received pkt</li></ul><p>pkt n in [rcvbase-N,rcvbase-1]</p><ul><li>ACK(n)</li></ul><p>otherwise:</p><ul><li>ignore<h5 id="in-action-2"><a href="#in-action-2" class="headerlink" title="in action"></a>in action</h5><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L4-f10.png" alt=""><h5 id="dilemma"><a href="#dilemma" class="headerlink" title="dilemma"></a>dilemma</h5><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L4-f11.png" alt=""></li></ul>]]></content>
       
       
       <categories>
@@ -20,9 +20,36 @@
       
         <tags>
             
-            <tag> Computer Architecture </tag>
+            <tag> Computer Network </tag>
             
             <tag> Lecture notes </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Computer Architecture homework integration</title>
+      <link href="/2020/03/24/CA-homework-integration/"/>
+      <url>/2020/03/24/CA-homework-integration/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>我已经做出了我的选择 – 不祥之刃·卡特琳娜</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Learning_Notes </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Lecture notes </tag>
+            
+            <tag> Computer Architecture </tag>
             
             <tag> homework </tag>
             
@@ -37,7 +64,7 @@
       <link href="/2020/03/24/computer-network-quiz-integration/"/>
       <url>/2020/03/24/computer-network-quiz-integration/</url>
       
-        <content type="html"><![CDATA[<blockquote><p>肩负重担的感觉就是一千个人全都翘首以盼你说的每一个字 – 刀锋舞者(刀锋意志)·艾瑞莉娅</p></blockquote><h2 id="Quiz-1"><a href="#Quiz-1" class="headerlink" title="Quiz 1"></a>Quiz 1</h2><p>In addition to the transmission delay, it also takes time for network devices to receive packets, which is formally called <strong>nodal processing delay</strong><br>$\color{green}{True}$</p><hr><p>When the traffic intensity is greater than 1, it means the queueing delay starts to grow<br>$\color{red}{false}$</p><blockquote><p>When it is closer to 1, the delay starts to grow<br>When it is greater than 1, the delay is infinity</p></blockquote><hr><p>A message must be chopped into a collection of packets to be transmitted over the packet-switching network. Thus, store-and-forward transmission means that the switch must receive the entire message before it can begin to transmit the first packet of the message onto the outbound link.<br>$\color{red}{false}$</p><blockquote><p><code>the entire message before it can begin to transmit the first packet of the message</code><br>the entire $\color{red}{packet}$ before it can begin to transmit the first $\color{red}{bit}$ of the $\color{red}{packet}$</p></blockquote><hr>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>肩负重担的感觉就是一千个人全都翘首以盼你说的每一个字 – 刀锋舞者(刀锋意志)·艾瑞莉娅</p></blockquote><h2 id="Quiz-1"><a href="#Quiz-1" class="headerlink" title="Quiz 1"></a>Quiz 1</h2><p>In addition to the transmission delay, it also takes time for network devices to receive packets, which is formally called <strong>nodal processing delay</strong><br>$\color{green}{True}$</p><hr><p>When the traffic intensity is greater than 1, it means the queueing delay starts to grow<br>$\color{red}{False}$</p><blockquote><p>When it is closer to 1, the delay starts to grow<br>When it is greater than 1, the delay is infinity</p></blockquote><hr><p>A message must be chopped into a collection of packets to be transmitted over the packet-switching network. Thus, store-and-forward transmission means that the switch must receive the entire message before it can begin to transmit the first packet of the message onto the outbound link.<br>$\color{red}{False}$</p><blockquote><p><code>the entire message before it can begin to transmit the first packet of the message</code><br>the entire $\color{red}{packet}$ before it can begin to transmit the first $\color{red}{bit}$ of the $\color{red}{packet}$</p></blockquote><hr><p>The service is called by peers, while the protocol is called by the Nth layer from the (N-1)th layer.<br>$\color{red}{False}$</p><blockquote><p>正好说反了<br>The protocol is called by peers, while the service is called by the Nth layer from the (N-1)th layer.<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-quiz-f1.png" alt=""></p></blockquote><hr><h2 id="Quiz-2"><a href="#Quiz-2" class="headerlink" title="Quiz 2"></a>Quiz 2</h2><p>DNS is used for mapping domain name and IP address. It can also be used for load balancing along with CDN.<br>$\color{green}{True}$</p><hr><p>Whether deploying CDN servers inside the access network is the main difference between “enter deep” and “bring home”, these two CDN deploy approaches.<br>$\color{green}{True}$</p><hr><p>In computer networks, typically, the transmission delay is larger than the propagation delay.<br>$\color{green}{True}$</p><blockquote><p>因为是typically，所以正确</p></blockquote><hr><p>Normally without CDN, the type of DNS resource record should be “CNAME” for the one that is sent from the authoritative DNS server to the local DNS server.<br>$\color{red}{False}$</p><blockquote><p>CNAME $\Rightarrow$ A</p></blockquote><hr><p>The more peer machines join in the p2p network, the shorter file distribution time will be achieved.<br>$\color{red}{False}$</p><blockquote><p>not shorter<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-quiz-f2.png" alt=""></p></blockquote><hr><p>SSL is a transport layer protocol that can provide the communication security service.<br>$\color{red}{False}$</p><blockquote><p>It is an application protocol</p></blockquote>]]></content>
       
       
       <categories>
@@ -49,9 +76,9 @@
       
         <tags>
             
-            <tag> Lecture notes </tag>
-            
             <tag> Computer Network </tag>
+            
+            <tag> Lecture notes </tag>
             
             <tag> quiz </tag>
             
@@ -78,9 +105,9 @@
       
         <tags>
             
-            <tag> Computer Architecture </tag>
-            
             <tag> Lecture notes </tag>
+            
+            <tag> Computer Architecture </tag>
             
         </tags>
       
@@ -105,9 +132,9 @@
       
         <tags>
             
-            <tag> Lecture notes </tag>
-            
             <tag> Computer Network </tag>
+            
+            <tag> Lecture notes </tag>
             
         </tags>
       
@@ -261,9 +288,9 @@
       
         <tags>
             
-            <tag> Lecture notes </tag>
-            
             <tag> Computer Network </tag>
+            
+            <tag> Lecture notes </tag>
             
         </tags>
       
@@ -288,9 +315,9 @@
       
         <tags>
             
-            <tag> Computer Architecture </tag>
-            
             <tag> Lecture notes </tag>
+            
+            <tag> Computer Architecture </tag>
             
         </tags>
       
@@ -315,9 +342,9 @@
       
         <tags>
             
-            <tag> Lecture notes </tag>
-            
             <tag> Computer Network </tag>
+            
+            <tag> Lecture notes </tag>
             
         </tags>
       
@@ -367,9 +394,9 @@
       
         <tags>
             
-            <tag> Computer Architecture </tag>
-            
             <tag> Lecture notes </tag>
+            
+            <tag> Computer Architecture </tag>
             
         </tags>
       
