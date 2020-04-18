@@ -102,7 +102,7 @@ Instruction FormatsI-Format: instructions with immediateslw/sw (offset i,">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    5.5k
+                    5.2k
                 </span>
                 
                 
@@ -175,15 +175,10 @@ Instruction FormatsI-Format: instructions with immediateslw/sw (offset i,">
 <td align="center">set to 0 in all but the shift instructions</td>
 <td align="center">specifies the instruction,can encode $2^6=64$ instructions</td>
 </tr>
-<tr>
-<td align="center">&gt; add dst,src1,src2 $\rightarrow$ add rd,rs,rt</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
 </tbody></table>
+<blockquote>
+<p>add dst,src1,src2 $\rightarrow$ add rd,rs,rt</p>
+</blockquote>
 <hr>
 <h2 id="I-Format"><a href="#I-Format" class="headerlink" title="I-Format"></a>I-Format</h2><table>
 <thead>
@@ -206,38 +201,29 @@ Instruction FormatsI-Format: instructions with immediateslw/sw (offset i,">
 <td align="center">target register</td>
 <td align="center">2’s complement number</td>
 </tr>
+</tbody></table>
+<blockquote>
+<p>addi <code>$</code>21,&#36;22, -50 $\rightarrow$ addi R[rt]=R[rs]+signExtImm<br>field representation (decimal)</p>
+</blockquote>
+<blockquote>
+<table>
+<thead>
 <tr>
-<td align="center">&gt; addi $21,$22,-50 $\rightarrow$ addi R[rt]=R[rs]+signExtImm</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<th align="center">opcode</th>
+<th align="center">rs</th>
+<th align="center">rt</th>
+<th align="center">immediate</th>
 </tr>
-<tr>
-<td align="center">&gt; field representation (decimal)</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">&gt; opcode</td>
-<td align="center">rs</td>
-<td align="center">rt</td>
-<td align="center">immediate</td>
-</tr>
-<tr>
-<td align="center">&gt; :-:</td>
-<td align="center">:-:</td>
-<td align="center">:-:</td>
-<td align="center">:-:</td>
-</tr>
-<tr>
-<td align="center">&gt; 8</td>
+</thead>
+<tbody><tr>
+<td align="center">8</td>
 <td align="center">22</td>
 <td align="center">21</td>
 <td align="center">-50</td>
 </tr>
 </tbody></table>
-<h3 id="dealing-with-large-immediates"><a href="#dealing-with-large-immediates" class="headerlink" title="dealing with large immediates"></a>dealing with large immediates</h3><p>$\color{red}{lui(Load; Upper; immediate)}$<br>lui reg,imm</p>
+</blockquote>
+<h3 id="dealing-with-large-immediates"><a href="#dealing-with-large-immediates" class="headerlink" title="dealing with large immediates"></a>dealing with large immediates</h3><p>$$\color{red}{lui(Load\ Upper\ immediate)}$$<br>lui reg,imm</p>
 <blockquote>
 <p>move 16-bit into upper half(bits 16-31) of reg and zeros the lower half(bits 0-15)</p>
 </blockquote>
@@ -302,9 +288,9 @@ next: next instru ...</code></pre><hr>
                     </dl> -->
                 </div>
                 <ul>
-                    <li><a href="/">17 <p>文章</p></a></li>
+                    <li><a href="/">18 <p>文章</p></a></li>
                     <li><a href="/categories">5 <p>分类</p></a></li>
-                    <li><a href="/tags">14 <p>标签</p></a></li>
+                    <li><a href="/tags">16 <p>标签</p></a></li>
                 </ul>
             </div>
             

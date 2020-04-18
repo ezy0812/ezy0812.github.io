@@ -5,15 +5,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Computer Architecture homework integration - ezy 闲敲棋子落灯花</title>
+    <title>BJDCTF记录 - ezy 闲敲棋子落灯花</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="blog ezy,"> 
     <meta name="description" content="ezy-blog,
-我已经做出了我的选择 – 不祥之刃·卡特琳娜
+通过这次比赛，真正感觉到了自己菜到啥程度
 
-"> 
+MISC小姐姐
+可以看到图片中间明显错位，直接UltraEdit搜索BJD
+
+想复杂了，想改变图片高度宽度之类的，淦
+
+
+或者使用strings命令
+k,"> 
     <meta name="author" content="ezy"> 
     
     <link rel="icon" href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/favicon.png"> 
@@ -60,7 +67,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/favicon.png" alt="" data-url="http://ezysec.cn">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">Computer Architecture homework integration</h3>
+        <h3 class="subtitle">BJDCTF记录</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -85,30 +92,30 @@
             animation-duration: 1.2s;
             background-image: 
                 radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-                url(https://cdn.jsdelivr.net/gh/ezy0812/CDN/cover/cover-CA-homework.jpg) ">
+                url(https://cdn.jsdelivr.net/gh/ezy0812/CDN/cover/) ">
         </div>
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/Learning_Notes"><b>「
-                    </b>LEARNING_NOTES<b> 」</b></a>
+                <a href="/categories/信息安全"><b>「
+                    </b>信息安全<b> 」</b></a>
                 
-                三月 24, 2020
+                三月 25, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2020/03/24/CA-homework-integration/" title="Computer Architecture homework integration" class="">Computer Architecture homework integration</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/03/25/BJDCTF%E8%AE%B0%E5%BD%95/" title="BJDCTF记录" class="">BJDCTF记录</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    57
+                    3.3k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    1 mins.
+                    3 mins.
                 </span>
                 
                 
@@ -116,7 +123,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Computer-Architecture/" rel="tag">Computer Architecture</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Lecture-notes/" rel="tag">Lecture notes</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/homework/" rel="tag">homework</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/WriteUp/" rel="tag">WriteUp</a></li></ul>
             
         </div>
     </div>
@@ -138,13 +145,58 @@
     <div class='main'>
         <div class="content markdown animated fadeIn">
             <blockquote>
-<p>我已经做出了我的选择 – 不祥之刃·卡特琳娜</p>
+<p>通过这次比赛，真正感觉到了自己菜到啥程度</p>
 </blockquote>
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="小姐姐"><a href="#小姐姐" class="headerlink" title="小姐姐"></a>小姐姐</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f1.jpeg" alt=""></p>
+<p>可以看到图片中间明显错位，直接UltraEdit搜索BJD</p>
+<blockquote>
+<p>想复杂了，想改变图片高度宽度之类的，淦</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f2.png" alt=""></p>
+<p>或者使用strings命令</p>
+<pre><code class="shell">kali@kali:~/Desktop$ strings xiaojiejie.jpeg | grep &quot;BJD&quot;
+BJD{haokanma_xjj}|/|</code></pre>
+<h3 id="简单的MISC"><a href="#简单的MISC" class="headerlink" title="简单的MISC"></a>简单的MISC</h3><p><a href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/CTF-files/secret.zip" target="_blank" rel="noopener">题目</a><br>先是zip伪加密</p>
+<blockquote>
+<p>拿到一个压缩文件，先查看是否是伪加密</p>
+</blockquote>
+<blockquote>
+<p>在压缩文件里的每个文件的文件目录字段有一位专门标识了文件是否加密，将其设置为00，若为伪加密，即可成功解开压缩包</p>
+</blockquote>
+<p>用UltraEdit打开压缩包，搜索目录字段 50 4B 01 02，从50开始计算，第九第十个bit即为加密字段，将其设置为00<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f3.png" alt=""><br>成功解开压缩包</p>
+<p>打开secret文件，查看到有IHDR数据块<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f4.png" alt=""> </p>
+<blockquote>
+<p>IHDR数据块是PNG文件头数据块，二进制为0D 0A 1A 0A  </p>
+</blockquote>
+<p>缺失了PNG文件头，补上文件头89 50 4E 47<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f5.png" alt=""><br>后缀名改成png，可以看到一串字符串<br>尝试16进制解码得到flag</p>
+<h3 id="TARGZ"><a href="#TARGZ" class="headerlink" title="TARGZ"></a>TARGZ</h3><p><a href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/CTF-files/hW1ES89jF.tar.gz" target="_blank" rel="noopener">题目</a><br>题目中提示解压密码不需要爆破，密码猜想是文件名字<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f6.png" alt=""><br>解压之后发现又是一个压缩包，使用Python脚本递归解压</p>
+<details>
+<summary>python脚本</summary>
 
+<pre><code class="python">
+import zipfile
+
+p = &#39;hW1ES89jF&#39;
+
+while True:
+    z=zipfile.ZipFile(p+&#39;.tar.gz&#39;,&#39;r&#39;)
+    z.extractall(pwd=p.encode(&#39;utf-8&#39;))
+    p=z.namelist()[0][0:9]
+    z.close()</code></pre>
+</details>
+
+<blockquote>
+<p>注意pwd参数需要转成字节</p>
+</blockquote>
+<p>最后报错得出flag文件</p>
+<h3 id="圣火昭昭"><a href="#圣火昭昭" class="headerlink" title="圣火昭昭"></a>圣火昭昭</h3><p><a href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/CTF-files/sheng_huo_zhao_zhao.zip" target="_blank" rel="noopener">题目</a><br>题目提示全靠<strong>猜</strong>，使用outguess<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f7.png" alt=""><br>查看图片备注信息，是新佛曰，去<a href="http://hi.pcmoe.net/buddha.html" target="_blank" rel="noopener">网站</a>解密得到密码<br>使用outguess解密图片得到flag  </p>
+<pre><code class="shell">outguess -k &quot;gemlove&quot; -r sheng_huo_zhao_zhao.jpg 1.txt</code></pre>
+<h3 id="A-Beautiful-Picture"><a href="#A-Beautiful-Picture" class="headerlink" title="A_Beautiful_Picture"></a>A_Beautiful_Picture</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/CTF-files/Misc-A_Beautiful_Picture-DreamerJack.png" alt=""><br>查看图片分辨率为1000 $\times$ 900,修改图片高度为1000<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f8.png" alt="">    </p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
                 data-autoplay="true">
-                <source type="audio/mpeg" src="https://cdn.jsdelivr.net/gh/ezy0812/CDN-music/Soaring.mp3">
+                <source type="audio/mpeg" src="https://cdn.jsdelivr.net/gh/ezy0812/CDN-music/">
             </audio>
             
             
@@ -168,13 +220,20 @@
                     </dl> -->
                 </div>
                 <ul>
-                    <li><a href="/">17 <p>文章</p></a></li>
+                    <li><a href="/">18 <p>文章</p></a></li>
                     <li><a href="/categories">5 <p>分类</p></a></li>
-                    <li><a href="/tags">14 <p>标签</p></a></li>
+                    <li><a href="/tags">16 <p>标签</p></a></li>
                 </ul>
             </div>
             
             
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC"><span class="toc-number">1.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小姐姐"><span class="toc-number">1.1.</span> <span class="toc-text">小姐姐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简单的MISC"><span class="toc-number">1.2.</span> <span class="toc-text">简单的MISC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TARGZ"><span class="toc-number">1.3.</span> <span class="toc-text">TARGZ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#圣火昭昭"><span class="toc-number">1.4.</span> <span class="toc-text">圣火昭昭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Beautiful-Picture"><span class="toc-number">1.5.</span> <span class="toc-text">A_Beautiful_Picture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-number">1.6.</span> <span class="toc-text"></span></a></li></ol></li></ol>
+                </div>
+            </div>
             
             
         </div>

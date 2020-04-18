@@ -102,7 +102,7 @@ transport-layer servicesprovide logical communication between a,">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    7.7k
+                    8.1k
                 </span>
                 
                 
@@ -251,6 +251,10 @@ transport-layer servicesprovide logical communication between a,">
 <ul>
 <li>ignore<h5 id="in-action-2"><a href="#in-action-2" class="headerlink" title="in action"></a>in action</h5><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L4-f10.png" alt=""><h5 id="dilemma"><a href="#dilemma" class="headerlink" title="dilemma"></a>dilemma</h5><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L4-f11.png" alt=""></li>
 </ul>
+<h2 id="TCP-segment-structure"><a href="#TCP-segment-structure" class="headerlink" title="TCP segment structure"></a>TCP segment structure</h2><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L4-f12.png" alt=""></p>
+<blockquote>
+<p>The sequence numbers are byte stream “number” of first byte in segment’s data</p>
+</blockquote>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -279,9 +283,9 @@ transport-layer servicesprovide logical communication between a,">
                     </dl> -->
                 </div>
                 <ul>
-                    <li><a href="/">17 <p>文章</p></a></li>
+                    <li><a href="/">18 <p>文章</p></a></li>
                     <li><a href="/categories">5 <p>分类</p></a></li>
-                    <li><a href="/tags">14 <p>标签</p></a></li>
+                    <li><a href="/tags">16 <p>标签</p></a></li>
                 </ul>
             </div>
             
@@ -290,7 +294,7 @@ transport-layer servicesprovide logical communication between a,">
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#transport-layer-services"><span class="toc-number">1.</span> <span class="toc-text">transport-layer services</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#transport-vs-network-layer"><span class="toc-number">1.1.</span> <span class="toc-text">transport vs network layer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#About-the-transport-layer-protocols"><span class="toc-number">1.2.</span> <span class="toc-text">About the transport-layer protocols</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#multiplexing-and-demultiplexing"><span class="toc-number">2.</span> <span class="toc-text">multiplexing and demultiplexing</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#connectionless-demultiplexing"><span class="toc-number">2.1.</span> <span class="toc-text">connectionless demultiplexing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#connection-oriented-demultiplexing"><span class="toc-number">2.2.</span> <span class="toc-text">connection-oriented demultiplexing</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP"><span class="toc-number">3.</span> <span class="toc-text">UDP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#segment-header"><span class="toc-number">3.1.</span> <span class="toc-text">segment header</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#why-is-there-UDP"><span class="toc-number">3.2.</span> <span class="toc-text">why is there UDP?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#checksum"><span class="toc-number">3.3.</span> <span class="toc-text">checksum</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#principles-of-reliable-data-transfer"><span class="toc-number">4.</span> <span class="toc-text">principles of reliable data transfer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rdt3-0-channels-with-errors-and-loss"><span class="toc-number">4.1.</span> <span class="toc-text">rdt3.0: channels with errors and loss</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pipelined-protocols"><span class="toc-number">4.2.</span> <span class="toc-text">pipelined protocols</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#transport-layer-services"><span class="toc-number">1.</span> <span class="toc-text">transport-layer services</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#transport-vs-network-layer"><span class="toc-number">1.1.</span> <span class="toc-text">transport vs network layer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#About-the-transport-layer-protocols"><span class="toc-number">1.2.</span> <span class="toc-text">About the transport-layer protocols</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#multiplexing-and-demultiplexing"><span class="toc-number">2.</span> <span class="toc-text">multiplexing and demultiplexing</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#connectionless-demultiplexing"><span class="toc-number">2.1.</span> <span class="toc-text">connectionless demultiplexing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#connection-oriented-demultiplexing"><span class="toc-number">2.2.</span> <span class="toc-text">connection-oriented demultiplexing</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP"><span class="toc-number">3.</span> <span class="toc-text">UDP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#segment-header"><span class="toc-number">3.1.</span> <span class="toc-text">segment header</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#why-is-there-UDP"><span class="toc-number">3.2.</span> <span class="toc-text">why is there UDP?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#checksum"><span class="toc-number">3.3.</span> <span class="toc-text">checksum</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#principles-of-reliable-data-transfer"><span class="toc-number">4.</span> <span class="toc-text">principles of reliable data transfer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rdt3-0-channels-with-errors-and-loss"><span class="toc-number">4.1.</span> <span class="toc-text">rdt3.0: channels with errors and loss</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pipelined-protocols"><span class="toc-number">4.2.</span> <span class="toc-text">pipelined protocols</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-segment-structure"><span class="toc-number">5.</span> <span class="toc-text">TCP segment structure</span></a></li></ol>
                 </div>
             </div>
             

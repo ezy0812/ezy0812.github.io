@@ -5,15 +5,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CTFHub WriteUp 01 - 技能树中的网站源码WriteUp - ezy 闲敲棋子落灯花</title>
+    <title>Computer Network Notes L5 - Network Layer - ezy 闲敲棋子落灯花</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="blog ezy,"> 
     <meta name="description" content="ezy-blog,
-题目链接
-题目给出提示利用burp交叉遍历所有目录得出结果访问该网址得到压缩文件压缩包里有3个文件没想到flag居然是访问txt的文件，得到flag
-"> 
+每个人的生命中，都有最艰难的一年，将人生变得美好而辽阔 ——《岛上书店》
+
+overviewtwo key network-layer functionsforwardingmove packet,"> 
     <meta name="author" content="ezy"> 
     
     <link rel="icon" href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/favicon.png"> 
@@ -60,7 +60,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/favicon.png" alt="" data-url="http://ezysec.cn">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">CTFHub WriteUp 01 - 技能树中的网站源码WriteUp</h3>
+        <h3 class="subtitle">Computer Network Notes L5 - Network Layer</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -85,30 +85,30 @@
             animation-duration: 1.2s;
             background-image: 
                 radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-                url(https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/cover.jpg) ">
+                url(https://cdn.jsdelivr.net/gh/ezy0812/CDN/cover/cover-CN-L5.jpg) ">
         </div>
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/WriteUp"><b>「
-                    </b>WRITEUP<b> 」</b></a>
+                <a href="/categories/Learning_Notes"><b>「
+                    </b>LEARNING_NOTES<b> 」</b></a>
                 
-                二月 29, 2020
+                四月 18, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2020/02/29/2020-03-01-CTFHub-writeUp-01/" title="CTFHub WriteUp 01 - 技能树中的网站源码WriteUp" class="">CTFHub WriteUp 01 - 技能树中的网站源码WriteUp</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/04/18/CN-notes-L5/" title="Computer Network Notes L5 - Network Layer" class="">Computer Network Notes L5 - Network Layer</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    945
+                    5k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    1 mins.
+                    5 mins.
                 </span>
                 
                 
@@ -116,7 +116,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/CTFHub/" rel="tag">CTFHub</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Computer-Network/" rel="tag">Computer Network</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Lecture-notes/" rel="tag">Lecture notes</a></li></ul>
             
         </div>
     </div>
@@ -137,23 +137,56 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/CTFHub_writeUp_01_f1.png" alt=""></p>
-<p><strong><a href="https://www.ctfhub.com/#/skilltree" target="_blank" rel="noopener">题目链接</a></strong></p>
-<p>题目给出提示<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/CTFHub_writeUp_01_f2.png" alt=""><br>利用burp交叉遍历所有目录<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/CTFHub_writeUp_01_f3.png" alt=""><br>得出结果<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/CTFHub_writeUp_01_f4.png" alt=""><br>访问该网址得到压缩文件<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/CTFHub_writeUp_01_f5.png" alt=""><br>压缩包里有3个文件<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/CTFHub_writeUp_01_f6.png" alt=""><br>没想到flag居然是访问txt的文件，得到flag<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/CTFHub_writeUp_01_f7.png" alt=""></p>
+            <blockquote>
+<p>每个人的生命中，都有最艰难的一年，将人生变得美好而辽阔 ——《岛上书店》</p>
+</blockquote>
+<h2 id="overview"><a href="#overview" class="headerlink" title="overview"></a>overview</h2><h3 id="two-key-network-layer-functions"><a href="#two-key-network-layer-functions" class="headerlink" title="two key network-layer functions"></a>two key network-layer functions</h3><h4 id="forwarding"><a href="#forwarding" class="headerlink" title="forwarding"></a>forwarding</h4><p>move packets from router’s input to appropriate router output</p>
+<h4 id="routing"><a href="#routing" class="headerlink" title="routing"></a>routing</h4><p>determine route taken by packets from source to destination</p>
+<h3 id="data-plane"><a href="#data-plane" class="headerlink" title="data plane"></a>data plane</h3><ul>
+<li>determines how datagram arriving on router input port is forwarded to router output port</li>
+<li>forwarding function</li>
+</ul>
+<h3 id="control-plane"><a href="#control-plane" class="headerlink" title="control plane"></a>control plane</h3><ul>
+<li>determines how datagram is routed among routers along end-end path from source host to destination host<h4 id="two-approaches"><a href="#two-approaches" class="headerlink" title="two approaches"></a>two approaches</h4></li>
+<li>traditional routing algorithms<br>implemented in routers</li>
+<li>software-defined networking<br>implemented in remote servers</li>
+</ul>
+<h2 id="Router"><a href="#Router" class="headerlink" title="Router"></a>Router</h2><h3 id="hign-level-view-of-route-architecture"><a href="#hign-level-view-of-route-architecture" class="headerlink" title="hign-level view of route architecture"></a>hign-level view of route architecture</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L5-f1.png" alt=""></p>
+<h3 id="input-port"><a href="#input-port" class="headerlink" title="input port"></a>input port</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L5-f2.png" alt=""></p>
+<h4 id="Two-forwarding-methods"><a href="#Two-forwarding-methods" class="headerlink" title="Two forwarding methods"></a>Two forwarding methods</h4><ul>
+<li>destination-based forwarding<br>forward based only on destination IP address</li>
+<li>generalized forwarding<br>forward based on any set of header field values</li>
+</ul>
+<h3 id="switching-fabrics"><a href="#switching-fabrics" class="headerlink" title="switching fabrics"></a>switching fabrics</h3><h4 id="via-memory"><a href="#via-memory" class="headerlink" title="via memory"></a>via memory</h4><ul>
+<li>traditional computers with switching under direct control of CPU</li>
+<li>packet copied to system’s memory</li>
+<li>speed limited by memory bandwidth(2 bus crossings per datagram)<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L5-f3.png" alt=""><h4 id="via-a-bus"><a href="#via-a-bus" class="headerlink" title="via a bus"></a>via a bus</h4></li>
+<li>datagram from input port memory to output port memory via a shared bus</li>
+<li>bus contention: switching speed limited bu bus bandwidth<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L5-f4.png" alt=""><h4 id="via-interconnection-network"><a href="#via-interconnection-network" class="headerlink" title="via interconnection network"></a>via interconnection network</h4></li>
+<li>overcome bus bandwidth limitations</li>
+<li>advanced design: fragmenting datagram into fixed length cells, switch cells through the fabric<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L5-f5.png" alt=""></li>
+</ul>
+<h3 id="input-port-queueing"><a href="#input-port-queueing" class="headerlink" title="input port queueing"></a>input port queueing</h3><ul>
+<li>fabric slower than input ports combined leading to queueing at input queues</li>
+<li>Head-of-the-Line (HOL) blocking: queued datagram at front of queue prevents others in queue from moving forward<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L5-f6.png" alt=""><h3 id="output-ports"><a href="#output-ports" class="headerlink" title="output ports"></a>output ports</h3></li>
+<li>buffering when arrival rate via switch exceeds output line speed<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L5-f7.png" alt=""><h3 id="scheduling-mechanisms"><a href="#scheduling-mechanisms" class="headerlink" title="scheduling mechanisms"></a>scheduling mechanisms</h3></li>
+<li>FIFO scheduling</li>
+<li>discard policy<blockquote>
+<ul>
+<li>tail drop: drop arriving packet</li>
+<li>priority: drop/remove on priority basis</li>
+<li>random: drop/remove randomly</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h2><h3 id="IP-datagram-format"><a href="#IP-datagram-format" class="headerlink" title="IP datagram format"></a>IP datagram format</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L5-f8.png" alt=""></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
                 data-autoplay="true">
-                <source type="audio/mpeg" src="">
+                <source type="audio/mpeg" src="https://cdn.jsdelivr.net/gh/ezy0812/CDN-music/Soaring.mp3">
             </audio>
-            
-            <ul id="audio-list" style="display:none">
-                
-                
-                <li title='0' data-url='https://cdn.jsdelivr.net/gh/ezy0812/CDN-music/Bloom.mp3'></li>
-                
-                    
-            </ul>
             
             
             
@@ -183,6 +216,13 @@
             </div>
             
             
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#overview"><span class="toc-number">1.</span> <span class="toc-text">overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#two-key-network-layer-functions"><span class="toc-number">1.1.</span> <span class="toc-text">two key network-layer functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data-plane"><span class="toc-number">1.2.</span> <span class="toc-text">data plane</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#control-plane"><span class="toc-number">1.3.</span> <span class="toc-text">control plane</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Router"><span class="toc-number">2.</span> <span class="toc-text">Router</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hign-level-view-of-route-architecture"><span class="toc-number">2.1.</span> <span class="toc-text">hign-level view of route architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#input-port"><span class="toc-number">2.2.</span> <span class="toc-text">input port</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#switching-fabrics"><span class="toc-number">2.3.</span> <span class="toc-text">switching fabrics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#input-port-queueing"><span class="toc-number">2.4.</span> <span class="toc-text">input port queueing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#output-ports"><span class="toc-number">2.5.</span> <span class="toc-text">output ports</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scheduling-mechanisms"><span class="toc-number">2.6.</span> <span class="toc-text">scheduling mechanisms</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP"><span class="toc-number">3.</span> <span class="toc-text">IP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IP-datagram-format"><span class="toc-number">3.1.</span> <span class="toc-text">IP datagram format</span></a></li></ol></li></ol>
+                </div>
+            </div>
             
             
         </div>
