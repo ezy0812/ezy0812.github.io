@@ -102,13 +102,13 @@ overviewtwo key network-layer functionsforwardingmove packet,">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    5k
+                    8.2k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    5 mins.
+                    7 mins.
                 </span>
                 
                 
@@ -181,6 +181,55 @@ overviewtwo key network-layer functionsforwardingmove packet,">
 </li>
 </ul>
 <h2 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h2><h3 id="IP-datagram-format"><a href="#IP-datagram-format" class="headerlink" title="IP datagram format"></a>IP datagram format</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L5-f8.png" alt=""></p>
+<h3 id="subnet"><a href="#subnet" class="headerlink" title="subnet"></a>subnet</h3><p>device interfaces with same subnet part of IP address, can physically reach other without intervening router</p>
+<h3 id="CIDR-Classless-Inter-Domain-Routing"><a href="#CIDR-Classless-Inter-Domain-Routing" class="headerlink" title="CIDR-Classless Inter Domain Routing"></a>CIDR-Classless Inter Domain Routing</h3><ul>
+<li>subnet portion of address of arbitrary length</li>
+<li>address format: a.b.c.d/x, where x is the number of bits in subnet portion of address<h3 id="How-to-get-IP-address"><a href="#How-to-get-IP-address" class="headerlink" title="How to get IP address?"></a>How to get IP address?</h3></li>
+<li>hard-coded by system admin in a file</li>
+<li>DHCP: Dynamic Host Configuration Protocol–dynamically get address from as server</li>
+</ul>
+<h3 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h3><ul>
+<li>goal: allow host dynamically obtain its IP address from network server when it joins network</li>
+</ul>
+<blockquote>
+<ol>
+<li>can renew its lease on address in use</li>
+<li>allows reuse of addresses (only hold address while connected “on”)</li>
+<li>support for mobile users who want to join network </li>
+</ol>
+</blockquote>
+<h4 id="client-server-scenario"><a href="#client-server-scenario" class="headerlink" title="client-server scenario"></a>client-server scenario</h4><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L5-f9.png" alt=""></p>
+<h4 id="return-more-than-just-allocated-IP-address-on-subnet"><a href="#return-more-than-just-allocated-IP-address-on-subnet" class="headerlink" title="return more than just allocated IP address on subnet"></a>return more than just allocated IP address on subnet</h4><ul>
+<li>address of first-hop router for client </li>
+<li>name and IP address of DNS server</li>
+<li>network mask</li>
+</ul>
+<h3 id="NAT–network-address-translation"><a href="#NAT–network-address-translation" class="headerlink" title="NAT–network address translation"></a>NAT–network address translation</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L5-f10.png" alt=""></p>
+<h3 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h3><ul>
+<li>initial motivation: 32-bit address space soon to be completely allocated.</li>
+<li>additional motivation:<blockquote>
+<ol>
+<li>header format helps speed processing/forwarding</li>
+<li>header changes to facilitate QoS</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h4 id="datagram-format"><a href="#datagram-format" class="headerlink" title="datagram format"></a>datagram format</h4><ul>
+<li>priority: identify priority among datagrams in flow</li>
+<li>flow Label: identify datagrams in same “flow” (concept of “flow” not well defined).</li>
+<li>next header: identify upper layer protocol for data</li>
+<li>checksum: removed entirely to reduce processing time at each hop</li>
+<li>options: allowed, but outside of header, indicated by “Next Header” field</li>
+<li>ICMPv6: new version of ICMP<blockquote>
+<ol>
+<li>additional message types, e.g. “Packet Too Big”</li>
+<li>multicast group management functions</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/CN-notes-L5-f11.png" alt=""></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -220,7 +269,7 @@ overviewtwo key network-layer functionsforwardingmove packet,">
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#overview"><span class="toc-number">1.</span> <span class="toc-text">overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#two-key-network-layer-functions"><span class="toc-number">1.1.</span> <span class="toc-text">two key network-layer functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data-plane"><span class="toc-number">1.2.</span> <span class="toc-text">data plane</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#control-plane"><span class="toc-number">1.3.</span> <span class="toc-text">control plane</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Router"><span class="toc-number">2.</span> <span class="toc-text">Router</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hign-level-view-of-route-architecture"><span class="toc-number">2.1.</span> <span class="toc-text">hign-level view of route architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#input-port"><span class="toc-number">2.2.</span> <span class="toc-text">input port</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#switching-fabrics"><span class="toc-number">2.3.</span> <span class="toc-text">switching fabrics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#input-port-queueing"><span class="toc-number">2.4.</span> <span class="toc-text">input port queueing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#output-ports"><span class="toc-number">2.5.</span> <span class="toc-text">output ports</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scheduling-mechanisms"><span class="toc-number">2.6.</span> <span class="toc-text">scheduling mechanisms</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP"><span class="toc-number">3.</span> <span class="toc-text">IP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IP-datagram-format"><span class="toc-number">3.1.</span> <span class="toc-text">IP datagram format</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#overview"><span class="toc-number">1.</span> <span class="toc-text">overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#two-key-network-layer-functions"><span class="toc-number">1.1.</span> <span class="toc-text">two key network-layer functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data-plane"><span class="toc-number">1.2.</span> <span class="toc-text">data plane</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#control-plane"><span class="toc-number">1.3.</span> <span class="toc-text">control plane</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Router"><span class="toc-number">2.</span> <span class="toc-text">Router</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hign-level-view-of-route-architecture"><span class="toc-number">2.1.</span> <span class="toc-text">hign-level view of route architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#input-port"><span class="toc-number">2.2.</span> <span class="toc-text">input port</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#switching-fabrics"><span class="toc-number">2.3.</span> <span class="toc-text">switching fabrics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#input-port-queueing"><span class="toc-number">2.4.</span> <span class="toc-text">input port queueing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#output-ports"><span class="toc-number">2.5.</span> <span class="toc-text">output ports</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scheduling-mechanisms"><span class="toc-number">2.6.</span> <span class="toc-text">scheduling mechanisms</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP"><span class="toc-number">3.</span> <span class="toc-text">IP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IP-datagram-format"><span class="toc-number">3.1.</span> <span class="toc-text">IP datagram format</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subnet"><span class="toc-number">3.2.</span> <span class="toc-text">subnet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CIDR-Classless-Inter-Domain-Routing"><span class="toc-number">3.3.</span> <span class="toc-text">CIDR-Classless Inter Domain Routing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-to-get-IP-address"><span class="toc-number">3.4.</span> <span class="toc-text">How to get IP address?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DHCP"><span class="toc-number">3.5.</span> <span class="toc-text">DHCP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NAT–network-address-translation"><span class="toc-number">3.6.</span> <span class="toc-text">NAT–network address translation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IPv6"><span class="toc-number">3.7.</span> <span class="toc-text">IPv6</span></a></li></ol></li></ol>
                 </div>
             </div>
             

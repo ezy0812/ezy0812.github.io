@@ -10,9 +10,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="blog ezy,"> 
-    <meta name="description" content="ezy-blog,os模块路径中的斜杠(/)与反斜杠(\)windows中采用\，Mac和Linux采用/\在Python中用于转义，所以变成了两个\
-&amp;gt;&amp;gt;&amp;gt; os.getcwd()
-&amp;#39;F:,"> 
+    <meta name="description" content="ezy-blog,
+你可以逃避现实，但是你无法逃避这样做的后果 —— 安·兰德
+
+os模块路径中的斜杠(/)与反斜杠(\)windows中采用\，Mac和Linux采用/\在Python中用于转义，所以变成了两个\
+,"> 
     <meta name="author" content="ezy"> 
     
     <link rel="icon" href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/favicon.png"> 
@@ -101,13 +103,13 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    24k
+                    44k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    22 mins.
+                    40 mins.
                 </span>
                 
                 
@@ -136,7 +138,10 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="os模块"><a href="#os模块" class="headerlink" title="os模块"></a>os模块</h2><h3 id="路径中的斜杠-与反斜杠"><a href="#路径中的斜杠-与反斜杠" class="headerlink" title="路径中的斜杠(/)与反斜杠(\)"></a>路径中的斜杠(/)与反斜杠(\)</h3><p>windows中采用\，Mac和Linux采用/<br>\在Python中用于转义，所以变成了两个\</p>
+            <blockquote>
+<p>你可以逃避现实，但是你无法逃避这样做的后果 —— 安·兰德</p>
+</blockquote>
+<h2 id="os模块"><a href="#os模块" class="headerlink" title="os模块"></a>os模块</h2><h3 id="路径中的斜杠-与反斜杠"><a href="#路径中的斜杠-与反斜杠" class="headerlink" title="路径中的斜杠(/)与反斜杠(\)"></a>路径中的斜杠(/)与反斜杠(\)</h3><p>windows中采用\，Mac和Linux采用/<br>\在Python中用于转义，所以变成了两个\</p>
 <pre><code class="python">&gt;&gt;&gt; os.getcwd()
 &#39;F:\\blog\\hexo&#39;</code></pre>
 <p>Python可以自动处理路径连接</p>
@@ -577,6 +582,467 @@ side2=Side(style=&#39;dotted&#39;,color=&#39;FFFF0000&#39;)
 border=Border(left=side1,right=side2,top=side2,bottom=side1)
 cell.border=border
 workbook.save(filename=&#39;example.xlsx&#39;)</code></pre>
+<h4 id="设置填充样式"><a href="#设置填充样式" class="headerlink" title="设置填充样式"></a>设置填充样式</h4><pre><code class="python">from openpyxl import load_workbook
+from openpyxl.styles import PatternFill,GradientFill
+
+workbook=load_workbook(filename=&#39;example.xlsx&#39;)
+sheet=workbook[&#39;cool-sheet&#39;]
+cell_a6=sheet[&#39;A6&#39;]
+pattern_fill=PatternFill(fill_type=&#39;solid&#39;,fgColor=&#39;99ccff&#39;)   #fill_type=填充样式，fgColor=填充颜色
+cell_a6.fill=pattern_fill
+cell_a7=sheet[&#39;A7&#39;]
+gradient_fill=GradientFill(stop=(&#39;FFFFFF&#39;,&#39;99CCFF&#39;,&#39;000000&#39;))  #stop=(渐变颜色1，渐变颜色2...)
+cell_a7.fill=gradient_fill
+workbook.save(filename=&#39;example.xlsx&#39;)</code></pre>
+<h4 id="设置行高和列宽"><a href="#设置行高和列宽" class="headerlink" title="设置行高和列宽"></a>设置行高和列宽</h4><pre><code class="python">from openpyxl import load_workbook
+
+workbook=load_workbook(filename=&#39;example.xlsx&#39;)
+sheet=workbook[&#39;cool-sheet&#39;]
+sheet.row_dimensions[1].height=50
+sheet.column_dimensions[&#39;B&#39;].width=20
+workbook.save(filename=&#39;example.xlsx&#39;)</code></pre>
+<h4 id="合并和取消合并单元格"><a href="#合并和取消合并单元格" class="headerlink" title="合并和取消合并单元格"></a>合并和取消合并单元格</h4><pre><code class="python">from openpyxl import load_workbook
+
+workbook=load_workbook(filename=&#39;example.xlsx&#39;)
+sheet=workbook[&#39;cool-sheet&#39;]
+sheet.merge_cells(&#39;C1:D2&#39;)          #方法一
+sheet.merge_cells(start_row=7,start_column=1,end_row=8,end_column=4)#方法二
+sheet.unmerge_cells(&#39;C1:D2&#39;)          #方法一
+sheet.unmerge_cells(start_row=7,start_column=1,end_row=8,end_column=4)#方法二
+workbook.save(filename=&#39;example.xlsx&#39;)</code></pre>
+<h3 id="生成图表"><a href="#生成图表" class="headerlink" title="生成图表"></a>生成图表</h3><h4 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h4><pre><code class="python">from openpyxl import load_workbook
+from openpyxl.drawing.image import Image
+
+workbook=load_workbook(filename=&#39;example.xlsx&#39;)
+sheet=workbook[&#39;cool-sheet&#39;]
+logo=Image(&quot;landscape.jpg&quot;)
+logo.height=100
+logo.width=100
+sheet.add_image(logo,&quot;C1&quot;)
+workbook.save(filename=&#39;example.xlsx&#39;)</code></pre>
+<h4 id="插入条形图"><a href="#插入条形图" class="headerlink" title="插入条形图"></a>插入条形图</h4><pre><code class="python">from openpyxl import load_workbook
+from openpyxl.chart import LineChart,Reference
+
+workbook=load_workbook(filename=&#39;example.xlsx&#39;)
+sheet=workbook[&#39;sheet1&#39;]
+
+chart=LineChart()
+data=Reference(worksheet=sheet,min_row=2,max_row=3,min_col=1,max_col=13)
+categories=Reference(sheet,min_row=1,min_col=2,max_col=13)
+
+chart.add_data(data,from_rows=True,titles_from_data=True)
+chart.set_categories(categories)
+sheet.add_chart(chart,&quot;B5&quot;)
+workbook.save(filename=&#39;example.xlsx&#39;)</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/python-auto-f1.png" alt=""></p>
+<blockquote>
+<p>柱状图同理，BarChart()</p>
+</blockquote>
+<h2 id="处理PDF文件"><a href="#处理PDF文件" class="headerlink" title="处理PDF文件"></a>处理PDF文件</h2><h3 id="提取文字、表格"><a href="#提取文字、表格" class="headerlink" title="提取文字、表格"></a>提取文字、表格</h3><pre><code class="python">import pdfplumber
+
+with pdfplumber.open(&quot;1.pdf&quot;) as pdf:
+    for page in pdf.pages:
+        print(page.extract_text())</code></pre>
+<blockquote>
+<p>表格为extract_tables()</p>
+</blockquote>
+<p>提取表格时还可以设置一些参数</p>
+<pre><code class="python">import pdfplumber
+
+with pdfplumber.open(&quot;1.pdf&quot;) as pdf:
+    table_page=pdf.pages[0]
+    table=table_page.extract_table(
+        table_settings={ 
+            &quot;vertical_strategy&quot;:&quot;text&quot;,
+            &quot;horizontal_strategy&quot;:&quot;text&quot;,
+        }
+    )
+    print(table)</code></pre>
+<h3 id="提取的表格写入excel"><a href="#提取的表格写入excel" class="headerlink" title="提取的表格写入excel"></a>提取的表格写入excel</h3><pre><code class="python">import pdfplumber
+from openpyxl import Workbook
+
+with pdfplumber.open(&quot;1.pdf&quot;) as pdf:
+    table_page=pdf.pages[0]
+    table=table_page.extract_table(
+        table_settings={
+            &quot;vertical_strategy&quot;:&quot;text&quot;,
+            &quot;horizontal_strategy&quot;:&quot;text&quot;,
+        }
+    )
+    workbook=Workbook()
+    sheet=workbook.active
+    for row in table:
+        if not &#39;&#39;.join([str(item) for item in row])==&#39;&#39;:  #将列表中的每个元素都以字符串方式连接起来,起到去除空行的作用
+            sheet.append(row)
+    workbook.save(filename=&#39;1.xlsx&#39;)</code></pre>
+<blockquote>
+<p>[str(item) for item in row] 快速生成一个列表</p>
+</blockquote>
+<h3 id="合并前几列单词"><a href="#合并前几列单词" class="headerlink" title="合并前几列单词"></a>合并前几列单词</h3><pre><code class="python">new_row=[]
+new_row.append(&#39;&#39;.join([str(item) if item else &#39;&#39; for item in row[:3]]))
+new_row+=row[3:]
+new_table.append(new_row)</code></pre>
+<blockquote>
+<p>行内条件判断</p>
+</blockquote>
+<pre><code class="python">x=5
+y=x*2 if x&lt;10 else 20
+print(y)</code></pre>
+<h3 id="PDF合并及分割"><a href="#PDF合并及分割" class="headerlink" title="PDF合并及分割"></a>PDF合并及分割</h3><h4 id="分割"><a href="#分割" class="headerlink" title="分割"></a>分割</h4><pre><code class="python">from PyPDF2 import PdfFileReader,PdfFileWriter
+
+pdf_reader=PdfFileReader(&#39;1.pdf&#39;)
+for page in range(pdf_reader.getNumPages()):
+    pdf_writer=PdfFileWriter()
+    pdf_writer.addPage(pdf_reader.getPage(page))
+    with open(f&#39;./1/lab-page-{page}.pdf&#39;,&#39;wb&#39;) as out:
+        pdf_writer.write(out)</code></pre>
+<h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><pre><code class="python">from PyPDF2 import PdfFileReader,PdfFileWriter
+
+pdf_writer=PdfFileWriter()
+for page in range(8):
+    pdf_reader=PdfFileReader(f&#39;./1/lab-page-{page}.pdf&#39;)
+    for page in range(pdf_reader.getNumPages()):
+        pdf_writer.addPage(pdf_reader.getPage(page))
+
+with open(&#39;merge.pdf&#39;,&#39;wb&#39;) as out:
+    pdf_writer.write(out)</code></pre>
+<h3 id="旋转及排序PDF"><a href="#旋转及排序PDF" class="headerlink" title="旋转及排序PDF"></a>旋转及排序PDF</h3><h4 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h4><pre><code class="python">from PyPDF2 import PdfFileReader,PdfFileWriter
+
+pdf_reader=PdfFileReader(&#39;1.pdf&#39;)
+pdf_writer=PdfFileWriter()
+page=pdf_reader.getPage(0).rotateClockwise(90)
+pdf_writer.addPage(page)
+page=pdf_reader.getPage(1).rotateCounterClockwise(90)
+pdf_writer.addPage(page)
+with open(&#39;rotated.pdf&#39;,&#39;wb&#39;) as out:
+    pdf_writer.write(out)</code></pre>
+<h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><pre><code class="python">from PyPDF2 import PdfFileReader,PdfFileWriter
+
+pdf_reader=PdfFileReader(&#39;1.pdf&#39;)
+pdf_writer=PdfFileWriter()
+for page in range(pdf_reader.getNumPages()-1,-1,-1):   #从最后一页开始，到第一页，每次递减一页
+    pdf_writer.addPage(pdf_reader.getPage(page))
+with open(&#39;reordered.pdf&#39;,&#39;wb&#39;) as out:
+    pdf_writer.write(out)</code></pre>
+<h3 id="批量加水印"><a href="#批量加水印" class="headerlink" title="批量加水印"></a>批量加水印</h3><p>打开word，制作一个只有水印的页面，（将图片设为浮于文字上方即可自由拖动图片）保存为PDF</p>
+<pre><code class="python">from PyPDF2 import PdfFileReader,PdfFileWriter
+from copy import copy
+
+watermark_pdf=PdfFileReader(&#39;shuiyin.pdf&#39;)
+watermark_page=watermark_pdf.getPage(0)
+
+pdf_reader=PdfFileReader(&#39;1.pdf&#39;)
+pdf_writer=PdfFileWriter()
+
+for page in range(pdf_reader.getNumPages()):
+    original_page=pdf_reader.getPage(page)
+    new_page=copy(watermark_page)
+    new_page.mergePage(original_page)           #注意merge顺序，下面的内容.mergePage(出现在上面的内容)
+    pdf_writer.addPage(new_page)
+
+with open(&#39;shuiyined.pdf&#39;,&#39;wb&#39;) as out:
+    pdf_writer.write(out)</code></pre>
+<h3 id="批量加解密"><a href="#批量加解密" class="headerlink" title="批量加解密"></a>批量加解密</h3><pre><code class="python">from PyPDF2 import PdfFileReader,PdfFileWriter
+from copy import copy
+
+pdf_reader=PdfFileReader(&#39;1.pdf&#39;)
+pdf_writer=PdfFileWriter()
+
+for page in range(pdf_reader.getNumPages()):
+    pdf_writer.addPage(pdf_reader.getPage(page))
+
+pdf_writer.encrypt(&#39;ezy&#39;)
+with open(&#39;encrypted.pdf&#39;,&#39;wb&#39;) as out:
+    pdf_writer.write(out)</code></pre>
+<pre><code class="python">from PyPDF2 import PdfFileReader,PdfFileWriter
+
+pdf_reader=PdfFileReader(&#39;encrypted.pdf&#39;)
+pdf_reader.decrypt(&#39;ezy&#39;)
+pdf_writer=PdfFileWriter()
+for page in range(pdf_reader.getNumPages()):
+    pdf_writer.addPage(pdf_reader.getPage(page))
+
+with open(&#39;decrypted.pdf&#39;,&#39;wb&#39;) as out:
+    pdf_writer.write(out)</code></pre>
+<h2 id="处理word文件"><a href="#处理word文件" class="headerlink" title="处理word文件"></a>处理word文件</h2><h3 id="word文档结构"><a href="#word文档结构" class="headerlink" title="word文档结构"></a>word文档结构</h3><p>Document: 文档<br>Paragraph: 段落<br>Run: 文字块，样式相同的为一个块    </p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/python-auto-f2.png" alt=""></p>
+<h3 id="提取文字"><a href="#提取文字" class="headerlink" title="提取文字"></a>提取文字</h3><pre><code class="python">from docx import Document
+
+doc=Document(&#39;1.docx&#39;)
+for paragraph in doc.paragraphs:
+    print(paragraph.text)</code></pre>
+<p>提取文字块</p>
+<pre><code class="python">from docx import Document
+
+doc=Document(&#39;1.docx&#39;)
+paragraph=doc.paragraphs[2]
+runs=paragraph.runs
+for run in runs:
+    print(run.text)</code></pre>
+<h3 id="向word中写入内容"><a href="#向word中写入内容" class="headerlink" title="向word中写入内容"></a>向word中写入内容</h3><pre><code class="python">from docx import Document
+from docx.shared import Cm
+
+doc=Document()
+doc.add_heading(&#39;first heading&#39;,level=1)        #添加标题
+paragraph1=doc.add_paragraph(&#39;paragra1&#39;)        #添加段落
+paragraph2=doc.add_paragraph(&#39;paragra2&#39;)
+paragraph3=doc.add_paragraph()                  #添加文字块
+paragraph3.add_run(&#39;加粗&#39;).bold=True
+paragraph3.add_run(&#39;普通&#39;)
+paragraph3.add_run(&#39;斜体&#39;).italic=True
+doc.add_page_break()                            #添加分页
+doc.add_picture(&#39;landscape.jpg&#39;,width=Cm(5),height=Cm(5))   
+#添加图片，需要导入Cm模块才能使用可选参数width,height，只给一个宽度或高度，另一个的尺寸会自动计算
+
+records=[
+    [&#39;code&#39;,&#39;name&#39;,&#39;grade&#39;],
+    [101,&#39;Li lei&#39;,95],
+    [102,&#39;Han meimei&#39;,100],
+    [103,&#39;Ma dongmei&#39;,98]
+]
+table =doc.add_table(rows=4,cols=3)             #添加表格
+for row in range(4):
+    cells=table.rows[row].cells
+    for col in range(3):
+        cells[col].text=str(records[row][col])
+
+doc.save(&#39;shili.docx&#39;)</code></pre>
+<h3 id="修改样式"><a href="#修改样式" class="headerlink" title="修改样式"></a>修改样式</h3><h4 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h4><pre><code class="python">from docx import Document
+from docx.shared import Pt,RGBColor
+from docx.oxml.ns import qn
+
+doc=Document(&#39;1.docx&#39;)
+for paragraph in doc.paragraphs:
+    for run in paragraph.runs:
+        run.font.bold=True
+        run.font.italic=True
+        run.font.underline=True
+        run.font.strike=True
+        run.font.shadow=True
+        run.font.size=True
+        run.font.color.rgb=RGBColor(255,255,0)
+
+#设置中文字体样式需要借助qn模块
+run.font.name=&#39;微软雅黑&#39;
+r=run._element.rPr.rFonts
+r.set(qn(&#39;w:eastAsia&#39;),&#39;微软雅黑&#39;)
+
+doc.save(&#39;1.docx&#39;)
+</code></pre>
+<h4 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h4><pre><code class="python">from docx.enum.text import WD_ALIGN_PARAGRAPH
+
+paragraph.alignment=WD_ALIGN_PARAGRAPH.CENTER
+#可选的对齐方式 LEFT,CENTER,RIGHT,JUSTIFY,DISTRIBUTE,JUSTIFY_MED,JUSTIFY_HI,JUSTIFY_LOW,THAIJUSTIFY
+
+paragraph.paragraph_format.line_spacing=2.0   #调整行间距，要用浮点数表示，2.0表示两倍行间距
+paragraph.paragraph_format.space_before=Pt(12) #段前间距12磅
+paragraph.paragraph_format.space_after=Pt(12)</code></pre>
+<h2 id="处理PPT文件"><a href="#处理PPT文件" class="headerlink" title="处理PPT文件"></a>处理PPT文件</h2><h3 id="PPT文档结构"><a href="#PPT文档结构" class="headerlink" title="PPT文档结构"></a>PPT文档结构</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/python-auto-f3.png" alt=""></p>
+<h3 id="读取内容"><a href="#读取内容" class="headerlink" title="读取内容"></a>读取内容</h3><pre><code class="python">from pptx import Presentation
+
+prs=Presentation(&#39;1.pptx&#39;)
+for slide in prs.slides:
+    print(slide)
+    for shape in slide.shapes:
+        print(shape)
+        if shape.has_text_frame:            #判断是否有文字
+            text_frame=shape.text_frame     #获取文字框
+            print(text_frame.text)
+            for paragraph in text_frame.paragraphs:     #获取paragraph中的段落
+                print(paragraph.text)</code></pre>
+<h3 id="母版概念"><a href="#母版概念" class="headerlink" title="母版概念"></a>母版概念</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/python-auto-f4.png" alt=""></p>
+<h3 id="查看母版信息"><a href="#查看母版信息" class="headerlink" title="查看母版信息"></a>查看母版信息</h3><pre><code class="python">from pptx import Presentation
+
+prs=Presentation(&#39;1.pptx&#39;)
+slide=prs.slides.add_slide(prs.slide_layouts[0])    #获取第一个母版，并用第一个母版生成一页PPT 
+for shape in slide.placeholders:                    #获取这一页所有的占位符
+    phf=shape.placeholder_format
+    print(f&#39;{phf.idx}--{shape.name}--{phf.type}&#39;)
+    shape.text=f&#39;{phf.idx}--{phf.type}&#39;
+prs.save(&#39;test.pptx&#39;)</code></pre>
+<h3 id="根据占位符ID填写内容"><a href="#根据占位符ID填写内容" class="headerlink" title="根据占位符ID填写内容"></a>根据占位符ID填写内容</h3><pre><code class="python">from pptx import Presentation
+
+prs=Presentation(&#39;1.pptx&#39;)
+slide=prs.slides.add_slide(prs.slide_layouts[0])    
+winner_name=slide.placeholders[0]
+certificate_type=slide.placeholders[1]
+this_is_to_certify_that=slide.placeholders[20]
+winning_reason=slide.placeholders[19]
+
+winner_name.text=&#39;Han Meimei&#39;
+certificate_type.text=&#39;三好学生奖状&#39;
+this_is_to_certify_that.text=&#39;兹证明&#39;
+winning_reason.text=&#39;学习好，身体好&#39;
+
+prs.save(&#39;test.pptx&#39;)</code></pre>
+<h3 id="添加段落"><a href="#添加段落" class="headerlink" title="添加段落"></a>添加段落</h3><pre><code class="python">from pptx import Presentation
+
+prs=Presentation(&#39;1.pptx&#39;)
+slide=prs.slides.add_slide(prs.slide_layouts[0])    
+shapes=slide.shapes
+title_shape=shapes.title
+body_shape=shapes.placeholders[1]
+
+title_shape.text=&#39;title&#39;
+tf=body_shape.text_frame
+tf.text=&#39;p1&#39;
+
+p=tf.add_paragraph()
+p.text=&#39;p2&#39;
+p.level=1                   #设定层级关系，默认最高层级为0级
+
+p=tf.add_paragraph()
+p.text=&#39;p3&#39;
+p.level=2
+
+prs.save(&#39;test.pptx&#39;)</code></pre>
+<h3 id="添加一个文本框"><a href="#添加一个文本框" class="headerlink" title="添加一个文本框"></a>添加一个文本框</h3><pre><code class="python">from pptx import Presentation
+from pptx.util import Cm,Pt
+
+prs=Presentation(&#39;1.pptx&#39;)
+slide=prs.slides.add_slide(prs.slide_layouts[0])    
+
+left=top=width=height=Cm(3)                 #距离上下左右多少cm
+text_box=slide.shapes.add_textbox(left,top,width,height)
+tf=text_box.text_frame
+tf.text=&#39;words in the text box&#39;
+
+p=tf.add_paragraph()
+p.text=&quot;second paragraph bold font-size is 40&quot;
+p.font.bold=True
+p.font.size=Pt(40)
+
+prs.save(&#39;test.pptx&#39;)</code></pre>
+<h3 id="添加图片"><a href="#添加图片" class="headerlink" title="添加图片"></a>添加图片</h3><pre><code class="python">from pptx import Presentation
+from pptx.util import Cm
+
+prs=Presentation(&#39;1.pptx&#39;)
+slide=prs.slides.add_slide(prs.slide_layouts[0])    
+
+left=top=Cm(3)                 
+pic=slide.shapes.add_picture(&#39;landscape.jpg&#39;,left,top)
+
+left=Cm(5)
+height=Cm(5.5)
+pic=slide.shapes.add_picture(&#39;landscape.jpg&#39;,left,top,height=height)
+
+prs.save(&#39;test.pptx&#39;)</code></pre>
+<h3 id="添加表格"><a href="#添加表格" class="headerlink" title="添加表格"></a>添加表格</h3><pre><code class="python">from pptx import Presentation
+from pptx.util import Cm
+
+prs=Presentation(&#39;1.pptx&#39;)
+slide=prs.slides.add_slide(prs.slide_layouts[0])   
+shapes=slide.shapes 
+
+rows,cols=4,2
+left=top=Cm(5)                 
+width=Cm(18)
+height=Cm(3)
+
+table=shapes.add_table(rows,cols,left,top,width,height).table
+table.columns[0].width=Cm(6)
+table.columns[1].width=Cm(4)
+table.rows[0].height=Cm(2)
+
+records=[
+    [&#39;name&#39;,&#39;grade&#39;],
+    [&#39;Li lei&#39;,95],
+    [&#39;Han meimei&#39;,100],
+    [&#39;Ma dongmei&#39;,98]
+]
+for row in range(rows):
+    for col in range(cols):
+        table.cell(row,col).text=str(records[row][col])
+
+prs.save(&#39;test.pptx&#39;)</code></pre>
+<h3 id="文本框样式"><a href="#文本框样式" class="headerlink" title="文本框样式"></a>文本框样式</h3><pre><code class="python">from pptx import Presentation
+from pptx.util import Cm
+from pptx.enum.text import MSO_ANCHOR,MSO_AUTO_SIZE
+from pptx.dml.color import RGBColor
+from pptx.enum.text import PP_ALIGN
+
+prs=Presentation(&#39;1.pptx&#39;)
+slide=prs.slides.add_slide(prs.slide_layouts[0])   
+
+left=top=width=height=Cm(3)
+text_box=slide.shapes.add_textbox(left,top,width,height)
+tf=text_box.text_frame
+tf.text=&quot;text box word&quot;
+tf.margin_bottom=Cm(0.1)                                #下边距
+tf.margin_left=0                                        #左边距
+tf.vertical_anchor=MSO_ANCHOR.BOTTOM                    #底端对齐
+tf.word_wrap=True                                       #框中的文字自动换行
+
+fill=text_box.fill
+fill.solid()                                            #纯色填充
+fill.fore_color.rgb=RGBColor(247,150,70)
+fill.transparency=0.25
+
+line=text_box.line                                      #边框样式
+line.color.rgb=RGBColor(255,0,0)
+line.width=Cm(0.3)
+
+p=tf.add_paragraph()                                    #段落对齐
+p.text=&quot;second words&quot;
+p.alignment=PP_ALIGN.RIGHT
+prs.save(&#39;test.pptx&#39;)</code></pre>
+<h2 id="邮件"><a href="#邮件" class="headerlink" title="邮件"></a>邮件</h2><h3 id="发送邮件"><a href="#发送邮件" class="headerlink" title="发送邮件"></a>发送邮件</h3><p>邮箱必须开通POP3/SMTP/IMAP，和各服务器域名<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_blog/python-auto-f5.png" alt=""><br>使用如下代码在python交互式解释器中存入邮件地址和检验码</p>
+<pre><code class="python">&gt;&gt;&gt; import yagmail
+&gt;&gt;&gt; yagmail.register(&#39;a@163.com&#39;,&#39;检验码&#39;)</code></pre>
+<pre><code class="python">import yagmail
+yag=yagmail.SMTP(user=&#39;a@163.com&#39;,host=&#39;smtp.163.com&#39;)
+contents=[
+    &#39;first paragraph&#39;,
+    &#39;second paragraph&#39;,
+    &#39;&lt;a href=&quot;https://ezysec.cn&quot;&gt;ezy-blog&lt;/a&gt;&#39;,                  #发送带有HTML样式的邮件
+    &#39;landscape.jpg&#39;,                                             #填写本机文件地址即可发送附件
+    yagmail.inline(&#39;landscape.jpg&#39;)                             #图片嵌入正文
+]
+yag.send(&#39;a@163.com&#39;,&#39;an-email&#39;,contents)</code></pre>
+<blockquote>
+<p>如果需要群发，修改yag.send参数即可，yag.send([‘a@163.com’,‘a@a.com’],’an-email’,contents)</p>
+</blockquote>
+<h3 id="读取邮件"><a href="#读取邮件" class="headerlink" title="读取邮件"></a>读取邮件</h3><pre><code class="python">import keyring
+
+passward=keyring.get_password(&quot;yagmail&quot;,&quot;a@163.com&quot;)  #前提是通过yagmail设置好密码</code></pre>
+<p>需要设置允许第三方客户端读取内容<code>http://config.mail.163.com/settings/imap/login.jsp?uid=a@163.com</code></p>
+<pre><code class="python">from imbox import Imbox
+import keyring
+
+password=keyring.get_password(&quot;yagmail&quot;,&quot;ezy0812@163.com&quot;)
+
+with Imbox(&#39;imap.163.com&#39;,&#39;ezy0812@163.com&#39;,password,ssl=True) as imbox:
+    all_inbox_messages=imbox.messages()             #不加参数时读取所有邮件
+    for uid,message in all_inbox_messages:
+        print(message.subject)
+        print(message.body[&#39;plain&#39;])</code></pre>
+<blockquote>
+<p>message.sent_from     发件人<br>message.sent_to       收件人<br>message.subject       主题<br>message.date          时间<br>message.body[‘plain’] 文本格式内容<br>message.body[‘html’]  HTML格式内容<br>message.attachements  附件</p>
+</blockquote>
+<blockquote>
+<p>imbox.messages(unread=True)           查看未读邮件<br>imbox.messages(flagged=True)          查看红旗邮件<br>imbox.messages(sent_from=’a@a.com’)   查看某发件人邮件<br>imbox.messages(sent_to=’a@a.com’)     查看某收件人邮件<br>imbox.messages(data_lt=datetime.data(2019,10,8))          具体日期某天前(import datetime)<br>imbox.messages(data_gt=datetime.data(2019,10,8))          具体日期某天后<br>imbox.messages(data_on=datetime.data(2019,10,8))          指定某一天</p>
+</blockquote>
+<h3 id="标记已读和删除邮件"><a href="#标记已读和删除邮件" class="headerlink" title="标记已读和删除邮件"></a>标记已读和删除邮件</h3><pre><code class="python">for uid,message in all_inbox_messages:
+    if 某种条件:
+        imbox.delete(uid)
+        imbox.mark_seen(uid)</code></pre>
+<h2 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h2><pre><code class="python">import schedule
+import time
+
+def job():
+    print(&quot;填写所要做的任务&quot;)
+
+schedule.every(10).minutes.do(job)              #每10分钟做一次
+schedule.every().hour.do(job)                   #every里无参数代表1，每1小时做一次
+schedule.every().day.at(&quot;10:30&quot;).do(job)        #每天在10:30时做一次
+schedule.every(5).to(10).minutes.do(job)        #每5到10分钟做一次
+schedule.every().monday.do(job)                 #每周一做一次
+schedule.every().wednesday.at(&quot;13:15&quot;).do(job)  #每周三13:15做一次
+schedule.every().minutes.at(&quot;:17&quot;).do(job)      #每分钟在第17秒做一次
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)</code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -616,7 +1082,7 @@ workbook.save(filename=&#39;example.xlsx&#39;)</code></pre>
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#os模块"><span class="toc-number">1.</span> <span class="toc-text">os模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#路径中的斜杠-与反斜杠"><span class="toc-number">1.1.</span> <span class="toc-text">路径中的斜杠(&#x2F;)与反斜杠(\)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列出当前程序文件夹下所有文件和文件夹"><span class="toc-number">1.2.</span> <span class="toc-text">列出当前程序文件夹下所有文件和文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历文件夹"><span class="toc-number">1.3.</span> <span class="toc-text">遍历文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索、匹配文件名称"><span class="toc-number">1.4.</span> <span class="toc-text">搜索、匹配文件名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询文件信息"><span class="toc-number">1.5.</span> <span class="toc-text">查询文件信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写入，读取文件"><span class="toc-number">2.</span> <span class="toc-text">写入，读取文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#写文件"><span class="toc-number">2.1.</span> <span class="toc-text">写文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建临时文件及文件夹"><span class="toc-number">2.2.</span> <span class="toc-text">创建临时文件及文件夹</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#批量操作文件及文件夹"><span class="toc-number">3.</span> <span class="toc-text">批量操作文件及文件夹</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建文件夹"><span class="toc-number">3.1.</span> <span class="toc-text">创建文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检测文件夹是否存在"><span class="toc-number">3.2.</span> <span class="toc-text">检测文件夹是否存在</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建多层文件夹"><span class="toc-number">3.3.</span> <span class="toc-text">创建多层文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复制、移动、重命名"><span class="toc-number">3.4.</span> <span class="toc-text">复制、移动、重命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除文件"><span class="toc-number">3.5.</span> <span class="toc-text">删除文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除文件夹"><span class="toc-number">3.6.</span> <span class="toc-text">删除文件夹</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建和解压压缩包"><span class="toc-number">4.</span> <span class="toc-text">创建和解压压缩包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#读取压缩包"><span class="toc-number">4.1.</span> <span class="toc-text">读取压缩包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解压压缩包"><span class="toc-number">4.2.</span> <span class="toc-text">解压压缩包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建压缩包"><span class="toc-number">4.3.</span> <span class="toc-text">创建压缩包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#向已有压缩包添加文件"><span class="toc-number">4.4.</span> <span class="toc-text">向已有压缩包添加文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理excel文件"><span class="toc-number">5.</span> <span class="toc-text">处理excel文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Excel表格术语"><span class="toc-number">5.1.</span> <span class="toc-text">Excel表格术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打开及读取表格数据"><span class="toc-number">5.2.</span> <span class="toc-text">打开及读取表格数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取一系列格子"><span class="toc-number">5.3.</span> <span class="toc-text">获取一系列格子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#向表格中写入内容"><span class="toc-number">5.4.</span> <span class="toc-text">向表格中写入内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建、删除、复制、改名sheet"><span class="toc-number">5.5.</span> <span class="toc-text">创建、删除、复制、改名sheet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建新的Excel表格文件"><span class="toc-number">5.6.</span> <span class="toc-text">创建新的Excel表格文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#冻结窗格"><span class="toc-number">5.7.</span> <span class="toc-text">冻结窗格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加筛选"><span class="toc-number">5.8.</span> <span class="toc-text">添加筛选</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于样式"><span class="toc-number">5.9.</span> <span class="toc-text">关于样式</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#os模块"><span class="toc-number">1.</span> <span class="toc-text">os模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#路径中的斜杠-与反斜杠"><span class="toc-number">1.1.</span> <span class="toc-text">路径中的斜杠(&#x2F;)与反斜杠(\)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列出当前程序文件夹下所有文件和文件夹"><span class="toc-number">1.2.</span> <span class="toc-text">列出当前程序文件夹下所有文件和文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历文件夹"><span class="toc-number">1.3.</span> <span class="toc-text">遍历文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索、匹配文件名称"><span class="toc-number">1.4.</span> <span class="toc-text">搜索、匹配文件名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询文件信息"><span class="toc-number">1.5.</span> <span class="toc-text">查询文件信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写入，读取文件"><span class="toc-number">2.</span> <span class="toc-text">写入，读取文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#写文件"><span class="toc-number">2.1.</span> <span class="toc-text">写文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建临时文件及文件夹"><span class="toc-number">2.2.</span> <span class="toc-text">创建临时文件及文件夹</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#批量操作文件及文件夹"><span class="toc-number">3.</span> <span class="toc-text">批量操作文件及文件夹</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建文件夹"><span class="toc-number">3.1.</span> <span class="toc-text">创建文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检测文件夹是否存在"><span class="toc-number">3.2.</span> <span class="toc-text">检测文件夹是否存在</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建多层文件夹"><span class="toc-number">3.3.</span> <span class="toc-text">创建多层文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复制、移动、重命名"><span class="toc-number">3.4.</span> <span class="toc-text">复制、移动、重命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除文件"><span class="toc-number">3.5.</span> <span class="toc-text">删除文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除文件夹"><span class="toc-number">3.6.</span> <span class="toc-text">删除文件夹</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建和解压压缩包"><span class="toc-number">4.</span> <span class="toc-text">创建和解压压缩包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#读取压缩包"><span class="toc-number">4.1.</span> <span class="toc-text">读取压缩包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解压压缩包"><span class="toc-number">4.2.</span> <span class="toc-text">解压压缩包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建压缩包"><span class="toc-number">4.3.</span> <span class="toc-text">创建压缩包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#向已有压缩包添加文件"><span class="toc-number">4.4.</span> <span class="toc-text">向已有压缩包添加文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理excel文件"><span class="toc-number">5.</span> <span class="toc-text">处理excel文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Excel表格术语"><span class="toc-number">5.1.</span> <span class="toc-text">Excel表格术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打开及读取表格数据"><span class="toc-number">5.2.</span> <span class="toc-text">打开及读取表格数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取一系列格子"><span class="toc-number">5.3.</span> <span class="toc-text">获取一系列格子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#向表格中写入内容"><span class="toc-number">5.4.</span> <span class="toc-text">向表格中写入内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建、删除、复制、改名sheet"><span class="toc-number">5.5.</span> <span class="toc-text">创建、删除、复制、改名sheet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建新的Excel表格文件"><span class="toc-number">5.6.</span> <span class="toc-text">创建新的Excel表格文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#冻结窗格"><span class="toc-number">5.7.</span> <span class="toc-text">冻结窗格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加筛选"><span class="toc-number">5.8.</span> <span class="toc-text">添加筛选</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于样式"><span class="toc-number">5.9.</span> <span class="toc-text">关于样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成图表"><span class="toc-number">5.10.</span> <span class="toc-text">生成图表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理PDF文件"><span class="toc-number">6.</span> <span class="toc-text">处理PDF文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#提取文字、表格"><span class="toc-number">6.1.</span> <span class="toc-text">提取文字、表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提取的表格写入excel"><span class="toc-number">6.2.</span> <span class="toc-text">提取的表格写入excel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并前几列单词"><span class="toc-number">6.3.</span> <span class="toc-text">合并前几列单词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PDF合并及分割"><span class="toc-number">6.4.</span> <span class="toc-text">PDF合并及分割</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#旋转及排序PDF"><span class="toc-number">6.5.</span> <span class="toc-text">旋转及排序PDF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#批量加水印"><span class="toc-number">6.6.</span> <span class="toc-text">批量加水印</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#批量加解密"><span class="toc-number">6.7.</span> <span class="toc-text">批量加解密</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理word文件"><span class="toc-number">7.</span> <span class="toc-text">处理word文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#word文档结构"><span class="toc-number">7.1.</span> <span class="toc-text">word文档结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提取文字"><span class="toc-number">7.2.</span> <span class="toc-text">提取文字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#向word中写入内容"><span class="toc-number">7.3.</span> <span class="toc-text">向word中写入内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改样式"><span class="toc-number">7.4.</span> <span class="toc-text">修改样式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理PPT文件"><span class="toc-number">8.</span> <span class="toc-text">处理PPT文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PPT文档结构"><span class="toc-number">8.1.</span> <span class="toc-text">PPT文档结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取内容"><span class="toc-number">8.2.</span> <span class="toc-text">读取内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#母版概念"><span class="toc-number">8.3.</span> <span class="toc-text">母版概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看母版信息"><span class="toc-number">8.4.</span> <span class="toc-text">查看母版信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据占位符ID填写内容"><span class="toc-number">8.5.</span> <span class="toc-text">根据占位符ID填写内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加段落"><span class="toc-number">8.6.</span> <span class="toc-text">添加段落</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加一个文本框"><span class="toc-number">8.7.</span> <span class="toc-text">添加一个文本框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加图片"><span class="toc-number">8.8.</span> <span class="toc-text">添加图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加表格"><span class="toc-number">8.9.</span> <span class="toc-text">添加表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文本框样式"><span class="toc-number">8.10.</span> <span class="toc-text">文本框样式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#邮件"><span class="toc-number">9.</span> <span class="toc-text">邮件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#发送邮件"><span class="toc-number">9.1.</span> <span class="toc-text">发送邮件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取邮件"><span class="toc-number">9.2.</span> <span class="toc-text">读取邮件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标记已读和删除邮件"><span class="toc-number">9.3.</span> <span class="toc-text">标记已读和删除邮件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定时任务"><span class="toc-number">10.</span> <span class="toc-text">定时任务</span></a></li></ol>
                 </div>
             </div>
             
