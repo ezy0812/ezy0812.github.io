@@ -1,0 +1,1660 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>python-spider - ezy 闲敲棋子落灯花</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="blog ezy,"> 
+    <meta name="description" content="ezy-blog,
+向外张望的人在做梦，向内审视的人才是清醒的 —— 荣格
+
+urllib库import urllib.request
+
+# GET请求
+response=urllib.request.urlopen,"> 
+    <meta name="author" content="ezy"> 
+    
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">ezy 闲敲棋子落灯花</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/favicon.png" alt="" data-url="http://ezysec.cn">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">python-spider</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(https://cdn.jsdelivr.net/gh/ezy0812/CDN/cover/cover-python-spider.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/Learning_Notes"><b>「
+                    </b>LEARNING_NOTES<b> 」</b></a>
+                
+                五月 02, 2020
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/05/02/python-spider/" title="python-spider" class="">python-spider</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    49k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    45 mins.
+                </span>
+                
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/" rel="tag">python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/spider/" rel="tag">spider</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <blockquote>
+<p>向外张望的人在做梦，向内审视的人才是清醒的 —— 荣格</p>
+</blockquote>
+<h2 id="urllib库"><a href="#urllib库" class="headerlink" title="urllib库"></a>urllib库</h2><pre><code class="python">import urllib.request
+
+# GET请求
+response=urllib.request.urlopen(&quot;http://www.baidu.com/&quot;)
+print(response.read().decode(&#39;utf-8&#39;))              #建议使用utf-8解码，使得返回的内容更人性化的显示
+
+# POST请求
+import urllib.parse                 
+data=bytes(urllib.parse.urlencode({&quot;hello&quot;:&quot;world&quot;}),encoding=&quot;utf-8&quot;)  #提交的表单数据并根据utf-8来编码
+response=urllib.request.urlopen(&quot;http://httpbin.org/post&quot;,data=data)
+print(response.read().decode(&#39;utf-8&#39;))  
+print(response.getheaders())    #响应头部信息
+print(response.getheader(&#39;Server&#39;))     #获取头部信息内的某个键值对
+
+# 自定义请求头部
+url=&quot;http://httpbin.org/post&quot;
+headers={
+    &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4128.3 Safari/537.36&quot;
+}
+data=bytes(urllib.parse.urlencode({&quot;hello&quot;:&quot;world&quot;}),encoding=&quot;utf-8&quot;)
+req=urllib.request.Request(url=url,data=data,headers=headers,method=&quot;POST&quot;)
+response=urllib.request.urlopen(req)
+print(response.read().decode(&#39;utf-8&#39;))</code></pre>
+<h2 id="bs4库"><a href="#bs4库" class="headerlink" title="bs4库"></a>bs4库</h2><pre><code class="python">from bs4 import BeautifulSoup
+
+file=open(&quot;./baidu.html&quot;,&quot;rb&quot;)
+html=file.read()
+bs=BeautifulSoup(html,&quot;html.parser&quot;)            #解析谁，用什么解析器
+
+print(bs.title.string)
+print(bs.a.attrs)               #标签的所有属性
+
+# 遍历文档
+print(bs.head.contents)
+print(bs.head.contents[1])
+
+# 搜索文档
+t_list=bs.find_all(&quot;a&quot;)
+
+import re
+t_list=bs.find_all(re.compile(&quot;a&quot;))
+
+t_list=bs.find_all(id=&quot;mm&quot;)
+t_list=bs.find_all(href=&quot;https://www.baidu.com/&quot;)
+t_list=bs.find_all(class_=True)         #注意下划线
+t_list=bs.find_all(text=&quot;hao123&quot;)       #查找标签内容
+t_list=bs.find_all(text=[&quot;hao123&quot;,&quot;地图&quot;])
+
+t_list=bs.find_all(&quot;a&quot;,limit=3)         #前3条
+
+# CSS选择器
+print(bs.select(&#39;title&#39;))               #通过标签查找
+print(bs.select(&quot;.classa&quot;))             #通过类名查找
+print(bs.select(&quot;#id1&quot;))                #通过id查找
+print(bs.select(&quot;a[class=&#39;inside-a&#39;]&quot;)) #通过标签的属性查找
+print(bs.select(&quot;head &gt; title&quot;))        #head标签里的title标签
+t_list=bs.select(&quot;.mnav ~ .bri&quot;)        #属性为.mnav的兄弟标签，即与属性为.mnav在同一级下的属性为.bri的标签
+print(t_list[0].get_text())  </code></pre>
+<h2 id="re模块"><a href="#re模块" class="headerlink" title="re模块"></a>re模块</h2><table>
+<thead>
+<tr>
+<th align="center">操作符</th>
+<th align="center">说明</th>
+<th align="center">实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.</td>
+<td align="center">表示任何单个字符</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">[     ]</td>
+<td align="center">字符集，对单个字符给出取值范围</td>
+<td align="center">[abc]表示a、b、c，[a-z]表示a到z单个字符</td>
+</tr>
+<tr>
+<td align="center">[^  ]</td>
+<td align="center">非字符集，给出排除范围</td>
+<td align="center">[^abc]表示非a、非b、非c的单个字符</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">前一个字符0次或无限次扩展</td>
+<td align="center">abc*表示ab、abc、abcc、abccc等</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="center">前一个字符1次或无限次扩展</td>
+<td align="center">abc+表示abc、abcc、abccc等</td>
+</tr>
+<tr>
+<td align="center">？</td>
+<td align="center">前一个字符0次或1次扩展</td>
+<td align="center">abc?表示ab、abc</td>
+</tr>
+<tr>
+<td align="center">|</td>
+<td align="center">左右表达式任意一个</td>
+<td align="center">abc|def表示abc、def</td>
+</tr>
+<tr>
+<td align="center">{m}</td>
+<td align="center">扩展前一个字符m次</td>
+<td align="center">ab{2}c表示abbc</td>
+</tr>
+<tr>
+<td align="center">{m,n}</td>
+<td align="center">扩展前一个字符m至n次</td>
+<td align="center">ab{1,2}c表示abc、abbc</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="center">匹配字符串开头</td>
+<td align="center">^abc表示abc且在一个字符串的开头</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td align="center">匹配字符串结尾</td>
+<td align="center">abc$表示abc且在一个字符串的结尾</td>
+</tr>
+<tr>
+<td align="center">(  )</td>
+<td align="center">分组标记，内部只能使用 | 操作符</td>
+<td align="center">(abc)表示abc，(abc|def)表示abc、def</td>
+</tr>
+<tr>
+<td align="center">\d</td>
+<td align="center">数字，等价于[0-9]</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">\w</td>
+<td align="center">单词字符，等价于[A-Za-z0-9_] (包含下划线)</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">re.search()</td>
+<td align="center">在一个字符串中搜索匹配正则表达式的第一个位置，返回match对象</td>
+</tr>
+<tr>
+<td align="center">re.match()</td>
+<td align="center">从一个字符串的开始位置起匹配正则表达式，返回match对象</td>
+</tr>
+<tr>
+<td align="center">re.findall()</td>
+<td align="center">搜索字符串，以列表类型返回全部能匹配的字串</td>
+</tr>
+<tr>
+<td align="center">re.split()</td>
+<td align="center">将一个字符串按照正则表达式匹配结果进行分割，返回列表类型</td>
+</tr>
+<tr>
+<td align="center">re.finditer()</td>
+<td align="center">搜索字符串，返回一个匹配结果的迭代类型，每个迭代元素是match对象</td>
+</tr>
+<tr>
+<td align="center">re.sub()</td>
+<td align="center">在一个字符串中替换所有匹配正则表达式的字串，返回替换后的字符串</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">修饰符</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">re.I</td>
+<td align="center">使匹配对大小写不敏感</td>
+</tr>
+<tr>
+<td align="center">re.L</td>
+<td align="center">做本地化识别匹配</td>
+</tr>
+<tr>
+<td align="center">re.M</td>
+<td align="center">多行匹配，影响^和$</td>
+</tr>
+<tr>
+<td align="center">re.S</td>
+<td align="center">使.匹配包括换行在内的所有字符</td>
+</tr>
+<tr>
+<td align="center">re.U</td>
+<td align="center">根据Unicode字符集解析字符，影响\w,\W,\b,\B</td>
+</tr>
+<tr>
+<td align="center">re.X</td>
+<td align="center">该标志通过给予你更灵活的格式以便你将正则表达式写得更易于理解</td>
+</tr>
+</tbody></table>
+<pre><code class="python">import re
+
+pat=re.compile(&quot;AA&quot;)
+m=pat.search(&quot;CBCAADDAA&quot;)       #返回第一个匹配成功的位置
+m=re.search(&quot;AA&quot;,&quot;CBCAADDAA&quot;)   #第一个参数为规则，第二个参数为被校验的对象
+m=re.findall(&quot;AA&quot;,&quot;CBCAADDAA&quot;)  #返回列表，匹配所有位置
+m=re.sub(&quot;a&quot;,&quot;A&quot;,&quot;abcdacsd&quot;)    #找到a用A替换</code></pre>
+<blockquote>
+<p>建议在正则表达式中，被比较的字符串前面加上r，不用担心转义字符的问题</p>
+</blockquote>
+<h2 id="xlwt库"><a href="#xlwt库" class="headerlink" title="xlwt库"></a>xlwt库</h2><pre><code class="python">import xlwt
+
+workbook=xlwt.Workbook(encoding=&quot;utf-8&quot;)
+worksheet=workbook.add_sheet(&#39;sheet1&#39;)
+worksheet.write(0,0,&#39;hello&#39;)    #行，列，内容
+for i in range(0,9):
+    for j in range(0,i+1):
+        worksheet.write(i,j,f&#39;{i+1} * {j+1} = {(i+1)*(j+1)}&#39;)
+workbook.save(&#39;a.xls&#39;)</code></pre>
+<h2 id="wordcloud库"><a href="#wordcloud库" class="headerlink" title="wordcloud库"></a>wordcloud库</h2><pre><code class="python">import jieba
+from matplotlib import pyplot as plt
+from wordcloud import WordCloud
+from PIL import Image
+import numpy as np
+import sqlite3
+
+con = sqlite3.connect(&quot;movie.db&quot;)
+cur = con.cursor()
+sql = &#39;select introdu from movie250&#39;
+data = cur.execute(sql)
+text = &quot;&quot;
+for item in data:
+    text += item[0]
+cur.close()
+con.close()
+cut = jieba.cut(text)
+string = &#39; &#39;.join(cut)
+print(len(string))
+
+img = Image.open(&#39;static/assets/img/tree.jpg&#39;)
+img_array = np.array(img)
+wc = WordCloud(
+    background_color=&#39;white&#39;,
+    mask=img_array,
+    font_path=&quot;msyh.ttc&quot;
+)
+wc.generate_from_text(string)
+
+fig = plt.figure(1)
+plt.imshow(wc)
+plt.axis(&#39;off&#39;)
+# plt.show()
+plt.savefig(&#39;static/assets/img/word.jpg&#39;,dpi=500)</code></pre>
+<h2 id="豆瓣Top250存入Excel完整爬虫代码"><a href="#豆瓣Top250存入Excel完整爬虫代码" class="headerlink" title="豆瓣Top250存入Excel完整爬虫代码"></a>豆瓣Top250存入Excel完整爬虫代码</h2><pre><code class="python">import urllib.request
+from bs4 import BeautifulSoup
+import re
+import xlwt
+
+def main():
+    baseurl=&quot;https://movie.douban.com/top250?start=&quot;
+    data_list=getData(baseurl)
+    savepath=&quot;top250.xls&quot;
+    saveData(data_list,savepath)
+
+findLink=re.compile(r&#39;&lt;a href=&quot;(.*?)&quot;&gt;&#39;)                    #影片详情的匹配规则
+findImgSrc=re.compile(r&#39;&lt;img.*src=&quot;(.*?)&quot;&#39;,re.S)            #影片图片，忽略换行符
+findTitle=re.compile(r&#39;&lt;span class=&quot;title&quot;&gt;(.*)&lt;/span&gt;&#39;)    #影片片名
+findRating=re.compile(r&#39;&lt;span class=&quot;rating_num&quot; property=&quot;v:average&quot;&gt;(.*)&lt;/span&gt;&#39;) #影片评分
+findJudge=re.compile(r&#39;&lt;span&gt;(\d*)人评价&lt;/span&gt;&#39;)            #评价人数               
+findInduct=re.compile(r&#39;&lt;span class=&quot;inq&quot;&gt;(.*)&lt;/span&gt;&#39;)     #影片概况
+findBd=re.compile(r&#39;&lt;p class=&quot;&quot;&gt;(.*?)&lt;/p&gt;&#39;,re.S)            #详细信息如导演，演员等
+
+def askURL(url):
+    head={
+    &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4128.3 Safari/537.36&quot;
+    }
+    request=urllib.request.Request(url,headers=head)
+    html=&quot;&quot;
+    try:
+        response=urllib.request.urlopen(request)
+        html=response.read().decode(&quot;utf-8&quot;)
+    except urllib.error.URLError as e:
+        if hasattr(e,&quot;code&quot;):
+            print(e.code)
+        if hasattr(e,&quot;reason&quot;):
+            print(e.reason)
+
+    return html
+
+def getData(baseurl):
+    data_list=[]
+    for i in range(0,10):
+        url=baseurl+str(i*25)
+        html=askURL(url)
+        soup=BeautifulSoup(html,&quot;html.parser&quot;)
+        for item in soup.find_all(&#39;div&#39;,class_=&quot;item&quot;):
+            data=[]             #保存一部电影的所有信息
+            item=str(item)
+            link=re.findall(findLink,item)[0]   #影片详情的超链接
+            data.append(link)
+            imgSrc=re.findall(findImgSrc,item)[0]
+            data.append(imgSrc)
+            titles=re.findall(findTitle,item)    #片名可能只有一个中文名，没有外文名
+            if(len(titles)==2):
+                chinese_title=titles[0]
+                data.append(chinese_title)
+                foreign_title=titles[1].replace(&quot;/&quot;,&quot;&quot;)#去除无关符号
+                data.append(foreign_title)
+            else:
+                data.append(titles[0])
+                data.append(&#39; &#39;)                #外文名留空
+
+            rating=re.findall(findRating,item)[0]
+            data.append(rating)
+            judgeNum=re.findall(findJudge,item)[0]
+            data.append(judgeNum)
+            Induct=re.findall(findInduct,item)
+            if(len(Induct)!=0):
+                Induct=Induct[0].replace(&quot;。&quot;,&quot;&quot;)
+                data.append(Induct)
+            else:
+                data.append(&quot; &quot;)
+            Bd=re.findall(findBd,item)[0]
+            Bd=re.sub(&quot;&lt;br(\s+)?/&gt;(\s+)?&quot;,&quot; &quot;,Bd)
+            Bd=re.sub(&#39;/&#39;,&quot; &quot;,Bd)
+            data.append(Bd.strip())             #去掉前后的空格
+            data_list.append(data) 
+    return data_list
+
+def saveData(data_list,savepath):
+    workbook=xlwt.Workbook(encoding=&quot;utf-8&quot;)
+    worksheet=workbook.add_sheet(&#39;top250&#39;,cell_overwrite_ok=True)
+    col=(&#39;电影详细链接&#39;,&#39;图片链接&#39;,&#39;影片中文名&#39;,&#39;影片外文名&#39;,&#39;评分&#39;,&#39;评价数&#39;,&#39;概况&#39;,&#39;相关信息&#39;)
+    for i in range(0,8):
+        worksheet.write(0,i,col[i])
+    for i in range(0,250):
+        print(f&#39;第{i+1}条&#39;)
+        data=data_list[i]
+        for j in range(0,8):
+            worksheet.write(i+1,j,data[j])
+    workbook.save(savepath)
+
+if __name__ == &quot;__main__&quot;:
+    main()</code></pre>
+<h2 id="sqlite3模块"><a href="#sqlite3模块" class="headerlink" title="sqlite3模块"></a>sqlite3模块</h2><pre><code class="python">import sqlite3
+
+# 创建数据表
+conn=sqlite3.connect(&quot;test.db&quot;)         #打开或创建数据库文件
+c=conn.cursor()                         #获取游标
+sql=&#39;&#39;&#39;
+    create table company
+    (id int primary key not null,
+    name text not null,
+    age int not null,
+    address char(50),
+    salary real);
+&#39;&#39;&#39;
+c.execute(sql)
+conn.commit()                           #提交数据库操作
+conn.close()
+
+
+
+# 插入数据
+conn=sqlite3.connect(&quot;test.db&quot;)         #打开或创建数据库文件
+c=conn.cursor()                         #获取游标
+sql=&#39;&#39;&#39;
+    insert into company(id,name,age,address,salary)
+    values(1,&#39;zhangsan&#39;,32,&#39;chengdu&#39;,8000);
+&#39;&#39;&#39;
+c.execute(sql)
+conn.commit()                           #提交数据库操作
+conn.close()
+
+
+
+# 查询数据
+conn=sqlite3.connect(&quot;test.db&quot;)         #打开或创建数据库文件
+c=conn.cursor()                         #获取游标
+sql=&quot;select id,name,address,salary from company&quot;
+cursor=c.execute(sql)
+for row in cursor:
+    print(&quot;id= &quot;,row[0])
+    print(&quot;name= &quot;,row[1])
+    print(&quot;address= &quot;,row[2])
+    print(&quot;salary= &quot;,row[3],&quot;\n&quot;)
+conn.close()</code></pre>
+<h2 id="豆瓣Top250存入数据库完整爬虫代码"><a href="#豆瓣Top250存入数据库完整爬虫代码" class="headerlink" title="豆瓣Top250存入数据库完整爬虫代码"></a>豆瓣Top250存入数据库完整爬虫代码</h2><pre><code class="python">import urllib.request
+from bs4 import BeautifulSoup
+import re
+import xlwt
+import sqlite3
+
+def main():
+    baseurl=&quot;https://movie.douban.com/top250?start=&quot;
+    data_list=getData(baseurl)
+    # savepath=&quot;top250.xls&quot;
+    # saveData(data_list,savepath)
+    dbpath=&quot;movie.db&quot;
+    saveData2DB(data_list,dbpath)
+
+
+findLink=re.compile(r&#39;&lt;a href=&quot;(.*?)&quot;&gt;&#39;)                    #影片详情的匹配规则
+findImgSrc=re.compile(r&#39;&lt;img.*src=&quot;(.*?)&quot;&#39;,re.S)            #影片图片，忽略换行符
+findTitle=re.compile(r&#39;&lt;span class=&quot;title&quot;&gt;(.*)&lt;/span&gt;&#39;)    #影片片名
+findRating=re.compile(r&#39;&lt;span class=&quot;rating_num&quot; property=&quot;v:average&quot;&gt;(.*)&lt;/span&gt;&#39;) #影片评分
+findJudge=re.compile(r&#39;&lt;span&gt;(\d*)人评价&lt;/span&gt;&#39;)           #评价人数               
+findInduct=re.compile(r&#39;&lt;span class=&quot;inq&quot;&gt;(.*)&lt;/span&gt;&#39;)     #影片概况
+findBd=re.compile(r&#39;&lt;p class=&quot;&quot;&gt;(.*?)&lt;/p&gt;&#39;,re.S)            #详细信息如导演，演员等
+
+def askURL(url):
+    head={
+    &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4128.3 Safari/537.36&quot;
+    }
+    request=urllib.request.Request(url,headers=head)
+    html=&quot;&quot;
+    try:
+        response=urllib.request.urlopen(request)
+        html=response.read().decode(&quot;utf-8&quot;)
+    except urllib.error.URLError as e:
+        if hasattr(e,&quot;code&quot;):
+            print(e.code)
+        if hasattr(e,&quot;reason&quot;):
+            print(e.reason)
+
+    return html
+
+def getData(baseurl):
+    data_list=[]
+    for i in range(0,10):
+        url=baseurl+str(i*25)
+        html=askURL(url)
+        soup=BeautifulSoup(html,&quot;html.parser&quot;)
+        for item in soup.find_all(&#39;div&#39;,class_=&quot;item&quot;):
+            data=[]             #保存一部电影的所有信息
+            item=str(item)
+            link=re.findall(findLink,item)[0]   #影片详情的超链接
+            data.append(link)
+            imgSrc=re.findall(findImgSrc,item)[0]
+            data.append(imgSrc)
+            titles=re.findall(findTitle,item)    #片名可能只有一个中文名，没有外文名
+            if(len(titles)==2):
+                chinese_title=titles[0]
+                data.append(chinese_title)
+                foreign_title=titles[1].replace(&quot;/&quot;,&quot;&quot;)#去除无关符号
+                data.append(foreign_title)
+            else:
+                data.append(titles[0])
+                data.append(&#39; &#39;)                #外文名留空
+
+            rating=re.findall(findRating,item)[0]
+            data.append(rating)
+            judgeNum=re.findall(findJudge,item)[0]
+            data.append(judgeNum)
+            Induct=re.findall(findInduct,item)
+            if(len(Induct)!=0):
+                Induct=Induct[0].replace(&quot;。&quot;,&quot;&quot;)
+                data.append(Induct)
+            else:
+                data.append(&quot; &quot;)
+            Bd=re.findall(findBd,item)[0]
+            Bd=re.sub(&quot;&lt;br(\s+)?/&gt;(\s+)?&quot;,&quot; &quot;,Bd)
+            Bd=re.sub(&#39;/&#39;,&quot; &quot;,Bd)
+            data.append(Bd.strip())             #去掉前后的空格
+            data_list.append(data) 
+    return data_list
+
+def saveData(data_list,savepath):
+    workbook=xlwt.Workbook(encoding=&quot;utf-8&quot;)
+    worksheet=workbook.add_sheet(&#39;top250&#39;,cell_overwrite_ok=True)
+    col=(&#39;电影详细链接&#39;,&#39;图片链接&#39;,&#39;影片中文名&#39;,&#39;影片外文名&#39;,&#39;评分&#39;,&#39;评价数&#39;,&#39;概况&#39;,&#39;相关信息&#39;)
+    for i in range(0,8):
+        worksheet.write(0,i,col[i])
+    for i in range(0,250):
+        print(f&#39;第{i+1}条&#39;)
+        data=data_list[i]
+        for j in range(0,8):
+            worksheet.write(i+1,j,data[j])
+    workbook.save(savepath)
+
+def saveData2DB(data_list,dbpath):
+    init_db(dbpath)
+    conn=sqlite3.connect(dbpath)
+    cur=conn.cursor()
+    for data in data_list:
+        for index in range(len(data)):
+            if index==4 or index==5:
+                continue
+            data[index]=&#39;&quot;&#39;+data[index]+&#39;&quot;&#39;
+        sql=&#39;&#39;&#39;
+            insert into movie250 (info_link,pic_link,
+            cname,fname,score,rated,introdu,info) 
+            values(%s)&#39;&#39;&#39;%&quot;,&quot;.join(data)
+        cur.execute(sql)
+        conn.commit()
+    cur.close()
+    conn.close()
+
+def init_db(dbpath):
+    sql=&#39;&#39;&#39;
+        create table movie250(
+            id integer primary key autoincrement,
+            info_link text,
+            pic_link text,
+            cname varchar,
+            fname varchar,
+            score numeric,
+            rated numeric,
+            introdu text,
+            info text
+        );
+    &#39;&#39;&#39;
+    conn=sqlite3.connect(dbpath)
+    cursor=conn.cursor()
+    cursor.execute(sql)
+    conn.commit()
+    conn.close()
+
+if __name__ == &quot;__main__&quot;:
+    main()</code></pre>
+<h2 id="Flask框架–豆瓣电影Top250数据可视化-完整项目文件"><a href="#Flask框架–豆瓣电影Top250数据可视化-完整项目文件" class="headerlink" title="Flask框架–豆瓣电影Top250数据可视化(完整项目文件)"></a>Flask框架–豆瓣电影Top250数据可视化(<a href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/python-project-files/doubantop250.zip" target="_blank" rel="noopener">完整项目文件</a>)</h2><h3 id="app-py"><a href="#app-py" class="headerlink" title="app.py"></a>app.py</h3><pre><code class="python">from flask import Flask, render_template, request
+import sqlite3
+
+app = Flask(__name__)
+
+
+@app.route(&#39;/&#39;)
+def hello_world():
+    return render_template(&quot;index.html&quot;)
+
+
+@app.route(&#39;/index&#39;)
+def home():
+    return render_template(&quot;index.html&quot;)
+
+
+@app.route(&#39;/movie&#39;)
+def movie():
+    datalist = []
+    conn = sqlite3.connect(&quot;movie.db&quot;)
+    cur = conn.cursor()
+    sql = &quot;select * from movie250&quot;
+    data = cur.execute(sql)
+    for item in data:
+        datalist.append(item)
+    cur.close()
+    conn.close()
+    return render_template(&quot;movie.html&quot;, movies=datalist)
+
+
+@app.route(&#39;/score&#39;)
+def score():
+    score = []
+    num = []
+    conn = sqlite3.connect(&quot;movie.db&quot;)
+    cur = conn.cursor()
+    sql = &quot;select score,count(score) from movie250 group by score&quot;
+    data = cur.execute(sql)
+    for item in data:
+        score.append(item[0])
+        num.append(item[1])
+    cur.close()
+    conn.close()
+    return render_template(&quot;score.html&quot;, score=score, num=num)
+
+
+@app.route(&#39;/word&#39;)
+def word():
+    return render_template(&quot;word.html&quot;)
+
+
+@app.route(&#39;/team&#39;)
+def team():
+    return render_template(&quot;team.html&quot;)
+
+
+if __name__ == &#39;__main__&#39;:
+    app.run()
+</code></pre>
+<h3 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h3><pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;&gt;
+
+  &lt;title&gt;Mamba Bootstrap Template - Index&lt;/title&gt;
+  &lt;meta content=&quot;&quot; name=&quot;descriptison&quot;&gt;
+  &lt;meta content=&quot;&quot; name=&quot;keywords&quot;&gt;
+
+  &lt;!-- Favicons --&gt;
+  &lt;link href=&quot;static/assets/img/favicon.png&quot; rel=&quot;icon&quot;&gt;
+  &lt;link href=&quot;static/assets/img/apple-touch-icon.png&quot; rel=&quot;apple-touch-icon&quot;&gt;
+
+  &lt;!-- Google Fonts --&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- Vendor CSS Files --&gt;
+  &lt;link href=&quot;static/assets/vendor/bootstrap/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/icofont/icofont.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/boxicons/css/boxicons.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/animate.css/animate.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/venobox/venobox.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/aos/aos.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- Template Main CSS File --&gt;
+  &lt;link href=&quot;static/assets/css/style.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- =======================================================
+  * Template Name: Mamba - v2.0.1
+  * Template URL: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== --&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+
+  &lt;!-- ======= Header ======= --&gt;
+  &lt;header id=&quot;header&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+
+      &lt;div class=&quot;logo float-left&quot;&gt;
+        &lt;h1 class=&quot;text-light&quot;&gt;&lt;a href=&quot;index.html&quot;&gt;&lt;span&gt;Mamba&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;
+        &lt;!-- Uncomment below if you prefer to use an image logo --&gt;
+        &lt;!-- &lt;a href=&quot;index.html&quot;&gt;&lt;img src=&quot;static/assets/img/logo.png&quot; alt=&quot;&quot; class=&quot;img-fluid&quot;&gt;&lt;/a&gt;--&gt;
+      &lt;/div&gt;
+
+      &lt;nav class=&quot;nav-menu float-right d-none d-lg-block&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;/index&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/movie&quot;&gt;movie&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/score&quot;&gt;rating&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/word&quot;&gt;wordcloud&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/team&quot;&gt;Team&lt;/a&gt;&lt;/li&gt;
+
+
+        &lt;/ul&gt;
+      &lt;/nav&gt;&lt;!-- .nav-menu --&gt;
+
+    &lt;/div&gt;
+  &lt;/header&gt;&lt;!-- End Header --&gt;
+
+&lt;!-- ======= Our Team Section ======= --&gt;
+    &lt;section id=&quot;team&quot; class=&quot;team&quot;&gt;
+      &lt;div class=&quot;container&quot;&gt;
+
+        &lt;div class=&quot;section-title&quot;&gt;
+          &lt;h2&gt;豆瓣电影Top250数据分析&lt;/h2&gt;
+          &lt;p&gt;应用Python爬虫、Flask框架、Echarts等技术实现&lt;/p&gt;
+        &lt;/div&gt;
+
+         &lt;!-- ======= Counts Section ======= --&gt;
+    &lt;section class=&quot;counts section-bg&quot;&gt;
+      &lt;div class=&quot;container&quot;&gt;
+
+        &lt;div class=&quot;row&quot;&gt;
+
+          &lt;div class=&quot;col-lg-3 col-md-6 text-center&quot; data-aos=&quot;fade-up&quot;&gt;
+            &lt;a href=&quot;/movie&quot;&gt;
+              &lt;div class=&quot;count-box&quot;&gt;
+              &lt;i class=&quot;icofont-simple-smile&quot; style=&quot;color: #20b38e;&quot;&gt;&lt;/i&gt;
+              &lt;span data-toggle=&quot;counter-up&quot;&gt;250&lt;/span&gt;
+              &lt;p&gt;经典电影&lt;/p&gt;
+            &lt;/div&gt;
+                &lt;/a&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-lg-3 col-md-6 text-center&quot; data-aos=&quot;fade-up&quot; data-aos-delay=&quot;200&quot;&gt;
+            &lt;a href=&quot;/score&quot;&gt;
+              &lt;div class=&quot;count-box&quot;&gt;
+              &lt;i class=&quot;icofont-document-folder&quot; style=&quot;color: #c042ff;&quot;&gt;&lt;/i&gt;
+              &lt;span data-toggle=&quot;counter-up&quot;&gt;1&lt;/span&gt;
+              &lt;p&gt;评分统计&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-lg-3 col-md-6 text-center&quot; data-aos=&quot;fade-up&quot; data-aos-delay=&quot;400&quot;&gt;
+            &lt;a href=&quot;/word&quot;&gt;
+              &lt;div class=&quot;count-box&quot;&gt;
+              &lt;i class=&quot;icofont-live-support&quot; style=&quot;color: #46d1ff;&quot;&gt;&lt;/i&gt;
+              &lt;span data-toggle=&quot;counter-up&quot;&gt;5693&lt;/span&gt;
+              &lt;p&gt;词汇统计&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-lg-3 col-md-6 text-center&quot; data-aos=&quot;fade-up&quot; data-aos-delay=&quot;600&quot;&gt;
+            &lt;a href=&quot;/team&quot;&gt;
+              &lt;div class=&quot;count-box&quot;&gt;
+              &lt;i class=&quot;icofont-users-alt-5&quot; style=&quot;color: #ffb459;&quot;&gt;&lt;/i&gt;
+              &lt;span data-toggle=&quot;counter-up&quot;&gt;5&lt;/span&gt;
+              &lt;p&gt;团队成员&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/section&gt;&lt;!-- End Counts Section --&gt;
+
+
+      &lt;/div&gt;
+    &lt;/section&gt;&lt;!-- End Our Team Section --&gt;
+
+
+
+
+  &lt;!-- ======= Footer ======= --&gt;
+  &lt;footer id=&quot;footer&quot;&gt;
+
+
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;div class=&quot;copyright&quot;&gt;
+        &amp;copy; Copyright &lt;strong&gt;&lt;span&gt;Mamba&lt;/span&gt;&lt;/strong&gt;. All Rights Reserved
+      &lt;/div&gt;
+      &lt;div class=&quot;credits&quot;&gt;
+        &lt;!-- All the links in the footer should remain intact. --&gt;
+        &lt;!-- You can delete the links only if you purchased the pro version. --&gt;
+        &lt;!-- Licensing information: https://bootstrapmade.com/license/ --&gt;
+        &lt;!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/ --&gt;
+        Designed by &lt;a href=&quot;https://bootstrapmade.com/&quot;&gt;BootstrapMade&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;&lt;!-- End Footer --&gt;
+
+  &lt;a href=&quot;#&quot; class=&quot;back-to-top&quot;&gt;&lt;i class=&quot;icofont-simple-up&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+
+  &lt;!-- Vendor JS Files --&gt;
+  &lt;script src=&quot;static/assets/vendor/jquery/jquery.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/jquery.easing/jquery.easing.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/php-email-form/validate.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/jquery-sticky/jquery.sticky.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/venobox/venobox.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/waypoints/jquery.waypoints.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/counterup/counterup.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/isotope-layout/isotope.pkgd.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/aos/aos.js&quot;&gt;&lt;/script&gt;
+
+  &lt;!-- Template Main JS File --&gt;
+  &lt;script src=&quot;static/assets/js/main.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+<h3 id="movie-html"><a href="#movie-html" class="headerlink" title="movie.html"></a>movie.html</h3><pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;&gt;
+
+  &lt;title&gt;Mamba Bootstrap Template - Index&lt;/title&gt;
+  &lt;meta content=&quot;&quot; name=&quot;descriptison&quot;&gt;
+  &lt;meta content=&quot;&quot; name=&quot;keywords&quot;&gt;
+
+  &lt;!-- Favicons --&gt;
+  &lt;link href=&quot;static/assets/img/favicon.png&quot; rel=&quot;icon&quot;&gt;
+  &lt;link href=&quot;static/assets/img/apple-touch-icon.png&quot; rel=&quot;apple-touch-icon&quot;&gt;
+
+  &lt;!-- Google Fonts --&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- Vendor CSS Files --&gt;
+  &lt;link href=&quot;static/assets/vendor/bootstrap/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/icofont/icofont.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/boxicons/css/boxicons.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/animate.css/animate.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/venobox/venobox.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/aos/aos.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- Template Main CSS File --&gt;
+  &lt;link href=&quot;static/assets/css/style.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- =======================================================
+  * Template Name: Mamba - v2.0.1
+  * Template URL: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== --&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+
+  &lt;!-- ======= Header ======= --&gt;
+  &lt;header id=&quot;header&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+
+      &lt;div class=&quot;logo float-left&quot;&gt;
+        &lt;h1 class=&quot;text-light&quot;&gt;&lt;a href=&quot;index.html&quot;&gt;&lt;span&gt;Mamba&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;
+        &lt;!-- Uncomment below if you prefer to use an image logo --&gt;
+        &lt;!-- &lt;a href=&quot;index.html&quot;&gt;&lt;img src=&quot;static/assets/img/logo.png&quot; alt=&quot;&quot; class=&quot;img-fluid&quot;&gt;&lt;/a&gt;--&gt;
+      &lt;/div&gt;
+
+      &lt;nav class=&quot;nav-menu float-right d-none d-lg-block&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;/index&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/movie&quot;&gt;movie&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/score&quot;&gt;rating&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/word&quot;&gt;wordcloud&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/team&quot;&gt;Team&lt;/a&gt;&lt;/li&gt;
+
+
+        &lt;/ul&gt;
+      &lt;/nav&gt;&lt;!-- .nav-menu --&gt;
+
+    &lt;/div&gt;
+  &lt;/header&gt;&lt;!-- End Header --&gt;
+
+&lt;!-- ======= Our Team Section ======= --&gt;
+    &lt;section id=&quot;team&quot; class=&quot;team&quot;&gt;
+      &lt;div class=&quot;container&quot;&gt;
+
+        &lt;div class=&quot;section-title&quot;&gt;
+          &lt;h2&gt;豆瓣电影Top250电影&lt;/h2&gt;
+
+        &lt;/div&gt;
+
+         &lt;!-- ======= Counts Section ======= --&gt;
+    &lt;section class=&quot;counts section-bg&quot;&gt;
+      &lt;div class=&quot;container&quot;&gt;
+
+       &lt;table class=&quot;table table-striped&quot;&gt;
+           &lt;tr&gt;
+               &lt;td&gt;电影排名&lt;/td&gt;
+               &lt;td&gt;电影中文名&lt;/td&gt;
+               &lt;td&gt;电影外文名&lt;/td&gt;
+               &lt;td&gt;电影评分&lt;/td&gt;
+               &lt;td&gt;电影评价人数&lt;/td&gt;
+               &lt;td&gt;电影概述&lt;/td&gt;
+               &lt;td&gt;其他信息&lt;/td&gt;
+           &lt;/tr&gt;
+           {% for movie in movies %}
+               <tr>
+               <td>{{ movie[0] }}</td>
+
+               <td><a href="{{ movie[1] }}" target="_blank">
+                   {{ movie[3] }}
+                   </a>
+               </td>
+
+               <td>{{ movie[4] }}</td>
+               <td>{{ movie[5] }}</td>
+               <td>{{ movie[6] }}</td>
+               <td>{{ movie[7] }}</td>
+               <td>{{ movie[8] }}</td>
+               </tr>
+           {% endfor %}
+       &lt;/table&gt;
+
+      &lt;/div&gt;
+    &lt;/section&gt;&lt;!-- End Counts Section --&gt;
+
+
+      &lt;/div&gt;
+    &lt;/section&gt;&lt;!-- End Our Team Section --&gt;
+
+
+
+
+  &lt;!-- ======= Footer ======= --&gt;
+  &lt;footer id=&quot;footer&quot;&gt;
+
+
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;div class=&quot;copyright&quot;&gt;
+        &amp;copy; Copyright &lt;strong&gt;&lt;span&gt;Mamba&lt;/span&gt;&lt;/strong&gt;. All Rights Reserved
+      &lt;/div&gt;
+      &lt;div class=&quot;credits&quot;&gt;
+        &lt;!-- All the links in the footer should remain intact. --&gt;
+        &lt;!-- You can delete the links only if you purchased the pro version. --&gt;
+        &lt;!-- Licensing information: https://bootstrapmade.com/license/ --&gt;
+        &lt;!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/ --&gt;
+        Designed by &lt;a href=&quot;https://bootstrapmade.com/&quot;&gt;BootstrapMade&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;&lt;!-- End Footer --&gt;
+
+  &lt;a href=&quot;#&quot; class=&quot;back-to-top&quot;&gt;&lt;i class=&quot;icofont-simple-up&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+
+  &lt;!-- Vendor JS Files --&gt;
+  &lt;script src=&quot;static/assets/vendor/jquery/jquery.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/jquery.easing/jquery.easing.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/php-email-form/validate.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/jquery-sticky/jquery.sticky.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/venobox/venobox.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/waypoints/jquery.waypoints.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/counterup/counterup.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/isotope-layout/isotope.pkgd.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/aos/aos.js&quot;&gt;&lt;/script&gt;
+
+  &lt;!-- Template Main JS File --&gt;
+  &lt;script src=&quot;static/assets/js/main.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+<h3 id="score-html"><a href="#score-html" class="headerlink" title="score.html"></a>score.html</h3><pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;&gt;
+  &lt;script src=&quot;static/assets/js/echarts.min.js&quot;&gt;&lt;/script&gt;
+  &lt;title&gt;Mamba Bootstrap Template - Index&lt;/title&gt;
+  &lt;meta content=&quot;&quot; name=&quot;descriptison&quot;&gt;
+  &lt;meta content=&quot;&quot; name=&quot;keywords&quot;&gt;
+
+  &lt;!-- Favicons --&gt;
+  &lt;link href=&quot;static/assets/img/favicon.png&quot; rel=&quot;icon&quot;&gt;
+  &lt;link href=&quot;static/assets/img/apple-touch-icon.png&quot; rel=&quot;apple-touch-icon&quot;&gt;
+
+  &lt;!-- Google Fonts --&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- Vendor CSS Files --&gt;
+  &lt;link href=&quot;static/assets/vendor/bootstrap/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/icofont/icofont.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/boxicons/css/boxicons.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/animate.css/animate.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/venobox/venobox.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/aos/aos.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- Template Main CSS File --&gt;
+  &lt;link href=&quot;static/assets/css/style.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- =======================================================
+  * Template Name: Mamba - v2.0.1
+  * Template URL: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== --&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+
+  &lt;!-- ======= Header ======= --&gt;
+  &lt;header id=&quot;header&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+
+      &lt;div class=&quot;logo float-left&quot;&gt;
+        &lt;h1 class=&quot;text-light&quot;&gt;&lt;a href=&quot;index.html&quot;&gt;&lt;span&gt;Mamba&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;
+        &lt;!-- Uncomment below if you prefer to use an image logo --&gt;
+        &lt;!-- &lt;a href=&quot;index.html&quot;&gt;&lt;img src=&quot;static/assets/img/logo.png&quot; alt=&quot;&quot; class=&quot;img-fluid&quot;&gt;&lt;/a&gt;--&gt;
+      &lt;/div&gt;
+
+      &lt;nav class=&quot;nav-menu float-right d-none d-lg-block&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;/index&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/movie&quot;&gt;movie&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/score&quot;&gt;rating&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/word&quot;&gt;wordcloud&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/team&quot;&gt;Team&lt;/a&gt;&lt;/li&gt;
+
+
+        &lt;/ul&gt;
+      &lt;/nav&gt;&lt;!-- .nav-menu --&gt;
+
+    &lt;/div&gt;
+  &lt;/header&gt;&lt;!-- End Header --&gt;
+
+&lt;!-- ======= Our Team Section ======= --&gt;
+    &lt;section id=&quot;team&quot; class=&quot;team&quot;&gt;
+      &lt;div class=&quot;container&quot;&gt;
+
+        &lt;div class=&quot;section-title&quot;&gt;
+          &lt;h2&gt;豆瓣电影Top250评分分布&lt;/h2&gt;
+        &lt;/div&gt;
+
+         &lt;!-- ======= Counts Section ======= --&gt;
+    &lt;section class=&quot;counts section-bg&quot;&gt;
+      &lt;div class=&quot;container&quot;&gt;
+
+        &lt;!-- 为 ECharts 准备一个具备大小（宽高）的 DOM --&gt;
+    &lt;div id=&quot;main&quot; style=&quot;width: 100%;height:300px;&quot;&gt;&lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/section&gt;&lt;!-- End Counts Section --&gt;
+
+
+      &lt;/div&gt;
+    &lt;/section&gt;&lt;!-- End Our Team Section --&gt;
+
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+var dom = document.getElementById(&quot;main&quot;);
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    color:[&#39;#3398DB&#39;],
+    tooltip: {
+        trigger: &#39;axis&#39;,
+        axisPointer: {
+            type: &#39;shadow&#39;
+        }
+    },
+    grid:{
+        left:&#39;3%&#39;,
+        right:&#39;4%&#39;,
+        bottom:&#39;3%&#39;,
+        containLabel:true
+    },
+    xAxis: {
+
+        type: &#39;category&#39;,
+        data: {{ score }},
+    },
+    yAxis: {
+        type: &#39;value&#39;
+    },
+    series: [{
+        data: {{ num }},
+        type: &#39;bar&#39;,
+        barWidth:&#39;60%&#39;
+    }]
+};
+;
+if (option &amp;&amp; typeof option === &quot;object&quot;) {
+    myChart.setOption(option, true);
+}
+       &lt;/script&gt;
+
+  &lt;!-- ======= Footer ======= --&gt;
+  &lt;footer id=&quot;footer&quot;&gt;
+
+
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;div class=&quot;copyright&quot;&gt;
+        &amp;copy; Copyright &lt;strong&gt;&lt;span&gt;Mamba&lt;/span&gt;&lt;/strong&gt;. All Rights Reserved
+      &lt;/div&gt;
+      &lt;div class=&quot;credits&quot;&gt;
+        &lt;!-- All the links in the footer should remain intact. --&gt;
+        &lt;!-- You can delete the links only if you purchased the pro version. --&gt;
+        &lt;!-- Licensing information: https://bootstrapmade.com/license/ --&gt;
+        &lt;!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/ --&gt;
+        Designed by &lt;a href=&quot;https://bootstrapmade.com/&quot;&gt;BootstrapMade&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;&lt;!-- End Footer --&gt;
+
+  &lt;a href=&quot;#&quot; class=&quot;back-to-top&quot;&gt;&lt;i class=&quot;icofont-simple-up&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+
+  &lt;!-- Vendor JS Files --&gt;
+  &lt;script src=&quot;static/assets/vendor/jquery/jquery.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/jquery.easing/jquery.easing.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/php-email-form/validate.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/jquery-sticky/jquery.sticky.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/venobox/venobox.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/waypoints/jquery.waypoints.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/counterup/counterup.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/isotope-layout/isotope.pkgd.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/aos/aos.js&quot;&gt;&lt;/script&gt;
+
+  &lt;!-- Template Main JS File --&gt;
+  &lt;script src=&quot;static/assets/js/main.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+<h3 id="word-html"><a href="#word-html" class="headerlink" title="word.html"></a>word.html</h3><pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;&gt;
+
+  &lt;title&gt;Mamba Bootstrap Template - Index&lt;/title&gt;
+  &lt;meta content=&quot;&quot; name=&quot;descriptison&quot;&gt;
+  &lt;meta content=&quot;&quot; name=&quot;keywords&quot;&gt;
+
+  &lt;!-- Favicons --&gt;
+  &lt;link href=&quot;static/assets/img/favicon.png&quot; rel=&quot;icon&quot;&gt;
+  &lt;link href=&quot;static/assets/img/apple-touch-icon.png&quot; rel=&quot;apple-touch-icon&quot;&gt;
+
+  &lt;!-- Google Fonts --&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- Vendor CSS Files --&gt;
+  &lt;link href=&quot;static/assets/vendor/bootstrap/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/icofont/icofont.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/boxicons/css/boxicons.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/animate.css/animate.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/venobox/venobox.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;static/assets/vendor/aos/aos.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- Template Main CSS File --&gt;
+  &lt;link href=&quot;static/assets/css/style.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- =======================================================
+  * Template Name: Mamba - v2.0.1
+  * Template URL: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== --&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+
+  &lt;!-- ======= Header ======= --&gt;
+  &lt;header id=&quot;header&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+
+      &lt;div class=&quot;logo float-left&quot;&gt;
+        &lt;h1 class=&quot;text-light&quot;&gt;&lt;a href=&quot;index.html&quot;&gt;&lt;span&gt;Mamba&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;
+        &lt;!-- Uncomment below if you prefer to use an image logo --&gt;
+        &lt;!-- &lt;a href=&quot;index.html&quot;&gt;&lt;img src=&quot;static/assets/img/logo.png&quot; alt=&quot;&quot; class=&quot;img-fluid&quot;&gt;&lt;/a&gt;--&gt;
+      &lt;/div&gt;
+
+      &lt;nav class=&quot;nav-menu float-right d-none d-lg-block&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;/index&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/movie&quot;&gt;movie&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/score&quot;&gt;rating&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/word&quot;&gt;wordcloud&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/team&quot;&gt;Team&lt;/a&gt;&lt;/li&gt;
+
+
+        &lt;/ul&gt;
+      &lt;/nav&gt;&lt;!-- .nav-menu --&gt;
+
+    &lt;/div&gt;
+  &lt;/header&gt;&lt;!-- End Header --&gt;
+
+   &lt;!-- ======= About Us Section ======= --&gt;
+    &lt;section id=&quot;about&quot; class=&quot;about&quot;&gt;
+      &lt;div class=&quot;container&quot;&gt;
+
+        &lt;div class=&quot;row no-gutters&quot;&gt;
+          &lt;div class=&quot;col-lg-6 video-box&quot;&gt;
+            &lt;img src=&quot;static/assets/img/word.jpg&quot; class=&quot;img-fluid&quot; alt=&quot;&quot;&gt;
+
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-lg-6 d-flex flex-column justify-content-center about-content&quot;&gt;
+
+            &lt;div class=&quot;section-title&quot;&gt;
+              &lt;h2&gt;词频统计&lt;/h2&gt;
+                &lt;p&gt;根据250部电影的一句话描述，提炼出词云&lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;icon-box&quot; data-aos=&quot;fade-up&quot; data-aos-delay=&quot;100&quot;&gt;
+              &lt;div class=&quot;icon&quot;&gt;&lt;i class=&quot;bx bx-fingerprint&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;h4 class=&quot;title&quot;&gt;&lt;a href=&quot;&quot;&gt;关于电影&lt;/a&gt;&lt;/h4&gt;
+              &lt;p class=&quot;description&quot;&gt;What did you learn?&lt;/p&gt;
+            &lt;/div&gt;
+
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/section&gt;&lt;!-- End About Us Section --&gt;
+
+
+
+  &lt;!-- ======= Footer ======= --&gt;
+  &lt;footer id=&quot;footer&quot;&gt;
+
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;div class=&quot;copyright&quot;&gt;
+        &amp;copy; Copyright &lt;strong&gt;&lt;span&gt;Mamba&lt;/span&gt;&lt;/strong&gt;. All Rights Reserved
+      &lt;/div&gt;
+      &lt;div class=&quot;credits&quot;&gt;
+        &lt;!-- All the links in the footer should remain intact. --&gt;
+        &lt;!-- You can delete the links only if you purchased the pro version. --&gt;
+        &lt;!-- Licensing information: https://bootstrapmade.com/license/ --&gt;
+        &lt;!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/ --&gt;
+        Designed by &lt;a href=&quot;https://bootstrapmade.com/&quot;&gt;BootstrapMade&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;&lt;!-- End Footer --&gt;
+
+  &lt;a href=&quot;#&quot; class=&quot;back-to-top&quot;&gt;&lt;i class=&quot;icofont-simple-up&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+
+  &lt;!-- Vendor JS Files --&gt;
+  &lt;script src=&quot;static/assets/vendor/jquery/jquery.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/jquery.easing/jquery.easing.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/php-email-form/validate.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/jquery-sticky/jquery.sticky.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/venobox/venobox.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/waypoints/jquery.waypoints.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/counterup/counterup.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/isotope-layout/isotope.pkgd.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;static/assets/vendor/aos/aos.js&quot;&gt;&lt;/script&gt;
+
+  &lt;!-- Template Main JS File --&gt;
+  &lt;script src=&quot;static/assets/js/main.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+<h2 id="前端素材模板网站"><a href="#前端素材模板网站" class="headerlink" title="前端素材模板网站"></a>前端素材模板网站</h2><ol>
+<li><a href="https://bootstrapmade.com/" target="_blank" rel="noopener">https://bootstrapmade.com/</a></li>
+<li><a href="https://colorlib.com/wp/templates/" target="_blank" rel="noopener">https://colorlib.com/wp/templates/</a></li>
+<li><a href="https://colorlib.com/wp/free-bootstrap-admin-dashboard-templates/" target="_blank" rel="noopener">https://colorlib.com/wp/free-bootstrap-admin-dashboard-templates/</a></li>
+<li><a href="https://startbootstrap.com/templates/" target="_blank" rel="noopener">https://startbootstrap.com/templates/</a></li>
+</ol>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="true">
+                <source type="audio/mpeg" src="https://cdn.jsdelivr.net/gh/ezy0812/CDN-music/Frontier">
+            </audio>
+            
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/config_images/ezy.jpg" height=300 width=300></img>
+                    <p>ezy</p>
+                    <span>What's the feeling of loving someone? Like a dog, like a god</span>
+                    <a href="https://github.com/ezy0812" target="_blank"><span
+                        class=" iconfont icon-github"></span></a>
+                    <!-- <dl>
+                        <dd><a href="https://github.com/ezy0812" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl> -->
+                </div>
+                <ul>
+                    <li><a href="/">21 <p>文章</p></a></li>
+                    <li><a href="/categories">5 <p>分类</p></a></li>
+                    <li><a href="/tags">19 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#urllib库"><span class="toc-number">1.</span> <span class="toc-text">urllib库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bs4库"><span class="toc-number">2.</span> <span class="toc-text">bs4库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#re模块"><span class="toc-number">3.</span> <span class="toc-text">re模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xlwt库"><span class="toc-number">4.</span> <span class="toc-text">xlwt库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wordcloud库"><span class="toc-number">5.</span> <span class="toc-text">wordcloud库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#豆瓣Top250存入Excel完整爬虫代码"><span class="toc-number">6.</span> <span class="toc-text">豆瓣Top250存入Excel完整爬虫代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqlite3模块"><span class="toc-number">7.</span> <span class="toc-text">sqlite3模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#豆瓣Top250存入数据库完整爬虫代码"><span class="toc-number">8.</span> <span class="toc-text">豆瓣Top250存入数据库完整爬虫代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask框架–豆瓣电影Top250数据可视化-完整项目文件"><span class="toc-number">9.</span> <span class="toc-text">Flask框架–豆瓣电影Top250数据可视化(完整项目文件)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#app-py"><span class="toc-number">9.1.</span> <span class="toc-text">app.py</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#index-html"><span class="toc-number">9.2.</span> <span class="toc-text">index.html</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#movie-html"><span class="toc-number">9.3.</span> <span class="toc-text">movie.html</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#score-html"><span class="toc-number">9.4.</span> <span class="toc-text">score.html</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#word-html"><span class="toc-number">9.5.</span> <span class="toc-text">word.html</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前端素材模板网站"><span class="toc-number">10.</span> <span class="toc-text">前端素材模板网站</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <span class="gradient-text">
+            ezy
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+
+
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/sql/sql.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/http/http.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/c/c.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/c++/c++.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/java/java.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/verilog/verilog.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/vhdl/vhdl.min.js"></script>
+
+
+    
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/powershell/powershell.min.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Nothing is impossible for a willing heart", "心之所愿，无所不成"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+
+
+</html>
