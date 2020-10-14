@@ -4,6 +4,106 @@
   
     
     <entry>
+      <title>kali_Linux详解</title>
+      <link href="/2020/05/29/kali-Linux%E8%AF%A6%E8%A7%A3/"/>
+      <url>/2020/05/29/kali-Linux%E8%AF%A6%E8%A7%A3/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Learning_Notes </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>src挖洞经验</title>
+      <link href="/2020/05/28/src%E6%8C%96%E6%B4%9E%E7%BB%8F%E9%AA%8C/"/>
+      <url>/2020/05/28/src%E6%8C%96%E6%B4%9E%E7%BB%8F%E9%AA%8C/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> src </tag>
+            
+            <tag> 挖洞 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ACM</title>
+      <link href="/2020/05/21/ACM/"/>
+      <url>/2020/05/21/ACM/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>少年与爱永不老去，即便披荆斩棘，丢失怒马鲜衣 – 莫峻</p></blockquote><h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><pre><code class="c++">#include &lt;iostream&gt;#include &lt;vector&gt;using namespace std;int main() {    vector&lt;int&gt; list;    int n;    cout &lt;&lt; &quot;Enter the number of the items in the vector: &quot; &lt;&lt; endl;    cin &gt;&gt; n;    for (int i = 0; i &lt; n; i++) {        int a;        cin &gt;&gt; a;        list.push_back(a);    }    cout&lt;&lt;&quot;The length of the vector called list is &quot; &lt;&lt; list.size() &lt;&lt; endl;    //迭代器遍历    vector&lt;int&gt;::iterator p1;    cout &lt;&lt; &quot;The value of the vector is: &quot; &lt;&lt; endl;    for (p1 = list.begin(); p1 != list.end(); p1++)        cout &lt;&lt; *p1 &lt;&lt; endl;    list.size();//元素个数    list.clear();//清空    list.empty();//是否为空    list.erase(p1);//删除某个迭代器所在位置的数字    list.pop_back();//删除最后一个元素    return 0;}</code></pre><h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><pre><code class="c++">#include &lt;iostream&gt;#include &lt;string&gt;using namespace std;int main() {    string s1 = &quot;hello&quot;;    string s2 = &quot;world&quot;;    s1.push_back(&#39;!!&#39;);    cout &lt;&lt; s1;    s1.length(); s1.size();    s1.insert(1, &quot;aaa&quot;);    s1.insert(s1.begin(), &#39;a&#39;);    s1.c_str();//返回C语言字符串，用于printf  O(n)    s1.append(s2);    s2.compare(s2);    s1 == s2;    s1 += s2;    return 0;}</code></pre><h2 id="algorithm"><a href="#algorithm" class="headerlink" title="algorithm"></a>algorithm</h2><pre><code class="c++">#include &lt;iostream&gt;#include &lt;algorithm&gt;#include &lt;vector&gt;using namespace std;int cmp(int a, int b) {    return a &gt; b;}int main() {    int arr[] = { 2,3,1,5,4 };    sort(arr, arr + 5);//快速排序，O(nlogn)     vector&lt;int&gt; arr2{ 2,3,1,5,4 };    sort(arr2.begin(), arr2.end());    sort(arr, arr + 5, cmp);//自定义比较函数    //最大值，最小值    min(1, 2); max(1, 2);  //O(1)    min_element(arr2.begin(), arr2.end());//O(n)    max_element(arr2.begin(), arr2.end());//O(n)    //数组未排好序，将数组中第n小的数放到第n个位置，并且保证它左边的都比它小，右边的都比它大    int n = 3;    nth_element(arr2.begin(), arr2.begin() + n, arr2.end());//O(n)    swap(arr[0], arr[1]);//O(1)    reverse(arr2.begin(), arr2.end());//反转数组，O(n)    //数组已排好序，对其进行去重操作，返回去重后的结束指针    vector&lt;int&gt; arr3 { 1,1,2,2,3,3 };    int newlength=unique(arr3.begin(), arr3.end())-arr3.begin();    //查找元素是否存在    bool isExist = binary_search(arr2.begin(), arr2.end(), 1);//O(logn)    //将一个数插入一个有序数组，应该插入到哪个位置    //lower_bound返回第一个插入位置的指针，upper_bound返回最后一个位置的指针     //O(logn)    vector&lt;int&gt; arr4{ 1,2,3,4,5 };    int firstLocation = lower_bound(arr4.begin(), arr4.end(), 2) - arr4.begin();    int lastLocation=upper_bound(arr4.begin(), arr4.end(), 2) - arr4.begin();    return 0;}</code></pre><h2 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h2><pre><code class="c++">#include &lt;iostream&gt;#include &lt;stack&gt;using namespace std;int main() {    stack&lt;int&gt; sta;    sta.push(1);    int topElement = sta.top();    sta.pop();    sta.empty();    sta.size();    return 0;}</code></pre><h2 id="queue"><a href="#queue" class="headerlink" title="queue"></a>queue</h2><pre><code class="c++">#include &lt;iostream&gt;#include &lt;queue&gt;using namespace std;int main() {    queue&lt;int&gt; que;    que.push(1);    int frontElement = que.front();    que.pop();    que.empty();    que.size();    priority_queue&lt;int&gt; que2;    que2.push(1);    int minElement = que2.top();    que2.pop();    que2.empty();    que2.size();    return 0;}</code></pre><h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><pre><code class="c++">#include &lt;iostream&gt;#include &lt;set&gt;using namespace std;int main() {    set&lt;int&gt; st;//自带去重    st.insert(1);    st.find(1);    st.erase(1);    multiset&lt;int&gt; mst; //允许重复    mst.insert(1);    mst.insert(1);    mst.count(1);    return 0;}</code></pre><h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><pre><code class="c++">#include &lt;iostream&gt;#include &lt;map&gt;using namespace std;int main() {    pair&lt;int, int&gt; origin;    origin = make_pair(0, 0);    origin.first == origin.second;    pair&lt;string, int&gt; id;    id = make_pair(&quot;somebody&quot;, 110);    map&lt;string, int&gt; studentHeight;    studentHeight[&quot;ming&quot;] = 170;    studentHeight[&quot;hong&quot;] = 150;    studentHeight.insert(id);    studentHeight.erase(&quot;ming&quot;);    return 0;}</code></pre><h2 id="bitset"><a href="#bitset" class="headerlink" title="bitset"></a>bitset</h2><pre><code class="c++">#include &lt;iostream&gt;#include &lt;bitset&gt;using namespace std;int main() {    bitset&lt;1000&gt; bst;    bst[0] = 1; bst.set(0);    bst[0] = 0; bst.reset(0);    bst &lt;&lt; 1; bst &gt;&gt; 1; bst ^= 1; bst &amp;= 1;    bst.count();//1的个数    bst.to_string();    bst.to_ullong();    return 0;}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Learning_Notes </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> ACM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Computer Network Notes L6 - Network Layer Control Plane</title>
+      <link href="/2020/05/05/CN-notes-L6/"/>
+      <url>/2020/05/05/CN-notes-L6/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>未知苦处，不信神佛 –《杀破狼》</p></blockquote><h2 id="Routing-Protocols"><a href="#Routing-Protocols" class="headerlink" title="Routing Protocols"></a>Routing Protocols</h2><p>goal: determine “good” paths from sending hosts to receiving host, through network of routers</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Learning_Notes </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Computer Network </tag>
+            
+            <tag> Lecture notes </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>python-spider</title>
       <link href="/2020/05/02/python-spider/"/>
       <url>/2020/05/02/python-spider/</url>
