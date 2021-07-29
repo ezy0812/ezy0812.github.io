@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/icons/favicon-180x180.png?v=2.6.2" sizes="180x180"><link rel="mask-icon" href="/images/icons/stun-logo.svg?v=2.6.2" color="#54bcff"><meta name="description" content="关于Docker的一些基础知识及部署命令                     documents and library       https:&#x2F;&#x2F;docs.docker.com&#x2F; https:&#x2F;&#x2F;hub.docker.com&#x2F;                     install       Docker needs the version of CentOS kernel &gt; 3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker基础">
+<meta property="og:url" content="http://example.com/2021/07/29/Docker%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="ezy&#39;s blog">
+<meta property="og:description" content="关于Docker的一些基础知识及部署命令                     documents and library       https:&#x2F;&#x2F;docs.docker.com&#x2F; https:&#x2F;&#x2F;hub.docker.com&#x2F;                     install       Docker needs the version of CentOS kernel &gt; 3">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ezy0812/CDN/docker/docker-f1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ezy0812/CDN/docker/docker-f2.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ezy0812/CDN/docker/docker-f3.png">
+<meta property="article:published_time" content="2021-07-29T13:46:38.000Z">
+<meta property="article:modified_time" content="2021-07-29T14:06:23.986Z">
+<meta property="article:author" content="ezy">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ezy0812/CDN/docker/docker-f1.png"><title>Docker基础 | ezy's blog</title><link ref="canonical" href="http://example.com/2021/07/29/Docker%E5%9F%BA%E7%A1%80/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Docker基础</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-07-29</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-07-29</span></span></div></header><div class="post-body"><p>关于Docker的一些基础知识及部署命令</p>
+
+        <h2 id="documents-and-library"   >
+          <a href="#documents-and-library" class="heading-link"><i class="fas fa-link"></i></a><a href="#documents-and-library" class="headerlink" title="documents and library"></a>documents and library</h2>
+      <p><code>https://docs.docker.com/</code></p>
+<p><code>https://hub.docker.com/</code></p>
+
+        <h2 id="install"   >
+          <a href="#install" class="heading-link"><i class="fas fa-link"></i></a><a href="#install" class="headerlink" title="install"></a>install</h2>
+      <p>Docker needs the version of CentOS kernel &gt; <code>3.10</code></p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ezy@localhost ~]$ uname -r</span><br><span class="line">3.10.0-693.el7.x86_64</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ezy]# yum install -y yum-utils device-mapper-persistent-data lvm2</span><br><span class="line">[root@localhost ezy]# yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line">[root@localhost ezy]# yum install docker-ce docker-ce-cli containerd.io</span><br><span class="line">[root@localhost ezy]# systemctl start docker # start docker</span><br><span class="line">[root@localhost ezy]# systemctl enable docker #设置开机启动</span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.</span><br><span class="line">[root@localhost ezy]# docker version</span><br><span class="line">Client: Docker Engine - Community</span><br><span class="line"> Version:           19.03.13</span><br><span class="line"> API version:       1.40</span><br><span class="line"> Go version:        go1.13.15</span><br><span class="line"> Git commit:        4484c46d9d</span><br><span class="line"> Built:             Wed Sep 16 17:03:45 2020</span><br><span class="line"> OS/Arch:           linux/amd64</span><br><span class="line"> Experimental:      false</span><br><span class="line"></span><br><span class="line">Server: Docker Engine - Community</span><br><span class="line"> Engine:</span><br><span class="line">  Version:          19.03.13</span><br><span class="line">  API version:      1.40 (minimum version 1.12)</span><br><span class="line">  Go version:       go1.13.15</span><br><span class="line">  Git commit:       4484c46d9d</span><br><span class="line">  Built:            Wed Sep 16 17:02:21 2020</span><br><span class="line">  OS/Arch:          linux/amd64</span><br><span class="line">  Experimental:     false</span><br><span class="line"> containerd:</span><br><span class="line">  Version:          1.3.7</span><br><span class="line">  GitCommit:        8fba4e9a7d01810a393d5d25a3621dc101981175</span><br><span class="line"> runc:</span><br><span class="line">  Version:          1.0.0-rc10</span><br><span class="line">  GitCommit:        dc9208a3303feef5b3839f4323d9beb36df0a9dd</span><br><span class="line"> docker-init:</span><br><span class="line">  Version:          0.18.0</span><br><span class="line">  GitCommit:        fec3683</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="Docker-HelloWorld-test"   >
+          <a href="#Docker-HelloWorld-test" class="heading-link"><i class="fas fa-link"></i></a><a href="#Docker-HelloWorld-test" class="headerlink" title="Docker HelloWorld test"></a>Docker HelloWorld test</h2>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ezy]# docker run hello-world</span><br><span class="line">Unable to find image &#x27;hello-world:latest&#x27; locally</span><br><span class="line">latest: Pulling from library/hello-world</span><br><span class="line">0e03bdcc26d7: Pull complete </span><br><span class="line">Digest: sha256:8c5aeeb6a5f3ba4883347d3747a7249f491766ca1caa47e5da5dfcf6b9b717c0</span><br><span class="line">Status: Downloaded newer image for hello-world:latest</span><br><span class="line"></span><br><span class="line">Hello from Docker!</span><br><span class="line">This message shows that your installation appears to be working correctly.</span><br><span class="line"></span><br><span class="line">To generate this message, Docker took the following steps:</span><br><span class="line"> 1. The Docker client contacted the Docker daemon.</span><br><span class="line"> 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.</span><br><span class="line">    (amd64)</span><br><span class="line"> 3. The Docker daemon created a new container from that image which runs the</span><br><span class="line">    executable that produces the output you are currently reading.</span><br><span class="line"> 4. The Docker daemon streamed that output to the Docker client, which sent it</span><br><span class="line">    to your terminal.</span><br><span class="line"></span><br><span class="line">To try something more ambitious, you can run an Ubuntu container with:</span><br><span class="line"><span class="meta"> $</span><span class="bash"> docker run -it ubuntu bash</span></span><br><span class="line"></span><br><span class="line">Share images, automate workflows, and more with a free Docker ID:</span><br><span class="line"> https://hub.docker.com/</span><br><span class="line"></span><br><span class="line">For more examples and ideas, visit:</span><br><span class="line"> https://docs.docker.com/get-started/</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="config-Aliyun-images-repositories-to-speed-up-downloading-images"   >
+          <a href="#config-Aliyun-images-repositories-to-speed-up-downloading-images" class="heading-link"><i class="fas fa-link"></i></a><a href="#config-Aliyun-images-repositories-to-speed-up-downloading-images" class="headerlink" title="config Aliyun images repositories(to speed up downloading images)"></a>config Aliyun images repositories(to speed up downloading images)</h2>
+      <ol>
+<li>Through logging into the Aliyun official website, enter into the container image service.</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/docker/docker-f1.png" alt="image-20201111221517543"></p>
+<ol start="2">
+<li>create <code>daemon.json</code> file in the <code>/etc/docker</code>. </li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/docker/docker-f2.png" alt="image-20201111222029063"></p>
+<ol start="3">
+<li><p>reboot daemon</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# systemctl daemon-reload</span><br></pre></td></tr></table></div></figure></li>
+<li><p>reboot docker service</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# systemctl restart docker</span><br></pre></td></tr></table></div></figure></li>
+<li><p>test</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker info</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/docker/docker-f3.png" alt="image-20201111222434755"></p>
+</li>
+</ol>
+
+        <h2 id="Basic-commands"   >
+          <a href="#Basic-commands" class="heading-link"><i class="fas fa-link"></i></a><a href="#Basic-commands" class="headerlink" title="Basic commands"></a>Basic commands</h2>
+      
+        <h4 id="start-stop-restart-docker"   >
+          <a href="#start-stop-restart-docker" class="heading-link"><i class="fas fa-link"></i></a><a href="#start-stop-restart-docker" class="headerlink" title="start, stop, restart docker"></a>start, stop, restart docker</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# systemctl start docker</span><br><span class="line">[root@localhost docker]# systemctl stop docker</span><br><span class="line">[root@localhost docker]# systemctl restart docker</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="view-information"   >
+          <a href="#view-information" class="heading-link"><i class="fas fa-link"></i></a><a href="#view-information" class="headerlink" title="view information"></a>view information</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker info</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="check-help-documents"   >
+          <a href="#check-help-documents" class="heading-link"><i class="fas fa-link"></i></a><a href="#check-help-documents" class="headerlink" title="check help documents"></a>check help documents</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker --help</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="check-version"   >
+          <a href="#check-version" class="heading-link"><i class="fas fa-link"></i></a><a href="#check-version" class="headerlink" title="check version"></a>check version</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker version</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="list-all-the-images-in-the-local-machine"   >
+          <a href="#list-all-the-images-in-the-local-machine" class="heading-link"><i class="fas fa-link"></i></a><a href="#list-all-the-images-in-the-local-machine" class="headerlink" title="list all the images in the local machine"></a>list all the images in the local machine</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker images</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="search-images-on-line"   >
+          <a href="#search-images-on-line" class="heading-link"><i class="fas fa-link"></i></a><a href="#search-images-on-line" class="headerlink" title="search images on line"></a>search images on line</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker search tomcat</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="download-images"   >
+          <a href="#download-images" class="heading-link"><i class="fas fa-link"></i></a><a href="#download-images" class="headerlink" title="download images"></a>download images</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker pull nginx</span><br></pre></td></tr></table></div></figure>
+
+<p><code>docker pull image_name:[tag]</code> </p>
+<p>It will download the latest version if doesn’t append <code>tag</code>. </p>
+
+        <h4 id="delete-images"   >
+          <a href="#delete-images" class="heading-link"><i class="fas fa-link"></i></a><a href="#delete-images" class="headerlink" title="delete images"></a>delete images</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker rmi redis:4.0.14</span><br></pre></td></tr></table></div></figure>
+
+<p>add <code>-f</code> can stop the executing image and delete it.</p>
+<p><code>docker rmi -f redis:4.0.14</code></p>
+
+        <h4 id="create-and-start-container"   >
+          <a href="#create-and-start-container" class="heading-link"><i class="fas fa-link"></i></a><a href="#create-and-start-container" class="headerlink" title="create and start container"></a>create and start container</h4>
+      <p><code>docker run [options] image [command] [args]</code></p>
+<p>-i: run the container in interactive mode</p>
+<p>-t: reassigned a pseudo-input terminal for the container</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker run -it --name mycentos1 7e6257</span><br><span class="line">[root@da03311a5f05 /]# ls</span><br><span class="line">anaconda-post.log  dev  home  lib64  mnt  proc  run   srv  tmp  var</span><br><span class="line">bin                etc  lib   media  opt  root  sbin  sys  usr</span><br><span class="line">[root@da03311a5f05 /]# exit</span><br><span class="line">exit</span><br><span class="line">[root@localhost docker]# docker run -it --name mycentos2 7e6257</span><br><span class="line">[root@1be4b28c607a /]# ls</span><br><span class="line">anaconda-post.log  dev  home  lib64  mnt  proc  run   srv  tmp  var</span><br><span class="line">bin                etc  lib   media  opt  root  sbin  sys  usr</span><br><span class="line">[root@1be4b28c607a /]# exit</span><br><span class="line">exit</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="list-the-running-containers"   >
+          <a href="#list-the-running-containers" class="heading-link"><i class="fas fa-link"></i></a><a href="#list-the-running-containers" class="headerlink" title="list the running containers"></a>list the running containers</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ezy]# docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">e23da60755cb        7e6257              &quot;/bin/bash&quot;         30 seconds ago      Up 28 seconds                           mycentos3</span><br><span class="line">[root@localhost ezy]# docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES</span><br><span class="line">e23da60755cb        7e6257              &quot;/bin/bash&quot;         2 minutes ago       Up 2 minutes                                   mycentos3</span><br><span class="line">1be4b28c607a        7e6257              &quot;/bin/bash&quot;         4 minutes ago       Exited (0) 4 minutes ago                       mycentos2</span><br><span class="line">da03311a5f05        7e6257              &quot;/bin/bash&quot;         4 minutes ago       Exited (0) 4 minutes ago                       mycentos1</span><br><span class="line">79dcf3b46b21        hello-world         &quot;/hello&quot;            3 hours ago         Exited (0) 3 hours ago                         nervous_driscoll</span><br><span class="line">9644f1edbca7        hello-world         &quot;/hello&quot;            3 hours ago         Exited (0) 3 hours ago                         gracious_roentgen</span><br></pre></td></tr></table></div></figure>
+
+<p>list the 2 containers that were recently created</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ezy]# docker ps -n 2</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES</span><br><span class="line">e23da60755cb        7e6257              &quot;/bin/bash&quot;         3 minutes ago       Up 3 minutes                                   mycentos3</span><br><span class="line">1be4b28c607a        7e6257              &quot;/bin/bash&quot;         5 minutes ago       Exited (0) 5 minutes ago                       mycentos2</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="exit-the-container"   >
+          <a href="#exit-the-container" class="heading-link"><i class="fas fa-link"></i></a><a href="#exit-the-container" class="headerlink" title="exit the container"></a>exit the container</h4>
+      <p><code>exit</code> stop and exit</p>
+<p> <code>Ctrl+P+Q</code> not stop and exit</p>
+
+        <h4 id="enter-into-the-container"   >
+          <a href="#enter-into-the-container" class="heading-link"><i class="fas fa-link"></i></a><a href="#enter-into-the-container" class="headerlink" title="enter into the container"></a>enter into the container</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">e23da60755cb        7e6257              &quot;/bin/bash&quot;         8 minutes ago       Up 8 minutes                            mycentos3</span><br><span class="line">[root@localhost docker]# docker attach e23da</span><br><span class="line">[root@e23da60755cb /]# </span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="start-the-exited-container"   >
+          <a href="#start-the-exited-container" class="heading-link"><i class="fas fa-link"></i></a><a href="#start-the-exited-container" class="headerlink" title="start the exited container"></a>start the exited container</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES</span><br><span class="line">1be4b28c607a        7e6257              &quot;/bin/bash&quot;         13 minutes ago      Exited (0) 13 minutes ago                       mycentos2</span><br><span class="line">[root@localhost docker]# docker start 1be4b28c607a</span><br><span class="line">1be4b28c607a</span><br><span class="line">[root@localhost docker]# docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">1be4b28c607a        7e6257              &quot;/bin/bash&quot;         14 minutes ago      Up 2 seconds                            mycentos2</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="restart-the-container"   >
+          <a href="#restart-the-container" class="heading-link"><i class="fas fa-link"></i></a><a href="#restart-the-container" class="headerlink" title="restart the container"></a>restart the container</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker restart 1be4b28c607a</span><br><span class="line">1be4b28c607a</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="stop-the-container"   >
+          <a href="#stop-the-container" class="heading-link"><i class="fas fa-link"></i></a><a href="#stop-the-container" class="headerlink" title="stop the container"></a>stop the container</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker stop 1be4b28c607a</span><br><span class="line">1be4b28c607a</span><br><span class="line">[root@localhost docker]# docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="delete-the-container"   >
+          <a href="#delete-the-container" class="heading-link"><i class="fas fa-link"></i></a><a href="#delete-the-container" class="headerlink" title="delete the container"></a>delete the container</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker rm 1be4b28c607a</span><br><span class="line">1be4b28c607a</span><br></pre></td></tr></table></div></figure>
+
+<p>can add <code>-f</code> to delete forcefully </p>
+
+        <h2 id="Advanced-commands"   >
+          <a href="#Advanced-commands" class="heading-link"><i class="fas fa-link"></i></a><a href="#Advanced-commands" class="headerlink" title="Advanced commands"></a>Advanced commands</h2>
+      
+        <h4 id="create-and-start-the-container-in-a-daemon-manner"   >
+          <a href="#create-and-start-the-container-in-a-daemon-manner" class="heading-link"><i class="fas fa-link"></i></a><a href="#create-and-start-the-container-in-a-daemon-manner" class="headerlink" title="create and start the container in a daemon manner"></a>create and start the container in a daemon manner</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker run -di --name mycentos01 7e6257c9f8d8</span><br><span class="line">1a0d0496deffaa59b6e456db6a36b958cdc541fadf0d732291d6a1ab30bc2507</span><br><span class="line">[root@localhost docker]# </span><br></pre></td></tr></table></div></figure>
+
+<p>It doesn’t enter the container after startup.</p>
+
+        <h4 id="operate-the-container-directly-and-return-to-the-host-terminal-after-execution"   >
+          <a href="#operate-the-container-directly-and-return-to-the-host-terminal-after-execution" class="heading-link"><i class="fas fa-link"></i></a><a href="#operate-the-container-directly-and-return-to-the-host-terminal-after-execution" class="headerlink" title="operate the container directly and return to the host terminal after execution"></a>operate the container directly and return to the host terminal after execution</h4>
+      <p>For example, start the application in the container, such as nginx, tomcat, etc.</p>
+<p><code>docker exec -it ID command</code></p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker exec -it 1a0d04 ls -l /sys</span><br><span class="line">total 0</span><br><span class="line">drwxr-xr-x.   2 root root  0 Nov 11 15:30 block</span><br><span class="line">drwxr-xr-x.  28 root root  0 Nov 11 15:30 bus</span><br><span class="line">drwxr-xr-x.  53 root root  0 Nov 11 15:30 class</span><br><span class="line">drwxr-xr-x.   4 root root  0 Nov 11 15:30 dev</span><br><span class="line">drwxr-xr-x.  12 root root  0 Nov 11 15:30 devices</span><br><span class="line">drwxrwxrwt.   2 root root 40 Nov 11 15:22 firmware</span><br><span class="line">drwxr-xr-x.   7 root root  0 Nov 11 15:22 fs</span><br><span class="line">drwxr-xr-x.   2 root root  0 Nov 11 15:30 hypervisor</span><br><span class="line">drwxr-xr-x.   9 root root  0 Nov 11 15:30 kernel</span><br><span class="line">drwxr-xr-x. 185 root root  0 Nov 11 15:30 module</span><br><span class="line">drwxr-xr-x.   2 root root  0 Nov 11 15:30 power</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="check-the-logs-of-container"   >
+          <a href="#check-the-logs-of-container" class="heading-link"><i class="fas fa-link"></i></a><a href="#check-the-logs-of-container" class="headerlink" title="check the logs of container"></a>check the logs of container</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker logs 1a0d04</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="check-the-processes-of-container"   >
+          <a href="#check-the-processes-of-container" class="heading-link"><i class="fas fa-link"></i></a><a href="#check-the-processes-of-container" class="headerlink" title="check the processes of container"></a>check the processes of container</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker top 1a0d04</span><br><span class="line">UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD</span><br><span class="line">root                81635               81619               0                   07:22               ?                   00:00:00            /bin/bash</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="copy-the-files-between-host-machine-and-container"   >
+          <a href="#copy-the-files-between-host-machine-and-container" class="heading-link"><i class="fas fa-link"></i></a><a href="#copy-the-files-between-host-machine-and-container" class="headerlink" title="copy the files between host machine and container"></a>copy the files between host machine and container</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker cp /etc/docker/key.json 1a0d04:/tmp</span><br><span class="line">[root@localhost docker]# docker exec -it 1a0d04 ls -l /tmp</span><br><span class="line">total 8</span><br><span class="line">-rw-------. 1 root root 244 Nov 11 12:22 key.json</span><br><span class="line">[root@localhost docker]# docker cp 1a0d04:/tmp/key.json /home</span><br><span class="line">[root@localhost docker]# ls /home</span><br><span class="line">data  ezy  key.json</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="port-mapping-between-docker-and-host"   >
+          <a href="#port-mapping-between-docker-and-host" class="heading-link"><i class="fas fa-link"></i></a><a href="#port-mapping-between-docker-and-host" class="headerlink" title="port mapping between docker and host"></a>port mapping between docker and host</h2>
+      <p><code>docker run -it -p host:docker imageID</code></p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker run -it -p 8888:8080 e3a3935</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="submit-image"   >
+          <a href="#submit-image" class="heading-link"><i class="fas fa-link"></i></a><a href="#submit-image" class="headerlink" title="submit image"></a>submit image</h2>
+      <p>save the changes and configuration in the docker and commit it into new image in the local machine</p>
+<p><code>docker commit -a=&#39;author&#39; -m=&#39;comment&#39; ID newImageName</code></p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker commit -a &#x27;ezy&#x27; -m &#x27;ezy01&#x27; e39 ezy0812/centos7:1.0</span><br><span class="line">sha256:59c3e732e8139c33cc86a2c19d3030b189ea8fd8b92c5b0cf0649a034acbfe3d</span><br><span class="line">[root@localhost docker]# docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">ezy0812/centos7     1.0                 59c3e732e813        3 seconds ago       203MB</span><br><span class="line">centos              7                   7e6257c9f8d8        3 months ago        203MB</span><br><span class="line">hello-world         latest              bf756fb1ae65        10 months ago       13.3kB</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="push-the-self-made-images-to-the-hub-remote-server"   >
+          <a href="#push-the-self-made-images-to-the-hub-remote-server" class="heading-link"><i class="fas fa-link"></i></a><a href="#push-the-self-made-images-to-the-hub-remote-server" class="headerlink" title="push the self-made images to the hub remote server"></a>push the self-made images to the hub remote server</h2>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker login</span><br><span class="line">[root@localhost docker]# docker push ezy0812/centos7</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="push-the-self-made-images-to-the-Aliyun-remote-server"   >
+          <a href="#push-the-self-made-images-to-the-Aliyun-remote-server" class="heading-link"><i class="fas fa-link"></i></a><a href="#push-the-self-made-images-to-the-Aliyun-remote-server" class="headerlink" title="push the self-made images to the Aliyun remote server"></a>push the self-made images to the Aliyun remote server</h2>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker login --username=ezy_8 registry.cn-hangzhou.aliyuncs.com</span><br><span class="line">[root@localhost docker]# docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">ezy0812/centos7     1.0                 59c3e732e813        12 minutes ago      203MB</span><br><span class="line">centos              7                   7e6257c9f8d8        3 months ago        203MB</span><br><span class="line">hello-world         latest              bf756fb1ae65        10 months ago       13.3kB</span><br><span class="line">[root@localhost docker]# docker tag 59c3e732e813 registry.cn-hangzhou.aliyuncs.com/ezy0812/centos7:1.0.1</span><br><span class="line">[root@localhost docker]# docker images</span><br><span class="line">REPOSITORY                                          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">ezy0812/centos7                                     1.0                 59c3e732e813        13 minutes ago      203MB</span><br><span class="line">registry.cn-hangzhou.aliyuncs.com/ezy0812/centos7   1.0.1               59c3e732e813        13 minutes ago      203MB</span><br><span class="line">centos                                              7                   7e6257c9f8d8        3 months ago        203MB</span><br><span class="line">hello-world                                         latest              bf756fb1ae65        10 months ago       13.3kB</span><br><span class="line">[root@localhost docker]# docker push registry.cn-hangzhou.aliyuncs.com/ezy0812/centos7:1.0.1</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="docker-directory-mount"   >
+          <a href="#docker-directory-mount" class="heading-link"><i class="fas fa-link"></i></a><a href="#docker-directory-mount" class="headerlink" title="docker directory mount"></a>docker directory mount</h2>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker run -it -v /home/hdata:/cdata 7e6257</span><br><span class="line">[root@localhost docker]# docker run -it -v /home/hdata:/cdata -v /home/hdata2:/cdata2 7e6257</span><br></pre></td></tr></table></div></figure>
+
+<p>If the mount of multiple directories has permissions denied, then add <code>--privileged=true</code></p>
+<p>make the mount directory read-only</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker run -it -v /home/hdata:/cdata:ro 7e6257</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="docker-migration-and-backup"   >
+          <a href="#docker-migration-and-backup" class="heading-link"><i class="fas fa-link"></i></a><a href="#docker-migration-and-backup" class="headerlink" title="docker migration and backup"></a>docker migration and backup</h2>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker save -o mytomcat7.7.tar ezy0812/tomcat:1.0 </span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="Recover-on-other-machine"   >
+          <a href="#Recover-on-other-machine" class="heading-link"><i class="fas fa-link"></i></a><a href="#Recover-on-other-machine" class="headerlink" title="Recover on other machine"></a>Recover on other machine</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]# docker load -i mytomcat7.7.tar</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="DockerFile"   >
+          <a href="#DockerFile" class="heading-link"><i class="fas fa-link"></i></a><a href="#DockerFile" class="headerlink" title="DockerFile"></a>DockerFile</h2>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>FROM image_name:tag</th>
+<th>Define which base image is used to start the build process</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MAINTAINER user_info</td>
+<td>Declare the image maintainer information</td>
+</tr>
+<tr>
+<td>LABEL key value</td>
+<td>image description meta information</td>
+</tr>
+<tr>
+<td>ENV key value</td>
+<td>set environment variable</td>
+</tr>
+<tr>
+<td>RUN command</td>
+<td>The commands to run when building the container</td>
+</tr>
+<tr>
+<td>WORKDIR path_dir</td>
+<td>set the working directory when the terminal is logged in by default</td>
+</tr>
+<tr>
+<td>EXPOSE port</td>
+<td>the port the current container is exposed to</td>
+</tr>
+<tr>
+<td>ADD source_dir/file dest_dir/file</td>
+<td>copy the file of host machine to the container, if it’s a compressed file, it can unzip after copying automatically</td>
+</tr>
+<tr>
+<td>COPY source_dir/file dest_dir/file</td>
+<td>similar to <code>ADD</code>, but if it’s a compressed file, it cannot unzip</td>
+</tr>
+<tr>
+<td>VOLUME</td>
+<td>create a mount point that can be mounted from a local host or other container, typically to hold databases, data that needs to be held, etc.</td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>specify the command to run when the container starts, if there are multiple commands, then the last one work</td>
+</tr>
+<tr>
+<td>ENTRYPOINT</td>
+<td>specify the command to run when the container starts</td>
+</tr>
+<tr>
+<td>ONBUILD</td>
+<td>the command to run when building an inherited DockerFile. The ONBUILD of the parent image inherits from the parent image in the quilt image is triggered</td>
+</tr>
+</tbody></table></div>
+
+        <h3 id="1-write-the-DockerFile"   >
+          <a href="#1-write-the-DockerFile" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-write-the-DockerFile" class="headerlink" title="1. write the DockerFile"></a>1. write the DockerFile</h3>
+      <p><code>mycentosDockerFile</code></p>
+<figure class="highlight docker"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> centos</span><br><span class="line"><span class="keyword">MAINTAINER</span> ezy&lt;ezy0812@<span class="number">163</span>.com&gt;</span><br><span class="line"><span class="keyword">LABEL</span><span class="bash"> name=<span class="string">&quot;ezy0812 CentOS image&quot;</span> build-date=<span class="string">&quot;20201112&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> WORKPATH /home/</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> <span class="variable">$WORKPATH</span></span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yum -y install net-tools</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yum -y install vim</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> /bin/bash</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="2-build"   >
+          <a href="#2-build" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-build" class="headerlink" title="2. build"></a>2. build</h3>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost home]# docker build -f mycentosDockerFile -t ezy0812/centos7:v1 .</span><br></pre></td></tr></table></div></figure>
+
+<p>pay attention to the point in the end, it’s the grammar.</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://example.com">ezy</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://example.com/2021/07/29/Docker%E5%9F%BA%E7%A1%80/">http://example.com/2021/07/29/Docker%E5%9F%BA%E7%A1%80/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/Docker/">Docker</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2020/05/02/python-spider/"><span class="paginator-prev__text">python-spider</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#documents-and-library"><span class="toc-number">1.</span> <span class="toc-text">
+          documents and library</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#install"><span class="toc-number">2.</span> <span class="toc-text">
+          install</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-HelloWorld-test"><span class="toc-number">3.</span> <span class="toc-text">
+          Docker HelloWorld test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#config-Aliyun-images-repositories-to-speed-up-downloading-images"><span class="toc-number">4.</span> <span class="toc-text">
+          config Aliyun images repositories(to speed up downloading images)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-commands"><span class="toc-number">5.</span> <span class="toc-text">
+          Basic commands</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#start-stop-restart-docker"><span class="toc-number">5.0.1.</span> <span class="toc-text">
+          start, stop, restart docker</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#view-information"><span class="toc-number">5.0.2.</span> <span class="toc-text">
+          view information</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#check-help-documents"><span class="toc-number">5.0.3.</span> <span class="toc-text">
+          check help documents</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#check-version"><span class="toc-number">5.0.4.</span> <span class="toc-text">
+          check version</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#list-all-the-images-in-the-local-machine"><span class="toc-number">5.0.5.</span> <span class="toc-text">
+          list all the images in the local machine</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#search-images-on-line"><span class="toc-number">5.0.6.</span> <span class="toc-text">
+          search images on line</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#download-images"><span class="toc-number">5.0.7.</span> <span class="toc-text">
+          download images</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#delete-images"><span class="toc-number">5.0.8.</span> <span class="toc-text">
+          delete images</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#create-and-start-container"><span class="toc-number">5.0.9.</span> <span class="toc-text">
+          create and start container</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#list-the-running-containers"><span class="toc-number">5.0.10.</span> <span class="toc-text">
+          list the running containers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exit-the-container"><span class="toc-number">5.0.11.</span> <span class="toc-text">
+          exit the container</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#enter-into-the-container"><span class="toc-number">5.0.12.</span> <span class="toc-text">
+          enter into the container</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#start-the-exited-container"><span class="toc-number">5.0.13.</span> <span class="toc-text">
+          start the exited container</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#restart-the-container"><span class="toc-number">5.0.14.</span> <span class="toc-text">
+          restart the container</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#stop-the-container"><span class="toc-number">5.0.15.</span> <span class="toc-text">
+          stop the container</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#delete-the-container"><span class="toc-number">5.0.16.</span> <span class="toc-text">
+          delete the container</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-commands"><span class="toc-number">6.</span> <span class="toc-text">
+          Advanced commands</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#create-and-start-the-container-in-a-daemon-manner"><span class="toc-number">6.0.1.</span> <span class="toc-text">
+          create and start the container in a daemon manner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#operate-the-container-directly-and-return-to-the-host-terminal-after-execution"><span class="toc-number">6.0.2.</span> <span class="toc-text">
+          operate the container directly and return to the host terminal after execution</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#check-the-logs-of-container"><span class="toc-number">6.0.3.</span> <span class="toc-text">
+          check the logs of container</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#check-the-processes-of-container"><span class="toc-number">6.0.4.</span> <span class="toc-text">
+          check the processes of container</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#copy-the-files-between-host-machine-and-container"><span class="toc-number">6.0.5.</span> <span class="toc-text">
+          copy the files between host machine and container</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#port-mapping-between-docker-and-host"><span class="toc-number">7.</span> <span class="toc-text">
+          port mapping between docker and host</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#submit-image"><span class="toc-number">8.</span> <span class="toc-text">
+          submit image</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#push-the-self-made-images-to-the-hub-remote-server"><span class="toc-number">9.</span> <span class="toc-text">
+          push the self-made images to the hub remote server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#push-the-self-made-images-to-the-Aliyun-remote-server"><span class="toc-number">10.</span> <span class="toc-text">
+          push the self-made images to the Aliyun remote server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-directory-mount"><span class="toc-number">11.</span> <span class="toc-text">
+          docker directory mount</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-migration-and-backup"><span class="toc-number">12.</span> <span class="toc-text">
+          docker migration and backup</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Recover-on-other-machine"><span class="toc-number">12.0.1.</span> <span class="toc-text">
+          Recover on other machine</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DockerFile"><span class="toc-number">13.</span> <span class="toc-text">
+          DockerFile</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-write-the-DockerFile"><span class="toc-number">13.1.</span> <span class="toc-text">
+          1. write the DockerFile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-build"><span class="toc-number">13.2.</span> <span class="toc-text">
+          2. build</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/ezy.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">My heart is in the work</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/ezy0812" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>ezy</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
