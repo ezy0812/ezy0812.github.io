@@ -1,0 +1,609 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/icons/favicon-180x180.png?v=2.6.2" sizes="180x180"><link rel="mask-icon" href="/images/icons/stun-logo.svg?v=2.6.2" color="#54bcff"><meta name="description" content="关于安全行业面试的一些题目收集，关于简历 收集自互联网上的面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安全从业者面试指南">
+<meta property="og:url" content="http://example.com/2021/08/22/%E5%AE%89%E5%85%A8%E4%BB%8E%E4%B8%9A%E8%80%85/index.html">
+<meta property="og:site_name" content="ezy&#39;s blog">
+<meta property="og:description" content="关于安全行业面试的一些题目收集，关于简历 收集自互联网上的面试题">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-22T12:07:16.000Z">
+<meta property="article:modified_time" content="2021-09-04T17:05:18.533Z">
+<meta property="article:author" content="ezy">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary"><title>安全从业者面试指南 | ezy's blog</title><link ref="canonical" href="http://example.com/2021/08/22/%E5%AE%89%E5%85%A8%E4%BB%8E%E4%B8%9A%E8%80%85/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">安全从业者面试指南</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-08-22</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-09-05</span></span></div></header><div class="post-body"><p>关于安全行业面试的一些题目收集，关于简历</p>
+<p>收集自互联网上的面试题</p>
+<span id="more"></span>
+
+
+        <h2 id="好的简历"   >
+          <a href="#好的简历" class="heading-link"><i class="fas fa-link"></i></a><a href="#好的简历" class="headerlink" title="好的简历"></a>好的简历</h2>
+      <ul>
+<li>基本信息<strong>清晰</strong>：姓名、ID、性别、年龄、教育背景（毕业院校、专业、时间）、联系方式、期望地点</li>
+<li>较完整的工作经历&amp;重大项目经验：注意空档期、工作业绩、重大项目担任的角色、分工与主要成果、公司行业知名度、个人管理经验</li>
+<li><strong>体现</strong>技术能力：主要的技术栈以及能佐证的事情</li>
+<li>其它<strong>优势</strong>：职业证书、奖项、会议分享、开源项目等</li>
+<li>工作期望和方向：希望得到一个什么样的工作或自己专注的方向</li>
+<li>个人评价：全方位的总结，展示出自己的专业技能掌握程度、亮点、优势等等</li>
+<li>加分项<ul>
+<li>使用PDF格式，简洁不花哨</li>
+<li>有GitHub并参与过开源项目，可以写一些自己做过的小项目放上去</li>
+<li>有个人博客，会写一些经验和问题的解决思路</li>
+<li>邮箱使用gmail、foxmail或技术类邮箱（<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://php.net/" >php.net</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>）、私人域名邮箱等</li>
+</ul>
+</li>
+<li>询问面试官对于自己的评价和可以改进的地方</li>
+</ul>
+
+        <h2 id="面试题目"   >
+          <a href="#面试题目" class="heading-link"><i class="fas fa-link"></i></a><a href="#面试题目" class="headerlink" title="面试题目"></a>面试题目</h2>
+      
+        <h4 id="基础素质问题"   >
+          <a href="#基础素质问题" class="heading-link"><i class="fas fa-link"></i></a><a href="#基础素质问题" class="headerlink" title="基础素质问题"></a>基础素质问题</h4>
+      <ul>
+<li>对前面几轮面试官的看法如何？（HR问题，考察对他人评价）</li>
+<li>前几次面试中，你有了解到这个岗位的工作职责和目标要求是什么吗？（HR问题）</li>
+<li>对于异地工作你是怎么考虑的？（HR问题）</li>
+<li>离职原因？为什么这个阶段要裸辞？（HR问题）<br>   提示：不要有太多消极负面东西，点到为止。提及原公司看法时，应当客观正面，切勿有个人情绪，尤其避免对上司、同事的抱怨。</li>
+<li>薪资相关问题（HR问题）<br>   提示：如果面试官未谈及薪资问题，切勿主动提及。回答薪资相关问题时，在保证自己基本利益的前提下，表达自己的诉求，但一定不要把话说死，给后续谈判保留空间。相信企业会给自己一个合理的回报。</li>
+<li>遇到解决不了的问题怎么做？工作中遇到最大的挑战是什么，如何解决的？(考察学习能力和动手解决能力)</li>
+<li>业余时间会干嘛？(考察技术热情)<br>   提示：真实表达。可从乌云、翻墙、写技术博客、参与开源、常浏览的网站、关于黑客电视剧、关注业内牛人等角度。</li>
+<li>自认为自己比身边人的优势和不足是什么？（客观的自我评价，讲自己没有缺点的基本可以不要了。挖掘亮点，如何客观看待自己）</li>
+<li>别人对你最负面的评价是什么？你自己如何看待？</li>
+<li>最有成就感的事情？（考察价值观）</li>
+<li>未来职业规划？也可以问长期和中短期规划各是什么？（长远思考）</li>
+<li>还有什么要问我的吗？（了解面试者所关心的侧重点）<br>   提示：可以选择有关企业发展、所应聘岗位定位相关问题，让面试官能感觉到你在关心公司发展和岗位兴趣。避免问题过多过细，也避免没有问题。</li>
+</ul>
+
+        <h4 id="渗透测试（Web方向）"   >
+          <a href="#渗透测试（Web方向）" class="heading-link"><i class="fas fa-link"></i></a><a href="#渗透测试（Web方向）" class="headerlink" title="渗透测试（Web方向）"></a>渗透测试（Web方向）</h4>
+      <p>1、为何一个MYSQL数据库的站，只有一个80端口开放？</p>
+<blockquote>
+<p>更改了端口，没有扫描出来；</p>
+<p>站库分离；</p>
+<p>3306端口不对外开放</p>
+</blockquote>
+<p>2、一个成熟并且相对安全的CMS，渗透时扫目录的意义？</p>
+<blockquote>
+<p>敏感文件、二级目录扫描；</p>
+<p>站长的误操作比如：网站备份的压缩文件、说明.txt、二级目录可能存放着其他站点</p>
+</blockquote>
+<p>3、在某后台新闻编辑界面看到编辑器，应该先做什么？</p>
+<blockquote>
+<p>查看编辑器的名称版本，然后搜索公开的漏洞。 </p>
+</blockquote>
+<p>4、审查上传点的元素有什么意义？</p>
+<blockquote>
+<p>有些站点的上传文件类型限制是在前端实现的，这时只要增加上传类型就能突破限制了</p>
+</blockquote>
+<p>5、CSRF、XSS及XXE有什么区别，以及修复方式？</p>
+<blockquote>
+<p>XSS是跨站脚本攻击，用户提交的数据中可以构造代码来执行，从而实现窃取用户信息等攻击。修复方式：对字符实体进行转义、使用HTTP Only来禁止JavaScript读取Cookie值、输入时校验、浏览器与Web应用端采用相同的字符编码。</p>
+<p>CSRF是跨站请求伪造攻击，XSS是实现CSRF的诸多手段中的一种，是由于没有在关键操作执行时进行是否由用户自愿发起的确认。修复方式：筛选出需要防范CSRF的页面然后嵌入Token、再次输入密码、检验Referer。</p>
+<p>XXE是XML外部实体注入攻击，XML中可以通过调用实体来请求本地或者远程内容，和远程文件保护类似，会引发相关安全问题，例如敏感文件读取。修复方式：XML解析库在调用时严格禁止对外部实体的解析。</p>
+</blockquote>
+<p>6、3389无法连接的几种情况</p>
+<blockquote>
+<p>没开放3389端口</p>
+<p>端口被修改</p>
+<p>防护拦截</p>
+<p>处于内网(需进行端口转发)</p>
+</blockquote>
+<p>7、列举出owasp top10 2017</p>
+<blockquote>
+<p>1）注入；</p>
+<p>2）失效的身份认证；</p>
+<p>3）敏感信息泄露；</p>
+<p>4）XML外部实体（XXE）；</p>
+<p>5）失效的访问控制；</p>
+<p>6）安全配置错误；</p>
+<p>7）跨站脚本（XSS）；</p>
+<p>8）不安全的反序列化；</p>
+<p>9）使用含有已知漏洞的组件；</p>
+<p>10）不足的日志记录和监控。</p>
+</blockquote>
+<p>8、说出至少三种业务逻辑漏洞，以及修复方式？</p>
+<blockquote>
+<p>密码找回漏洞中存在密码允许暴力破解、存在通用型找回凭证、可以跳过验证步骤、找回凭证可以拦包获取等方式来通过厂商提供的密码找回功能来得到密码；</p>
+<p>身份认证漏洞中最常见的是会话固定攻击和Cookie仿冒，只要得到Session或Cookie即可伪造用户身份；</p>
+<p>验证码漏洞中存在验证码允许暴力破解、验证码可以通过Javascript或者改包的方法来进行绕过。 </p>
+</blockquote>
+<p>9、目标站无防护，上传图片可以正常访问，上传脚本格式访问则403，什么原因？</p>
+<blockquote>
+<p>原因很多，有可能Web服务器配置把上传目录写死了不执行相应脚本，尝试改后缀名绕过</p>
+</blockquote>
+<p>10、目标站禁止注册用户，找回密码处随便输入用户名提示：“此用户不存在”，你觉得这里怎样利用？</p>
+<blockquote>
+<p>先爆破用户名，再利用被爆破出来的用户名爆破密码；</p>
+<p>其实有些站点，在登陆处也会这样提示；</p>
+<p>所有和数据库有交互的地方都有可能有注入</p>
+</blockquote>
+<blockquote>
+<p>转载自作者：薯角 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv9886414" >https://www.bilibili.com/read/cv9886414</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 出处：bilibili， 仅供自己学习使用</p>
+</blockquote>
+
+        <h4 id="应用安全岗位-Web方向"   >
+          <a href="#应用安全岗位-Web方向" class="heading-link"><i class="fas fa-link"></i></a><a href="#应用安全岗位-Web方向" class="headerlink" title="应用安全岗位-Web方向"></a>应用安全岗位-Web方向</h4>
+      <ul>
+<li><p>漏洞利用修复基础。挑选两到四个不同方向常见和不常见的漏洞，就漏洞原理、利用方式和修复方案进行提问，然后根据回答的情况进行详细深入的二次提问</p>
+<ul>
+<li><p>Redis未授权访问漏洞如何入侵利用？</p>
+</li>
+<li><p>SSRF漏洞原理、利用方式及修复方案？Java和PHP的SSRF区别？</p>
+</li>
+<li><p>宽字节注入漏洞原理、利用方式及修复方案？</p>
+</li>
+<li><p>简述JSONP的业务意义，JSONP劫持利用方式及修复方案？如何设计落地一个CSRF Token？</p>
+</li>
+<li><p>CORS原理、利用及修复？</p>
+</li>
+<li><p>CRLF注入原理？</p>
+</li>
+<li><p>URL白名单如何绕过？</p>
+</li>
+<li><p>XSS持久化如何实现？</p>
+</li>
+<li><p>Fastjson常见漏洞原理？如何彻底解决Fastjson漏洞？</p>
+</li>
+<li><p>TLS1.2协议交互过程以及攻击方法？</p>
+</li>
+</ul>
+</li>
+<li><p>渗透全流程</p>
+<ul>
+<li><p>信息收集部分</p>
+<ul>
+<li>域名爆破中，泛域名解析问题如何解决？</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>漏洞检测方式</p>
+<ul>
+<li><p>可以从哪些阶段、层次去检测漏洞？其优劣势是什么？</p>
+</li>
+<li><p>越权问题如何检测？</p>
+</li>
+<li><p>白盒不适合检测哪些类型漏洞？</p>
+</li>
+<li><p>黑盒如何检测XSS漏洞？</p>
+</li>
+<li><p>如何爬取更全的请求？</p>
+</li>
+<li><p>黑盒带登录态扫描如何规避业务影响？</p>
+</li>
+<li><p>如何识别代码中后门？</p>
+</li>
+</ul>
+</li>
+<li><p>安全评估</p>
+<ul>
+<li><p>安全评估到底要评什么东西？</p>
+</li>
+<li><p>某些场景（登录、注册、修改密码、支付）会存在哪些风险以及如何防范？</p>
+</li>
+<li><p>新应用如何评估安全风险？</p>
+</li>
+<li><p>需求阶段、系分阶段安全评估的侧重点是什么？</p>
+</li>
+<li><p>接口B的参数是从接口A的响应中获取的，会存在什么风险？</p>
+</li>
+<li><p>Docker容器以及K8s有哪些风险？</p>
+</li>
+<li><p>IPv6和IPv4安全差异？</p>
+</li>
+<li><p>三方引入的应用和自研应用评估差异有哪些？</p>
+</li>
+<li><p>金融业务有何特色？</p>
+</li>
+<li><p>mvn源的安全性需要考虑哪些点？</p>
+</li>
+<li><p>如何让业务方主动找你评估？</p>
+</li>
+<li><p>如何判断评估覆盖范围的优先级？</p>
+</li>
+<li><p>如何降低各人检验导致评估不一致？</p>
+</li>
+<li><p>如何系统提高安全评估效率？</p>
+</li>
+<li><p>安全评估和人工测试以及自动化测试三者差异是什么？</p>
+</li>
+<li><p>算法模型的安全风险如何评估？</p>
+</li>
+<li><p>区块链安全风险主要有哪些？</p>
+</li>
+<li><p>如何理解安全左移？</p>
+</li>
+<li><p>安全评估的行业最佳实践是什么？</p>
+</li>
+<li><p>如何看待未来安全评估的趋势？</p>
+</li>
+</ul>
+</li>
+<li><p>安全方案</p>
+<ul>
+<li><p>如何规避绕口令带来的风险？</p>
+</li>
+<li><p>硬编码密钥如何系统解决？</p>
+</li>
+<li><p>0day漏洞如何防御</p>
+</li>
+<li><p>GitHub等三方泄漏敏感信息如何体系防御</p>
+</li>
+<li><p>业务逻辑漏洞如何通过技术手段避免写出来？</p>
+</li>
+<li><p>软件供应链后门和漏洞如何系统规避</p>
+</li>
+</ul>
+</li>
+<li><p>移动安全</p>
+<ul>
+<li><p>App自检升级场景下会存在哪些风险？</p>
+</li>
+<li><p>如何设计一套通信机制，能够保证传输过程中的完整性、不可抵赖性以及防止重放？</p>
+</li>
+<li><p>如何进行实体检测？</p>
+</li>
+<li><p>常见的调试方法和检测方法？</p>
+</li>
+<li><p>如何防止Frida、Xposed等注入攻击？</p>
+</li>
+<li><p>如何防止当前设备的数据拷贝到其他设备？</p>
+</li>
+<li><p>外挂有几种类型的实现方式？</p>
+</li>
+<li><p>如何避免未经用户授权获取权限？</p>
+</li>
+</ul>
+</li>
+<li><p>风险处置</p>
+<ul>
+<li><p>漏洞修复一般分为哪几个步骤？</p>
+</li>
+<li><p>如何制定漏洞的修复时间？需要考虑哪些因素？</p>
+</li>
+<li><p>如何系统性让提升漏洞修复效率？</p>
+</li>
+<li><p>漏洞修复完成后需要做什么事情？</p>
+</li>
+<li><p>外部厂商漏洞如何快速有效推进修复？</p>
+</li>
+</ul>
+</li>
+<li><p>应急响应</p>
+<ul>
+<li><p>有哪几种后门实现方式？</p>
+</li>
+<li><p>webshell检测有什么方法思路？</p>
+</li>
+<li><p>Linux服务器中了木马后，请简述应急思路？</p>
+</li>
+<li><p>遇到新0day(比如Struts2)后，应该如何进行应急响应？</p>
+</li>
+<li><p>新业务上线前可以从哪些方向进行安全评估？</p>
+</li>
+<li><p>现有系统可以从哪些方向进行审计发现其中的安全风险？</p>
+</li>
+<li><p>公司突然爆发大规模数据泄露导致的诈骗事件，如何应急？</p>
+</li>
+</ul>
+
+        <h4 id="网络主机岗位"   >
+          <a href="#网络主机岗位" class="heading-link"><i class="fas fa-link"></i></a><a href="#网络主机岗位" class="headerlink" title="网络主机岗位"></a>网络主机岗位</h4>
+      </li>
+<li><p>主机最重要的基线是什么？</p>
+</li>
+<li><p>禁止出网的价值有哪些？</p>
+</li>
+<li><p>如何对网络区域进行划分？</p>
+</li>
+<li><p>云原生下的网络和主机差异是什么？会有哪些新的风险？</p>
+</li>
+<li><p>如何解决员工被钓鱼问题？</p>
+</li>
+<li><p>如何解决员工通过电脑或手机外发公司敏感文件？</p>
+</li>
+<li><p>经典网络与VPC的优劣势</p>
+</li>
+<li><p>如何实现反向HTTPS代理</p>
+</li>
+<li><p>DDoS/CC如何有效防御与应急？</p>
+</li>
+<li><p>如何通过技术手段避免非预期端口开放？</p>
+</li>
+<li><p>容器存在哪些特有安全风险？</p>
+</li>
+<li><p>运维白屏化的难点是什么？</p>
+</li>
+</ul>
+
+        <h4 id="威胁感知岗位-数据分析"   >
+          <a href="#威胁感知岗位-数据分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#威胁感知岗位-数据分析" class="headerlink" title="威胁感知岗位-数据分析"></a>威胁感知岗位-数据分析</h4>
+      <ul>
+<li>如何在加密流量中检测出恶意流量？</li>
+<li>常见的C&amp;C通道种类和检测方法？</li>
+<li>主机有哪些日志对安全有哪些帮助？</li>
+<li>如何实现URL的去重？</li>
+<li>如何识别公共和私有接口？</li>
+<li>如何识别机器行为请求？</li>
+<li>如何识别异常服务器外联？</li>
+<li>如何感知越权风险？</li>
+<li>如何识别攻击请求是定点攻击还是随机扫描？</li>
+<li>如何识别钓鱼网站？</li>
+<li>基于网络五元组可以做到哪些风险行为的分析？</li>
+<li>未感知部分如何衡量？</li>
+<li>威胁感知可以在哪些层面进行？</li>
+<li>感知规则的有效性如何系统验证？</li>
+<li>国内和国外攻击特点有什么区别？</li>
+<li>专家检验无法覆盖的风险如何检测？</li>
+</ul>
+
+        <h4 id="数据安全岗位"   >
+          <a href="#数据安全岗位" class="heading-link"><i class="fas fa-link"></i></a><a href="#数据安全岗位" class="headerlink" title="数据安全岗位"></a>数据安全岗位</h4>
+      <ul>
+<li><p>安全责任与意识</p>
+<ul>
+<li>如何系统性提升员工安全意识？</li>
+<li>如何做到针对性的安全意识提升？</li>
+<li>如何衡量员工安全意识？</li>
+<li>什么是安全责任制？如何落地安全责任制？</li>
+</ul>
+</li>
+<li><p>数据采集使用</p>
+<ul>
+<li>数字水印的类型和应用领域？</li>
+<li>隐藏水印有哪些实现方式？</li>
+<li>如何对无显著特征的数据进行分类分级？</li>
+<li>如何避免员工因非工作需要查询用户数据？</li>
+<li>如何避免未经用户授权收集用户数据？</li>
+<li>如何避免用户数据被超范围使用？</li>
+<li>何时应该进行用户数据销毁？</li>
+<li>更换机房时如何清除原机房机器数据？</li>
+<li>如何让每一次后台查询数据都得到用户授权？or 如何收敛管理后台可查询任意敏感信息功能？</li>
+<li>如何在不拿到明文数据的前提下，还能通过数据进行一些计算行为？如何实现合作伙伴原始数据不共享但能达成业务诉求？</li>
+</ul>
+</li>
+<li><p>权限</p>
+<ul>
+<li>如何避免审批工单无脑通过？</li>
+<li>高危害影响权限如何避免滥用？</li>
+<li>如何技术手段规避未进行权限检查？</li>
+<li>大数据平台的权限管控体系中最重要的是什么？</li>
+</ul>
+</li>
+<li><p>加解密</p>
+<ul>
+<li><p>哪些Hash和加密算法不建议使用？</p>
+</li>
+<li><p>硬编码秘钥如何解决？</p>
+</li>
+<li><p>PKI原理</p>
+</li>
+<li><p>国密的底层原理？</p>
+</li>
+<li><p>密码如何保存在数据库？</p>
+</li>
+<li><p>如何让密码轮转？</p>
+</li>
+<li><p>内网传输是否需要加密？</p>
+</li>
+<li><p>可以在哪些层次对文件进行加密？</p>
+</li>
+<li><p>如何技术手段实现全站HTTPS</p>
+</li>
+</ul>
+
+        <h4 id="合规审计岗位"   >
+          <a href="#合规审计岗位" class="heading-link"><i class="fas fa-link"></i></a><a href="#合规审计岗位" class="headerlink" title="合规审计岗位"></a>合规审计岗位</h4>
+      <ul>
+<li>国内外有哪些网络安全相关法律？</li>
+<li>金融行业和传统互联网行业合规差异</li>
+<li>对于内控、合规、审计的理解（考察其对于要做的事情和岗位要求、公司环境是否匹配，考察其大局上考虑是否周全或是片面）</li>
+</ul>
+<ul>
+<li>传统行业和互联网行业的安全建设的区别及各自的优劣势（是否能准确的抓住核心原因）</li>
+<li>信息安全等级保护、网络安全法、GDPR，挑选一到两个问其对其的来源理解以及落地程度取舍</li>
+<li>数据安全治理可以用什么思路做？</li>
+<li>如何通过技术手段实现对异常操作的自动化监控？</li>
+<li>如何对一个应用进行安全评估？</li>
+<li>如何对一个应用进行安全审计？</li>
+<li>如何理解权限分离、最小化权限？</li>
+<li>考察一些CISP、CISSP的知识点</li>
+<li>挑选一些较为复杂的流程，比如转岗、离职等，如何设计考虑其中的细节</li>
+</ul>
+
+        <h4 id="安全蓝军岗位"   >
+          <a href="#安全蓝军岗位" class="heading-link"><i class="fas fa-link"></i></a><a href="#安全蓝军岗位" class="headerlink" title="安全蓝军岗位"></a>安全蓝军岗位</h4>
+      <ul>
+<li>安全蓝军和常规渗透测试的差异是什么？</li>
+<li>蓝军如何体系建设？</li>
+<li>各种常见木马的的优劣势？</li>
+<li>木马免杀有哪些方式？哪种方式最有效？</li>
+<li>木马隧道有哪些？哪种隧道在当前最有效？</li>
+<li>Word DDE和Office宏有什么优劣势？</li>
+<li>如何绕过Office受保护视图？</li>
+<li>有哪些有效的钓鱼方式？</li>
+<li>如何绕过WAF、HIDS、威胁感知，选其一回答？</li>
+<li>BadUSB原理及局限？</li>
+<li>Cobalt Strike</li>
+<li>如何在禁止出网的机器上访问互联网？</li>
+<li>ew、frp差异？</li>
+<li>ICMP如何出网？</li>
+<li>如何进行水坑攻击？</li>
+<li>如何利用XSS让影响最大化？</li>
+<li>如何全流程最大限度降低被红军发现概率？</li>
+<li>如何在有限的人力下最大化突出蓝军价值？</li>
+</ul>
+
+        <h4 id="安全管理岗位-安全架构方向"   >
+          <a href="#安全管理岗位-安全架构方向" class="heading-link"><i class="fas fa-link"></i></a><a href="#安全管理岗位-安全架构方向" class="headerlink" title="安全管理岗位-安全架构方向"></a>安全管理岗位-安全架构方向</h4>
+      <ul>
+<li>传统IDC、云上、混合云架构的安全差异和各自挑战是什么？</li>
+<li>纯云业务如何设计安全架构？</li>
+<li>SDL中的关键点是什么以及如何解决？</li>
+<li>如何防止0day攻击？</li>
+<li>渗透测试、安全研发、安全运营的问题可以挑选的问一些，以确保在各个方向上比较均衡</li>
+<li>对于企业不同时期、不同阶段、不同体量的安全建设的方法、区别以及侧重</li>
+<li>你所做过的安全架构图和所期望的安全架构</li>
+<li>安全与其他团队（运维、研发、测试、GR/PR、内控、高管及三方安全公司）的关系</li>
+<li>安全建设的理念/方法论理解，纵深防御、白名单和黑名单、规则经验和机器学习、自研或者外采</li>
+<li>安全的衡量指标？衡量企业安全建设的水平？</li>
+<li>不同公司间的安全区别或差别是什么？比如腾讯和阿里，百度和京东</li>
+<li>如何制定公司安全建设的三年甚至五年计划</li>
+<li>未来安全行业趋势？</li>
+</ul>
+
+        <h4 id="安全开发岗位-Java方向"   >
+          <a href="#安全开发岗位-Java方向" class="heading-link"><i class="fas fa-link"></i></a><a href="#安全开发岗位-Java方向" class="headerlink" title="安全开发岗位-Java方向"></a>安全开发岗位-Java方向</h4>
+      </li>
+<li><p>Java基础</p>
+<ul>
+<li>Java虚拟机区域如何划分？</li>
+<li>HashMap和HashTable、ConcurrentHashMap的区别？</li>
+<li>进程和线程区别，进程间、线程间通信有哪几种方式？</li>
+<li>Java BIO/NIO/AIO是什么？适用哪些场景？</li>
+</ul>
+</li>
+<li><p>业务基础      </p>
+<ul>
+<li>调试工具及异常排查流程？<ul>
+<li><p>如何最大限度避免故障？</p>
+</li>
+<li><p>数据库索引结构，什么情况下应该建唯一索引？</p>
+</li>
+<li><p>数据库分页语句如何写？</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>业务安全      </p>
+<ul>
+<li>HTTPS交互过程<ul>
+<li><p>OAuth2.0交互过程及其中可能存在的配置不当安全风险</p>
+</li>
+<li><p>对称加密和非对称加密的区别及优缺点</p>
+</li>
+<li><p>获取一个入参url，请求url地址的内容时应注意什么？</p>
+</li>
+<li><p>参数入库前应该如何过滤？</p>
+</li>
+<li><p>过滤器和拦截器原理和应用场景？</p>
+</li>
+<li><p>SESSION ID如何不被Javascript读取？</p>
+</li>
+<li><p>CSRF的Token如何设计？</p>
+</li>
+<li><p>同源策略？如何实现跨域请求？</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        <h2 id="面试经验"   >
+          <a href="#面试经验" class="heading-link"><i class="fas fa-link"></i></a><a href="#面试经验" class="headerlink" title="面试经验"></a>面试经验</h2>
+      
+        <h4 id="企业考察点"   >
+          <a href="#企业考察点" class="heading-link"><i class="fas fa-link"></i></a><a href="#企业考察点" class="headerlink" title="企业考察点"></a>企业考察点</h4>
+      <ul>
+<li>应聘者专业知识及技能，是否能胜任应聘岗位的要求？</li>
+<li>应聘者的学习能力，是否能快速适应和学习？</li>
+<li>应聘者价值观，是否与企业相匹配？</li>
+<li>应聘者认知接受能力，是否能承认错误并改进？</li>
+<li>应聘者创造的欲望，是否有激情？</li>
+</ul>
+
+        <h4 id="提前准备"   >
+          <a href="#提前准备" class="heading-link"><i class="fas fa-link"></i></a><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h4>
+      <ul>
+<li><p>提前通过搜索引擎、朋友等渠道，尽可能了解所面试公司发展方向、业务模式、主要产品、公司文化、技术氛围、公开的文章、演讲、分享等信息。</p>
+<ul>
+<li>针对面试的岗位需求以及自己工作经历准备一份简单的自我介绍，方便面试官快速准确的了解你的优点和综合素质。要能顺畅的讲出来，同时避免流水账。</li>
+<li> 面试官除了会看简历外，像GitHub、博客等可变内容应当提前整理维护下。</li>
+</ul>
+</li>
+</ul>
+
+        <h4 id="面试结束"   >
+          <a href="#面试结束" class="heading-link"><i class="fas fa-link"></i></a><a href="#面试结束" class="headerlink" title="面试结束"></a>面试结束</h4>
+      <ul>
+<li>表示对面试官的感谢</li>
+<li>作为面试者，及时记录在面试过程中的不足点，针对不足点进行强化，下一轮面试中改进（往往不足点也会被面试官记录下来并让下一个面试官留意考察）</li>
+</ul>
+
+        <h4 id="甄别团队和同事"   >
+          <a href="#甄别团队和同事" class="heading-link"><i class="fas fa-link"></i></a><a href="#甄别团队和同事" class="headerlink" title="甄别团队和同事"></a>甄别团队和同事</h4>
+      <ul>
+<li>面试官时间管理经验判断，是否会提前预约面试时间、是否会准时参加面试、是否会控制面试过程避免面试者一直讲陷入细节从而超过常见面试时间等</li>
+<li>面试官面试经验判断，根据提问可以了解到其是否有提前了解自己简历中的一些信息、是否问的都是一些很简单的问题、问的问题前后没有逻辑像是模板一样一个个事前准备好的、是否通过预言方式来问问题（你会怎么做？你将怎么做？）等</li>
+<li>面试官基础素质判断，遇到自己回答不好的问题时面试官是否表现出不耐烦等负面情绪、面试官是否会无理打断自己、是否有审讯式的提问（往往通过咄咄逼人的方式提问，试图让面试者出现逻辑矛盾）、是否有质疑式提问（通过质疑、不相信的态度进行沟通，试图让面试者证明一切的真实性）、是否有打压式提问（一定要找到一些你不了解的方向但又问的特别多）、是否有高高在上（往往表现为轻蔑的语气）、是否能问出一些细节（而不只是夸夸其谈）。此处有个例外，资深的管理者往往有可能问一些低级问题，我们需要甄别面试官是真的基础素质不行还是非常资深但希望通过一些低级问题来反向考察面试者</li>
+<li>面试官技术能力判断，这个判断的前提是你是该领域专家，否则很有可能出现的情况是，其实是你没有领会面试官意图而觉得人家不专业的误判。当你对该领域很资深时，你能根据面试官的问题很容易的判断出来其对这个领域的技术水平和认知，甚至一些时候可以通过反向询问（慎用）来支撑你的判断。此外还可以通过了解目标企业的安全水位来判断他们安全技术能力程度</li>
+<li>面试官管理能力，这点非常重要，对于稍微高阶职位来讲，我们多数时候并不期望面试官中的管理者技术很强，更看重的是自己心底愿不愿意跟着他干，跟着他干是不是能有好的发展前途，是不是能有空间获得个人成长</li>
+</ul>
+
+        <h2 id="笔试题目"   >
+          <a href="#笔试题目" class="heading-link"><i class="fas fa-link"></i></a><a href="#笔试题目" class="headerlink" title="笔试题目"></a>笔试题目</h2>
+      
+        <h4 id="渗透测试-Web方向"   >
+          <a href="#渗透测试-Web方向" class="heading-link"><i class="fas fa-link"></i></a><a href="#渗透测试-Web方向" class="headerlink" title="渗透测试-Web方向"></a>渗透测试-Web方向</h4>
+      <ul>
+<li>给定一个漏洞靶场，在一定时间内找出最多漏洞数</li>
+<li>给定一个匿名访问Redis，请GET SHELL</li>
+<li>给一个项目场景进行安全评估（e.g.与三方厂商进行API交互）</li>
+<li>给定一些包含漏洞（建议SSRF、反序列化、营销活动）的代码，使其发现漏洞或风险、利用漏洞、修复漏洞</li>
+</ul>
+
+        <h4 id="软件开发方向"   >
+          <a href="#软件开发方向" class="heading-link"><i class="fas fa-link"></i></a><a href="#软件开发方向" class="headerlink" title="软件开发方向"></a>软件开发方向</h4>
+      <ul>
+<li>读取一个文件第100-200行并发送到一个指定的API接口（着重考察对于各种异常情况的考虑）</li>
+<li>最快的方式获取100万个子域名请求的响应内容并找出其中真实存在的子域名</li>
+</ul>
+<blockquote>
+<p>转载自 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/FeeiCN/SecurityInterviewGuide" >https://github.com/FeeiCN/SecurityInterviewGuide</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</blockquote>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://example.com">ezy</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://example.com/2021/08/22/%E5%AE%89%E5%85%A8%E4%BB%8E%E4%B8%9A%E8%80%85/">http://example.com/2021/08/22/%E5%AE%89%E5%85%A8%E4%BB%8E%E4%B8%9A%E8%80%85/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/%E9%9D%A2%E8%AF%95/">面试</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/08/23/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E6%9C%B1%E9%9B%80%E7%BB%84-Think-Java/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">网鼎杯_2020_朱雀组_Think_Java</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/08/20/python-spider2/"><span class="paginator-prev__text">python-spider2</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%BD%E7%9A%84%E7%AE%80%E5%8E%86"><span class="toc-number">1.</span> <span class="toc-text">
+          好的简历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE"><span class="toc-number">2.</span> <span class="toc-text">
+          面试题目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%B4%A0%E8%B4%A8%E9%97%AE%E9%A2%98"><span class="toc-number">2.0.1.</span> <span class="toc-text">
+          基础素质问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%EF%BC%88Web%E6%96%B9%E5%90%91%EF%BC%89"><span class="toc-number">2.0.2.</span> <span class="toc-text">
+          渗透测试（Web方向）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E5%B2%97%E4%BD%8D-Web%E6%96%B9%E5%90%91"><span class="toc-number">2.0.3.</span> <span class="toc-text">
+          应用安全岗位-Web方向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E4%B8%BB%E6%9C%BA%E5%B2%97%E4%BD%8D"><span class="toc-number">2.0.4.</span> <span class="toc-text">
+          网络主机岗位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A8%81%E8%83%81%E6%84%9F%E7%9F%A5%E5%B2%97%E4%BD%8D-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="toc-number">2.0.5.</span> <span class="toc-text">
+          威胁感知岗位-数据分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%B2%97%E4%BD%8D"><span class="toc-number">2.0.6.</span> <span class="toc-text">
+          数据安全岗位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%88%E8%A7%84%E5%AE%A1%E8%AE%A1%E5%B2%97%E4%BD%8D"><span class="toc-number">2.0.7.</span> <span class="toc-text">
+          合规审计岗位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E8%93%9D%E5%86%9B%E5%B2%97%E4%BD%8D"><span class="toc-number">2.0.8.</span> <span class="toc-text">
+          安全蓝军岗位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E5%B2%97%E4%BD%8D-%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84%E6%96%B9%E5%90%91"><span class="toc-number">2.0.9.</span> <span class="toc-text">
+          安全管理岗位-安全架构方向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91%E5%B2%97%E4%BD%8D-Java%E6%96%B9%E5%90%91"><span class="toc-number">2.0.10.</span> <span class="toc-text">
+          安全开发岗位-Java方向</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C"><span class="toc-number">3.</span> <span class="toc-text">
+          面试经验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%81%E4%B8%9A%E8%80%83%E5%AF%9F%E7%82%B9"><span class="toc-number">3.0.1.</span> <span class="toc-text">
+          企业考察点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-number">3.0.2.</span> <span class="toc-text">
+          提前准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E7%BB%93%E6%9D%9F"><span class="toc-number">3.0.3.</span> <span class="toc-text">
+          面试结束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%84%E5%88%AB%E5%9B%A2%E9%98%9F%E5%92%8C%E5%90%8C%E4%BA%8B"><span class="toc-number">3.0.4.</span> <span class="toc-text">
+          甄别团队和同事</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%94%E8%AF%95%E9%A2%98%E7%9B%AE"><span class="toc-number">4.</span> <span class="toc-text">
+          笔试题目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95-Web%E6%96%B9%E5%90%91"><span class="toc-number">4.0.1.</span> <span class="toc-text">
+          渗透测试-Web方向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E5%90%91"><span class="toc-number">4.0.2.</span> <span class="toc-text">
+          软件开发方向</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/ezy.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">My heart is in the work</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/ezy0812" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">12</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>ezy</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
