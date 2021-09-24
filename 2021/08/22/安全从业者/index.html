@@ -1,184 +1,45 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="Keep Team">
-    
-    <title>
-        
-            安全从业者面试指南 |
-        
-        Keep Theme
-    </title>
-    
-<link rel="stylesheet" href="/css/style.css">
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/icons/favicon-180x180.png?v=2.6.2" sizes="180x180"><link rel="mask-icon" href="/images/icons/stun-logo.svg?v=2.6.2" color="#54bcff"><meta name="description" content="关于安全行业面试的一些题目收集，关于简历">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安全从业者面试指南">
+<meta property="og:url" content="http://example.com/2021/08/22/%E5%AE%89%E5%85%A8%E4%BB%8E%E4%B8%9A%E8%80%85/index.html">
+<meta property="og:site_name" content="ezy&#39;s blog">
+<meta property="og:description" content="关于安全行业面试的一些题目收集，关于简历">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-22T12:07:16.000Z">
+<meta property="article:modified_time" content="2021-09-04T17:10:45.691Z">
+<meta property="article:author" content="ezy">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary"><title>安全从业者面试指南 | ezy's blog</title><link ref="canonical" href="http://example.com/2021/08/22/%E5%AE%89%E5%85%A8%E4%BB%8E%E4%B8%9A%E8%80%85/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
 
-    <link rel="shortcut icon" href="/images/logo.svg">
-    
-<link rel="stylesheet" href="/css/font-awesome.min.css">
-
-    <script id="hexo-configurations">
-    let KEEP = window.KEEP || {};
-    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
-    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
-  </script>
-<meta name="generator" content="Hexo 5.4.0"></head>
-
-
-<body>
-<div class="progress-bar-container">
-    
-
-    
-</div>
-
-
-<main class="page-container">
-
-    
-
-    <div class="page-main-content">
-
-        <div class="page-main-content-top">
-            <header class="header-wrapper">
-
-    <div class="header-content">
-        <div class="left">
-            
-            <a class="logo-title" href="/">
-                Keep Theme
-            </a>
-        </div>
-
-        <div class="right">
-            <div class="pc">
-                <ul class="menu-list">
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/"
-                            >
-                                首页
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/archives"
-                            >
-                                归档
-                            </a>
-                        </li>
-                    
-                    
-                </ul>
-            </div>
-            <div class="mobile">
-                
-                <div class="icon-item menu-bar">
-                    <div class="menu-bar-middle"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="header-drawer">
-        <ul class="drawer-menu-list">
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/">首页</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/archives">归档</a>
-                </li>
-            
-        </ul>
-    </div>
-
-    <div class="window-mask"></div>
-
-</header>
-
-
-        </div>
-
-        <div class="page-main-content-middle">
-
-            <div class="main-content">
-
-                
-                    <div class="fade-in-down-animation">
-    <div class="article-content-container">
-
-        <div class="article-title">
-            <span class="title-hover-animation">安全从业者面试指南</span>
-        </div>
-
-        
-            <div class="article-header">
-                <div class="avatar">
-                    <img src="/images/avatar.svg">
-                </div>
-                <div class="info">
-                    <div class="author">
-                        <span class="name">Keep Team</span>
-                        
-                            <span class="author-label">Lv3</span>
-                        
-                    </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-08-22 20:07:16
-    </span>
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-
-    
-    
-    
-    
-</div>
-
-                    </div>
-                </div>
-            </div>
-        
-
-        <div class="article-content markdown-body">
-            <p>关于安全行业面试的一些题目收集，关于简历</p>
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">安全从业者面试指南</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-08-22</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-09-05</span></span></div></header><div class="post-body"><p>关于安全行业面试的一些题目收集，关于简历</p>
 <span id="more"></span>
 
-<h2 id="好的简历"><a href="#好的简历" class="headerlink" title="好的简历"></a>好的简历</h2><ul>
+
+        <h2 id="好的简历"   >
+          <a href="#好的简历" class="heading-link"><i class="fas fa-link"></i></a><a href="#好的简历" class="headerlink" title="好的简历"></a>好的简历</h2>
+      <ul>
 <li>基本信息<strong>清晰</strong>：姓名、ID、性别、年龄、教育背景（毕业院校、专业、时间）、联系方式、期望地点</li>
 <li>较完整的工作经历&amp;重大项目经验：注意空档期、工作业绩、重大项目担任的角色、分工与主要成果、公司行业知名度、个人管理经验</li>
 <li><strong>体现</strong>技术能力：主要的技术栈以及能佐证的事情</li>
@@ -189,12 +50,18 @@
 <li>使用PDF格式，简洁不花哨</li>
 <li>有GitHub并参与过开源项目，可以写一些自己做过的小项目放上去</li>
 <li>有个人博客，会写一些经验和问题的解决思路</li>
-<li>邮箱使用gmail、foxmail或技术类邮箱（<a class="link"   target="_blank" rel="noopener" href="http://php.net/" >php.net<i class="fas fa-external-link-alt"></i></a>）、私人域名邮箱等</li>
+<li>邮箱使用gmail、foxmail或技术类邮箱（<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://php.net/" >php.net</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>）、私人域名邮箱等</li>
 </ul>
 </li>
 <li>询问面试官对于自己的评价和可以改进的地方</li>
 </ul>
-<h2 id="面试题目"><a href="#面试题目" class="headerlink" title="面试题目"></a>面试题目</h2><h4 id="基础素质问题"><a href="#基础素质问题" class="headerlink" title="基础素质问题"></a>基础素质问题</h4><ul>
+
+        <h2 id="面试题目"   >
+          <a href="#面试题目" class="heading-link"><i class="fas fa-link"></i></a><a href="#面试题目" class="headerlink" title="面试题目"></a>面试题目</h2>
+      
+        <h4 id="基础素质问题"   >
+          <a href="#基础素质问题" class="heading-link"><i class="fas fa-link"></i></a><a href="#基础素质问题" class="headerlink" title="基础素质问题"></a>基础素质问题</h4>
+      <ul>
 <li>对前面几轮面试官的看法如何？（HR问题，考察对他人评价）</li>
 <li>前几次面试中，你有了解到这个岗位的工作职责和目标要求是什么吗？（HR问题）</li>
 <li>对于异地工作你是怎么考虑的？（HR问题）</li>
@@ -208,7 +75,10 @@
 <li>未来职业规划？也可以问长期和中短期规划各是什么？（长远思考）</li>
 <li>还有什么要问我的吗？（了解面试者所关心的侧重点）<br>   提示：可以选择有关企业发展、所应聘岗位定位相关问题，让面试官能感觉到你在关心公司发展和岗位兴趣。避免问题过多过细，也避免没有问题。</li>
 </ul>
-<h4 id="渗透测试（Web方向）"><a href="#渗透测试（Web方向）" class="headerlink" title="渗透测试（Web方向）"></a>渗透测试（Web方向）</h4><p>1、为何一个MYSQL数据库的站，只有一个80端口开放？</p>
+
+        <h4 id="渗透测试（Web方向）"   >
+          <a href="#渗透测试（Web方向）" class="heading-link"><i class="fas fa-link"></i></a><a href="#渗透测试（Web方向）" class="headerlink" title="渗透测试（Web方向）"></a>渗透测试（Web方向）</h4>
+      <p>1、为何一个MYSQL数据库的站，只有一个80端口开放？</p>
 <blockquote>
 <p>更改了端口，没有扫描出来；</p>
 <p>站库分离；</p>
@@ -270,9 +140,12 @@
 <p>所有和数据库有交互的地方都有可能有注入</p>
 </blockquote>
 <blockquote>
-<p>转载自作者：薯角 <a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv9886414" >https://www.bilibili.com/read/cv9886414<i class="fas fa-external-link-alt"></i></a> 出处：bilibili， 仅供自己学习使用</p>
+<p>转载自作者：薯角 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv9886414" >https://www.bilibili.com/read/cv9886414</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 出处：bilibili， 仅供自己学习使用</p>
 </blockquote>
-<h4 id="应用安全岗位-Web方向"><a href="#应用安全岗位-Web方向" class="headerlink" title="应用安全岗位-Web方向"></a>应用安全岗位-Web方向</h4><ul>
+
+        <h4 id="应用安全岗位-Web方向"   >
+          <a href="#应用安全岗位-Web方向" class="heading-link"><i class="fas fa-link"></i></a><a href="#应用安全岗位-Web方向" class="headerlink" title="应用安全岗位-Web方向"></a>应用安全岗位-Web方向</h4>
+      <ul>
 <li><p>漏洞利用修复基础。挑选两到四个不同方向常见和不常见的漏洞，就漏洞原理、利用方式和修复方案进行提问，然后根据回答的情况进行详细深入的二次提问</p>
 <ul>
 <li><p>Redis未授权访问漏洞如何入侵利用？</p>
@@ -435,7 +308,10 @@
 <li><p>公司突然爆发大规模数据泄露导致的诈骗事件，如何应急？</p>
 </li>
 </ul>
-<h4 id="网络主机岗位"><a href="#网络主机岗位" class="headerlink" title="网络主机岗位"></a>网络主机岗位</h4></li>
+
+        <h4 id="网络主机岗位"   >
+          <a href="#网络主机岗位" class="heading-link"><i class="fas fa-link"></i></a><a href="#网络主机岗位" class="headerlink" title="网络主机岗位"></a>网络主机岗位</h4>
+      </li>
 <li><p>主机最重要的基线是什么？</p>
 </li>
 <li><p>禁止出网的价值有哪些？</p>
@@ -461,7 +337,10 @@
 <li><p>运维白屏化的难点是什么？</p>
 </li>
 </ul>
-<h4 id="威胁感知岗位-数据分析"><a href="#威胁感知岗位-数据分析" class="headerlink" title="威胁感知岗位-数据分析"></a>威胁感知岗位-数据分析</h4><ul>
+
+        <h4 id="威胁感知岗位-数据分析"   >
+          <a href="#威胁感知岗位-数据分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#威胁感知岗位-数据分析" class="headerlink" title="威胁感知岗位-数据分析"></a>威胁感知岗位-数据分析</h4>
+      <ul>
 <li>如何在加密流量中检测出恶意流量？</li>
 <li>常见的C&amp;C通道种类和检测方法？</li>
 <li>主机有哪些日志对安全有哪些帮助？</li>
@@ -479,7 +358,10 @@
 <li>国内和国外攻击特点有什么区别？</li>
 <li>专家检验无法覆盖的风险如何检测？</li>
 </ul>
-<h4 id="数据安全岗位"><a href="#数据安全岗位" class="headerlink" title="数据安全岗位"></a>数据安全岗位</h4><ul>
+
+        <h4 id="数据安全岗位"   >
+          <a href="#数据安全岗位" class="heading-link"><i class="fas fa-link"></i></a><a href="#数据安全岗位" class="headerlink" title="数据安全岗位"></a>数据安全岗位</h4>
+      <ul>
 <li><p>安全责任与意识</p>
 <ul>
 <li>如何系统性提升员工安全意识？</li>
@@ -531,7 +413,10 @@
 <li><p>如何技术手段实现全站HTTPS</p>
 </li>
 </ul>
-<h4 id="合规审计岗位"><a href="#合规审计岗位" class="headerlink" title="合规审计岗位"></a>合规审计岗位</h4><ul>
+
+        <h4 id="合规审计岗位"   >
+          <a href="#合规审计岗位" class="heading-link"><i class="fas fa-link"></i></a><a href="#合规审计岗位" class="headerlink" title="合规审计岗位"></a>合规审计岗位</h4>
+      <ul>
 <li>国内外有哪些网络安全相关法律？</li>
 <li>金融行业和传统互联网行业合规差异</li>
 <li>对于内控、合规、审计的理解（考察其对于要做的事情和岗位要求、公司环境是否匹配，考察其大局上考虑是否周全或是片面）</li>
@@ -547,7 +432,10 @@
 <li>考察一些CISP、CISSP的知识点</li>
 <li>挑选一些较为复杂的流程，比如转岗、离职等，如何设计考虑其中的细节</li>
 </ul>
-<h4 id="安全蓝军岗位"><a href="#安全蓝军岗位" class="headerlink" title="安全蓝军岗位"></a>安全蓝军岗位</h4><ul>
+
+        <h4 id="安全蓝军岗位"   >
+          <a href="#安全蓝军岗位" class="heading-link"><i class="fas fa-link"></i></a><a href="#安全蓝军岗位" class="headerlink" title="安全蓝军岗位"></a>安全蓝军岗位</h4>
+      <ul>
 <li>安全蓝军和常规渗透测试的差异是什么？</li>
 <li>蓝军如何体系建设？</li>
 <li>各种常见木马的的优劣势？</li>
@@ -567,7 +455,10 @@
 <li>如何全流程最大限度降低被红军发现概率？</li>
 <li>如何在有限的人力下最大化突出蓝军价值？</li>
 </ul>
-<h4 id="安全管理岗位-安全架构方向"><a href="#安全管理岗位-安全架构方向" class="headerlink" title="安全管理岗位-安全架构方向"></a>安全管理岗位-安全架构方向</h4><ul>
+
+        <h4 id="安全管理岗位-安全架构方向"   >
+          <a href="#安全管理岗位-安全架构方向" class="heading-link"><i class="fas fa-link"></i></a><a href="#安全管理岗位-安全架构方向" class="headerlink" title="安全管理岗位-安全架构方向"></a>安全管理岗位-安全架构方向</h4>
+      <ul>
 <li>传统IDC、云上、混合云架构的安全差异和各自挑战是什么？</li>
 <li>纯云业务如何设计安全架构？</li>
 <li>SDL中的关键点是什么以及如何解决？</li>
@@ -582,7 +473,10 @@
 <li>如何制定公司安全建设的三年甚至五年计划</li>
 <li>未来安全行业趋势？</li>
 </ul>
-<h4 id="安全开发岗位-Java方向"><a href="#安全开发岗位-Java方向" class="headerlink" title="安全开发岗位-Java方向"></a>安全开发岗位-Java方向</h4></li>
+
+        <h4 id="安全开发岗位-Java方向"   >
+          <a href="#安全开发岗位-Java方向" class="heading-link"><i class="fas fa-link"></i></a><a href="#安全开发岗位-Java方向" class="headerlink" title="安全开发岗位-Java方向"></a>安全开发岗位-Java方向</h4>
+      </li>
 <li><p>Java基础</p>
 <ul>
 <li>Java虚拟机区域如何划分？</li>
@@ -628,14 +522,23 @@
 </ul>
 </li>
 </ul>
-<h2 id="面试经验"><a href="#面试经验" class="headerlink" title="面试经验"></a>面试经验</h2><h4 id="企业考察点"><a href="#企业考察点" class="headerlink" title="企业考察点"></a>企业考察点</h4><ul>
+
+        <h2 id="面试经验"   >
+          <a href="#面试经验" class="heading-link"><i class="fas fa-link"></i></a><a href="#面试经验" class="headerlink" title="面试经验"></a>面试经验</h2>
+      
+        <h4 id="企业考察点"   >
+          <a href="#企业考察点" class="heading-link"><i class="fas fa-link"></i></a><a href="#企业考察点" class="headerlink" title="企业考察点"></a>企业考察点</h4>
+      <ul>
 <li>应聘者专业知识及技能，是否能胜任应聘岗位的要求？</li>
 <li>应聘者的学习能力，是否能快速适应和学习？</li>
 <li>应聘者价值观，是否与企业相匹配？</li>
 <li>应聘者认知接受能力，是否能承认错误并改进？</li>
 <li>应聘者创造的欲望，是否有激情？</li>
 </ul>
-<h4 id="提前准备"><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h4><ul>
+
+        <h4 id="提前准备"   >
+          <a href="#提前准备" class="heading-link"><i class="fas fa-link"></i></a><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h4>
+      <ul>
 <li><p>提前通过搜索引擎、朋友等渠道，尽可能了解所面试公司发展方向、业务模式、主要产品、公司文化、技术氛围、公开的文章、演讲、分享等信息。</p>
 <ul>
 <li>针对面试的岗位需求以及自己工作经历准备一份简单的自我介绍，方便面试官快速准确的了解你的优点和综合素质。要能顺畅的讲出来，同时避免流水账。</li>
@@ -643,197 +546,63 @@
 </ul>
 </li>
 </ul>
-<h4 id="面试结束"><a href="#面试结束" class="headerlink" title="面试结束"></a>面试结束</h4><ul>
+
+        <h4 id="面试结束"   >
+          <a href="#面试结束" class="heading-link"><i class="fas fa-link"></i></a><a href="#面试结束" class="headerlink" title="面试结束"></a>面试结束</h4>
+      <ul>
 <li>表示对面试官的感谢</li>
 <li>作为面试者，及时记录在面试过程中的不足点，针对不足点进行强化，下一轮面试中改进（往往不足点也会被面试官记录下来并让下一个面试官留意考察）</li>
 </ul>
-<h4 id="甄别团队和同事"><a href="#甄别团队和同事" class="headerlink" title="甄别团队和同事"></a>甄别团队和同事</h4><ul>
+
+        <h4 id="甄别团队和同事"   >
+          <a href="#甄别团队和同事" class="heading-link"><i class="fas fa-link"></i></a><a href="#甄别团队和同事" class="headerlink" title="甄别团队和同事"></a>甄别团队和同事</h4>
+      <ul>
 <li>面试官时间管理经验判断，是否会提前预约面试时间、是否会准时参加面试、是否会控制面试过程避免面试者一直讲陷入细节从而超过常见面试时间等</li>
 <li>面试官面试经验判断，根据提问可以了解到其是否有提前了解自己简历中的一些信息、是否问的都是一些很简单的问题、问的问题前后没有逻辑像是模板一样一个个事前准备好的、是否通过预言方式来问问题（你会怎么做？你将怎么做？）等</li>
 <li>面试官基础素质判断，遇到自己回答不好的问题时面试官是否表现出不耐烦等负面情绪、面试官是否会无理打断自己、是否有审讯式的提问（往往通过咄咄逼人的方式提问，试图让面试者出现逻辑矛盾）、是否有质疑式提问（通过质疑、不相信的态度进行沟通，试图让面试者证明一切的真实性）、是否有打压式提问（一定要找到一些你不了解的方向但又问的特别多）、是否有高高在上（往往表现为轻蔑的语气）、是否能问出一些细节（而不只是夸夸其谈）。此处有个例外，资深的管理者往往有可能问一些低级问题，我们需要甄别面试官是真的基础素质不行还是非常资深但希望通过一些低级问题来反向考察面试者</li>
 <li>面试官技术能力判断，这个判断的前提是你是该领域专家，否则很有可能出现的情况是，其实是你没有领会面试官意图而觉得人家不专业的误判。当你对该领域很资深时，你能根据面试官的问题很容易的判断出来其对这个领域的技术水平和认知，甚至一些时候可以通过反向询问（慎用）来支撑你的判断。此外还可以通过了解目标企业的安全水位来判断他们安全技术能力程度</li>
 <li>面试官管理能力，这点非常重要，对于稍微高阶职位来讲，我们多数时候并不期望面试官中的管理者技术很强，更看重的是自己心底愿不愿意跟着他干，跟着他干是不是能有好的发展前途，是不是能有空间获得个人成长</li>
 </ul>
-<h2 id="笔试题目"><a href="#笔试题目" class="headerlink" title="笔试题目"></a>笔试题目</h2><h4 id="渗透测试-Web方向"><a href="#渗透测试-Web方向" class="headerlink" title="渗透测试-Web方向"></a>渗透测试-Web方向</h4><ul>
+
+        <h2 id="笔试题目"   >
+          <a href="#笔试题目" class="heading-link"><i class="fas fa-link"></i></a><a href="#笔试题目" class="headerlink" title="笔试题目"></a>笔试题目</h2>
+      
+        <h4 id="渗透测试-Web方向"   >
+          <a href="#渗透测试-Web方向" class="heading-link"><i class="fas fa-link"></i></a><a href="#渗透测试-Web方向" class="headerlink" title="渗透测试-Web方向"></a>渗透测试-Web方向</h4>
+      <ul>
 <li>给定一个漏洞靶场，在一定时间内找出最多漏洞数</li>
 <li>给定一个匿名访问Redis，请GET SHELL</li>
 <li>给一个项目场景进行安全评估（e.g.与三方厂商进行API交互）</li>
 <li>给定一些包含漏洞（建议SSRF、反序列化、营销活动）的代码，使其发现漏洞或风险、利用漏洞、修复漏洞</li>
 </ul>
-<h4 id="软件开发方向"><a href="#软件开发方向" class="headerlink" title="软件开发方向"></a>软件开发方向</h4><ul>
+
+        <h4 id="软件开发方向"   >
+          <a href="#软件开发方向" class="heading-link"><i class="fas fa-link"></i></a><a href="#软件开发方向" class="headerlink" title="软件开发方向"></a>软件开发方向</h4>
+      <ul>
 <li>读取一个文件第100-200行并发送到一个指定的API接口（着重考察对于各种异常情况的考虑）</li>
 <li>最快的方式获取100万个子域名请求的响应内容并找出其中真实存在的子域名</li>
 </ul>
 <blockquote>
-<p>转载自 <a class="link"   target="_blank" rel="noopener" href="https://github.com/FeeiCN/SecurityInterviewGuide" >https://github.com/FeeiCN/SecurityInterviewGuide<i class="fas fa-external-link-alt"></i></a></p>
+<p>转载自 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/FeeiCN/SecurityInterviewGuide" >https://github.com/FeeiCN/SecurityInterviewGuide</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
 </blockquote>
-
-        </div>
-
-        
-
-        
-            <div class="article-nav">
-                
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/08/23/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E6%9C%B1%E9%9B%80%E7%BB%84-Think-Java/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">网鼎杯_2020_朱雀组_Think_Java</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/2021/08/20/python-spider2/"
-                        >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">python-spider2</span>
-                                <span class="post-nav-item">下一篇</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
-
-        
-    </div>
-</div>
-
-
-                
-            </div>
-
-        </div>
-
-        <div class="page-main-content-bottom">
-            <footer class="footer">
-    <div class="info-container">
-        <div class="copyright-info info-item">
-            &copy;
-            
-              <span>2020</span>&nbsp;-&nbsp;
-            
-            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Keep Team</a>
-        </div>
-        
-        <div class="theme-info info-item">
-            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
-        </div>
-        
-    </div>
-</footer>
-
-        </div>
-    </div>
-
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-
-        <!-- go comment -->
-        
-    </ul>
-</div>
-
-        </div>
-    
-
-    <div class="right-bottom-side-tools">
-        <div class="side-tools-container">
-    <ul class="side-tools-list">
-        <li class="tools-item tool-font-adjust-plus flex-center">
-            <i class="fas fa-search-plus"></i>
-        </li>
-
-        <li class="tools-item tool-font-adjust-minus flex-center">
-            <i class="fas fa-search-minus"></i>
-        </li>
-
-        <li class="tools-item tool-expand-width flex-center">
-            <i class="fas fa-arrows-alt-h"></i>
-        </li>
-
-        <li class="tools-item tool-dark-light-toggle flex-center">
-            <i class="fas fa-moon"></i>
-        </li>
-
-        <!-- rss -->
-        
-
-        
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="fas fa-arrow-up"></i>
-            </li>
-        
-
-        <li class="tools-item tool-scroll-to-bottom flex-center">
-            <i class="fas fa-arrow-down"></i>
-        </li>
-    </ul>
-
-    <ul class="exposed-tools-list">
-        <li class="tools-item tool-toggle-show flex-center">
-            <i class="fas fa-cog fa-spin"></i>
-        </li>
-        
-    </ul>
-</div>
-
-    </div>
-
-    
-
-    <div class="image-viewer-container">
-    <img src="">
-</div>
-
-
-    
-
-</main>
-
-
-
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/main.js"></script>
-
-<script src="/js/header-shrink.js"></script>
-
-<script src="/js/back2top.js"></script>
-
-<script src="/js/dark-light-toggle.js"></script>
-
-
-
-
-
-
-
-
-<div class="post-scripts">
-    
-</div>
-
-
-
-</body>
-</html>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://example.com">ezy</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://example.com/2021/08/22/%E5%AE%89%E5%85%A8%E4%BB%8E%E4%B8%9A%E8%80%85/">http://example.com/2021/08/22/%E5%AE%89%E5%85%A8%E4%BB%8E%E4%B8%9A%E8%80%85/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/%E9%9D%A2%E8%AF%95/">面试</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/08/23/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E6%9C%B1%E9%9B%80%E7%BB%84-Think-Java/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">网鼎杯_2020_朱雀组_Think_Java</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/08/20/python-spider2/"><span class="paginator-prev__text">python-spider2</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%BD%E7%9A%84%E7%AE%80%E5%8E%86"><span class="toc-number">1.</span> <span class="toc-text">
+          好的简历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE"><span class="toc-number">2.</span> <span class="toc-text">
+          面试题目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%B4%A0%E8%B4%A8%E9%97%AE%E9%A2%98"><span class="toc-number">2.0.1.</span> <span class="toc-text">
+          基础素质问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%EF%BC%88Web%E6%96%B9%E5%90%91%EF%BC%89"><span class="toc-number">2.0.2.</span> <span class="toc-text">
+          渗透测试（Web方向）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E5%B2%97%E4%BD%8D-Web%E6%96%B9%E5%90%91"><span class="toc-number">2.0.3.</span> <span class="toc-text">
+          应用安全岗位-Web方向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E4%B8%BB%E6%9C%BA%E5%B2%97%E4%BD%8D"><span class="toc-number">2.0.4.</span> <span class="toc-text">
+          网络主机岗位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A8%81%E8%83%81%E6%84%9F%E7%9F%A5%E5%B2%97%E4%BD%8D-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="toc-number">2.0.5.</span> <span class="toc-text">
+          威胁感知岗位-数据分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%B2%97%E4%BD%8D"><span class="toc-number">2.0.6.</span> <span class="toc-text">
+          数据安全岗位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%88%E8%A7%84%E5%AE%A1%E8%AE%A1%E5%B2%97%E4%BD%8D"><span class="toc-number">2.0.7.</span> <span class="toc-text">
+          合规审计岗位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E8%93%9D%E5%86%9B%E5%B2%97%E4%BD%8D"><span class="toc-number">2.0.8.</span> <span class="toc-text">
+          安全蓝军岗位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E5%B2%97%E4%BD%8D-%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84%E6%96%B9%E5%90%91"><span class="toc-number">2.0.9.</span> <span class="toc-text">
+          安全管理岗位-安全架构方向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91%E5%B2%97%E4%BD%8D-Java%E6%96%B9%E5%90%91"><span class="toc-number">2.0.10.</span> <span class="toc-text">
+          安全开发岗位-Java方向</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C"><span class="toc-number">3.</span> <span class="toc-text">
+          面试经验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%81%E4%B8%9A%E8%80%83%E5%AF%9F%E7%82%B9"><span class="toc-number">3.0.1.</span> <span class="toc-text">
+          企业考察点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-number">3.0.2.</span> <span class="toc-text">
+          提前准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E7%BB%93%E6%9D%9F"><span class="toc-number">3.0.3.</span> <span class="toc-text">
+          面试结束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%84%E5%88%AB%E5%9B%A2%E9%98%9F%E5%92%8C%E5%90%8C%E4%BA%8B"><span class="toc-number">3.0.4.</span> <span class="toc-text">
+          甄别团队和同事</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%94%E8%AF%95%E9%A2%98%E7%9B%AE"><span class="toc-number">4.</span> <span class="toc-text">
+          笔试题目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95-Web%E6%96%B9%E5%90%91"><span class="toc-number">4.0.1.</span> <span class="toc-text">
+          渗透测试-Web方向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E5%90%91"><span class="toc-number">4.0.2.</span> <span class="toc-text">
+          软件开发方向</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/ezy.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">My heart is in the work</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/ezy0812" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">16</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">12</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>ezy</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
