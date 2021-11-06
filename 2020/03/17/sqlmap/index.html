@@ -6,12 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="sqlmap详解, ezy&#39;s blog">
     <meta name="description" content="sqlmap使用详解
-
-
-获取目标系统信息 –banner1python sqlmap.py -u &amp;quot;http://127.0.0.1/sqli/less-1/?id=1&amp;quot; --batch --banner
-
-
-对多个目">
+获取目标系统信息 –bannerpython sqlmap.py -u &amp;quot;http:&amp;#x2F;&amp;#x2F;127.0.0.1&amp;#x2F;sqli&amp;#x2F;less-1&amp;#x2F;?id&amp;#x3D;1&amp;qu">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -38,6 +33,16 @@
 
 <meta name="generator" content="Hexo 5.4.0"></head>
 
+
+
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size: 100% 100%;
+       background-attachment:fixed;
+    }
+</style>
 
 
 
@@ -98,39 +103,6 @@
       <i class="fas fa-archive" style="zoom: 0.6;"></i>
       
       <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
     </a>
     
   </li>
@@ -203,46 +175,6 @@
           
         </li>
         
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
-          
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
         
     </ul>
 </div>
@@ -250,62 +182,6 @@
 
         </div>
 
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
         
     </nav>
 
@@ -452,8 +328,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" class="post-category">
-                                信息安全
+                            <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="post-category">
+                                渗透测试
                             </a>
                         
                     </div>
@@ -481,15 +357,21 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>sqlmap使用详解</p>
-<span id="more"></span>
-
-<h2 id="获取目标系统信息-–banner"><a href="#获取目标系统信息-–banner" class="headerlink" title="获取目标系统信息 –banner"></a>获取目标系统信息 –banner</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sqli/less-1/?id=1&quot; --batch --banner</span><br></pre></td></tr></table></figure>
+<h2 id="获取目标系统信息-–banner"><a href="#获取目标系统信息-–banner" class="headerlink" title="获取目标系统信息 –banner"></a>获取目标系统信息 –banner</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;sqli&#x2F;less-1&#x2F;?id&#x3D;1&quot; --batch --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <hr>
 <h2 id="对多个目标进行探测"><a href="#对多个目标进行探测" class="headerlink" title="对多个目标进行探测"></a>对多个目标进行探测</h2><ul>
@@ -500,7 +382,7 @@
 <blockquote>
 <h3 id="设置日志过滤目标"><a href="#设置日志过滤目标" class="headerlink" title="设置日志过滤目标"></a>设置日志过滤目标</h3><p>与使用选项-l使用从提供的日志解析的所有主机不同，您可以指定有效的Python正则表达式，用于过滤所需的日志</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -l burp.log --scope=&quot;(www)?\.target\.(com|net|org)&quot;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -l burp.log --scope&#x3D;&quot;(www)?\.target\.(com|net|org)&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>–skip-urlencode 不进行URL编码</p>
 </li>
 <li><p>-x 从sitemap.xml站点地图文件中读取目标探测。  </p>
@@ -515,29 +397,29 @@
 <h3 id="burpsuite保存日志文件"><a href="#burpsuite保存日志文件" class="headerlink" title="burpsuite保存日志文件"></a>burpsuite保存日志文件</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sqlmap/sqlmap_f1.png"></p>
 <p>将日志文件复制到sqlmap文件目录下</p>
 <p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sqlmap/sqlmap_f2.png"></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -l test</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -l test<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>在探测完一个目标后，会继续询问是否探测文件中的下一个目标</p>
 <h3 id="m，对txt文件探测"><a href="#m，对txt文件探测" class="headerlink" title="-m，对txt文件探测"></a>-m，对txt文件探测</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sqlmap/sqlmap_f3.png"></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -m 1.txt</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -m 1.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="通过谷歌批量探测"><a href="#通过谷歌批量探测" class="headerlink" title="通过谷歌批量探测"></a>通过谷歌批量探测</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -g &quot;inurl:.php?id=&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="通过谷歌批量探测"><a href="#通过谷歌批量探测" class="headerlink" title="通过谷歌批量探测"></a>通过谷歌批量探测</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -g &quot;inurl:.php?id&#x3D;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <hr>
 <h2 id="设置请求参数"><a href="#设置请求参数" class="headerlink" title="设置请求参数"></a>设置请求参数</h2><h3 id="设置HTTP请求方法"><a href="#设置HTTP请求方法" class="headerlink" title="设置HTTP请求方法"></a>设置HTTP请求方法</h3><p>sqlmap会自动在探测过程中使用适合的HTTP请求方法，但是在某些具体情况下，需要强制使用具体的请求方法，如PUT请求方法，因为PUT不会自动使用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--method=PUT</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--method&#x3D;PUT<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置POST提交参数"><a href="#设置POST提交参数" class="headerlink" title="设置POST提交参数"></a>设置POST提交参数</h3><p>默认情况下，HTTP请求的方法是GET，但是可以在提供POST请求中发送的数据隐式地将其更改为POST</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://192.168.0.100/sqli/Less-11/&quot; --data &quot;uname=admin&amp;passwd=admin&amp;submit=Submit&quot; -f --banner --dbs --users</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;192.168.0.100&#x2F;sqli&#x2F;Less-11&#x2F;&quot; --data &quot;uname&#x3D;admin&amp;passwd&#x3D;admin&amp;submit&#x3D;Submit&quot; -f --banner --dbs --users<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <blockquote>
 <p>这里-f是指 fingerprint 指纹信息</p>
 </blockquote>
 <h3 id="设置参数分隔符"><a href="#设置参数分隔符" class="headerlink" title="设置参数分隔符"></a>设置参数分隔符</h3><p>有时候需要覆盖默认的参数分隔符，才能正确地分隔和和单独处理每个参数</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://192.168.0.100/sqli/Less-11/&quot; --data &quot;uname=admin&amp;passwd=admin&amp;submit=Submit&quot; --param-del=&quot;&amp;&quot; -f --banner --dbs --users</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;192.168.0.100&#x2F;sqli&#x2F;Less-11&#x2F;&quot; --data &quot;uname&#x3D;admin&amp;passwd&#x3D;admin&amp;submit&#x3D;Submit&quot; --param-del&#x3D;&quot;&amp;&quot; -f --banner --dbs --users<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<h3 id="设置Cookie头"><a href="#设置Cookie头" class="headerlink" title="设置Cookie头"></a>设置Cookie头</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://www.target.com/?id=1&quot; --cookie &quot;security=low; PHPSESSID=lajsoguwekl021&quot; --banner</span><br></pre></td></tr></table></figure>
+<h3 id="设置Cookie头"><a href="#设置Cookie头" class="headerlink" title="设置Cookie头"></a>设置Cookie头</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;www.target.com&#x2F;?id&#x3D;1&quot; --cookie &quot;security&#x3D;low; PHPSESSID&#x3D;lajsoguwekl021&quot; --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>如果在通信过程中，web应用程序使用Set-Cookie标头进行响应，sqlmap将在所有进一步的HTTP请求中自动使用其值作为Cookie标头。sqlmap还将为SQL注入自动测试这些值。这可以通过提供–drop-set-cookie—sqlmap将忽略任何即将到来的Set-Cookie头来避免。  </li>
@@ -547,9 +429,9 @@
 </blockquote>
 </li>
 </ul>
-<h3 id="设置user-agent"><a href="#设置user-agent" class="headerlink" title="设置user-agent"></a>设置user-agent</h3><h4 id="指定user-agent"><a href="#指定user-agent" class="headerlink" title="指定user-agent"></a>指定user-agent</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://www.target.com/?id=1&quot; --user-agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36&quot; --banner</span><br></pre></td></tr></table></figure>
+<h3 id="设置user-agent"><a href="#设置user-agent" class="headerlink" title="设置user-agent"></a>设置user-agent</h3><h4 id="指定user-agent"><a href="#指定user-agent" class="headerlink" title="指定user-agent"></a>指定user-agent</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;www.target.com&#x2F;?id&#x3D;1&quot; --user-agent&#x3D;&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;80.0.3987.132 Safari&#x2F;537.36&quot; --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="也可以随机筛选"><a href="#也可以随机筛选" class="headerlink" title="也可以随机筛选"></a>也可以随机筛选</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://www.target.com/?id=1&quot; --random-agent --banner</span><br></pre></td></tr></table></figure>
+<h4 id="也可以随机筛选"><a href="#也可以随机筛选" class="headerlink" title="也可以随机筛选"></a>也可以随机筛选</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;www.target.com&#x2F;?id&#x3D;1&quot; --random-agent --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <blockquote>
 <p>针对user-agent注入的值，要设置–level为3</p>
@@ -564,13 +446,13 @@
 </blockquote>
 <h3 id="设置额外HTTP头"><a href="#设置额外HTTP头" class="headerlink" title="设置额外HTTP头"></a>设置额外HTTP头</h3><p>设置选项–header，可以提供额外的HTTP标头，每个标头必须用换行符\n分隔  </p>
 <p>从配置文件sqlmap.conf中提供它们会更容易</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://www.target.com/?id=1&quot; --headers=&quot;Host:www.target.com\nUser-agent:Firefox 1.0&quot; -v 5</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;www.target.com&#x2F;?id&#x3D;1&quot; --headers&#x3D;&quot;Host:www.target.com\nUser-agent:Firefox 1.0&quot; -v 5<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <blockquote>
 <p>设置单个用 -H, 多个用 –headers</p>
 </blockquote>
 <h3 id="设置HTTP协议认证"><a href="#设置HTTP协议认证" class="headerlink" title="设置HTTP协议认证"></a>设置HTTP协议认证</h3><p>Sqlmap中设置HTTP协议认证的参数：–auth-type和–auth-cred, 其中–auth-type支持 Basic、Digest、NTLM<br>–auth-cred认证语法为：username:password</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://url/arit.php?id=1&quot; --auth-type Basic --auth-cred &quot;testuser:testpass&quot;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;url&#x2F;arit.php?id&#x3D;1&quot; --auth-type Basic --auth-cred &quot;testuser:testpass&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置HTTP代理"><a href="#设置HTTP代理" class="headerlink" title="设置HTTP代理"></a>设置HTTP代理</h3><ul>
 <li>Sqlmap中设置代理的参数：–proxy, –proxy-cred, –proxy-file, –ignore-proxy  </li>
@@ -580,46 +462,46 @@
 <li>–ignore-proxy当您希望通过忽略系统范围内的HTTP(S)代理服务器设置来针对本地网络的目标部分运行sqlmap时，应该使用这种方法。</li>
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sqlmap/sqlmap_f4.png"></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://url/arit.php?id=1&quot; --proxy &quot;http://122.5.190.206:9999&quot; --banner</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;url&#x2F;arit.php?id&#x3D;1&quot; --proxy &quot;http:&#x2F;&#x2F;122.5.190.206:9999&quot; --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置延迟"><a href="#设置延迟" class="headerlink" title="设置延迟"></a>设置延迟</h3><p>–delay 0.5 延迟0.5秒</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://url/arit.php?id=1&quot; --delay 0.5 --banner</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;url&#x2F;arit.php?id&#x3D;1&quot; --delay 0.5 --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置超时"><a href="#设置超时" class="headerlink" title="设置超时"></a>设置超时</h3><p>指定等待响应的秒数，默认为30秒</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--timeout 10</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--timeout 10<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置重试次数"><a href="#设置重试次数" class="headerlink" title="设置重试次数"></a>设置重试次数</h3><p>默认重试3次<br>通常结合timeout参数使用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--retries 4 --timeout 5</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--retries 4 --timeout 5<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="忽略401"><a href="#忽略401" class="headerlink" title="忽略401"></a>忽略401</h3><p>忽略返回HTTP错误401(未经授权的)的站点</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--ignore-401</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--ignore-401<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置HTTP协议私钥"><a href="#设置HTTP协议私钥" class="headerlink" title="设置HTTP协议私钥"></a>设置HTTP协议私钥</h3><p>当web服务器需要适当的客户端证书和用于身份验证的私钥时，应该使用此选项。提供的值应该是一个PEM格式的key_file，其中包含证书和私钥。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--auth-file 文件名</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--auth-file 文件名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p>有时，如果执行了一定数量的不成功请求，则在此期间的web应用程序或检查技术会销毁会话。这可能发生在sqlmap的检测阶段或利用任何盲SQL注入类型时。原因是SQL有效负载不一定返回输出，因此可能会向应用程序会话管理或检查技术发出信号。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--safe-url, --safe-post, --safe-req  --safe-freq</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--safe-url, --safe-post, --safe-req  --safe-freq<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <hr>
 <h2 id="sqlmap性能优化"><a href="#sqlmap性能优化" class="headerlink" title="sqlmap性能优化"></a>sqlmap性能优化</h2><h3 id="设置持久HTTP连接，在一定程度上避免服务器受到探测影响"><a href="#设置持久HTTP连接，在一定程度上避免服务器受到探测影响" class="headerlink" title="设置持久HTTP连接，在一定程度上避免服务器受到探测影响"></a>设置持久HTTP连接，在一定程度上避免服务器受到探测影响</h3><p>设置连接为持久连接，即在HTTP报文中设置Connection: Keep-Alive</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--keep-alive</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--keep-alive<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="不接收HTTP-Body"><a href="#不接收HTTP-Body" class="headerlink" title="不接收HTTP Body"></a>不接收HTTP Body</h3><p>设置空连接，表示不接受HTTP中的Body，常用于盲注</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--null-connection</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--null-connection<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置多线程"><a href="#设置多线程" class="headerlink" title="设置多线程"></a>设置多线程</h3><p>默认3个多线程，最大为10</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--thread 10</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--thread 10<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <blockquote>
 <p>注意探测过快会影响服务器性能</p>
 </blockquote>
 <h3 id="设置预测输出"><a href="#设置预测输出" class="headerlink" title="设置预测输出"></a>设置预测输出</h3><p>在推理算法中用于检索值字符的顺序统计预测</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--predict-output</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--predict-output<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <blockquote>
 <p>注意与–thread不兼容</p>
 </blockquote>
-<h3 id="一键优化"><a href="#一键优化" class="headerlink" title="一键优化"></a>一键优化</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-o</span><br></pre></td></tr></table></figure>
+<h3 id="一键优化"><a href="#一键优化" class="headerlink" title="一键优化"></a>一键优化</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">-o<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>添加此参数相当于同时添加下列三个优化参数：</p>
 <ul>
@@ -628,16 +510,16 @@
 <li>–threads=3 （如果没有设置一个更好的值）</li>
 </ul>
 <hr>
-<h2 id="指定位置注入"><a href="#指定位置注入" class="headerlink" title="指定位置注入"></a>指定位置注入</h2><h3 id="指定具体探测的参数"><a href="#指定具体探测的参数" class="headerlink" title="指定具体探测的参数"></a>指定具体探测的参数</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-p &quot;id,user-agent&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="指定位置注入"><a href="#指定位置注入" class="headerlink" title="指定位置注入"></a>指定位置注入</h2><h3 id="指定具体探测的参数"><a href="#指定具体探测的参数" class="headerlink" title="指定具体探测的参数"></a>指定具体探测的参数</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">-p &quot;id,user-agent&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="忽略探测具体的参数"><a href="#忽略探测具体的参数" class="headerlink" title="忽略探测具体的参数"></a>忽略探测具体的参数</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--skip &quot;user-agent,referer&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="忽略探测具体的参数"><a href="#忽略探测具体的参数" class="headerlink" title="忽略探测具体的参数"></a>忽略探测具体的参数</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--skip &quot;user-agent,referer&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="忽略包含具体内容的参数"><a href="#忽略包含具体内容的参数" class="headerlink" title="忽略包含具体内容的参数"></a>忽略包含具体内容的参数</h3><p>如不对包含token或session的参数进行探测</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--param-exclude=&quot;token|session&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="忽略静态参数"><a href="#忽略静态参数" class="headerlink" title="忽略静态参数"></a>忽略静态参数</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--skip-static</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--param-exclude&#x3D;&quot;token|session&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="忽略静态参数"><a href="#忽略静态参数" class="headerlink" title="忽略静态参数"></a>忽略静态参数</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--skip-static<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置URL注入位置"><a href="#设置URL注入位置" class="headerlink" title="设置URL注入位置"></a>设置URL注入位置</h3><p>当注入点位于URL本身内部时，要手动指向URL路径，否则sqlmap不会对URL路径执行任何自动测试，必须在命令行中添加星号(*)来指定这些注入点<br>当使用Apache web服务器的mod_rewrite模块或其他类似的技术时，这就显得特别有用了</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://targeturl/param1/value1*/param2/value2/&quot;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;targeturl&#x2F;param1&#x2F;value1*&#x2F;param2&#x2F;value2&#x2F;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号-即可"><a href="#不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号-即可" class="headerlink" title="不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号(*)即可"></a>不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号(*)即可</h3><hr>
 <h2 id="注入参数"><a href="#注入参数" class="headerlink" title="注入参数"></a>注入参数</h2><h3 id="强制设置DBMS-数据库管理系统"><a href="#强制设置DBMS-数据库管理系统" class="headerlink" title="强制设置DBMS(数据库管理系统)"></a>强制设置DBMS(数据库管理系统)</h3><p>默认会自动识别DBMS，以下是sqlmap完全支持的DBMS种类</p>
@@ -646,29 +528,30 @@
 </blockquote>
 <p>强制指定，可以避免再探测是否是其他的数据库，可以加快探测速度</p>
 <p>–dbms 数据库管理系统名称 [版本号]</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--dbms microsoft sql server 05</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--dbms microsoft sql server 05<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="强制设置OS系统"><a href="#强制设置OS系统" class="headerlink" title="强制设置OS系统"></a>强制设置OS系统</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--os windows</span><br><span class="line">--os linux</span><br></pre></td></tr></table></figure>
+<h3 id="强制设置OS系统"><a href="#强制设置OS系统" class="headerlink" title="强制设置OS系统"></a>强制设置OS系统</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--os windows
+--os linux<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <blockquote>
 <p>强烈建议只在完全确定底层操作系统的后端数据库管理系统时才使用它<br>如果不知道它，让sqlmap自动为您识别</p>
 </blockquote>
 <h3 id="关闭负载转换机制"><a href="#关闭负载转换机制" class="headerlink" title="关闭负载转换机制"></a>关闭负载转换机制</h3><p>在检索结果时，sqlmap使用一种机制，在这种机制中，所有条目都被转换为字符串类型，并在NULL值的情况下用空格字符替换。这样做是为了防止出现任何错误状态(例如，将空值与字符串值连接起来)，并简化数据检索过程本身。尽管如此，还是有报告的案例(例如MySQL DBMS的旧版本)由于数据检索本身的问题(例<br>如没有返回值)需要关闭这种机制(使用此开关)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--no-cast</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--no-cast<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="关闭字符转义机制"><a href="#关闭字符转义机制" class="headerlink" title="关闭字符转义机制"></a>关闭字符转义机制</h3><p>在sqlmap需要在有效负载中使用(单引号分隔)字符串值(例如，选择’foobar’)时，这些值将自动转义(例如，选择CHAR(102)+CHAR(111)+CHAR(111)+CHAR(98)+CHAR(97)+CHAR(114)) </p>
 <p>这样做的原因有两个:混淆有效负载内容和防止后端服务器上查询转义机制(例如magic_quotes<br>和/或mysql_real_escape_string)的潜在问题。用户可以使用这个开关关闭它(可以减少有效负载大小)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--no-escape</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--no-escape<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="强制设置无效值替换"><a href="#强制设置无效值替换" class="headerlink" title="强制设置无效值替换"></a>强制设置无效值替换</h3><p>sqlmap在需要使原始参数值无效时，一般会使用经典否定(如id=-1)，使用参数可强制替换为别的否定</p>
 <p>如使用大整数值，如id=99999999</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--invalid-bignum</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--invalid-bignum<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>使用布尔操作(如id=1 and 1=2)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--invalid-logical</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--invalid-logical<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>使用随机字符串(如id=abc)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--invalid-string</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--invalid-string<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -694,7 +577,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2020/03/17/sqlmap/">http://example.com/2020/03/17/sqlmap/</a>
+                    <a href="https://ezy0812.github.io/2020/03/17/sqlmap/">https://ezy0812.github.io/2020/03/17/sqlmap/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -748,9 +631,6 @@
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
 
     
 
@@ -758,132 +638,6 @@
 
                 </div>
             </div>
-            
-                <style>
-    #reward {
-        margin: 40px 0;
-        text-align: center;
-    }
-
-    #reward .reward-link {
-        font-size: 1.4rem;
-        line-height: 38px;
-    }
-
-    #reward .btn-floating:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #rewardModal {
-        width: 320px;
-        height: 350px;
-    }
-
-    #rewardModal .reward-title {
-        margin: 15px auto;
-        padding-bottom: 5px;
-    }
-
-    #rewardModal .modal-content {
-        padding: 10px;
-    }
-
-    #rewardModal .close {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 1.3rem;
-        line-height: 20px;
-        cursor: pointer;
-    }
-
-    #rewardModal .close:hover {
-        color: #ef5350;
-        transform: scale(1.3);
-        -moz-transform:scale(1.3);
-        -webkit-transform:scale(1.3);
-        -o-transform:scale(1.3);
-    }
-
-    #rewardModal .reward-tabs {
-        margin: 0 auto;
-        width: 210px;
-    }
-
-    .reward-tabs .tabs {
-        height: 38px;
-        margin: 10px auto;
-        padding-left: 0;
-    }
-
-    .reward-content ul {
-        padding-left: 0 !important;
-    }
-
-    .reward-tabs .tabs .tab {
-        height: 38px;
-        line-height: 38px;
-    }
-
-    .reward-tabs .tab a {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    .reward-tabs .tab a:hover {
-        background-color: #ccc;
-        color: #fff;
-    }
-
-    .reward-tabs .wechat-tab .active {
-        color: #fff !important;
-        background-color: #22AB38 !important;
-    }
-
-    .reward-tabs .alipay-tab .active {
-        color: #fff !important;
-        background-color: #019FE8 !important;
-    }
-
-    .reward-tabs .reward-img {
-        width: 210px;
-        height: 210px;
-    }
-</style>
-
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
             
         </div>
     </div>
@@ -925,7 +679,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一次CTF比赛记录
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -936,8 +690,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" class="post-category">
-                                    信息安全
+                            <a href="/categories/ctf/" class="post-category">
+                                    ctf
                                 </a>
                             
                             
@@ -946,10 +700,6 @@
                 </div>
                 
                 <div class="card-action article-tags">
-                    
-                    <a href="/tags/CTF/">
-                        <span class="chip bg-color">CTF</span>
-                    </a>
                     
                     <a href="/tags/WriteUp/">
                         <span class="chip bg-color">WriteUp</span>
@@ -978,9 +728,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            SQL注入绕过大小写绕过
-程序中设置了过滤关键字，但没有对关键字组成深入分析过滤，可以通过修改关键字内字母大小写来绕过过滤措施。如：AnD 1=1 （将某些字母大写）
-
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -991,8 +739,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" class="post-category">
-                                    信息安全
+                            <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="post-category">
+                                    渗透测试
                                 </a>
                             
                             
@@ -1004,10 +752,6 @@
                     
                     <a href="/tags/sql-injection/">
                         <span class="chip bg-color">sql_injection</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BB%95%E8%BF%87%E6%A3%80%E6%B5%8B/">
-                        <span class="chip bg-color">绕过检测</span>
                     </a>
                     
                 </div>
@@ -1143,63 +887,9 @@
 
     <footer class="page-footer bg-color">
     
-        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
-    
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="503838841"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-
-    
 
     <div class="container row center-align"
-         style="margin-bottom: 0px !important;">
+         style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
@@ -1230,19 +920,70 @@
 
             <!-- 运行天数提醒. -->
             
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2019";
+                        var startMonth = "6";
+                        var startDate = "28";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
             <br>
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/ezy0812" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
 
 
 
@@ -1250,19 +991,10 @@
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
 
 
 
 
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
 
 </div>
     </div>
