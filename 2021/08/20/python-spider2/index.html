@@ -191,6 +191,19 @@ r1 =">
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -385,10 +398,10 @@ result2 <span class="token operator">=</span> r2<span class="token punctuation">
 <span class="token keyword">print</span><span class="token punctuation">(</span>result2<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><code>output</code></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[&#39;玩儿吃鸡游戏，晚上一起玩游戏，干嘛呢？打游戏&#39;]
-[&#39;玩儿吃鸡游戏&#39;]
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span><span class="token string">'玩儿吃鸡游戏，晚上一起玩游戏，干嘛呢？打游戏'</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token string">'玩儿吃鸡游戏'</span><span class="token punctuation">]</span>
 
-Process finished with exit code 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+Process finished with <span class="token builtin class-name">exit</span> code <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <blockquote>
 <p>贪婪匹配会尽可能多的匹配内容，而懒惰匹配则相反</p>
@@ -401,10 +414,10 @@ c <span class="token operator">=</span> re<span class="token punctuation">.</spa
 <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'c is '</span> <span class="token punctuation">,</span> c<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><code>output</code></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">b is  []
-c is  [&#39;lsdlfsdfiooefo:\n877898989&#39;]
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">b is  <span class="token punctuation">[</span><span class="token punctuation">]</span>
+c is  <span class="token punctuation">[</span><span class="token string">'lsdlfsdfiooefo:\n877898989'</span><span class="token punctuation">]</span>
 
-Process finished with exit code 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+Process finished with <span class="token builtin class-name">exit</span> code <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <blockquote>
 <p>如果不使用re.S参数，则只在每一行内进行匹配，如果一行没有，就换下一行重新开始。</p>

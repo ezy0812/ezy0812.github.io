@@ -6,7 +6,11 @@
     <meta charset="utf-8">
     <meta name="keywords" content="sqlmap详解, ezy&#39;s blog">
     <meta name="description" content="sqlmap使用详解
-获取目标系统信息 –bannerpython sqlmap.py -u &amp;quot;http:&amp;#x2F;&amp;#x2F;127.0.0.1&amp;#x2F;sqli&amp;#x2F;less-1&amp;#x2F;?id&amp;#x3D;1&amp;qu">
+获取目标系统信息 –bannerpython sqlmap.py -u &#34;http://127.0.0.1/sqli/less-1/?id=1&#34; --batch --banner
+
+
+对多个目标进行探测
+Sqlmap支">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -188,6 +192,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -371,7 +388,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>sqlmap使用详解</p>
-<h2 id="获取目标系统信息-–banner"><a href="#获取目标系统信息-–banner" class="headerlink" title="获取目标系统信息 –banner"></a>获取目标系统信息 –banner</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;sqli&#x2F;less-1&#x2F;?id&#x3D;1&quot; --batch --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="获取目标系统信息-–banner"><a href="#获取目标系统信息-–banner" class="headerlink" title="获取目标系统信息 –banner"></a>获取目标系统信息 –banner</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u <span class="token string">"http://127.0.0.1/sqli/less-1/?id=1"</span> --batch --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <hr>
 <h2 id="对多个目标进行探测"><a href="#对多个目标进行探测" class="headerlink" title="对多个目标进行探测"></a>对多个目标进行探测</h2><ul>
@@ -382,7 +399,7 @@
 <blockquote>
 <h3 id="设置日志过滤目标"><a href="#设置日志过滤目标" class="headerlink" title="设置日志过滤目标"></a>设置日志过滤目标</h3><p>与使用选项-l使用从提供的日志解析的所有主机不同，您可以指定有效的Python正则表达式，用于过滤所需的日志</p>
 </blockquote>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -l burp.log --scope&#x3D;&quot;(www)?\.target\.(com|net|org)&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -l burp.log --scope<span class="token operator">=</span><span class="token string">"(www)?\.target\.(com|net|org)"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>–skip-urlencode 不进行URL编码</p>
 </li>
 <li><p>-x 从sitemap.xml站点地图文件中读取目标探测。  </p>
@@ -397,29 +414,29 @@
 <h3 id="burpsuite保存日志文件"><a href="#burpsuite保存日志文件" class="headerlink" title="burpsuite保存日志文件"></a>burpsuite保存日志文件</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sqlmap/sqlmap_f1.png"></p>
 <p>将日志文件复制到sqlmap文件目录下</p>
 <p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sqlmap/sqlmap_f2.png"></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -l test<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -l <span class="token builtin class-name">test</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>在探测完一个目标后，会继续询问是否探测文件中的下一个目标</p>
 <h3 id="m，对txt文件探测"><a href="#m，对txt文件探测" class="headerlink" title="-m，对txt文件探测"></a>-m，对txt文件探测</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sqlmap/sqlmap_f3.png"></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -m 1.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -m <span class="token number">1</span>.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="通过谷歌批量探测"><a href="#通过谷歌批量探测" class="headerlink" title="通过谷歌批量探测"></a>通过谷歌批量探测</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -g &quot;inurl:.php?id&#x3D;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="通过谷歌批量探测"><a href="#通过谷歌批量探测" class="headerlink" title="通过谷歌批量探测"></a>通过谷歌批量探测</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -g <span class="token string">"inurl:.php?id="</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <hr>
 <h2 id="设置请求参数"><a href="#设置请求参数" class="headerlink" title="设置请求参数"></a>设置请求参数</h2><h3 id="设置HTTP请求方法"><a href="#设置HTTP请求方法" class="headerlink" title="设置HTTP请求方法"></a>设置HTTP请求方法</h3><p>sqlmap会自动在探测过程中使用适合的HTTP请求方法，但是在某些具体情况下，需要强制使用具体的请求方法，如PUT请求方法，因为PUT不会自动使用</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--method&#x3D;PUT<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--method<span class="token operator">=</span>PUT<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置POST提交参数"><a href="#设置POST提交参数" class="headerlink" title="设置POST提交参数"></a>设置POST提交参数</h3><p>默认情况下，HTTP请求的方法是GET，但是可以在提供POST请求中发送的数据隐式地将其更改为POST</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;192.168.0.100&#x2F;sqli&#x2F;Less-11&#x2F;&quot; --data &quot;uname&#x3D;admin&amp;passwd&#x3D;admin&amp;submit&#x3D;Submit&quot; -f --banner --dbs --users<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u <span class="token string">"http://192.168.0.100/sqli/Less-11/"</span> --data <span class="token string">"uname=admin&amp;passwd=admin&amp;submit=Submit"</span> -f --banner --dbs --users<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <blockquote>
 <p>这里-f是指 fingerprint 指纹信息</p>
 </blockquote>
 <h3 id="设置参数分隔符"><a href="#设置参数分隔符" class="headerlink" title="设置参数分隔符"></a>设置参数分隔符</h3><p>有时候需要覆盖默认的参数分隔符，才能正确地分隔和和单独处理每个参数</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;192.168.0.100&#x2F;sqli&#x2F;Less-11&#x2F;&quot; --data &quot;uname&#x3D;admin&amp;passwd&#x3D;admin&amp;submit&#x3D;Submit&quot; --param-del&#x3D;&quot;&amp;&quot; -f --banner --dbs --users<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u <span class="token string">"http://192.168.0.100/sqli/Less-11/"</span> --data <span class="token string">"uname=admin&amp;passwd=admin&amp;submit=Submit"</span> --param-del<span class="token operator">=</span><span class="token string">"&amp;"</span> -f --banner --dbs --users<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<h3 id="设置Cookie头"><a href="#设置Cookie头" class="headerlink" title="设置Cookie头"></a>设置Cookie头</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;www.target.com&#x2F;?id&#x3D;1&quot; --cookie &quot;security&#x3D;low; PHPSESSID&#x3D;lajsoguwekl021&quot; --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="设置Cookie头"><a href="#设置Cookie头" class="headerlink" title="设置Cookie头"></a>设置Cookie头</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u <span class="token string">"http://www.target.com/?id=1"</span> --cookie <span class="token string">"security=low; PHPSESSID=lajsoguwekl021"</span> --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>如果在通信过程中，web应用程序使用Set-Cookie标头进行响应，sqlmap将在所有进一步的HTTP请求中自动使用其值作为Cookie标头。sqlmap还将为SQL注入自动测试这些值。这可以通过提供–drop-set-cookie—sqlmap将忽略任何即将到来的Set-Cookie头来避免。  </li>
@@ -429,9 +446,9 @@
 </blockquote>
 </li>
 </ul>
-<h3 id="设置user-agent"><a href="#设置user-agent" class="headerlink" title="设置user-agent"></a>设置user-agent</h3><h4 id="指定user-agent"><a href="#指定user-agent" class="headerlink" title="指定user-agent"></a>指定user-agent</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;www.target.com&#x2F;?id&#x3D;1&quot; --user-agent&#x3D;&quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;80.0.3987.132 Safari&#x2F;537.36&quot; --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="设置user-agent"><a href="#设置user-agent" class="headerlink" title="设置user-agent"></a>设置user-agent</h3><h4 id="指定user-agent"><a href="#指定user-agent" class="headerlink" title="指定user-agent"></a>指定user-agent</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u <span class="token string">"http://www.target.com/?id=1"</span> --user-agent<span class="token operator">=</span><span class="token string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36"</span> --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="也可以随机筛选"><a href="#也可以随机筛选" class="headerlink" title="也可以随机筛选"></a>也可以随机筛选</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;www.target.com&#x2F;?id&#x3D;1&quot; --random-agent --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="也可以随机筛选"><a href="#也可以随机筛选" class="headerlink" title="也可以随机筛选"></a>也可以随机筛选</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u <span class="token string">"http://www.target.com/?id=1"</span> --random-agent --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <blockquote>
 <p>针对user-agent注入的值，要设置–level为3</p>
@@ -446,13 +463,13 @@
 </blockquote>
 <h3 id="设置额外HTTP头"><a href="#设置额外HTTP头" class="headerlink" title="设置额外HTTP头"></a>设置额外HTTP头</h3><p>设置选项–header，可以提供额外的HTTP标头，每个标头必须用换行符\n分隔  </p>
 <p>从配置文件sqlmap.conf中提供它们会更容易</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;www.target.com&#x2F;?id&#x3D;1&quot; --headers&#x3D;&quot;Host:www.target.com\nUser-agent:Firefox 1.0&quot; -v 5<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u <span class="token string">"http://www.target.com/?id=1"</span> --headers<span class="token operator">=</span><span class="token string">"Host:www.target.com<span class="token entity" title="\n">\n</span>User-agent:Firefox 1.0"</span> -v <span class="token number">5</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <blockquote>
 <p>设置单个用 -H, 多个用 –headers</p>
 </blockquote>
 <h3 id="设置HTTP协议认证"><a href="#设置HTTP协议认证" class="headerlink" title="设置HTTP协议认证"></a>设置HTTP协议认证</h3><p>Sqlmap中设置HTTP协议认证的参数：–auth-type和–auth-cred, 其中–auth-type支持 Basic、Digest、NTLM<br>–auth-cred认证语法为：username:password</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;url&#x2F;arit.php?id&#x3D;1&quot; --auth-type Basic --auth-cred &quot;testuser:testpass&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u <span class="token string">"http://url/arit.php?id=1"</span> --auth-type Basic --auth-cred <span class="token string">"testuser:testpass"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置HTTP代理"><a href="#设置HTTP代理" class="headerlink" title="设置HTTP代理"></a>设置HTTP代理</h3><ul>
 <li>Sqlmap中设置代理的参数：–proxy, –proxy-cred, –proxy-file, –ignore-proxy  </li>
@@ -462,16 +479,16 @@
 <li>–ignore-proxy当您希望通过忽略系统范围内的HTTP(S)代理服务器设置来针对本地网络的目标部分运行sqlmap时，应该使用这种方法。</li>
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sqlmap/sqlmap_f4.png"></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;url&#x2F;arit.php?id&#x3D;1&quot; --proxy &quot;http:&#x2F;&#x2F;122.5.190.206:9999&quot; --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u <span class="token string">"http://url/arit.php?id=1"</span> --proxy <span class="token string">"http://122.5.190.206:9999"</span> --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置延迟"><a href="#设置延迟" class="headerlink" title="设置延迟"></a>设置延迟</h3><p>–delay 0.5 延迟0.5秒</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;url&#x2F;arit.php?id&#x3D;1&quot; --delay 0.5 --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u <span class="token string">"http://url/arit.php?id=1"</span> --delay <span class="token number">0.5</span> --banner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置超时"><a href="#设置超时" class="headerlink" title="设置超时"></a>设置超时</h3><p>指定等待响应的秒数，默认为30秒</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--timeout 10<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--timeout <span class="token number">10</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置重试次数"><a href="#设置重试次数" class="headerlink" title="设置重试次数"></a>设置重试次数</h3><p>默认重试3次<br>通常结合timeout参数使用</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--retries 4 --timeout 5<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--retries <span class="token number">4</span> --timeout <span class="token number">5</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="忽略401"><a href="#忽略401" class="headerlink" title="忽略401"></a>忽略401</h3><p>忽略返回HTTP错误401(未经授权的)的站点</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--ignore-401<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -490,7 +507,7 @@
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--null-connection<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置多线程"><a href="#设置多线程" class="headerlink" title="设置多线程"></a>设置多线程</h3><p>默认3个多线程，最大为10</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--thread 10<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--thread <span class="token number">10</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <blockquote>
 <p>注意探测过快会影响服务器性能</p>
@@ -510,16 +527,16 @@
 <li>–threads=3 （如果没有设置一个更好的值）</li>
 </ul>
 <hr>
-<h2 id="指定位置注入"><a href="#指定位置注入" class="headerlink" title="指定位置注入"></a>指定位置注入</h2><h3 id="指定具体探测的参数"><a href="#指定具体探测的参数" class="headerlink" title="指定具体探测的参数"></a>指定具体探测的参数</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">-p &quot;id,user-agent&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="指定位置注入"><a href="#指定位置注入" class="headerlink" title="指定位置注入"></a>指定位置注入</h2><h3 id="指定具体探测的参数"><a href="#指定具体探测的参数" class="headerlink" title="指定具体探测的参数"></a>指定具体探测的参数</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">-p <span class="token string">"id,user-agent"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="忽略探测具体的参数"><a href="#忽略探测具体的参数" class="headerlink" title="忽略探测具体的参数"></a>忽略探测具体的参数</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--skip &quot;user-agent,referer&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="忽略探测具体的参数"><a href="#忽略探测具体的参数" class="headerlink" title="忽略探测具体的参数"></a>忽略探测具体的参数</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--skip <span class="token string">"user-agent,referer"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="忽略包含具体内容的参数"><a href="#忽略包含具体内容的参数" class="headerlink" title="忽略包含具体内容的参数"></a>忽略包含具体内容的参数</h3><p>如不对包含token或session的参数进行探测</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--param-exclude&#x3D;&quot;token|session&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--param-exclude<span class="token operator">=</span><span class="token string">"token|session"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="忽略静态参数"><a href="#忽略静态参数" class="headerlink" title="忽略静态参数"></a>忽略静态参数</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--skip-static<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="设置URL注入位置"><a href="#设置URL注入位置" class="headerlink" title="设置URL注入位置"></a>设置URL注入位置</h3><p>当注入点位于URL本身内部时，要手动指向URL路径，否则sqlmap不会对URL路径执行任何自动测试，必须在命令行中添加星号(*)来指定这些注入点<br>当使用Apache web服务器的mod_rewrite模块或其他类似的技术时，这就显得特别有用了</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u &quot;http:&#x2F;&#x2F;targeturl&#x2F;param1&#x2F;value1*&#x2F;param2&#x2F;value2&#x2F;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python sqlmap.py -u <span class="token string">"http://targeturl/param1/value1*/param2/value2/"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号-即可"><a href="#不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号-即可" class="headerlink" title="不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号(*)即可"></a>不仅可以对URL任意位置指定注入，还可以在HTTP头的任意位置注入，加星号(*)即可</h3><hr>
 <h2 id="注入参数"><a href="#注入参数" class="headerlink" title="注入参数"></a>注入参数</h2><h3 id="强制设置DBMS-数据库管理系统"><a href="#强制设置DBMS-数据库管理系统" class="headerlink" title="强制设置DBMS(数据库管理系统)"></a>强制设置DBMS(数据库管理系统)</h3><p>默认会自动识别DBMS，以下是sqlmap完全支持的DBMS种类</p>

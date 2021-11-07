@@ -189,6 +189,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -380,8 +393,16 @@
 </ul>
 <h3 id="子域名信息收集"><a href="#子域名信息收集" class="headerlink" title="子域名信息收集"></a>子域名信息收集</h3><p>工具：</p>
 <ul>
-<li>subdomain lijiejie的子域名收集工具（个人觉得挺好用的）；</li>
-<li>layer：这个工具也不错；</li>
+<li><p>subdomain lijiejie的子域名收集工具（个人觉得挺好用的）；</p>
+</li>
+<li><p>layer：这个工具也不错；</p>
+</li>
+<li><p>oneforall</p>
+<blockquote>
+<p>对收集到到域名进行指纹探测，查询是否有Nday</p>
+<p>工具：Ehole、Glass</p>
+</blockquote>
+</li>
 </ul>
 <p>但是只要是工具就会有误报，建议大家对获取的子域名写个脚本处理一下；判断哪些是可以访问的，哪些是不可以访问的，哪些访问是测试页面的。可以节约不少时间。</p>
 <p>利用google hacking 搜索，大家一定不要只用google 搜索，这样是不全面的，还有 bing（不用翻墙）、百度、360等等，因为很多国内的网站利用google去搜索是搜不到的。这里就不说语法了，贴几条常用的就行了</p>
@@ -393,14 +414,35 @@
 </blockquote>
 <h3 id="敏感信息收集"><a href="#敏感信息收集" class="headerlink" title="敏感信息收集"></a>敏感信息收集</h3><p>这一块是比较大的一块，我这里举一些：</p>
 <ul>
-<li>github源代码：网上有工具（<a target="_blank" rel="noopener" href="https://github.com/repoog/GitPrey%EF%BC%89">https://github.com/repoog/GitPrey）</a></li>
-<li>svn信息泄漏：这个只能用扫描器了</li>
-<li>敏感文件：比如数据库配置文件啦（有案例的）、网站源码啊、数据库备份文件等等</li>
-<li>敏感目录：网站后台目录／一些登录地址／一些接口目录</li>
-<li>email：邮箱命名规则、公司是否具有邮箱默认密码（这个可以采取社工，毕竟我司默认密码就很弱鸡）。</li>
-<li>员工号：很多oa、um、sso系统都是采用员工号登录的，所以知道员工号的规则很多时候能帮助我们进行撞库。</li>
-<li>商家信息：如果是一些具有商家系统的，能收集到一些商家账户（自己搞去，可以注册，注册资料请百度）就可以进入很多系统来测试了。</li>
+<li><p>github源代码：网上有工具（<a target="_blank" rel="noopener" href="https://github.com/repoog/GitPrey%EF%BC%89">https://github.com/repoog/GitPrey）</a></p>
+</li>
+<li><p>svn信息泄漏：这个只能用扫描器了</p>
+</li>
+<li><p>敏感文件：比如数据库配置文件啦（有案例的）、网站源码啊、数据库备份文件等等</p>
+</li>
+<li><p>敏感目录：网站后台目录／一些登录地址／一些接口目录</p>
+<blockquote>
+<p>dirsearch</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python3 dirsearch.py -u www.xxx.com -e * -t <span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>线程数-t设置小一点</p>
+</blockquote>
+</li>
+<li><p>JS信息收集</p>
+<blockquote>
+<p>JSFinder、各种js文件寻找隐藏接口</p>
+</blockquote>
+</li>
+<li><p>email：邮箱命名规则、公司是否具有邮箱默认密码（这个可以采取社工，毕竟我司默认密码就很弱鸡）。</p>
+</li>
+<li><p>员工号：很多oa、um、sso系统都是采用员工号登录的，所以知道员工号的规则很多时候能帮助我们进行撞库。</p>
+</li>
+<li><p>商家信息：如果是一些具有商家系统的，能收集到一些商家账户（自己搞去，可以注册，注册资料请百度）就可以进入很多系统来测试了。</p>
+</li>
 </ul>
+<h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> nmap -sS -Pn -n --open --min-hostgroup <span class="token number">4</span> --min-parallelism <span class="token number">1024</span> --host-timeout <span class="token number">30</span> -T4 -v  examples.com
+<span class="token function">sudo</span> nmap -sS -Pn -n --open --min-hostgroup <span class="token number">4</span> --min-parallelism <span class="token number">1024</span> --host-timeout <span class="token number">30</span> -T4 -v -p <span class="token number">1</span>-65535 examples.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h3 id="小结一下"><a href="#小结一下" class="headerlink" title="小结一下"></a>小结一下</h3><p>其实很多时候，我们通过信息收集能得到不少的漏洞了，我这里举几个简单的案例：</p>
 <ul>
 <li>通过搜索引擎获取系统管理页面，直接越权访问；</li>
