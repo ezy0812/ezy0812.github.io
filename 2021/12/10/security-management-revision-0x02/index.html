@@ -1,0 +1,2701 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="security-management-revision-0x02, ezy&#39;s blog">
+    <meta name="description" content="Security controlsPhysical, Procedural and Technical can be used in three different “modes”
+
+preventative - stop an explo">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>security-management-revision-0x02 | ezy&#39;s blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size: 100% 100%;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">ezy&#39;s blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">ezy&#39;s blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">security-management-revision-0x02</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/security-management/">
+                                <span class="chip bg-color">security-management</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/kcl%E5%A4%8D%E4%B9%A0/" class="post-category">
+                                kcl复习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-12-10
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-12-10
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    31.2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    147 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Security-controls"><a href="#Security-controls" class="headerlink" title="Security controls"></a>Security controls</h2><p>Physical, Procedural and Technical can be used in three different “modes”</p>
+<ul>
+<li>preventative - stop an exploit from being exploited</li>
+<li>detective - if something bad happens, the person in charge will be notified</li>
+<li>reactive - we can perform a contingency plan to minimise the fallout from the exploit</li>
+</ul>
+<blockquote>
+<ul>
+<li>预防性 - 阻止漏洞被利用</li>
+<li>侦查性–如果发生不好的事情，将通知负责人</li>
+<li>反应性 - 我们可以执行应急计划，以尽量减少漏洞的影响</li>
+</ul>
+</blockquote>
+<h3 id="Technical-controls"><a href="#Technical-controls" class="headerlink" title="Technical controls"></a>Technical controls</h3><h4 id="Types-of-malware"><a href="#Types-of-malware" class="headerlink" title="Types of malware"></a>Types of malware</h4><p><strong>Malware</strong> (MALicious softWARE) is the general term for software that threat agents use to gain and maintain access to computers. 威胁代理人用来获得和维持对计算机访问的软件的总称</p>
+<h5 id="Virus"><a href="#Virus" class="headerlink" title="Virus"></a>Virus</h5><p>A virus is a piece of code like any other, however, it has a malicious intent. 病毒是一段与其他代码一样的代码，但是，它有恶意的意图</p>
+<p>A virus can replicate itself freely within a system, but it usually requires intervention to infect other systems, such as executing a file. There are many routes to infection such as USB sticks, DVDs, email attachments, downloads from websites, local networks, and apps.</p>
+<blockquote>
+<p>病毒可以在系统内自由复制，但它通常需要干预才能感染其他系统，如执行一个文件。感染的途径有很多，如U盘、DVD、电子邮件附件、从网站下载、本地网络和应用程序</p>
+</blockquote>
+<p>Viruses range from very simple ones, such as those that delete files on a system, to very complex ones, such as Stuxnet which targeted and disabled nuclear fuel enrichment plants in Iran. </p>
+<blockquote>
+<p>病毒的范围从非常简单的病毒，如删除系统中的文件，到非常复杂的病毒，如针对伊朗的核燃料浓缩厂并使其失效的Stuxnet</p>
+</blockquote>
+<h5 id="Worm"><a href="#Worm" class="headerlink" title="Worm"></a>Worm</h5><p>Worms are viruses which actively distribute themselves. 主动传播自己的病毒</p>
+<p>Worms actively exploit vulnerabilities in software or hardware, such as auto-execution in removable devices, and vulnerabilities in remote services.</p>
+<blockquote>
+<p>蠕虫会主动利用软件或硬件的漏洞，如可移动设备的自动执行，以及远程服务的漏洞</p>
+</blockquote>
+<h5 id="Trojan"><a href="#Trojan" class="headerlink" title="Trojan"></a>Trojan</h5><p>A trojan is any malware that misleads users of its true intent. 任何误导用户其真实意图的恶意软件</p>
+<p>Trojans are usually attached to a legitimate program so that when a user executes it, the legitimate program seems to be working normally, however, under the hood there is what is called a ‘dropper’. This piece of code installs and runs malware without the user noticing or suspecting the trojan.</p>
+<blockquote>
+<p>木马通常附在一个合法程序上，这样当用户执行它时，合法程序似乎在正常工作，然而，在引擎盖下有一个所谓的 “投放器”。这段代码会在用户没有注意到或怀疑到木马的情况下安装和运行恶意软件</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/security-management/f11.png"></p>
+<h5 id="Backdoor"><a href="#Backdoor" class="headerlink" title="Backdoor"></a>Backdoor</h5><p>A way of bypassing a system’s normal authentication controls. 绕过系统的正常认证控制的一种方式</p>
+<p>Backdoors are usually installed after a successful infection, for example, by means of a trojan. Backdoors can be installed through software or hardware.</p>
+<blockquote>
+<p>后门通常是在成功感染后安装的，例如，通过木马程序。后门可以通过软件或硬件安装</p>
+</blockquote>
+<p>The two main types of software backdoors are:</p>
+<ol>
+<li><p>A service running locally on a port accepting remote connections, eg an FTP server giving access to files on an infected machine.</p>
+<blockquote>
+<p>一个在本地运行的接受远程连接的端口的服务，例如一个允许访问受感染机器上的文件的FTP服务器</p>
+</blockquote>
+</li>
+<li><p>A program running locally that connects to a remote service, then waits for further instructions.</p>
+<blockquote>
+<p>在本地运行的程序，连接到远程服务，然后等待进一步的指示</p>
+</blockquote>
+</li>
+</ol>
+<h5 id="Botnet"><a href="#Botnet" class="headerlink" title="Botnet"></a>Botnet</h5><p>A collection of infected computers with backdoors that are remotely controlled by a command and control centre.</p>
+<p>Botnets can harvest the power of many infected machines to mine bitcoin, attack other computers, etc.</p>
+<blockquote>
+<p>由一个指挥和控制中心远程控制的带有后门的受感染计算机的集合</p>
+<p>僵尸网络可以利用许多受感染机器的力量来挖掘比特币，攻击其他电脑等</p>
+</blockquote>
+<h5 id="Spyware"><a href="#Spyware" class="headerlink" title="Spyware"></a>Spyware</h5><p>Malware which steals information without the owner’s knowledge. 在所有者不知情的情况下窃取信息的恶意软件</p>
+<p>Common examples of this kind of malware include software that records your <strong>internet activity</strong> and visited sites, <strong>records what you type</strong> on the keyboard with the hope of stealing passwords (keylogger), <strong>records through your webcam or laptop camera</strong> without your knowledge and spyware that records your <strong>messaging history</strong> (Skype, Whatsapp, etc).</p>
+<blockquote>
+<p>这类恶意软件的常见例子包括记录你的互联网活动和访问过的网站的软件，记录你在键盘上输入的内容，希望窃取密码（键盘记录器），在你不知情的情况下通过你的网络摄像头或笔记本电脑摄像头进行记录，以及记录你的信息记录的间谍软件（Skype，Whatsapp，等等）</p>
+</blockquote>
+<h5 id="Ransomware-赎金软件"><a href="#Ransomware-赎金软件" class="headerlink" title="Ransomware 赎金软件"></a>Ransomware 赎金软件</h5><p>Malware which blocks user access and threatens to delete data unless ransom is paid. 阻止用户访问并威胁要删除数据的恶意软件，除非支付赎金</p>
+<h4 id="Controlling-and-preventing-malware"><a href="#Controlling-and-preventing-malware" class="headerlink" title="Controlling and preventing malware"></a>Controlling and preventing malware</h4><h5 id="Patch-software"><a href="#Patch-software" class="headerlink" title="Patch software"></a>Patch software</h5><p>The <strong>patching</strong> method relies on keeping software up to date. This method is not always obvious and it does not seem to be directly related to any form of specialist malware, however, malware exploits unpatched vulnerabilities in software. Even worse, when patches are released hackers reverse engineer patches to write malware which exploits the very vulnerability the patch was supposed to address.</p>
+<blockquote>
+<p>打补丁的方法依靠的是保持软件的更新。这种方法并不总是很明显，而且似乎与任何形式的专业恶意软件没有直接关系，然而，恶意软件利用的是软件中未打补丁的漏洞。更糟糕的是，当补丁发布时，黑客会对补丁进行逆向工程，编写恶意软件，利用该补丁应该解决的漏洞</p>
+</blockquote>
+<p>There is also a whole class of exploits called ‘zero-day vulnerabilities’. Those are vulnerabilities which are unreported and for which there is no patch.</p>
+<blockquote>
+<p>还有一整类被称为 “零日漏洞 “的漏洞。这些漏洞没有被报告，也没有补丁</p>
+</blockquote>
+<h5 id="Hardening"><a href="#Hardening" class="headerlink" title="Hardening"></a>Hardening</h5><p>Another control is ‘<strong>hardening</strong>’. This applies to operating systems and applications such as web browsers. Hardening is a collection of practices which aim to make infection less likely such as: 这适用于操作系统和应用程序，如网络浏览器。硬化是一系列旨在降低感染可能性的做法</p>
+<ul>
+<li>only installing necessary features or applications</li>
+<li>not using default passwords or open configurations</li>
+<li>disallowing installation of new software unless the user has admin privileges</li>
+<li>limiting downloads to trusted sources only</li>
+<li>not giving out admin privileges.</li>
+</ul>
+<blockquote>
+<p>只安装必要的功能或应用程序<br>不使用默认密码或开放配置<br>除非用户有管理权限，否则不允许安装新的软件<br>仅将下载限制在受信任的来源<br>不给予管理员权限</p>
+</blockquote>
+<h5 id="Antivirus"><a href="#Antivirus" class="headerlink" title="Antivirus"></a>Antivirus</h5><p><strong>Antivirus</strong> software scans all files on the computer to detect if they look like a known virus. It then tries to quarantine the affected file or remove it. It also relies on being kept up to date, and of course, virus writers are smart and often write malware which can fight back.</p>
+<blockquote>
+<p>反病毒软件扫描计算机上的所有文件，以检测它们是否看起来像已知的病毒。然后，它试图隔离受影响的文件或删除它。它也依赖于保持更新，当然，病毒编写者很聪明，经常编写可以反击的恶意软件</p>
+</blockquote>
+<p>It can only protect against ‘seen’ malware, that is malware that has been recognised already. Furthermore, different companies will have different lists of malware and levels of protection will vary. Some vendors also offer the capability to discover new malware. For example, FireEye looks at undesired behaviour rather than analysing software.</p>
+<blockquote>
+<p>它只能防止 “看到的 “恶意软件，即已经被识别的恶意软件。此外，不同的公司会有不同的恶意软件清单，保护水平也会有所不同。一些供应商还提供发现新恶意软件的能力。例如，FireEye着眼于不受欢迎的行为，而不是分析软件</p>
+</blockquote>
+<h5 id="File-Integrity-Monitoring-FIM"><a href="#File-Integrity-Monitoring-FIM" class="headerlink" title="File Integrity Monitoring (FIM)"></a>File Integrity Monitoring (FIM)</h5><p>In FIM we keep track of the state of individuals’ files or the whole file system, and every unexpected change is seen as breaking integrity. This is particularly useful for keeping an eye on <strong>information assets</strong>. This is what a FIM process might look like:</p>
+<blockquote>
+<p>跟踪个人的文件或整个文件系统的状态，每一个意外的变化都被视为破坏完整性。这对于关注信息资产特别有用</p>
+</blockquote>
+<ol>
+<li>Set policy</li>
+</ol>
+<p>Start by defining your policy, identifying which files on which devices need to be monitored. 从定义你的策略开始，确定哪些设备上的哪些文件需要被监控</p>
+<ol start="2">
+<li>Baseline files</li>
+</ol>
+<p>Ensure the files you assess are in a known good state. This may involve evaluating versions, creation and modification dates, or any other file attributes. 确保你评估的文件处于一个已知的良好状态。这可能涉及评估版本、创建和修改日期，或任何其他文件属性 </p>
+<ol start="3">
+<li>Monitor and reconcile changes</li>
+</ol>
+<p>A file might undergo hundreds of changes on a normal day on a single system. Knowing a good change from a bad one is essential. 在一个系统中，一个文件在正常的一天中可能会经历数百次的变化。知道一个好的变化和一个坏的变化是至关重要的 </p>
+<ol start="4">
+<li>Alert</li>
+</ol>
+<p>When unauthorised changes are detected, focus on the highest priority alerts and take corrective action before more damage is done. 当检测到未经授权的更改时，关注最高优先级的警报，并在造成更多损害之前采取纠正措施</p>
+<ol start="5">
+<li>Report</li>
+</ol>
+<p>FIM is required for PCI compliance and most other standards. Clear reports with the ability to drill-down are important both for operational processes and audit compliance. FIM是符合PCI和大多数其他标准的要求。清晰的报告和深入分析的能力对操作流程和审计合规性都很重要</p>
+<h5 id="Host-Firewall-Intrusion-Detection-System"><a href="#Host-Firewall-Intrusion-Detection-System" class="headerlink" title="Host Firewall/Intrusion Detection System"></a>Host Firewall/Intrusion Detection System</h5><p>A host firewall, also known as a personal firewall, tries to enforce an ‘allow list’ of applications from the network/internet which are allowed to connect with a particular host (computer or device). Personal firewalls may also provide a level of <strong>intrusion detection</strong> by terminating or blocking connectivity where it suspects an intrusion is being attempted.</p>
+<blockquote>
+<p>主机防火墙，也被称为个人防火墙，试图从网络/互联网上执行一个允许与特定主机（计算机或设备）连接的应用程序的 “允许列表”。个人防火墙还可以提供一定程度的入侵检测，在它怀疑有人企图入侵时终止或阻止连接</p>
+</blockquote>
+<p>Unfortunately, if a system has been compromised by malware, the firewall may end up being bypassed or shut down entirely as both processes are running on the same system, potentially by the same user. A firewall also cannot notify if it has been incorrectly configured and it can possibly desensitise users to alerts by warning the user of actions that may not be malicious.</p>
+<blockquote>
+<p>不幸的是，如果一个系统被恶意软件入侵，防火墙可能最终被绕过或完全关闭，因为这两个进程都在同一个系统上运行，而且可能是由同一个用户运行。防火墙也不能通知它是否被错误配置，而且它可能会通过警告用户可能不是恶意的行为而使用户对警报不敏感</p>
+</blockquote>
+<h5 id="Email-scanners"><a href="#Email-scanners" class="headerlink" title="Email scanners"></a>Email scanners</h5><p>Email scanners scan incoming emails and warn users of malicious content. They do this by scanning incoming files for viruses and warning the user if the email looks like a typical fraudulent message. </p>
+<blockquote>
+<p>扫描传入的电子邮件，并警告用户有恶意内容。它们通过扫描传入文件的病毒，并在电子邮件看起来像典型的欺诈性信息时警告用户</p>
+</blockquote>
+<h5 id="Other-countermeasures"><a href="#Other-countermeasures" class="headerlink" title="Other countermeasures"></a>Other countermeasures</h5><p>There are many other countermeasures that check running processes, open ports, monitor network activity and startup programs. Some of these could also be carried out using some of the <strong>assurance techniques</strong> mentioned for vulnerability assessment, eg vulnerability scans of open ports and running services. Assurance techniques are sometimes referred to as <strong>special types of security controls</strong>.</p>
+<blockquote>
+<p>还有许多其他反制措施，检查运行中的进程、开放的端口、监测网络活动和启动程序。其中一些也可以使用提到的漏洞评估的一些保证技术来进行，例如对开放的端口和运行的服务进行漏洞扫描。保证技术有时被称为特殊类型的安全控制</p>
+</blockquote>
+<h5 id="What-to-look-for-in-a-manufacturer’s-product"><a href="#What-to-look-for-in-a-manufacturer’s-product" class="headerlink" title="What to look for in a manufacturer’s product?"></a>What to look for in a manufacturer’s product?</h5><p>在制造商的产品中要看什么？</p>
+<p>it is sometimes hard to get to know how good a product is, eg anti-malware software.</p>
+<ul>
+<li>Read independent reviews<br>Does it have a high degree of effectiveness in detecting and removing malware?</li>
+<li>Frequency of updates<br>Is the scanner still maintained? Is it aware of the new malware threats?</li>
+<li>Allow list of accepted executables<br>Does it let the organisation control what can be executed on their network?</li>
+<li>Reputable company<br>Is the company likely to stick around?</li>
+<li>Impact on operations<br>Will business be able to continue as usual? Does the software have a major impact on employee productivity?</li>
+</ul>
+<blockquote>
+<ul>
+<li>阅读独立评论<br>它在检测和清除恶意软件方面是否有高度的有效性？</li>
+<li>更新的频率<br>扫描仪是否仍在维护？它是否了解新的恶意软件威胁？</li>
+<li>允许接受的可执行文件列表<br>它是否让组织控制在其网络上可以执行的内容？</li>
+<li>有信誉的公司<br>该公司是否可能坚持下去？</li>
+<li>对业务的影响<br>业务是否能够照常进行？该软件是否对员工的生产力有重大影响？</li>
+</ul>
+</blockquote>
+<h4 id="Network-security"><a href="#Network-security" class="headerlink" title="Network security"></a>Network security</h4><p>The previous section focused on the security of a single computer or device. Why do you think it’s as important to focus on network security as well?</p>
+<p>Let’s say there are 2.5 billion people on the internet. Even if only 1 per cent of that population are malicious users, that’s 25 million potential attackers! Every machine connected to the network is also a potential medium for worms to spread themselves.</p>
+<blockquote>
+<p>比方说，互联网上有25亿人。即使其中只有1%的人是恶意用户，那也有2500万潜在的攻击者! 连接到网络的每台机器也是蠕虫自我传播的潜在媒介</p>
+</blockquote>
+<p>There are three main types of network security controls that we will look at in this section:</p>
+<ul>
+<li>cryptography-based</li>
+<li>intrusion prevention and detection</li>
+<li>managing the topology of the network.</li>
+</ul>
+<h5 id="Cryptography-based-controls"><a href="#Cryptography-based-controls" class="headerlink" title="Cryptography-based controls"></a>Cryptography-based controls</h5><p>Cryptography - The practice and study of techniques for secure communication in the presence of third parties called adversaries. 在有被称为对手的第三方存在的情况下，对安全通信技术的实践和研究</p>
+<table>
+<thead>
+<tr>
+<th align="left">Term</th>
+<th align="left">Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Confidentiality</td>
+<td align="left">Nobody else can see the plain text.</td>
+</tr>
+<tr>
+<td align="left">Integrity</td>
+<td align="left">The data has not been changed, deleted or inserted.</td>
+</tr>
+<tr>
+<td align="left">Authentication</td>
+<td align="left">The person is who they claim to be.</td>
+</tr>
+<tr>
+<td align="left">Non-repudiation</td>
+<td align="left">The sender cannot later deny sending the message or its content.</td>
+</tr>
+</tbody></table>
+<p>Cryptographical mostly base on utilising <strong>public key infrastructure</strong> (PKI). PKI provides a mechanism for two communicating computers to authenticate each other. This is required to establish an authenticated and end-to-end communication channel. Beyond authentication, it also provides <strong>end-to-end encryption</strong> (E2EE), which is a system of communication where only the communicating users can read the messages.</p>
+<blockquote>
+<p>密码学主要基于利用公钥基础设施（PKI）。PKI为两台通信的计算机提供了一个相互认证的机制。这是建立一个认证和端到端通信渠道所必需的。除了认证，它还提供端到端加密（E2EE），这是一个只有通信用户可以阅读信息的通信系统</p>
+</blockquote>
+<p>One common attack which this approach works well against is the <strong>man in the middle attack</strong>. 这种方法能很好地对付的一种常见攻击是中间人攻击</p>
+<p>This is where the attacker secretly relays and possibly alters the communication between two parties who believe they are directly communicating with each other. If this is not a secure communications channel then the hacker can view and alter messages at will. With E2EE the hacker can only see encrypted messages which to them will look like garbage. As a result, they will not be able to read or alter the messages in transit.</p>
+<blockquote>
+<p>这是指攻击者秘密转发并可能改变双方之间的通信，而双方认为他们是直接沟通的。如果这不是一个安全的通信渠道，那么黑客可以随意查看和改变信息。有了E2EE，黑客只能看到加密的信息，这对他们来说就像垃圾。因此，他们将无法阅读或改变传输中的信息</p>
+</blockquote>
+<p>Another cryptography based approach is the <strong>virtual private network</strong> (VPN). A VPN extends a private network across a public network and enables users to send and receive data across shared or public networks as if their computing devices were directly connected to the private network.</p>
+<blockquote>
+<p>另一种基于密码学的方法是虚拟专用网络（VPN）。VPN在公共网络上扩展了一个私人网络，使用户能够在共享或公共网络上发送和接收数据，就像他们的计算设备直接连接到私人网络一样</p>
+</blockquote>
+<h5 id="Controls-for-intrusion-prevention-and-detection"><a href="#Controls-for-intrusion-prevention-and-detection" class="headerlink" title="Controls for intrusion prevention and detection"></a>Controls for intrusion prevention and detection</h5><p>We already saw that <strong>firewalls</strong> can prevent unwanted intrusions to individual devices. They can do the same for the whole network by checking incoming and outgoing traffic, and only allowing it to go through if it complies with the predefined rules, eg rules based on IP addresses and ports.</p>
+<blockquote>
+<p>防火墙可以防止对个别设备的不必要的入侵。它们可以对整个网络做同样的工作，检查进入和流出的流量，只有当它符合预定义的规则，例如基于IP地址和端口的规则，才允许它通过</p>
+</blockquote>
+<p>There also exist <strong>intrusion detection systems</strong> (IDS) which are the network equivalent of anti-virus software. They detect unwanted intrusions either by analysing models of malicious behaviour such as signatures (misuse-based detection) or by analysing models of normal behaviour (anomaly-based detection). Examples include Snort IDS and Zeek IDS.</p>
+<blockquote>
+<p>还有入侵检测系统（IDS），相当于网络上的反病毒软件。它们通过分析恶意行为的模型，如签名（基于滥用的检测）或通过分析正常行为的模型（基于异常的检测）来检测不需要的入侵行为。例子包括Snort IDS和Zeek IDS</p>
+</blockquote>
+<h5 id="Managing-the-topology-of-the-network"><a href="#Managing-the-topology-of-the-network" class="headerlink" title="Managing the topology of the network"></a>Managing the topology of the network</h5><p><strong>Network partitioning</strong> is the process of creating server zones. Each zone is completely independent of other zones. If a network is hacked we can disconnect a set of servers from the wider network and the hackers won’t be able to access the disconnect partition.</p>
+<blockquote>
+<p>网络分区是创建服务器区的过程。每个区域都完全独立于其他区域。如果网络被黑客攻击，我们可以将一组服务器从更广泛的网络中断开，黑客将无法访问断开的分区</p>
+</blockquote>
+<p>Sometimes partitioning is necessary. In finance, the data server might be completely partitioned to protect against insider trading.</p>
+<blockquote>
+<p>有时分区是必要的。在金融领域，数据服务器可能被完全分区，以防止内幕交易</p>
+</blockquote>
+<p>Another useful concept is the network’s demilitarised zone (DMZ). This is a physical or logical subnetwork that contains and exposes an organisation’s external-facing servers to an untrusted network such as the internet. For instance, the DMZ is normally in between two firewalls, the external facing firewall that allows access to services in the DMZ, such as web server and e-mail server, and then another firewall that protects the internal organisation from the DMZ. In this way, crucial services like web and e-mail that need to be accessed from the internet can be accessed, but those services, if compromised, will not get access to the internal organisational network. </p>
+<blockquote>
+<p>另一个有用的概念是网络的非军事化区（DMZ）。这是一个物理或逻辑的子网络，它包含了一个组织的面向外部的服务器，并将其暴露在一个不受信任的网络中，如互联网。例如，DMZ通常位于两道防火墙之间，面向外部的防火墙允许访问DMZ中的服务，如网络服务器和电子邮件服务器，然后是另一道防火墙，保护内部组织免受DMZ的影响。通过这种方式，需要从互联网上访问的网页和电子邮件等关键服务可以被访问，但这些服务如果被破坏，将无法进入内部组织网络</p>
+</blockquote>
+<h3 id="Physical-controls"><a href="#Physical-controls" class="headerlink" title="Physical controls"></a>Physical controls</h3><p>Physical controls</p>
+<p>Physical controls rely on the presence of physical limitations to the activities that a criminal or other unauthorised person may wish to carry out. 物理控制依赖于对犯罪分子或其他未经授权的人可能希望进行的活动的物理限制</p>
+<p>In order to figure out what physical controls to deploy you might want to consider the following questions.</p>
+<ol>
+<li>Who is the attacker and what are their resources?</li>
+</ol>
+<p>Your choice of control will depend in part on the motivations and resources of the attackers. Here are a few examples of possible attackers. </p>
+<blockquote>
+<p>你对控制的选择将部分取决于攻击者的动机和资源。这里有几个可能的攻击者的例子</p>
+</blockquote>
+<ul>
+<li>Joy hackers</li>
+<li>Organised criminals</li>
+<li>Governments</li>
+</ul>
+<p>It is also necessary to consider the potential skills and resources of the attackers, such as lockpicking, alarm neutralisation, radio jammers, climbing, etc. Are they likely to have detailed knowledge of the facility? What about insider assistance?</p>
+<blockquote>
+<p>还有必要考虑攻击者的潜在技能和资源，如开锁、解除警报、无线电干扰器、攀爬等。他们是否可能对设施有详细的了解？内部人员的协助情况如何？</p>
+</blockquote>
+<ol start="2">
+<li>What are you trying to protect?</li>
+</ol>
+<p>The choice of control will also depend on what you are trying to protect: 控制方式的选择也将取决于你试图保护的东西</p>
+<ul>
+<li>direct access to computers</li>
+<li>access to telecommunication lines</li>
+<li>access to internal LANs</li>
+<li>access to internal offices</li>
+<li>hard copies, removable media, etc.</li>
+</ul>
+<blockquote>
+<p>对计算机的直接访问<br>对电信线路的访问<br>对内部局域网的访问<br>对内部办公室的访问<br>硬拷贝、可移动媒体等</p>
+</blockquote>
+<p>With computer access, the attacker can try to use a debugger to gain root privileges, replace the BIOS, scan for cryptographic keys or install a keystroke logger. With access to lines and LANs they can plant wiretaps, bypass firewalls or initiate a denial of service attack. Through raiding trash bins outside of the offices they can discover useful discarded information.</p>
+<blockquote>
+<p>有了计算机访问权，攻击者可以尝试使用调试器来获得root权限，更换BIOS，扫描加密密钥或安装击键记录器。通过对线路和局域网的访问，他们可以植入窃听器，绕过防火墙或发起拒绝服务攻击。通过搜查办公室外的垃圾箱，他们可以发现有用的废弃信息</p>
+</blockquote>
+<h3 id="Deploying-protection"><a href="#Deploying-protection" class="headerlink" title="Deploying protection"></a>Deploying protection</h3><h4 id="Employee-Authentication"><a href="#Employee-Authentication" class="headerlink" title="Employee Authentication"></a>Employee Authentication</h4><p>You may want to consider what security controls are used to check an employees identity and what <strong>links the access control to their real world identity</strong>. Think through the following questions.</p>
+<blockquote>
+<p>你可能想考虑用什么安全控制措施来检查雇员的身份，以及什么将访问控制与他们的真实身份联系起来。思考以下问题</p>
+</blockquote>
+<p>How are badge rules or biometrics enforced?</p>
+<p>How are badges authenticated?</p>
+<p>Does the guard check pictures on the badges?</p>
+<p>Is it possible to come in through the door behind someone else, ie ‘tailgate’?</p>
+<p>What happens during a fire alarm?</p>
+<p>How are external service personnel granted access?</p>
+<blockquote>
+<p>徽章规则或生物识别技术是如何实施的？</p>
+<p>徽章是如何被认证的？</p>
+<p>警卫会检查徽章上的照片吗？</p>
+<p>是否可以从别人后面的门进来，即 “尾随”？</p>
+<p>在火警发生时怎么办？</p>
+<p>外部服务人员如何获准进入？</p>
+</blockquote>
+<h4 id="Protection-of-equipment"><a href="#Protection-of-equipment" class="headerlink" title="Protection of equipment"></a>Protection of equipment</h4><p>When thinking about protecting equipment, you need to consider how to deal with two main threats. </p>
+<ol>
+<li><p>Unauthorised staff stealing or damaging equipment.</p>
+</li>
+<li><ul>
+<li>mark equipment to make it less attractive to steal</li>
+<li>use CCTV and similar deterrents (there is an ethical question over monitoring your staff to consider)</li>
+<li>announce an ‘amnesty day’ where staff can return stolen equipment without being charged.</li>
+</ul>
+</li>
+<li><blockquote>
+<p>在设备上做标记，使其不容易被盗<br>使用闭路电视和类似的威慑手段（需要考虑监控员工的道德问题）<br>宣布一个 “特赦日”，让员工归还被盗设备而不被起诉</p>
+</blockquote>
+</li>
+<li><p>Accidental loss of use of some critical equipment.</p>
+</li>
+<li><ul>
+<li>ensure stand-by power generation is available if the main power fails</li>
+<li>put in place maintenance contracts with realistic timings (ie engineers can respond quickly)</li>
+<li>separate hardware electrical circuits (ie if kitchen equipment blows fuses, critical infrastructure is unaffected).</li>
+</ul>
+</li>
+<li><blockquote>
+<p>确保在主电源发生故障时有备用的发电设备<br>签订有实际时间的维修合同（即工程师可以快速响应）<br>独立的硬件电路（即如果厨房设备烧毁保险丝，关键基础设施不受影响）</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="Secure-deletion-of-data"><a href="#Secure-deletion-of-data" class="headerlink" title="Secure deletion of data"></a>Secure deletion of data</h4><p>When disposing of a computer, laptop or any kind of device, it is essential that it is securely wiped and data is <strong>never recoverable</strong>. Simply clicking ‘delete’ is not good enough as information is still in the operating system and on the physical media. It is important to <strong>delete and overwrite</strong> the physical media, potentially multiple times, or destroy the physical media completely.</p>
+<blockquote>
+<p>当处置一台电脑、笔记本电脑或任何种类的设备时，必须安全地擦除，而且数据永远无法恢复。简单地点击 “删除 “是不够的，因为信息仍然存在于操作系统和物理媒体上。重要的是要删除和覆盖物理媒体，可能是多次，或完全销毁物理媒体</p>
+</blockquote>
+<p>Disc drives are actually quite hard to destroy securely as they do not burn easily and are not very chemically reactive. The recommendation is to open the drives, demagnetise the platters, crush or deform them, burn them, then finally to separate the remains.</p>
+<blockquote>
+<p>光盘驱动器实际上很难安全地销毁，因为它们不容易燃烧，而且化学反应性不强。建议是打开驱动器，使盘片消磁，压碎或使其变形，烧毁，然后最后分离残骸</p>
+</blockquote>
+<p>Additionally, if an organisation hands over hard-drives to a <strong>contractor</strong> to destroy, how will the destruction be verified? <strong>Backups</strong> of the deleted data are also likely to exist so it’s important to think through how deleted files can be removed from backups in an equally secure way.</p>
+<blockquote>
+<p>如果一个组织将硬盘交给承包商销毁，如何验证销毁情况？被删除的数据的备份也可能存在，所以必须考虑如何以一种同样安全的方式从备份中删除文件</p>
+</blockquote>
+<p>It is also very important to consider how to securely <strong>destroy paper documents</strong>. Attackers can reassemble a shredded document if a cheap paper shredder is used and all the strips are thrown away together. It is much more secure to use a product which shreds more thoroughly or simply burn the file.</p>
+<blockquote>
+<p>考虑如何安全地销毁纸质文件也是非常重要的。如果使用廉价的碎纸机，并将所有的纸条一起扔掉，攻击者可以重新组装碎纸文件。使用一个能更彻底地粉碎的产品或简单地烧毁文件要安全得多</p>
+</blockquote>
+<h3 id="Procedural-controls"><a href="#Procedural-controls" class="headerlink" title="Procedural controls"></a>Procedural controls</h3><p>The last type of controls we will look at are the procedural type, also called <strong>social security</strong> controls. These types of controls cover the rules, regulations and policies that an organisation puts in place to help reduce the risk of issues arising.</p>
+<blockquote>
+<p>也叫社会安全控制。这些类型的控制涵盖了一个组织为帮助减少问题发生的风险而制定的规则、条例和政策</p>
+</blockquote>
+<p>These are often specific <strong>policies</strong> which address security issues in more detail than the broader organisational ones. Sometimes they contain not only policies but also standards, procedures and guidelines. In order to help users comply with the policies, user training is necessary.</p>
+<blockquote>
+<p>这些通常是具体的政策，比更广泛的组织性政策更详细地解决安全问题。有时它们不仅包含政策，还包含标准、程序和指南。为了帮助用户遵守这些政策，用户培训是必要的</p>
+</blockquote>
+<p>One example of such a policy is the <strong>clear screen and desk policy</strong> that aims to protect confidential documents within the office space. In an open office your colleagues can watch your screen as they walk past and during a fire alarm someone can access your machine uninterrupted if it is unlocked. The policy might specify that you should always lock your screen when you are leaving your desk. It might be helpful to address common scenarios during the user training such as a fire drill, going to the toilet or making a cup of tea.</p>
+<blockquote>
+<p>这种政策的一个例子是透明屏幕和办公桌政策，其目的是保护办公空间内的机密文件。在一个开放的办公室里，你的同事走过时可以看到你的屏幕，在火警发生时，如果你的机器没有上锁，有人可以不受干扰地访问你的机器。政策可能会规定，当你离开你的办公桌时，你应该始终锁定你的屏幕。在用户培训中讨论一些常见的情况可能会有帮助，比如火灾演习、上厕所或泡茶</p>
+</blockquote>
+<p>Similarly, a policy can state <strong>how paper documents must be treated</strong>, such as being locked away at all times. It can be more specific and strict such as forbidding the use of sticky notes and mandating that each desk must be clear of paper before the end of the day.</p>
+<blockquote>
+<p>政策可以说明必须如何对待纸质文件，例如在任何时候都要锁起来。它可以更加具体和严格，如禁止使用便条，规定每张桌子在下班前必须清除纸张</p>
+</blockquote>
+<p>Policies must be realistic and enforceable, so it’s always necessary to consider the balance of practicality and risk.</p>
+<blockquote>
+<p>政策必须是现实的和可执行的，所以总是需要考虑实用性和风险的平衡</p>
+</blockquote>
+<p>For networks, there usually exists a <strong>network acceptable use policy</strong>. This is a set of rules applied by the owner, creator or administrator of a network, website or a service, that restricts the ways in which the network, website or service may be used and sets guidelines as to how it should be used. For example specifying that only the employees are allowed to use it, whether the network is monitored and who is monitoring it, what the network can be used for and what it must not be used for, etc.</p>
+<blockquote>
+<p>对于网络，通常有一个网络可接受使用政策。这是一套由网络、网站或服务的所有者、创建者或管理者应用的规则，它限制了网络、网站或服务的使用方式，并为如何使用它制定了准则。例如，规定只有员工可以使用，网络是否被监控，谁在监控，网络可以用来做什么，不得用来做什么，等等</p>
+</blockquote>
+<p>Users need to comply with the specific policies and the organisational policies, standards, and procedures, eg by contract. ﻿Providing appropriate <strong>security training</strong> will further help individuals understand their security responsibilities, how the enterprise’s information assets can be put at risk, and how they can avoid that.</p>
+<blockquote>
+<p>用户需要遵守具体的政策和组织的政策、标准和程序，例如通过合同。 ﻿提供适当的安全培训将进一步帮助个人了解他们的安全责任，企业的信息资产如何被置于风险之中，以及他们如何避免这种情况</p>
+</blockquote>
+<h3 id="Quiz"><a href="#Quiz" class="headerlink" title="Quiz"></a>Quiz</h3><h4 id="Q1"><a href="#Q1" class="headerlink" title="Q1"></a>Q1</h4><p>Physical access does not provide the attacker with any significant advantage.</p>
+<p>The sentence is not true. Physical access allows the attacker to potentially bypass a huge number of other security controls and gives them a great advantage. With physical access, the attacker can try to use a debugger to gain root privileges, replace the BIOS, scan for cryptographic keys or install a keystroke logger. With access to lines and LANs they can plant wiretaps, bypass firewalls or initiate a denial of service attack. Through raiding trash bins outside of the offices they can discover useful discarded information.</p>
+<blockquote>
+<p>物理访问使攻击者有可能绕过大量的其他安全控制，并给他们带来巨大的优势。通过物理访问，攻击者可以尝试使用调试器来获得root权限，更换BIOS，扫描加密密钥或安装击键记录器。通过对线路和局域网的访问，他们可以植入窃听器，绕过防火墙或发起拒绝服务攻击。通过搜查办公室外的垃圾箱，他们可以发现有用的废弃信息</p>
+</blockquote>
+<h4 id="Q2"><a href="#Q2" class="headerlink" title="Q2"></a>Q2</h4><p>We don’t need to read the contents of an email to detect potential misuse or threat.</p>
+<p>This is true - in general, analysing the metadata is sufficient. For example knowing the recipient of an email, time and frequency of communications, where did the sender connect from, etc, is usually enough to get a sense of what is going on without needing to read the actual message contents.</p>
+<blockquote>
+<p>一般来说，分析元数据就足够了。例如，知道电子邮件的收件人、通信的时间和频率、发件人是从哪里连接的等等，通常足以让人了解发生了什么，而不需要阅读实际的信息内容</p>
+</blockquote>
+<h4 id="Q3"><a href="#Q3" class="headerlink" title="Q3"></a>Q3</h4><p>GANT的董事会决定，他们需要建立一个更好的方式来沟通他们之间以及与社会成员之间的联系。一些成员报告说，他们已经成为在电子邮件中向他们发送恶意软件或试图提取有关蟾蜍种群数据的人的目标。</p>
+<p>董事会成员没有这方面的计算机知识，需要咨询如何保护他们在家里和GANT办公室的系统免受恶意软件的侵害。敏感的会员资格或蟾蜍数量数据的丢失或未经授权的披露将是令人尴尬的，并有可能对人类和两栖动物造成伤害。</p>
+<p>What advice would you give to the society with regard to the countermeasures they need in order to provide an adequate level of protection from malware?</p>
+<p>First of all, recall that any decisions on the security controls to be implemented should be based on a risk analysis. In this case, there is a need to balance the risk of malware against the costs of purchasing and implementing countermeasures.</p>
+<blockquote>
+<p>任何关于要实施的安全控制的决定都应该基于风险分析。在这种情况下，有必要平衡恶意软件的风险与购买和实施反措施的成本</p>
+</blockquote>
+<p>A good starting point would be to:</p>
+<ul>
+<li>have a combination of anti-virus and personal firewall programs on each PC that has a connection to the internet or is networked to another computer that does</li>
+<li>choose a product that will also restrict the executables that will run on that computer to a known list of authorised products</li>
+<li>change all the default settings in operating systems, applications and browsers, for example passwords, configurations, open ports and so on, to make it harder for malware to compromise the computer</li>
+<li>apply patches to the operating system and applications promptly</li>
+<li>have a backup policy in place.</li>
+</ul>
+<blockquote>
+<ul>
+<li>在每台连接到互联网或与另一台连接到互联网的计算机联网的计算机上，都有一个反病毒和个人防火墙的组合程序</li>
+<li>选择一种产品，同时将在该计算机上运行的可执行文件限制在已知的授权产品列表中</li>
+<li>改变操作系统、应用程序和浏览器的所有默认设置，例如密码、配置、开放端口等，以使恶意软件更难入侵计算机</li>
+<li>及时给操作系统和应用程序打上补丁</li>
+<li>制定一个备份政策</li>
+</ul>
+</blockquote>
+<p>Other countermeasures could also be considered depending on the financial capability of GANT (eg network firewall or IDS, etc).</p>
+<blockquote>
+<p>根据GANT的财务能力，也可以考虑其他对策（如网络防火墙或IDS等）</p>
+</blockquote>
+<h4 id="Q4"><a href="#Q4" class="headerlink" title="Q4"></a>Q4</h4><p>Some people at GANT do not really understand the need to apply patches to combat malware. Why is it important to download and apply a software patch as soon as possible? Please explain your answer and provide an example.</p>
+<blockquote>
+<p>GANT 的一些人并不真正了解应用补丁来对抗恶意软件的必要性。为什么尽快下载并应用软件补丁很重要？</p>
+</blockquote>
+<p>Downloading and applying a software patch as soon as possible is very important because threats could exploit any vulnerabilities in the software. For instance, malware is known to precisely exploit vulnerabilities in software.</p>
+<p>Even worse, when a patch/update is released, hackers can more easily <strong>reverse-engineer</strong> it to write the exploit for the vulnerability the patch is trying to solve. Therefore, the more you delay patching the software, the more likely it is that an exploit will have been created to take advantage of the vulnerability.</p>
+<blockquote>
+<p>尽快下载和应用软件补丁是非常重要的，因为威胁可能利用软件中的任何漏洞。例如，众所周知，恶意软件正是利用了软件中的漏洞</p>
+<p>更糟糕的是，当一个补丁/更新发布后，黑客可以更容易地反向设计它，为补丁试图解决的漏洞编写利用程序。因此，你越是推迟给软件打补丁，就越有可能产生一个利用该漏洞的漏洞</p>
+</blockquote>
+<h4 id="Q5"><a href="#Q5" class="headerlink" title="Q5"></a>Q5</h4><p>The chairman of GANT, Ms Rachel Jackson, is going to follow the advice about buying anti-malware security controls, but she is lost on which products to buy. Do you have any tips for Ms Jackson on how to pick a suitable product?</p>
+<p>Choosing a good security product is difficult. However, some tips include:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Read independent reviews</strong></th>
+<th>Does it have a high degree of effectiveness in detecting and removing malware?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Frequency of updates</strong></td>
+<td>Is the scanner still maintained? Is it aware of new malware threats?</td>
+</tr>
+<tr>
+<td><strong>Whitelist of accepted executables</strong></td>
+<td>This will let the organisation control what can be executed on their network.</td>
+</tr>
+<tr>
+<td><strong>Reputable company</strong></td>
+<td>If you are going to buy an expensive licence, make sure the company will stick around!</td>
+</tr>
+<tr>
+<td><strong>Impact on operations</strong></td>
+<td>If the scanner will mean your employees can no longer do their work, you’ll need to find another solution.</td>
+</tr>
+</tbody></table>
+<h4 id="Q6"><a href="#Q6" class="headerlink" title="Q6"></a>Q6</h4><p>The officers of GANT have decided that they need to establish a better means for Information Security. They are now convinced they need to buy security products to achieve this (eg anti-virus). However, they seem to think that simply by using these products they will achieve security.</p>
+<p>What <strong>other</strong> types of security controls would you suggest GANT should look at? For each type, give one example.</p>
+<blockquote>
+<p>你建议GANT应该关注哪些其他类型的安全控制？对于每一种类型，请举出一个例子</p>
+</blockquote>
+<p>In addition to technical security controls, there are also physical and procedural (or social) security controls.</p>
+<p><strong>Physical controls</strong> rely on physical limitations to prevent the activities that a criminal or other unauthorised person might wish to carry out. An example is <strong>secure deletion</strong>.</p>
+<p><strong>Procedural controls</strong> are those controls that cover the rules, regulations and policies that an organisation puts in place to help reduce the risk of issues arising. An example is a <strong>clear screen and desk policy</strong>.</p>
+<blockquote>
+<p>除了技术安全控制，还有物理和程序（或社会）安全控制</p>
+<p>物理控制依靠物理限制来防止罪犯或其他未经授权的人可能希望进行的活动。一个例子是安全删除</p>
+<p>程序控制是指那些涵盖了一个组织为帮助减少问题发生的风险而制定的规则、条例和政策的控制。一个例子是明确的屏幕和桌面政策</p>
+</blockquote>
+<h4 id="Q7"><a href="#Q7" class="headerlink" title="Q7"></a>Q7</h4><p>GANT has recently acquired a new computer to store the digital data they hold about members and about toad populations.</p>
+<p>As a result, they are going to decommission the previous computer they are using. They would like to also make sure that the data in the computer is deleted. Discuss at least two methods that could be employed.</p>
+<blockquote>
+<p>他们想确保电脑中的数据被删除。讨论至少两种可以采用的方法</p>
+</blockquote>
+<p>One method consists of overwriting the physical media several times. Another method is to destroy the physical media.</p>
+<blockquote>
+<p>一种方法包括多次覆盖物理介质，另一种方法是销毁物理介质</p>
+</blockquote>
+<h4 id="Q8"><a href="#Q8" class="headerlink" title="Q8"></a>Q8</h4><p>Due to a recent breach, GANT have grown increasingly concerned about their security, and thanks to your explanations they are now very aware that procedural aspects may play a role in making GANT more secure.</p>
+<p>As such, they have come up with the brilliant idea of monitoring all actions of GANT employees so that they could see whether procedures are being adhered to. What would your advice be on this course of action?</p>
+<blockquote>
+<p>因此，他们想出了一个绝妙的主意，即监控GANT员工的所有行为，这样他们就可以看到程序是否被遵守了。你对这个行动方案有什么建议？</p>
+</blockquote>
+<p>First of all, GANT need to consider that there are applicable laws to consider here, which means that they cannot just do whatever they think is needed to monitor their employees, eg the Data Protection Act (DPA).</p>
+<p>Second, GANT should consider whether they actually need to monitor all actions of their employees, or whether they could have more formal processes to check for compliance which would achieve the same results.</p>
+<p>Finally, they should consider what impact this introduction may have on the actual GANT business objectives. For example, is this preventing employees from carrying out their job adequately or making it more cumbersome?</p>
+<blockquote>
+<p>首先，GANT需要考虑到这里有适用的法律需要考虑，这意味着他们不能只做他们认为需要的任何事情来监督他们的员工，例如《数据保护法》（DPA）</p>
+<p>其次，GANT应该考虑他们是否真的需要监督员工的所有行为，或者他们是否可以有更正式的程序来检查合规性，从而达到同样的效果</p>
+<p>最后，他们应该考虑这种做法对GANT的实际业务目标可能产生什么影响。例如，这是否会妨碍员工充分开展工作或使工作更加繁琐？</p>
+</blockquote>
+<h2 id="Security-Controls-Legislation-Cloud-Security-Security-Economics"><a href="#Security-Controls-Legislation-Cloud-Security-Security-Economics" class="headerlink" title="Security Controls Legislation, Cloud Security, Security Economics"></a>Security Controls Legislation, Cloud Security, Security Economics</h2><h3 id="Relevant-legislation-for-Security-Controls"><a href="#Relevant-legislation-for-Security-Controls" class="headerlink" title="Relevant legislation for Security Controls"></a>Relevant legislation for Security Controls</h3><p>Legislation applies to all types of security controls: technical, physical and procedural. Whether writing policy, designing CCTV or other monitoring systems, procuring storage and backup from third parties, everything needs to be checked against relevant legislation.</p>
+<blockquote>
+<p>立法适用于所有类型的安全控制：技术、物理和程序。无论是编写政策、设计闭路电视或其他监控系统，还是从第三方采购存储和备份，一切都需要对照相关法律进行检查</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Act</th>
+<th align="left">Relevance</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Data Protection Act (DPA)</td>
+<td align="left">Recently updated in 2018 with GDPR. It defines how data should be protected and used.</td>
+</tr>
+<tr>
+<td align="left">Human Rights Act (HRA)</td>
+<td align="left">All security controls and policies must respect human rights.</td>
+</tr>
+<tr>
+<td align="left">Financial Services Act (FSA)</td>
+<td align="left">A new regulatory framework for the financial system and financial services in the UK. It’s important if you work in the financial industry.</td>
+</tr>
+<tr>
+<td align="left">Official Secrets Act (OSA)</td>
+<td align="left">Required for government and defence projects.</td>
+</tr>
+<tr>
+<td align="left">Markets in Financial Instruments Directive (MiFID)</td>
+<td align="left">Investment intermediaries that provide services to clients around shares, bonds, units in collective investment schemes and derivatives. 向客户提供股票、债券、集体投资计划单位和衍生品相关服务的投资中介机构</td>
+</tr>
+<tr>
+<td align="left">Freedom of Information Act</td>
+<td align="left">A public ‘right of access’ to information held by public authorities.</td>
+</tr>
+</tbody></table>
+<p>Privacy laws exist to protect the <strong>rights of individuals</strong>. Most organisations hold and process your data, but compliance restricts what can be done with it. Organisations need to ensure that all information is surrounded by robust security controls and working practices, processes are implemented to ensure data is entered correctly (or can be corrected), and that paper records are locked away, computer screens turned off, and information is destroyed securely.</p>
+<blockquote>
+<p>隐私法的存在是为了保护个人的权利。大多数组织都持有和处理你的数据，但合规性限制了可以用它做什么。组织需要确保所有的信息都被强大的安全控制和工作实践所包围，实施各种程序以确保数据被正确输入（或可以被纠正），并确保纸质记录被锁起来，计算机屏幕被关闭，信息被安全地销毁</p>
+</blockquote>
+<p>The <strong>rights of employees</strong> are also vital to consider. Several of the technical controls rely on monitoring the organisation’s computer systems and activity of their employees. However employees always have the right to privacy, they have the right to know what data is held on them by their employer, and they have the right to know the scale and purpose of monitoring being carried out by their enterprise. Freedom of Information Act also applies to employees.</p>
+<blockquote>
+<p>雇员的权利也是必须考虑的。一些技术控制措施依赖于监控组织的计算机系统和员工的活动。然而，员工始终有隐私权，他们有权知道雇主持有他们的哪些数据，他们有权知道他们的企业正在进行的监控的规模和目的。信息自由法也适用于雇员</p>
+</blockquote>
+<p>Why would the enterprise want to monitor employees’ actions?</p>
+<p>The enterprise might want to understand the traffic of emails and its impact on performance, and to protect against illicit or malicious use of the organisation’s computers.</p>
+<blockquote>
+<p>企业可能想了解电子邮件的流量及其对业绩的影响，并防止组织的计算机被非法或恶意使用</p>
+</blockquote>
+<p>Must employees agree to monitoring?</p>
+<p>Yes, it’s usually included in the employment contract. However, monitoring must be assessed to ensure it is justified and meets legal requirements.</p>
+<blockquote>
+<p>必须对监控进行评估，以确保它是合理的并符合法律要求</p>
+</blockquote>
+<p>What if personal information is discovered during monitoring?</p>
+<p>Sensitivity must be employed and the employee should be requested to delete all personal information.</p>
+<blockquote>
+<p>必须采用敏感度，应要求员工删除所有的个人信息</p>
+</blockquote>
+<p>What if an employee is suspected as an insider threat?</p>
+<p>It is rarely justifiable to employ covert monitoring without the employees’ knowledge. Existing evidence can be used for employment tribunal or court cases, however.</p>
+<blockquote>
+<p>在员工不知情的情况下采用秘密监控很少是合理的。然而，现有的证据可用于就业法庭或法庭案件</p>
+</blockquote>
+<p>Finally, it is worth emphasising that most of the time when gathering information we care only about the <strong>meta-data</strong> (data about data), not the data itself. For example knowing the recipient of an email, time and frequency of communications, where did the sender connect from, etc, is usually enough to get a sense of what is going on without needing to read the actual message contents. This is the approach used and justified by government security agencies, for example.</p>
+<blockquote>
+<p>在收集信息时，大多数时候我们只关心元数据（关于数据的数据），而不是数据本身。例如，知道一封电子邮件的收件人、通信的时间和频率、发件人是从哪里连接的等等，通常足以让我们了解发生了什么，而不需要阅读实际的信息内容。例如，这是政府安全机构使用的方法，也是合理的</p>
+</blockquote>
+<h3 id="Security-of-cloud-computing"><a href="#Security-of-cloud-computing" class="headerlink" title="Security of cloud computing"></a>Security of cloud computing</h3><h4 id="What-is-cloud-computing"><a href="#What-is-cloud-computing" class="headerlink" title="What is cloud computing?"></a>What is cloud computing?</h4><p>The practice of using a network of remote servers hosted on the Internet to store, manage, and process data, rather than a local server or a personal computer. </p>
+<blockquote>
+<p>使用互联网上托管的远程服务器网络来存储、管理和处理数据的做法，而不是使用本地服务器或个人电脑</p>
+</blockquote>
+<p>Wikipedia</p>
+<p>In other words, the data is stored and processed remotely. Examples include Microsoft Azure and Amazon Web Services (AWS).</p>
+<blockquote>
+<p>数据是远程存储和处理的。例子包括微软Azure和亚马逊网络服务（AWS）</p>
+</blockquote>
+<h4 id="Benefits-of-cloud-computing"><a href="#Benefits-of-cloud-computing" class="headerlink" title="Benefits of cloud computing"></a>Benefits of cloud computing</h4><ul>
+<li>Companies have access to powerful computers that were previously out of reach or not cost-effective.</li>
+<li>There is potentially infinite storage.</li>
+<li>Rapid resource provisioning.</li>
+</ul>
+<blockquote>
+<p>公司可以使用强大的计算机，而这些计算机在以前是遥不可及的，或者不符合成本效益<br>有潜在的无限的存储空间<br>快速的资源配置</p>
+</blockquote>
+<p>Legal implications</p>
+<p>An organisation must fully assess the terms and conditions of the cloud computing provider, 必须全面评估云计算供应商的条款和条件 including researching the following questions:</p>
+<p>What is the location of the servers?</p>
+<p>The cloud provider’s servers must not be in an undesirable or legally problematic jurisdiction; Data Protection laws require organisations to verify this.</p>
+<blockquote>
+<p>云计算供应商的服务器不得位于不受欢迎或有法律问题的司法管辖区；数据保护法要求组织核实这一点</p>
+</blockquote>
+<p>Who has access to the information?</p>
+<p>The cloud provider might be given important rights over the organisation, such as the right to use it commercially or disclose it to third parties.</p>
+<blockquote>
+<p>云提供商可能被赋予对组织的重要权利，如商业使用或向第三方披露的权利</p>
+</blockquote>
+<p>How can audits be performed?</p>
+<p>Will it be possible for the organisation to audit the cloud provider with a view to ensuring that data is protected?</p>
+<blockquote>
+<p>组织是否有可能对云提供商进行审计，以确保数据得到保护？</p>
+</blockquote>
+<p>Are subcontractors involved?</p>
+<p>That is, can the organisation restrict the cloud provider from outsourcing the work to one of their subcontractors?</p>
+<blockquote>
+<p>也就是说，该组织能否限制云提供商将工作外包给他们的某个分包商？</p>
+</blockquote>
+<h4 id="What-problems-can-arise-when-a-cloud-computing-provider-is-used"><a href="#What-problems-can-arise-when-a-cloud-computing-provider-is-used" class="headerlink" title="What problems can arise when a cloud computing provider is used?"></a>What problems can arise when a cloud computing provider is used?</h4><ol>
+<li><p><strong>The cloud provider could be hacked</strong>. While the risk of protecting the data is outsourced to the provider, if the data is leaked it will also impact the organisation. A defence of ‘they were hacked, not us’ will not work. This is why risk is shared, and not transferred.</p>
+<blockquote>
+<p>云供应商可能被黑客攻击。虽然保护数据的风险被外包给了供应商，但如果数据被泄露，也会影响到组织。以 “他们被黑了，不是我们 “作为辩护理由是行不通的。这就是为什么风险是共享的，而不是转移的</p>
+</blockquote>
+</li>
+<li><p><strong>Data is deleted (or lost)</strong>. There is no guarantee that the cloud provider is backing up the data, nor the results of computations.</p>
+<blockquote>
+<p>数据被删除（或丢失）。不能保证云供应商会备份数据，也不能保证计算结果</p>
+</blockquote>
+</li>
+<li><p><strong>Data is not deleted appropriately</strong>. There is no guarantee that data will be completely removed from the cloud infrastructure when the client decides to delete data from the cloud.</p>
+<blockquote>
+<p>数据没有被适当地删除。当客户决定从云中删除数据时，不能保证数据会被完全从云基础设施中删除</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="Conventional-and-cloud-based-storage-compared"><a href="#Conventional-and-cloud-based-storage-compared" class="headerlink" title="Conventional and cloud-based storage, compared"></a>Conventional and cloud-based storage, compared</h4><table>
+<thead>
+<tr>
+<th align="left">Conventional</th>
+<th align="left">Cloud-based</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">**Benefits:**organisations retain full end-to-end control of their service/data. 组织保留对其服务/数据的全部端到端控制</td>
+<td align="left"><strong>Benefits:</strong> 1. this approach is cheaper than purchasing hardware and hiring staff to maintain it 2. speed of implementation: cloud systems can be deployed in a few hours (ie there is no delivery or set-up time). 1. 这种方法比购买硬件和雇佣员工来维护它更便宜 2. 实施速度：云系统可以在几小时内部署（即没有交付或设置时间）</td>
+</tr>
+<tr>
+<td align="left"><strong>Disadvantages:</strong> 1. there is an overhead and financial cost for selecting, implementing, maintaining, securing and upgrading components 2. internal staff dedicated to protecting information are required. 1. 选择、实施、维护、保护和升级组件需要一定的开销和财务成本 2. 需要专门保护信息的内部人员</td>
+<td align="left"><strong>Disadvantages:</strong> 1. shared risk with a trusted third party; managing the risk can be difficult 2. regulatory oversight is also a problem (as above). 1. 与受信任的第三方共享风险；管理风险可能很困难 2. 监管监督也是一个问题</td>
+</tr>
+</tbody></table>
+<h4 id="Assured-deletion-in-the-Cloud"><a href="#Assured-deletion-in-the-Cloud" class="headerlink" title="Assured deletion in the Cloud"></a>Assured deletion in the Cloud</h4><p>Assured Deletion: “Rendering data completely irrecoverable”  使数据完全不可恢复</p>
+<ul>
+<li><p>Completely removing data from the storage media. </p>
+</li>
+<li><p>Making data inaccessible to anyone after it has been deemed deleted.</p>
+</li>
+</ul>
+<p>Why </p>
+<ul>
+<li>Users want sensitive data that is no longer needed to be destroyed. </li>
+<li>Cloud Providers may want assured deletion to comply with regulations – E.g. GDPR’s Right to be forgotten</li>
+</ul>
+<p>Normal deletion leaves data behind </p>
+<p>Incompletely deleted data risks disclosure </p>
+<p>Not a new problem, but more challenging - No access to the physical media! </p>
+<p>Important issue, less attention - Difficult to completely delete data, New challenges, No building blocks</p>
+<h4 id="Assured-deletion-Threat-–-Honest-Provider"><a href="#Assured-deletion-Threat-–-Honest-Provider" class="headerlink" title="Assured deletion Threat – Honest Provider"></a>Assured deletion Threat – Honest Provider</h4><ul>
+<li>Provider is honest but prone to accidental data leaks. </li>
+<li>Provider wants to provide complete deletion in order to comply with regulations and meet tenants requirements. </li>
+<li>Malicious tenants probe resources for partially deleted data</li>
+</ul>
+<blockquote>
+<ul>
+<li>供应商是诚实的，但容易发生意外的数据泄漏。</li>
+<li>提供者希望提供完全的删除，以遵守法规和满足租户的要求。</li>
+<li>恶意租户探测资源以获取部分删除的数据</li>
+</ul>
+</blockquote>
+<h5 id="Requirements-–-Honest-cloud-provider"><a href="#Requirements-–-Honest-cloud-provider" class="headerlink" title="Requirements – Honest cloud provider"></a>Requirements – Honest cloud provider</h5><p>Providing deletion should </p>
+<ul>
+<li>Not disrupt service availability </li>
+<li>make data either inaccessible or completely remove it </li>
+<li>affect all copies </li>
+<li>be fine-grained </li>
+<li>Take place immediately and without errors </li>
+<li>Provable to users</li>
+</ul>
+<blockquote>
+<ul>
+<li><p>不破坏服务的可用性 </p>
+</li>
+<li><p>使数据无法访问或完全删除 </p>
+</li>
+<li><p>影响所有副本 </p>
+</li>
+<li><p>是细粒度的 </p>
+</li>
+<li><p>立即发生，没有错误 </p>
+</li>
+<li><p>可向用户证明</p>
+</li>
+</ul>
+</blockquote>
+<h5 id="Challenges-–-Honest-cloud-provider"><a href="#Challenges-–-Honest-cloud-provider" class="headerlink" title="Challenges – Honest cloud provider"></a>Challenges – Honest cloud provider</h5><p>Main cloud features pose different challenges </p>
+<ul>
+<li>Multiple copies of data </li>
+<li>Virtualization </li>
+<li>Multiple users – Data gets tangled together </li>
+<li>Multiple components </li>
+<li>Multiple logical layers </li>
+<li>Underlying hardware – E.g., Different storage media – SSDs </li>
+<li>Third-party and Offline backups – e.g., other services / tapes</li>
+</ul>
+<blockquote>
+<ul>
+<li>数据的多个副本 </li>
+<li>虚拟化 </li>
+<li>多个用户 - 数据被纠缠在一起 </li>
+<li>多个组件 </li>
+<li>多个逻辑层 </li>
+<li>底层硬件 - 例如，不同的存储介质 - SSDs </li>
+<li>第三方和离线备份 - 例如，其他服务/磁带</li>
+</ul>
+</blockquote>
+<h5 id="Assured-deletion-Threat-–-Dishonest-Provider"><a href="#Assured-deletion-Threat-–-Dishonest-Provider" class="headerlink" title="Assured deletion Threat – Dishonest Provider"></a>Assured deletion Threat – Dishonest Provider</h5><p>Curious provider </p>
+<ul>
+<li>Tenants are suspicious about provider’s data disposal responsibilities </li>
+<li>Tenants are aware of risks involved with incomplete deletion. </li>
+<li>Tenants want assured deletion without incurring extra costs.</li>
+</ul>
+<blockquote>
+<ul>
+<li>租户对提供者的数据处理责任感到怀疑 </li>
+<li>租户意识到不完全删除所涉及的风险。</li>
+<li>租户希望在不产生额外费用的情况下保证删除</li>
+</ul>
+</blockquote>
+<h3 id="Security-Economics"><a href="#Security-Economics" class="headerlink" title="Security Economics"></a>Security Economics</h3><p>Economics of security addresses individual and organizational decisions and behaviors with respect to security and privacy as market decisions.</p>
+<blockquote>
+<p>安全经济学涉及个人和组织在安全和隐私方面的决策和行为，是市场决策</p>
+</blockquote>
+<h3 id="Quiz-1"><a href="#Quiz-1" class="headerlink" title="Quiz"></a>Quiz</h3><h4 id="Q1-1"><a href="#Q1-1" class="headerlink" title="Q1"></a>Q1</h4><p>We don’t need to read the contents of an email to detect potential misuse or threat.</p>
+<p>This is true - in general, analysing the metadata is sufficient. For example knowing the recipient of an email, time and frequency of communications, where did the sender connect from, etc, is usually enough to get a sense of what is going on without needing to read the actual message contents.</p>
+<blockquote>
+<p>一般来说，分析元数据就足够了。例如，知道电子邮件的收件人、通信的时间和频率、发件人是从哪里连接的等等，通常就足以让人了解发生了什么，而不需要阅读实际的信息内容</p>
+</blockquote>
+<h4 id="Q2-1"><a href="#Q2-1" class="headerlink" title="Q2"></a>Q2</h4><p>Natterjack蟾蜍欣赏小组（GANT）是一个保护小组，热衷于促进和保护Nutterjack蟾蜍的福祉。它是一个在英国注册的慈善机构，在全世界拥有大量的成员，他们都热衷于促进GANT的工作。</p>
+<p>不幸的是，有关的蟾蜍是一种濒危物种，由于新地区的开发，它正逐渐被破坏。例如，由于开发工作，它在威尔士的一些地区已经局部灭绝，不得不重新引进。</p>
+<p>该小组的所有信息都可以通过网络应用来获取，或者通过联系小组的名誉秘书简-皮博迪博士来获取纸质记录。这些信息包括该小组的成员记录、活动、会议地点、Natterjack Toad的栖息地、关于他们工作的保密方面等。</p>
+<p>GANT are also exploring cloud computing, so that they could elastically expand the instances of their service as a way of replicating it and becoming less vulnerable to potential Denial of Service attacks. What would be the legal implications and security risks if GANT relied on cloud computing for their infrastructure?</p>
+<blockquote>
+<p>GANT也在探索云计算，这样他们就可以灵活地扩展他们的服务实例，作为一种复制的方式，不容易受到潜在的拒绝服务攻击。如果GANT的基础设施依赖云计算，会有什么法律影响和安全风险？</p>
+</blockquote>
+<p>Legal implications: They must consider the physical location of services (Data Protection Rules), access to information (cloud provider can read all data), if GANT can audit the cloud provider (verify if the cloud is keeping the data secure) and legal issues around the cloud providers sub-contractors.</p>
+<blockquote>
+<p>法律影响。他们必须考虑服务的物理位置（数据保护规则），对信息的访问（云供应商可以读取所有数据），GANT是否可以审计云供应商（验证云是否保持数据安全）以及围绕云供应商分包商的法律问题</p>
+</blockquote>
+<p>Security Risks: Cloud providers can be hacked and the information is leaked publicly. This is an example of risk-sharing as while the cloud provider is liable - the data leaked can be embarrassing to the organisation. Also the data can be deleted/lost if the cloud provider suffers a crash and does not keep regular backups. Or the data could not be deleted completely when needed.</p>
+<blockquote>
+<p>安全风险。云供应商可能被黑客攻击，信息被公开泄露。这是一个风险分担的例子，因为虽然云提供商有责任，但泄露的数据可能会使组织感到尴尬。另外，如果云提供商发生崩溃，并且没有保持定期备份，数据可能会被删除/丢失。或者在需要时不能完全删除数据</p>
+</blockquote>
+<h4 id="Q3-1"><a href="#Q3-1" class="headerlink" title="Q3"></a>Q3</h4><p>What is a <strong>moral hazard</strong>? Give an example showing how the concept applies to Information Security.</p>
+<p>A moral hazard is a situation in which one party gets involved in a risky event knowing that it is protected against the risk.</p>
+<p>In Information Security, this would apply when people engage in activities that can cause an Information Security risk thinking they are somehow protected.</p>
+<p>For instance, one may engage with riskier and less secure websites thinking that the anti-malware they have installed will protect them.</p>
+<blockquote>
+<p>道德风险是一种情况，即一方知道自己受到保护，可以避免风险而参与到风险事件中。</p>
+<p>在信息安全方面，这适用于人们从事可能导致信息安全风险的活动，认为他们在某种程度上得到了保护。</p>
+<p>例如，人们可能会参与风险较高、安全性较低的网站，认为他们所安装的反恶意软件会保护他们。</p>
+</blockquote>
+<h4 id="Q4-1"><a href="#Q4-1" class="headerlink" title="Q4"></a>Q4</h4><p>What is a <em>Market for Lemons</em> and how does it apply to information security economics?</p>
+<p>The <em>market for lemons</em> was an example introduced by Akerlof (Noble prize winner) in 1970 to explain the concept of asymmetric information in economics. It presents the following simple yet profound insight: suppose that there are 100 used cars for sale in a town: 50 well-maintained cars worth $2000 each, and 50 <em>lemons</em> (said of a car that turns out to have several manufacture defects not apparent to the buyer) worth $1000. The sellers know which is which, but the buyers don’t. What is the market price of a used car? You might think $1500; but at that price no good cars will be offered for sale. So the market price will be close to $1000. This is one reason poor security products predominate. When users can’t tell good from bad, they might as well buy a cheap antivirus product for $10 as a better one for $20, and we may expect a race to the bottom on price.</p>
+<blockquote>
+<p>柠檬市场是阿克洛夫（诺贝尔奖得主）在1970年提出的一个例子，用来解释经济学中不对称信息的概念。它提出了以下简单而深刻的见解：假设在一个城镇有100辆二手车出售。50辆维护良好的汽车，每辆价值2000美元，50辆柠檬车（说的是一辆车原来有几个制造缺陷，但对买方来说并不明显）价值1000美元。卖家知道哪个是哪个，但买家不知道。一辆二手车的市场价格是多少？你可能认为是1500美元；但在这个价格上，没有好的汽车会被出售。所以市场价格将接近1000美元。这就是劣质安全产品占主导地位的一个原因。当用户无法辨别好坏时，他们可能会买一个10美元的廉价杀毒产品，而买一个20美元的更好的产品，我们可以期待在价格上的竞争</p>
+</blockquote>
+<h2 id="Continuity-Management-and-Disaster-Recovery"><a href="#Continuity-Management-and-Disaster-Recovery" class="headerlink" title="Continuity Management and Disaster Recovery"></a>Continuity Management and Disaster Recovery</h2><h3 id="Business-continuity-management"><a href="#Business-continuity-management" class="headerlink" title="Business continuity management"></a>Business continuity management</h3><p>Business continuity management (BCM) is a holistic management process that identifies potential impacts that threaten an organisation and provides a framework for building resilience and capability for an effective response that safeguards the interests of its key stakeholders, reputation, brand and value creation activities.</p>
+<blockquote>
+<p>业务连续性管理（BCM）是一个整体的管理过程，它可以确定威胁到一个组织的潜在影响，并提供一个框架来建立弹性和能力，以作出有效的反应，保障其主要利益相关者的利益、声誉、品牌和价值创造活动</p>
+</blockquote>
+<p>There are several ways in which BCM relates to risk management:</p>
+<ul>
+<li>BCM needs may arise from wider business and Information Security risk assessments 业连管的需要可能产生于更广泛的业务和信息安全风险评估</li>
+<li>the priorities of BCM must be defined by business managers and take into account the entirety of their business processes, similarly to risk management 业连管的优先事项必须由业务经理确定，并考虑到其整个业务流程，这与风险管理相似</li>
+<li>BCM priorities are defined by a business impact assessment, which is similar to the impact assessment needed to calculate the asset value for risk assessment but with particularities when thinking about recovery for instance 业连管的优先事项是由业务影响评估确定的，这与计算风险评估的资产价值 所需的影响评估相似，但在考虑恢复问题时有其特殊性</li>
+<li>risk management focuses on how to avoid, reduce, and transfer the risk of a threat materialising, while BCM focuses on how to recover once a threat materialises. 风险管理的重点是如何避免、减少和转移威胁发生的风险，而业连管的重点是一旦发生威胁如何恢复</li>
+</ul>
+<h4 id="Business-Continuity-Plan"><a href="#Business-Continuity-Plan" class="headerlink" title="Business Continuity Plan"></a>Business Continuity Plan</h4><p>A crucial part of BCM is the <strong>Business Continuity Plan</strong>, which is a three step process:</p>
+<ol>
+<li>Assigning responsibilities</li>
+</ol>
+<p>Ultimately, it will be senior management who must approve the plan. The main responsible person is likely to be an appointment at boardroom or executive level to oversee, and an appointment to take the programme forward.</p>
+<blockquote>
+<p>归根结底，必须由高级管理层批准该计划。主要责任人很可能是在董事会或执行层面上的任命，以监督，并任命其推动该计划的实施</p>
+</blockquote>
+<ol start="2">
+<li>Establishing and implementing the plan</li>
+</ol>
+<p>This includes defining the scope, aim and objectives, and the activities required if the plan is triggered – that is, what are the likely problems that will pop up? How can we deal with them?</p>
+<blockquote>
+<p>这包括定义范围、目的和目标，以及如果计划被触发所需的活动–也就是说，可能会冒出什么问题？我们如何处理它们？</p>
+</blockquote>
+<ol start="3">
+<li>Ongoing management</li>
+</ol>
+<p>Business continuity plans need to be regularly reviewed. This is because it could easily become out of date and no longer reflect real business operations.</p>
+<blockquote>
+<p>业务连续性计划需要定期审查。这是因为它很容易过时，不再能反映真实的业务运作</p>
+</blockquote>
+<p>In order to create an effective business continuity plan, we need to:</p>
+<ul>
+<li>understand the organisation and its risks, so this relates to risk management and assessment as seen in this module in previous weeks 了解组织及其风险，因此这与前几周本模块中的风险管理和评估有关</li>
+<li>determine the BCM strategy, identifying the actions needed to maintain critical activities to support the organisation’s products and services 确定业连管战略，确定维持关键活动所需的行动，以支持该组织的产品和服务</li>
+<li>develop and implement the BCM response, which includes answering questions such as: How do we meet our expected recovery times? What tactics can we deploy to protect resources? 制定并实施业连管对策，其中包括回答以下问题。我们如何满足我们的预期恢复时间？我们可以部署什么战术来保护资源？</li>
+</ul>
+<h4 id="Business-impact-analysis"><a href="#Business-impact-analysis" class="headerlink" title="Business impact analysis"></a>Business impact analysis</h4><p>Business impact analysis predicts the consequences of disruption of a business function and process, and gathers information needed to develop recovery strategies.</p>
+<blockquote>
+<p>业务影响分析预测了业务功能和流程中断的后果，并收集了制定恢复战略所需的信息</p>
+</blockquote>
+<p>First, list products that could be disrupted and for each identified product, consider the impact of disruption in terms of stakeholders and the organisation’s ability to meet its aims and objectives. Secondly, we need to figure out what the <strong>maximum length that the disruption can be managed</strong> without interrupting the business is. In other words, if a service or a product is disrupted, how long will it take for the disruption to be felt by the business in terms of profit, reputation, etc. We also need to identify the <strong>recovery time objective</strong> (RTO), which is a point in time at which each key product or service would need to be resumed in the event of a disruption.</p>
+<blockquote>
+<p>首先，列出可能被中断的产品，对于每个确定的产品，考虑中断对利益相关者的影响以及组织实现其目的和目标的能力。其次，我们需要弄清楚，在不中断业务的情况下，可以管理中断的最大长度是多少。换句话说，如果一项服务或一个产品被中断，企业需要多长时间才能在利润、声誉等方面感受到中断的影响。我们还需要确定恢复时间目标（RTO），即在发生中断的情况下，每个关键产品或服务需要恢复的时间点</p>
+</blockquote>
+<p>Finally, we need to identify the <strong>critical activities</strong> necessary to deliver the products and services. These are the activities that we need to protect and in order to do that we need to quantify the resources (people, premises, technology, information, suppliers, etc) required over time to maintain these activities at an acceptable level to and meet our RTO.</p>
+<blockquote>
+<p>最后，我们需要确定提供产品和服务所需的关键活动。这些是我们需要保护的活动，为了做到这一点，我们需要量化所需的资源（人员、场地、技术、信息、供应商等），以便将这些活动维持在一个可接受的水平，并满足我们的RTO</p>
+</blockquote>
+<p>The resources required after a disaster may be more than those required for day to day activity. No single individual is likely to know the whole plan, so a <strong>team or committee</strong> should be appointed for the whole organisation. This implies that the whole organisation should ideally be consulted about the plan through workshops, questionnaires, interviews and so on. It is perhaps better to think about the <strong>consequences</strong> rather than events when planning. For example, it is better to plan for ‘the office being damaged and no longer usable’, rather than a ‘burst main pipe’.</p>
+<blockquote>
+<p>灾难发生后所需的资源可能比日常活动所需的资源要多。没有一个人可能知道整个计划，所以应该为整个组织指定一个团队或委员会。这意味着，最好是通过研讨会、问卷调查、访谈等方式，就该计划咨询整个组织。在制定计划时，考虑后果而不是考虑事件也许更好。例如，最好是为 “办公室被损坏而无法使用 “做计划，而不是为 “水管爆裂 “做计划</p>
+</blockquote>
+<p>Determining your BCM strategy boils down to identifying the actions that need to be taken to maintain the critical activities that underpin the delivery of your organisation’s products and services.</p>
+<blockquote>
+<p>确定你的业连管战略可以归结为确定需要采取的行动，以维持支撑贵组织产品和服务交付的关键活动</p>
+</blockquote>
+<p>Put another way the strategy should show how to meet the RTO for each activity and what tactics to use to protect critical resources. The following questions may be useful when considering your options.</p>
+<blockquote>
+<p>换句话说，该战略应说明如何满足每项活动的RTO，以及使用什么策略来保护关键资源。在考虑你的选择时，以下问题可能是有用的</p>
+</blockquote>
+<h5 id="How-to-meet-the-RTO"><a href="#How-to-meet-the-RTO" class="headerlink" title="How to meet the RTO?"></a>How to meet the RTO?</h5><ul>
+<li>What can we do to ensure the recovery time is satisfied?</li>
+<li>Can we introduce new documentation for staff to read?</li>
+<li>Do we need new procedures in place?</li>
+</ul>
+<h5 id="How-to-protect-crucial-resources"><a href="#How-to-protect-crucial-resources" class="headerlink" title="How to protect crucial resources?"></a>How to protect crucial resources?</h5><ul>
+<li>Should we maintain the same technology at several locations?</li>
+<li>How do we secure and keep copies of data necessary to our business operations?</li>
+<li>What can our suppliers do to help?</li>
+<li>How do we report everything to stakeholders?</li>
+</ul>
+<h4 id="Developing-and-implementing-the-business-continuity-plan"><a href="#Developing-and-implementing-the-business-continuity-plan" class="headerlink" title="Developing and implementing the business continuity plan"></a>Developing and implementing the business continuity plan</h4><p>It is common for the business continuity plan to be split into three separate documents:</p>
+<ul>
+<li>incident management</li>
+<li>business continuity</li>
+<li>business recovery</li>
+</ul>
+<p>For a small team it might make more sense to keep a single document instead.</p>
+<p>Below you can see the outline of the recommended sections. 下面你可以看到推荐章节的大纲</p>
+<h5 id="Purpose-scope-and-content"><a href="#Purpose-scope-and-content" class="headerlink" title="Purpose, scope and content"></a>Purpose, scope and content</h5><p>What is the plan going to cover? What is the scope (ie a single premise or building, whole operation, etc)? What is the document going to cover?</p>
+<blockquote>
+<p>该计划将涵盖什么？范围是什么（即单个场所或建筑、整个操作等）？文件将涵盖哪些内容？</p>
+</blockquote>
+<h5 id="Document-maintainer"><a href="#Document-maintainer" class="headerlink" title="Document maintainer"></a>Document maintainer</h5><p>You should document who owns the plan and who is responsible for reviewing, amending and updating it at regular intervals. A system of version control needs to be implemented.</p>
+<blockquote>
+<p>你应该记录谁拥有该计划，谁负责定期审查、修改和更新该计划。需要实施一个版本控制的系统</p>
+</blockquote>
+<h5 id="Plan-invocation"><a href="#Plan-invocation" class="headerlink" title="Plan invocation"></a>Plan invocation</h5><p>The method by which the plan is invoked should be clearly documented, setting out the individuals who have the authority to invoke the plan and under what circumstances. The plan should also set down the process for mobilising and standing down the relevant teams.</p>
+<blockquote>
+<p>应明确记录计划的调用方法，列出有权调用计划的个人以及在什么情况下调用。该计划还应该规定动员和解散相关团队的程序</p>
+</blockquote>
+<h5 id="Roles-and-responsibilities"><a href="#Roles-and-responsibilities" class="headerlink" title="Roles and responsibilities"></a>Roles and responsibilities</h5><p>The plan should list all individuals with a role in its implementation and explain that role.</p>
+<blockquote>
+<p>该计划应列出所有在计划实施中发挥作用的个人，并解释其作用</p>
+</blockquote>
+<h5 id="Incident-management"><a href="#Incident-management" class="headerlink" title="Incident management"></a>Incident management</h5><p>Document the required tasks to manage the initial phase of the incident and who is responsible for each task.  记录管理事件初始阶段所需的任务，以及每项任务的负责者 The tasks include:</p>
+<ul>
+<li>site evacuation and mobilisation of safety</li>
+<li>first-aid or evacuation-assistance teams</li>
+<li>locating and accounting for those who were on site and the immediate vicinity</li>
+<li>ongoing employee and customer communications and safety briefings</li>
+<li>up to date contract list and location of plan</li>
+<li>identifying robust rooms to manage the incident.</li>
+</ul>
+<blockquote>
+<p>现场疏散和动员安全人员<br>急救或疏散援助小组<br>定位和清点现场和附近的人员<br>持续的员工和客户沟通和安全简报<br>最新的合同清单和计划的位置<br>确定强大的房间来管理事件</p>
+</blockquote>
+<h5 id="Business-continuity-and-recovery"><a href="#Business-continuity-and-recovery" class="headerlink" title="Business continuity and recovery"></a>Business continuity and recovery</h5><p>In terms of business continuity and recovery the plan should:</p>
+<ul>
+<li>set out the critical activities to be recovered</li>
+<li>the timescales in which they are to be recovered and the needed recovery levels</li>
+<li>the resources available at different points in time to deliver your critical activities</li>
+<li>the process for mobilising these resources and the detailed actions needed to ensure the continuity and recovery of your critical activities.</li>
+</ul>
+<blockquote>
+<p>列出要恢复的关键活动<br>要恢复的时间范围和所需的恢复水平<br>在不同的时间点可用于开展关键活动的资源<br>调动这些资源的过程，以及为确保关键活动的连续性和恢复所需的详细行动</p>
+</blockquote>
+<h4 id="演习"><a href="#演习" class="headerlink" title="演习"></a>演习</h4><p>The plan must be <strong>exercised regularly</strong> in order to ensure that arrangements are reliable. Until the arrangements are tested we do not know if they are.</p>
+<blockquote>
+<p>该计划必须定期实施，以确保安排是可靠的。在对安排进行测试之前，我们不知道它们是否可靠</p>
+</blockquote>
+<p>Exercising involves validating the plans, rehearsing actions of key staff, and testing systems that are relied upon during an incident. The frequency of the exercises depends on the size of the organisation but should be no less than once a year as the exercises are likely to find weaknesses that need to be corrected.</p>
+<blockquote>
+<p>演习包括验证计划，演练关键人员的行动，以及测试事件发生时所依赖的系统。演习的频率取决于组织的规模，但应不少于每年一次，因为演习很可能会发现需要纠正的弱点</p>
+</blockquote>
+<p>Here are four common types of exercises:</p>
+<h5 id="Discussion-based-exercises"><a href="#Discussion-based-exercises" class="headerlink" title="Discussion based exercises"></a>Discussion based exercises</h5><p>Bring staff together and inform them about their responsibilities. Discuss with staff to identify problems and solutions.</p>
+<blockquote>
+<p>把员工召集起来，让他们了解自己的责任。与员工讨论，找出问题和解决方案</p>
+</blockquote>
+<h5 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h5><p>Not everything can be tested, however, you can consider the contact list, activation process and the relied upon hardware such as communication lines, power supply, etc.</p>
+<blockquote>
+<p>不是所有的东西都可以测试，但是，你可以考虑联系名单、激活过程和所依赖的硬件，如通信线路、电源等</p>
+</blockquote>
+<h5 id="Table-top-exercise-ie-think-board-games"><a href="#Table-top-exercise-ie-think-board-games" class="headerlink" title="Table-top exercise (ie think board games)"></a>Table-top exercise (ie think board games)</h5><p>In this exercise, you bring staff together around a table to make decisions as events unfold in the same way as if the incident actually happened. This can take between a couple of hours and half a day. The benefit of this format is that it can generate high levels of realism and lets everyone know each other.</p>
+<blockquote>
+<p>在这种演习中，你把员工聚集在一张桌子旁，随着事件的发展做出决定，就像事件真的发生一样。这可能需要几个小时到半天的时间。这种形式的好处是，它可以产生高度的真实感，让每个人都了解对方。</p>
+</blockquote>
+<h5 id="Live-exercise"><a href="#Live-exercise" class="headerlink" title="Live exercise"></a>Live exercise</h5><p>Live exercises are necessary for some components such as evacuation that cannot be tested effectively in any other way. While single component tests are relatively simple to set up, full tests are much more complex and can be costly.</p>
+<blockquote>
+<p>现场演习对于一些不能以其他方式有效测试的部分，如疏散，是必要的。虽然单一成分测试的设置相对简单，但完整的测试要复杂得多，而且成本也很高</p>
+</blockquote>
+<h3 id="Disaster-recovery"><a href="#Disaster-recovery" class="headerlink" title="Disaster recovery"></a>Disaster recovery</h3><p>Disaster recovery is that part of business continuity that addresses the need to recover IT services, voice services and data following a business-threatening impact. It prioritises those services and information that are <strong>critical to the business</strong>. It includes planning for crisis situations and having in place the means to identify incidents, contain and recover them.</p>
+<blockquote>
+<p>灾难恢复是业务连续性的一部分，它解决了在业务受到威胁后恢复IT服务、语音服务和数据的需要。它将那些对业务至关重要的服务和信息列为优先事项。它包括对危机情况的规划，以及拥有识别事件、控制和恢复事件的手段</p>
+</blockquote>
+<p>The main goals for a disaster recovery plan are:</p>
+<table>
+<thead>
+<tr>
+<th align="left">To minimise interruptions to the normal operations</th>
+<th>In other words to maintain business operations as normal.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">To limit the extent of disruption and damage</td>
+<td>A disaster can severely damage an organisation.</td>
+</tr>
+<tr>
+<td align="left">To minimise the economic impact of the disaster</td>
+<td>If you can’t access the office for a few weeks, can you still make a profit?</td>
+</tr>
+<tr>
+<td align="left">To establish means of operations in advance</td>
+<td>Signing contracts with backup establishments or keeping redundant copies of data for later use.</td>
+</tr>
+<tr>
+<td align="left">To train personnel in emergency procedures</td>
+<td>Where are the emergency procedures kept? What if they can’t be accessed?</td>
+</tr>
+<tr>
+<td align="left">To provide smooth and rapid restoration of services</td>
+<td>How to prevent long term fallout for the business?</td>
+</tr>
+</tbody></table>
+<p>A disaster recovery plan usually mentions the following people, resources and activities.</p>
+<ul>
+<li><strong>IT services</strong><br>Which business processes are supported by which systems? What are the risks here?</li>
+<li><strong>People</strong><br>Who are the stakeholders, on both the business and IT side, in any given disaster recovery process?</li>
+<li><strong>Suppliers</strong><br>Which external suppliers would you need to contact in the event of an IT outage?</li>
+<li><strong>Locations</strong><br>Where will you work if your normal premises are rendered inaccessible?</li>
+<li><strong>Testing</strong><br>How will you test your disaster recovery plan? Will you simulate parts of it over the weekend?</li>
+<li><strong>Training</strong><br>What training and documentation will be provided to end users?</li>
+</ul>
+<h4 id="A-disaster-recovery-plan-contents"><a href="#A-disaster-recovery-plan-contents" class="headerlink" title="A disaster recovery plan contents"></a>A disaster recovery plan contents</h4><p>Putting it all together, this is how you might structure the final document.</p>
+<p>Introduction</p>
+<p>A summary of the objectives and scope of the plan, including IT services and locations covered, the different services, and maintenance and testing activities. Also includes a revision history to track changes to the document.</p>
+<blockquote>
+<p>对计划的目标和范围的总结，包括涵盖的IT服务和地点，不同的服务，以及维护和测试活动。还包括一个修订历史，以跟踪文件的变化</p>
+</blockquote>
+<p>Roles and responsibilities</p>
+<p>A list of the internal and external stakeholders involved in each DR process covered, complete with their contact details and a description of their duties.</p>
+<blockquote>
+<p>涵盖的每个DR流程所涉及的内部和外部利益相关者的列表，包括他们的详细联系方式和他们的职责描述</p>
+</blockquote>
+<p>Incident response</p>
+<p>When should the plan be triggered, and how and when should employees, management, partners and customers be notified?</p>
+<blockquote>
+<p>什么时候应该触发该计划，以及如何和何时应该通知员工、管理层、合作伙伴和客户？</p>
+</blockquote>
+<p>Disaster recovery procedures</p>
+<p>When the plan is triggered, the stakeholders can start to action the process for each affected IT service. These processes have to be set out step by step.</p>
+<blockquote>
+<p>当计划被触发时，利益相关者可以开始对每个受影响的IT服务的流程采取行动。这些程序必须一步一步地制定出来</p>
+</blockquote>
+<p>Appendices</p>
+<p>A collection of any other lists, forms and documents relevant to the disaster recovery plan, such as details on alternate work locations, insurance policies, and the storage and distribution of disaster recovery resources.</p>
+<blockquote>
+<p>与灾难恢复计划相关的任何其他清单、表格和文件的集合，例如关于备用工作地点、保险政策以及灾难恢复资源的存储和分配的细节</p>
+</blockquote>
+<h4 id="Disaster-recovery-plan-example"><a href="#Disaster-recovery-plan-example" class="headerlink" title="Disaster recovery plan example"></a>Disaster recovery plan example</h4><p>What if the office is no longer accessible due to weather (flood) or other threats (terrorist attack)? 如果办公室由于天气（洪水）或其他威胁（恐怖袭击）而无法再进入，怎么办？</p>
+<p>One response might be to move the team to a mobile site such as a trailer while the office is out of action. How do we plan for such an eventuality? 一种应对措施可能是在办公室停止工作时，将团队转移到一个移动的地方，如拖车。我们如何为这种可能的情况做计划？</p>
+<p>Step 1: Notify senior management and prepare purchase for backup equipment 通知高级管理层，准备购买备用设备</p>
+<ol>
+<li>Notify _______ of the nature of the disaster and the need to select the mobile site plan. 通知_______ 灾害的性质和选择移动站点计划的必要性</li>
+<li>Confirm in writing the substance of the telephone notification to _______ within 48 hours of the telephone notification. 在电话通知的48小时内以书面形式确认电话通知的内容，_______</li>
+<li>Confirm all needed backup media are available to load the backup machine. 确认所有需要的备份介质都可以装入备份机</li>
+<li>Prepare a purchase order to cover the use of backup equipment. Notify _______ of plans for a trailer and its placement. 准备一份采购订单，以涵盖备份设备的使用。通知_______ 有关拖车的计划和安置</li>
+</ol>
+<p>Step 2: Do communication lines/channels need to be re-routed? 通信线路/渠道是否需要改道？</p>
+<ol>
+<li><p>Depending on communication needs, notify the telephone company _______ of possible emergency line changes. 根据通信需要，通知电话公司_______，可能的紧急线路改变</p>
+</li>
+<li><p>Begin setting up power and communications at <em><strong><strong><strong>. 开始设置电源和通信，</strong></strong></strong></em></p>
+</li>
+<li><ol>
+<li>Power and communications are prearranged to hook into when the trailer arrives. 电力和通讯都是预先安排好的，在拖车到达时挂上</li>
+<li>At the point where telephone lines come into the building (<em><strong><strong><strong>) break the current linkage to the administration controllers (</strong></strong></strong></em>). 在电话线进入大楼的地方(<em><strong><strong><strong>)，切断目前与行政部门控制器的联系(</strong></strong></strong></em>)</li>
+<li>These lines are rerouted to lines going to the mobile site. They are linked to modems at the mobile site. 这些线路被改道为通往移动站点的线路。它们被连接到移动站点的调制解调器上</li>
+<li>The lines currently going from _______ to _______ would then be linked to the mobile unit via modems. 目前从_______ 到_______ 的线路将通过调制解调器连接到移动装置</li>
+<li>This can conceivably require _______ to redirect lines at _______ to a more secure area in case of disaster. 可以想象，这需要_______，在发生灾难时将线路重新定向到一个更安全的地方</li>
+</ol>
+</li>
+</ol>
+<p>Step 3: Get mobile site up and running! 让移动站点启动和运行!</p>
+<ol>
+<li><p>When the trailer arrives, plug into power and do necessary checks. 当拖车到达时，插上电源并做必要的检查</p>
+</li>
+<li><p>Plug into the communication lines and do necessary checks. 插入通信线路并做必要的检查</p>
+</li>
+<li><p>Begin loading system from backups. 开始从备份中加载系统</p>
+</li>
+<li><p>Begin normal operations as soon as possible: 尽快开始正常运作</p>
+</li>
+<li><ol>
+<li><p>Daily jobs</p>
+</li>
+<li><ol>
+<li>Job I</li>
+<li>Job 2</li>
+</ol>
+</li>
+<li><p>Daily Saves 每日保存</p>
+</li>
+<li><ol>
+<li>Saving the following data onto…</li>
+</ol>
+</li>
+<li><p>Weekly saves 每周保存</p>
+</li>
+<li><ol>
+<li>Saving the following data onto…</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Step 4: Plan to transition site back to home-base when it is ready 计划在网站准备好时将其转回母基地</p>
+<ol>
+<li>Plan a schedule to backup the system in order to restore on a home-base computer when a site is available (use regular system backup procedures). 计划一个备份系统的时间表，以便在站点可用时在基地的计算机上进行恢复（使用常规的系统备份程序）</li>
+<li>Secure mobile site and distribute keys as required. 确保移动站点的安全，并根据需要分发钥匙</li>
+<li>Keep a maintenance log on mobile equipment. 保持移动设备的维护记录</li>
+</ol>
+<p>In addition to any business continuity management or disaster recovery plans an organisation has, there are also what are called CERTs.</p>
+<p>CERT</p>
+<p>A Computer Emergency Response Team (CERT) is an expert group that handles computer security incidents.</p>
+<blockquote>
+<p>除了一个组织拥有的任何业务连续性管理或灾难恢复计划外，还有所谓的CERTs</p>
+<p>CERT<br>计算机应急响应小组（CERT）是一个处理计算机安全事件的专家小组</p>
+</blockquote>
+<h3 id="Quiz-2"><a href="#Quiz-2" class="headerlink" title="Quiz"></a>Quiz</h3><h4 id="Q1-2"><a href="#Q1-2" class="headerlink" title="Q1"></a>Q1</h4><p>What is the relationship between business continuity management (BCM) and disaster recovery (DR)?</p>
+<p>Business continuity management includes disaster recovery as a key component. 业务连续性管理包括灾难恢复，是一个关键组成部分</p>
+<p>The correct answer is: BCM includes DR</p>
+<h4 id="Q2-2"><a href="#Q2-2" class="headerlink" title="Q2"></a>Q2</h4><p>The officers of GANT are deciding whether they should put in place robust business continuity management or disaster recovery plans, but they are not quite sure about the difference between them. Explain the difference.</p>
+<blockquote>
+<p>GANT公司的官员们正在决定他们是否应该制定强有力的业务连续性管理或灾难恢复计划，但他们并不十分清楚两者之间的区别。解释一下两者的区别</p>
+</blockquote>
+<p>Disaster recovery is that part of business continuity that addresses the need to recover IT services and voice services and data following a business-threatening impact. Disaster recovery prioritises those services and information that are critical to the business. Disaster recovery includes planning for crisis situations and having in place the means to identify incidents, contain and recover them.</p>
+<blockquote>
+<p>灾难恢复是业务连续性的一部分，它解决了在业务受到威胁后恢复IT服务、语音服务和数据的需要。灾难恢复对那些对业务至关重要的服务和信息进行优先处理。灾难恢复包括对危机情况进行规划，并具备识别事故、控制和恢复事故的手段</p>
+</blockquote>
+<h2 id="Human-Factors-in-Security-and-Usable-Security"><a href="#Human-Factors-in-Security-and-Usable-Security" class="headerlink" title="Human Factors in Security and Usable Security"></a>Human Factors in Security and Usable Security</h2><h3 id="The-usable-security-challenge"><a href="#The-usable-security-challenge" class="headerlink" title="The usable security challenge"></a>The usable security challenge</h3><p>The challenge is to make Information Security more usable and user-centred. 这个挑战就是使信息安全更加可用，并以用户为中心 Here is the definition from the Computing Research Association:</p>
+<p>Give end-users security controls they can understand and privacy they can control for the dynamic, pervasive computing environments of the future.</p>
+<blockquote>
+<p>为终端用户提供他们能够理解的安全控制和他们能够控制的隐私，以应对未来动态的、普遍存在的计算环境</p>
+</blockquote>
+<p>But why is making Information security usable such a challenge? The difficulty mainly starts with a misalignment in goals. The security experts want to avoid security issues, while users want a great user experience.</p>
+<blockquote>
+<p>但是，为什么使信息安全变得可用是一个挑战？困难主要是从目标的错位开始的。安全专家希望避免安全问题，而用户则希望有良好的用户体验</p>
+</blockquote>
+<p>That is to say, under normal conditions users don’t see security as a priority. They have goals and objectives they want to achieve and consider security as a <strong>secondary task</strong> only.</p>
+<blockquote>
+<p>也就是说，在正常情况下，用户并不把安全视为优先事项。他们有自己想要实现的目标和目的，而把安全视为次要的任务而已</p>
+</blockquote>
+<p>Some experts have gone as far as stating that users do not want to be responsible for, nor concern themselves with, their own security.</p>
+<blockquote>
+<p>一些专家甚至指出用户不希望对自己的安全负责，也不关心自己的安全问题</p>
+</blockquote>
+<p>There is nothing to be achieved by simply blaming users for not considering security enough. What can we as experts do to help them?</p>
+<blockquote>
+<p>仅仅指责用户没有充分考虑安全问题，是没有任何结果的。作为专家，我们能做些什么来帮助他们？</p>
+</blockquote>
+<p>Human Factors in Security</p>
+<ul>
+<li>Security is often a secondary task for users </li>
+<li>We need to give users security controls that they can understand and use </li>
+<li>Overly complex or opaque controls will likely be ignored or circumvented </li>
+<li>People construct their own mental models of security threats and controls </li>
+<li>This is not the user’s fault, and punishing people for not following complicated procedures is unlikely to foster change</li>
+</ul>
+<blockquote>
+<ul>
+<li>安全往往是用户的次要任务 </li>
+<li>我们需要给用户提供他们能够理解和使用的安全控制。</li>
+<li>过于复杂或不透明的控制可能会被忽视或规避 </li>
+<li>人们构建自己的安全威胁和控制的心理模型 </li>
+<li>这不是用户的错，惩罚不遵守复杂程序的人不太可能促进改变</li>
+</ul>
+</blockquote>
+<h3 id="Usable-security-issues"><a href="#Usable-security-issues" class="headerlink" title="Usable security issues"></a>Usable security issues</h3><p>Unusable security frustrates users.</p>
+<blockquote>
+<p>无法使用的安全（我理解为可用性差或者对使用造成不便的安全）会让用户感到沮丧</p>
+</blockquote>
+<p>Indeed, not only does it create frustration, but users will also then work around the mechanism in any way they can to avoid that frustration.</p>
+<blockquote>
+<p>事实上，它不仅会产生挫折感，而且用户随后也会以任何方式绕过该机制来避免这种挫折感</p>
+</blockquote>
+<h4 id="Encryption-usability"><a href="#Encryption-usability" class="headerlink" title="Encryption usability"></a>Encryption usability</h4><p>The vital security control of encrypting communications to achieve confidentiality offers us yet another example of lack of usability.</p>
+<blockquote>
+<p>对通信进行加密以实现保密性的重要安全控制为我们提供了另一个缺乏可用性的例子</p>
+</blockquote>
+<p>Firstly, encryption is rarely configured by default. Secondly, you need a good password which cannot be lost or forgotten. For public-/private-key encryption, it is often not clear how to get someone’s public key, or how to make it work on a phone, for example. Additionally, there is perhaps a common view that ‘only paranoid people use encryption’.</p>
+<blockquote>
+<p>首先，加密很少被默认配置。其次，你需要一个好的密码，不能丢失或忘记。对于公钥/私钥加密，通常不清楚如何获得某人的公钥，或者如何使其在手机上工作，例如。此外，也许有一种普遍的观点认为 “只有偏执狂才会使用加密”</p>
+</blockquote>
+<p>Let’s consider a real example of the implications of ‘unusable encryption’: the case of Edward Snowden. As part of his attempts to make public sensitive information about the US government’s infringements on privacy while needing to maintain his own secrecy, he attempted to securely contact a journalist, Glenn Greenwald:</p>
+<p>Snowden wanted to send a message to Greenwald but worried that others might want to intercept his messages. He asked Greenwald for his PGP key.</p>
+<p>But Greenwald still refused to study security protocols, saying ‘the more he sent me, the more difficult it seemed,’ he says. ‘I mean, now I had to watch a f***ing video . . . ?’</p>
+<p>Snowden ended up reaching out to a different journalist, Laura Poitras, instead.</p>
+<blockquote>
+<p>让我们考虑一个关于 “无法使用的加密”的影响的真实例子：爱德华-斯诺登的案例。作为他试图公开美国政府侵犯隐私的敏感信息的一部分，同时需要保持自己的秘密，他试图安全地联系一位记者Glenn Greenwald</p>
+<p>斯诺登想给格林沃尔德发信息，但担心其他人可能想截获他的信息。他向格林沃尔德要了他的PGP密钥</p>
+<p>但格林沃尔德仍然拒绝研究安全协议，他说’他给我发的东西越多，看起来就越困难’。’我的意思是，现在我不得不看一个该死的视频. . . ?’</p>
+<p>斯诺登最后转而联系了另一位记者劳拉-波依特拉斯</p>
+</blockquote>
+<p>Vulnerability to Social Engineering </p>
+<ul>
+<li>Human nature of trust, social compliance. </li>
+<li>Greed, pride, fear. </li>
+<li>Lack of education / ignorance. </li>
+<li>Lack of / weak security policies. </li>
+<li>Access control / least privileges.</li>
+</ul>
+<blockquote>
+<p>社会工程的弱点 </p>
+<ul>
+<li>人性的信任，社会的服从。</li>
+<li>贪婪，骄傲，恐惧。</li>
+<li>缺乏教育/无知。</li>
+<li>缺少/薄弱的安全政策。</li>
+<li>访问控制/最小特权.</li>
+</ul>
+</blockquote>
+<h3 id="How-can-we-make-secure-systems-more-usable"><a href="#How-can-we-make-secure-systems-more-usable" class="headerlink" title="How can we make secure systems more usable?"></a>How can we make secure systems more usable?</h3><p>Fortunately, usable security is being considered more and more by companies. It has even started to be used as a powerful marketing tool. Recall the case of unusable security notifications in Windows, which made it very easy for Apple to produce adverts attacking their competitor for this very point.</p>
+<blockquote>
+<p>幸运的是，可使用的安全性正被越来越多的公司所考虑。它甚至已经开始被用作一个强大的营销工具。回顾一下Windows中不可用的安全通知的案例，这使得苹果公司很容易制作广告来攻击他们的竞争对手，因为这一点</p>
+</blockquote>
+<p>There are three main approaches to making secure systems more usable discussed in the literature. There is no silver bullet and often we rely on a combination of them: 在文献中，有三种主要的方法来使安全系统更加可用。没有灵丹妙药，我们经常依靠它们的组合</p>
+<h4 id="Make-security-‘just-work’"><a href="#Make-security-‘just-work’" class="headerlink" title="Make security ‘just work’"></a>Make security ‘just work’</h4><p>Technical measures that can remove effort from security processes 可以从安全过程中消除影响的技术措施</p>
+<ul>
+<li>Automated filtering of links and email senders (SPF/DMARC/etc.) </li>
+<li>Entering a password vs a password manager or FaceID </li>
+<li>Automated fingerprinting (e.g. some CAPTCHAs)</li>
+</ul>
+<blockquote>
+<ul>
+<li>自动过滤链接和电子邮件发送者（SPF/DMARC/等）。</li>
+<li>输入密码与密码管理器或FaceID对比</li>
+<li>自动指纹识别（例如一些验证码）</li>
+</ul>
+</blockquote>
+<p>This is the idea that security systems should be <strong>invisible</strong> to the user. Examples include mechanisms that authenticate users without demanding much intervention from them, in a move from explicit to <strong>implicit authentication mechanisms</strong>:</p>
+<ul>
+<li>proximity sensors</li>
+<li>behavioural biometrics: zero-effort, one-step, two-factor authentication</li>
+<li>exploiting interaction style: use of video-based authentication in video, audio in audio, etc</li>
+<li>web fingerprinting.</li>
+</ul>
+<blockquote>
+<p>这是一种想法，即安全系统对用户来说应该是不可见的。这方面的例子包括在从显性认证机制到隐性认证机制的过程中，在不要求用户过多干预的情况下对用户进行认证的机制</p>
+<p>接近传感器<br>行为生物识别技术：零努力，一步到位，双因素认证<br>利用交互方式：在视频中使用基于视频的认证，在音频中使用音频，等等<br>网络指纹识别</p>
+</blockquote>
+<h4 id="Make-security-understandable"><a href="#Make-security-understandable" class="headerlink" title="Make security understandable"></a>Make security understandable</h4><p>Of course, there may be cases where security needs to be visible, such as when the user needs to make some kind of decision – eg whether a website is trustworthy. In that case, we need to help users <strong>understand</strong> security. A good example, for instance, is the connection security indicators present in most modern browsers, which can communicate to the user whether the HTTP connection is secure.</p>
+<blockquote>
+<p>当然，在有些情况下，安全需要是可见的，例如当用户需要做出某种决定时–例如一个网站是否值得信赖。在这种情况下，我们需要帮助用户理解安全。例如，一个很好的例子是大多数现代浏览器中的连接安全指标，它可以向用户传达HTTP连接是否安全</p>
+</blockquote>
+<p>Note, however, that correct understanding is crucial since the mere fact of a site using HTTPS does not mean that everything is suddenly secure. There are plenty of things that could still go wrong with a website that uses HTTPS to communicate with the user, which can be found in the list below.</p>
+<blockquote>
+<p>然而，请注意，正确的理解是至关重要的，因为仅仅是一个网站使用HTTPS的事实并不意味着一切突然变得安全。使用HTTPS与用户通信的网站仍有很多事情可能出错，可以在下面的列表中找到</p>
+</blockquote>
+<p>What can still go wrong on a secure connection?</p>
+<ul>
+<li>there is malware on the site</li>
+<li>there may already be a keylogger on the user’s computer</li>
+<li>malicious third-party ads or trackers may be present</li>
+<li>the site may not be the site that the user thinks it is – perhaps the certificate is valid but not for the company you are expecting (phishing)</li>
+<li>the certificate authority was compromised and issued an invalid certificate.</li>
+</ul>
+<blockquote>
+<p>网站上有恶意软件<br>用户的电脑上可能已经有了键盘记录器<br>可能存在恶意的第三方广告或跟踪器<br>该网站可能不是用户认为的网站–也许证书是有效的，但不是你所期望的公司（网络钓鱼）<br>证书颁发机构受到影响，并颁发了一个无效的证书</p>
+</blockquote>
+<p>Beyond understandability, users’ decisions need to be supported. Crucially, users should only be bothered when their input is required. For instance, if one can automatically assess the probability of danger, the user may only need to intervene in the cases that are not clear, which instantly minimises required user intervention (and avoids the constantly annoying warnings in the Microsoft-Apple advert, for instance).</p>
+<blockquote>
+<p>除了可理解性，用户的决定也需要得到支持。最重要的是，只有在需要用户投入的时候才应该打扰他们。例如，如果可以自动评估危险的概率，用户可能只需要在不清楚的情况下进行干预，这就立即将需要的用户干预降到了最低（例如，避免了微软-苹果广告中不断出现的烦人的警告）</p>
+</blockquote>
+<p>A good rule of thumb: 一个好的经验法则</p>
+<table>
+<thead>
+<tr>
+<th align="left">High probability of danger</th>
+<th>Block automatically 自动屏蔽</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Moderate possibility of danger</td>
+<td>User must decide</td>
+</tr>
+<tr>
+<td align="left">Very little possibility of danger</td>
+<td>Allow without bothering the user</td>
+</tr>
+</tbody></table>
+<h4 id="Train-the-user"><a href="#Train-the-user" class="headerlink" title="Train the user"></a>Train the user</h4><p>Training and awareness is important in helping people understand why measures are needed and how they help manage security </p>
+<ul>
+<li>Tell people about existing threats and how they were stopped </li>
+<li>Tell people why certain processes need more protection than others</li>
+</ul>
+<blockquote>
+<p>培训和宣传对于帮助人们理解为什么需要采取措施以及这些措施如何帮助管理安全非常重要 </p>
+<ul>
+<li>告诉人们现有的威胁以及如何阻止这些威胁的发生 </li>
+<li>告诉人们为什么某些程序比其他程序需要更多的保护</li>
+</ul>
+</blockquote>
+<p>Beyond the controls themselves, which can be made more usable as explained above, we can also train the user. Let’s consider how this might work in the case of <strong>phishing</strong>.</p>
+<blockquote>
+<p>除了控制本身（如上文所述，可以使其更加可用），我们还可以培训用户。让我们考虑一下这在网络钓鱼的情况下如何运作</p>
+</blockquote>
+<p>What are the different reasons why users may fall for phishing?</p>
+<ul>
+<li>They are <strong>not motivated</strong> to pay attention to training: ‘security is not my problem’.</li>
+<li>Their <strong>mental models are inconsistent with reality</strong>: ‘if the site looks professional it must be legitimate’.</li>
+<li>It is difficult to be alert if you don’t know what you’re looking for: users need actionable advice that they can understand.</li>
+</ul>
+<blockquote>
+<p>他们没有动力去关注培训：”安全不是我的问题”<br>他们的心智模式与现实不一致：’如果网站看起来很专业，就一定是合法的’<br>如果你不知道自己在寻找什么，就很难提高警惕：用户需要他们能够理解的可操作建议</p>
+</blockquote>
+<p>The PhishGuru training experiment shows how it is possible to train people to distinguish between phishing and legitimate emails:</p>
+<ul>
+<li>those trained with PhishGuru still clicked on <strong>legitimate</strong> links</li>
+<li>but those trained with PhishGuru were <strong>less likely</strong> to click on phishing links, even 28 days after training.</li>
+</ul>
+<blockquote>
+<p>《网络钓鱼大师》培训实验表明，训练人们区分网络钓鱼和合法邮件是可行的</p>
+<p>接受过《网络钓鱼大师》培训的人仍然会点击合法链接<br>但接受过《网络钓鱼大师》培训的人更不可能点击钓鱼网站的链接，即使在培训28天后也是如此</p>
+</blockquote>
+<blockquote>
+<p>Security versus usability is a myth! You need both security and usability to go hand-in-hand.</p>
+<p>安全性与可用性的关系是一个神话! 你需要安全和可用性并驾齐驱</p>
+</blockquote>
+<h3 id="Quiz-3"><a href="#Quiz-3" class="headerlink" title="Quiz"></a>Quiz</h3><p>There is always a trade-off between usability and security. 在可用性和安全性之间总是需要权衡</p>
+<p>The correct answer is: False</p>
+<p>You can’t say always. It should be sometimes.</p>
+<h2 id="Past-Exam-Paper-2020-8"><a href="#Past-Exam-Paper-2020-8" class="headerlink" title="Past Exam Paper 2020/8"></a>Past Exam Paper 2020/8</h2><h3 id="Question-One"><a href="#Question-One" class="headerlink" title="Question One"></a>Question One</h3><p>The Group of Appreciation of the Natterjack Toad (GANT) is a conservation group that is keen to promote and preserve the well-being of the Natterjack Toad. It is a UK-registered charity and has a significant number of over 100,000 members world-wide across 42 countries who are all keen to promote the work of GANT, and 100 staff working full-time at GANT. All information for the organisation can be accessed using a web-based application. This information includes GANT’s member records, its activities, meeting places, confidential aspects of their work, natterjack toad habitats, etc. In the past, members have raised concerns about information security, and to prevent further cyberattacks, GANT is ready to make information security a top priority amongst its workforce.</p>
+<blockquote>
+<p>Natterjack Toad欣赏小组（GANT）是一个热衷于促进和保护Nutterjack Toad福祉的保护小组。它是一个在英国注册的慈善机构，在全世界42个国家拥有超过10万名成员，他们都热衷于促进GANT的工作，还有100名工作人员在GANT全职工作。该组织的所有信息都可以通过一个基于网络的应用程序访问。这些信息包括GANT的成员记录、其活动、会议地点、其工作的保密性、黄斑蟾的栖息地等。在过去，成员们提出了对信息安全的担忧，为了防止进一步的网络攻击，GANT准备将信息安全作为其员工队伍中的首要任务</p>
+</blockquote>
+<h4 id="a-Describe-the-Security-Roles-and-Teams-you-would-suggest-GANT-to-have-and-explain-why"><a href="#a-Describe-the-Security-Roles-and-Teams-you-would-suggest-GANT-to-have-and-explain-why" class="headerlink" title="a. Describe the Security Roles and Teams you would suggest GANT to have and explain why"></a>a. Describe the Security Roles and Teams you would suggest GANT to have and explain why</h4><p>描述你建议GANT拥有的安全角色和团队，并解释原因</p>
+<p>Given the size of GANT, it would probably make sense to have a CISO, or alternatively somebody that could partially play the role of a CISO at the board level. A director or board member has the necessary status to ensure appropriate focus is placed on information security, and also the adequate level of accountability/responsibility as required by legislation such as The Companies Act (UK). Also, this will demonstrate from the “higher-ups” a real commitment to information security in GANT. </p>
+<blockquote>
+<p>考虑到GANT公司的规模，设立一个CISO，或者由某个人在董事会层面部分扮演CISO的角色，可能是有意义的。董事或董事会成员具有必要的地位，可以确保对信息安全给予适当的关注，也可以按照《公司法》（英国）等法律的要求，承担足够的责任/义务。此外，这将表明 “高层 “对GANT信息安全的真正承诺</p>
+</blockquote>
+<p>While the CISO is very important, one person can’t do everything. The CISO, or alternative role at the board level, should work together with a Security Forum of people playing a different role in the organisation contributing to information security from their day-to-day job. This may include: departmental headers; and representatives from vested interest parties (i.e. IT, internal audit, HR, physical security). </p>
+<blockquote>
+<p>虽然CISO非常重要，但一个人不可能做所有的事情。CISO，或董事会层面的替代角色，应该与安全论坛一起工作，该论坛由在组织中扮演不同角色的人组成，在日常工作中为信息安全做出贡献。这可能包括：部门领导；以及来自既得利益方的代表（即IT、内部审计、人力资源、物理安全）</p>
+</blockquote>
+<p>The team should also include specific security roles, such as:</p>
+<p>Security Administrator. A person who manages the operation of a computer system or particular electronic communication service. </p>
+<p>Security Auditor. A person who works with a company to provide an audit of security systems used by that company. </p>
+<p>Security User. A person who interacts with a system, typically through an interface, to extract some functional benefit. </p>
+<p>Incident Response Member. A person who interacts with a system, typically through an interface, to extract some functional benefit. </p>
+<p>Security Champion. A person who is appointed to oversee that a security policy within their group is enforced and to report incidents to management. </p>
+<p>Security Officer. A person employed by the organisation to protect the assets from a variety of hazards by enforcing preventative measures. </p>
+<p>This is not an exhaustive list of possible roles. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>Up to 8 marks for the CISO and its explanation, 4 marks for the Security Forum, up to 4 marks for each role, and up to 4 marks for an explanation of the role. </p>
+<p>CISO及其解释最多8分，安全论坛最多4分，每个角色最多4分，对角色的解释最多4分</p>
+</blockquote>
+<blockquote>
+<p>安全管理员。管理计算机系统或特定电子通信服务运行的人。</p>
+<p>安全审计员。与一家公司合作，对该公司使用的安全系统进行审计的人。</p>
+<p>安全用户。一个与系统互动的人，通常是通过一个接口，以提取一些功能的好处。</p>
+<p>事件响应成员。一个与系统互动的人，通常通过一个接口，以获得一些功能上的好处。</p>
+<p>安全冠军。被任命监督其集团内安全政策的执行，并向管理层报告事件的人。</p>
+<p>安全官员。由组织雇用的人员，通过执行预防措施保护资产免受各种危害。</p>
+<p>这并不是一份可能的角色的详尽清单</p>
+</blockquote>
+<h4 id="b-What-threats-and-vulnerabilities-may-GANT-face"><a href="#b-What-threats-and-vulnerabilities-may-GANT-face" class="headerlink" title="b. What threats and vulnerabilities may GANT face?"></a>b. What threats and vulnerabilities may GANT face?</h4><p>A threat highlights a problem that if it arises will result in adverse consequences. This may include 1) Information about members might be accessible by unauthorised people. 2) Information about the habitats of the Natterjack toad might be used by those who are not inclined to support its ongoing existence. 3) The website might be compromised, and unofficial messages added to it.</p>
+<p>A vulnerability is a weakness in the system that might allow the threat to happen. This may include 1) Records of members are stored in an unreliable computer system that may crash in the future. 2) Information about the toad’s habitats may be stored on an old Internet-based and insecure server. 3) The administrator password for the website has never been changed from the default password. </p>
+<blockquote>
+<p> Marking scheme </p>
+<p>5 marks per threat/vulnerability</p>
+</blockquote>
+<blockquote>
+<p>威胁强调了一个问题，如果它出现将导致不良后果。这可能包括：1）关于成员的信息可能被未经授权的人获取。2）关于Natterjack蟾蜍的栖息地的信息可能被那些不愿意支持其持续存在的人使用。3）网站可能被破坏，并被加入非官方的信息</p>
+<p>漏洞是系统中可能允许威胁发生的一个弱点。这可能包括：1）成员的记录存储在一个不可靠的计算机系统中，将来可能会崩溃。2）关于蟾蜍的栖息地的信息可能储存在一个基于互联网的不安全的旧服务器上。3）网站的管理员密码从未从默认密码中更改</p>
+</blockquote>
+<h3 id="Question-Two"><a href="#Question-Two" class="headerlink" title="Question Two"></a>Question Two</h3><p>SEM Ltd. is a company that operates an online service 24/7 all days of the year serving 10,000 customers all over the world. SEM Ltd. suffered 90 Denial of Service (DoS) attacks since they started operating 3 years ago. Every time this attack happens, it causes losses of £1 per customer, as their services are not available to their customers until SEM Ltd.’s IT team manage to relaunch the online platform. An off-the-shelf DoS mitigation appliance costs £300,000 per year, and SEM is more concerned about the company’s finance status than on customer confidence.</p>
+<blockquote>
+<p>SEM有限公司是一家全年24小时运营在线服务的公司，为世界各地的10,000名客户提供服务。SEM有限公司自3年前开始运营以来，遭受了90次拒绝服务（DoS）攻击。每次这种攻击发生时，都会给每个客户造成1英镑的损失，因为他们的服务无法提供给客户，直到SEM有限公司的IT团队设法重新启动在线平台。一个现成的DoS缓解设备每年要花费30万英镑，而SEM更关心的是公司的财务状况而不是客户的信心</p>
+</blockquote>
+<h4 id="a"><a href="#a" class="headerlink" title="a"></a>a</h4><p>Conduct a quantified assessment, including a clear description of the metrics used, of the risk SEM Ltd. faces, and decide the most adequate risk treatment, clearly identifying both the name of the risk treatment action and its rationale.</p>
+<blockquote>
+<p>对SEM有限公司所面临的风险进行量化评估，包括对所使用的衡量标准的明确描述，并决定最适当的风险处理方法，明确指出风险处理行动的名称和其理由</p>
+</blockquote>
+<p>The Annualized Rate of Occurrence (ARO) is a business-friendly measure of the probability of occurrence of an event that measures how likely an event is to happen during a year. For this risk the ARO is 90/3 = 30 attacks/year.</p>
+<p>The Annual Loss Expectancy (ALE) is a business-friendly measure of a risk in a quantitative risk assessment approach. It is calculated based on the annual rate of occurrence (ARO) and the single loss expectancy (SLE) for each risk. For this risk, the ARO is as above and the SLE is £10,000 (10,000 customers at £1 each per attack). Therefore, ALE = ARO×SLE = 30×10, 000 = £300,000.</p>
+<p>Given that the ALE for this risk is £300,000 and the off-the-shelf DoS mitigation appliance costs £300,000, the most reasonable risk treatment type is accept the risk, as it will be costing the company the same. However, this is open to interpretation and one could think that other risk treatment options are possible. Alternative answers should be fine as long as the name of the particular risk treatment type suggested is correct, and there is a well-explained rationale to support it.</p>
+<blockquote>
+<p>Marking scheme </p>
+<p>5 marks for ARO (2 marks if they describe it well, 3 if they are able to calculate it correctly for this particular case); 3 marks for SLE; 10 marks for ALE (5 marks if they describe it well, 5 if they are able to calculate it correctly for this particular case); 12 marks per adequate risk treatment (4 marks for the risk treatment type; 8 marks depending on the detail and correctness of the rationale given for explaining the treatment).</p>
+<p>ARO得5分（如果描述得好得2分，如果能够针对这个特定案例正确计算得3分）；SLE得3分；ALE得10分（如果描述得好得5分，如果能够针对这个特定案例正确计算得5分）；每个适当的风险处理得12分（风险处理类型得4分；8分取决于解释处理的理由的细节和正确性）</p>
+</blockquote>
+<blockquote>
+<p>年发生率（ARO）是对事件发生概率的一种商业友好的衡量标准，衡量一个事件在一年内发生的可能性。对于这种风险，ARO是90/3=30次攻击/年</p>
+<p>年度损失预期（ALE）是定量风险评估方法中对风险的一种商业友好的衡量标准。它是根据每个风险的年度发生率（ARO）和单一损失预期（SLE）来计算的。对于这个风险，ARO如上，SLE为10,000英镑（10,000个客户，每次攻击1英镑）。因此，ALE = ARO×SLE = 30×10，000 = 300，000英镑</p>
+<p>鉴于这种风险的ALE是300,000英镑，而现成的DoS缓解设备成本为300,000英镑，最合理的风险处理类型是接受风险，因为它将给公司带来相同的成本。然而，这是可以解释的，人们可以认为其他的风险处理方案是可能的。只要建议的特定风险处理类型的名称是正确的，并有充分解释的理由来支持它，其他答案应该是可以的</p>
+</blockquote>
+<h4 id="b"><a href="#b" class="headerlink" title="b"></a>b</h4><p>As an alternative to the off-the-shelf DoS mitigation appliance, SEM Ltd. are also exploring cloud computing, so that they could elastically expand the instances of their service as a way of replicating it and becoming less vulnerable to DoS. However, SEM Ltd. are worried about whether they will be able to completely remove data from the cloud when needed. What are the main challenges that make it difficult for SEM Ltd. to delete data from the cloud?</p>
+<blockquote>
+<p>作为现成的DoS缓解设备的替代方案，SEM有限公司也在探索云计算，这样他们就可以弹性地扩展他们的服务实例，作为一种复制的方式，从而减少对DoS的伤害。然而，SEM有限公司担心他们是否能够在需要时从云中完全删除数据。使得SEM有限公司难以从云中删除数据的主要挑战是什么？</p>
+</blockquote>
+<p>The student should thoroughly explain and expand on the following points: Multiple copies of data; Virtualization; Multiple users (Data gets tangled together); Multiple components; Multiple logical layers; Underlying hardware (E.g., Different storage media - SSDs); Third-party and Offline backups (- e.g., other services / tapes).</p>
+<blockquote>
+<p>Marking scheme </p>
+<p>20 marks per depth and rationale of explanation.</p>
+<p>每个解释的深度和理由得20分</p>
+</blockquote>
+<blockquote>
+<p>学生应该彻底解释并扩展以下几点。</p>
+<p>数据的多个副本；</p>
+<p>虚拟化；</p>
+<p>多个用户（数据被纠缠在一起）；</p>
+<p>多个组件；</p>
+<p>多个逻辑层；</p>
+<p>基础硬件（例如，不同的存储介质 - SSD）；</p>
+<p>第三方和离线备份（- 例如，其他服务/磁带）</p>
+</blockquote>
+<h2 id="Past-Exam-Paper-2020-1"><a href="#Past-Exam-Paper-2020-1" class="headerlink" title="Past Exam Paper 2020/1"></a>Past Exam Paper 2020/1</h2><h3 id="Question-One-1"><a href="#Question-One-1" class="headerlink" title="Question One"></a>Question One</h3><h4 id="a-What-should-risk-registers-contain-as-a-minimum-for-each-risk"><a href="#a-What-should-risk-registers-contain-as-a-minimum-for-each-risk" class="headerlink" title="a. What should risk registers contain as a minimum for each risk?"></a>a. What should risk registers contain as a minimum for each risk?</h4><p>Syllabus: Risk Management. </p>
+<ul>
+<li>the threats and the vulnerabilities they might exploit </li>
+<li>the assessed impact and likelihood, and the overall risk calculated from these </li>
+<li>the recommended treatment (accept, avoid, reduce, transfer) </li>
+<li>the actual action(s) to be taken and the person or department responsible for carrying out this work and the date by which it is expected to be completed. </li>
+</ul>
+<blockquote>
+<p>Marking scheme </p>
+<p>1 mark per point </p>
+</blockquote>
+<blockquote>
+<ul>
+<li>威胁和它们可能利用的弱点 </li>
+<li>评估的影响和可能性，以及根据这些计算出的总体风险 </li>
+<li>建议的处理方法（接受、避免、减少、转移）</li>
+<li>要采取的实际行动，负责执行这项工作的人或部门以及预计完成的日期</li>
+</ul>
+</blockquote>
+<h4 id="b-What-is-an-evasion-attack-in-the-context-of-risks-stemming-from-the-use-of-Machine-Learning"><a href="#b-What-is-an-evasion-attack-in-the-context-of-risks-stemming-from-the-use-of-Machine-Learning" class="headerlink" title="b. What is an evasion attack in the context of risks stemming from the use of Machine Learning?"></a>b. What is an evasion attack in the context of risks stemming from the use of Machine Learning?</h4><p>Syllabus: Risk Assessments </p>
+<p>Evasion attacks on a machine learning model, are those attacks where malicious objects are deliberately transformed to make the machine learning model make wrong predictions. For instance, a software binary can be manipulated to make a machine-learning based anti-malware model predict that it is not malware. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>2 marks per definition; 2 marks for example.</p>
+</blockquote>
+<blockquote>
+<p>对机器学习模型的规避攻击，是指那些故意改造恶意对象以使机器学习模型做出错误预测的攻击。例如，一个软件的二进制文件可以被操纵，使基于机器学习的反恶意软件模型预测它不是恶意软件</p>
+</blockquote>
+<h4 id="c-Name-4-generic-types-of-assurance-techniques-that-can-be-used-for-vulnerability-assessments"><a href="#c-Name-4-generic-types-of-assurance-techniques-that-can-be-used-for-vulnerability-assessments" class="headerlink" title="c. Name 4 generic types of assurance techniques that can be used for vulnerability assessments."></a>c. Name 4 generic types of assurance techniques that can be used for vulnerability assessments.</h4><p>Syllabus: Vulnerability Assessment. </p>
+<p>Any of the following techniques will be accepted at least: Review, Test, Interview, Observe, and Independent Validation. Note that the question does not ask for particular assurance techniques like penetration testing, but the generic type they belong to, in this case testing. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>1 mark per correct generic type of assurance technique named</p>
+</blockquote>
+<blockquote>
+<p>至少要接受以下任何一种技术。审查、测试、访谈、观察和独立验证。请注意，该问题并不要求特定的保证技术，如渗透测试，而是要求它们所属的通用类型，在这种情况下就是测试</p>
+</blockquote>
+<h4 id="d-Can-an-organisation-self-determine-whether-it-is-following-an-information-security-standard-Justify-your-answer"><a href="#d-Can-an-organisation-self-determine-whether-it-is-following-an-information-security-standard-Justify-your-answer" class="headerlink" title="d. Can an organisation self-determine whether it is following an information security standard? Justify your answer."></a>d. Can an organisation self-determine whether it is following an information security standard? Justify your answer.</h4><p>Syllabus: Compliance and Certifications. </p>
+<p>Of course it can. An organisation can conduct an internal compliance check against any standard. Compliance would only need to be checked by an independent (external) party for certification purposes. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>1 mark for answer; 3 marks for explanation.</p>
+</blockquote>
+<blockquote>
+<p>当然可以。一个组织可以根据任何标准进行内部合规性检查。合规性只需要由一个独立的（外部）方来检查，以达到认证的目的</p>
+</blockquote>
+<h4 id="e-What-is-a-Moral-Hazard-and-how-does-it-apply-to-Information-Security-Give-one-example"><a href="#e-What-is-a-Moral-Hazard-and-how-does-it-apply-to-Information-Security-Give-one-example" class="headerlink" title="e. What is a Moral Hazard and how does it apply to Information Security? Give one example."></a>e. What is a Moral Hazard and how does it apply to Information Security? Give one example.</h4><p>Syllabus: Security Economics. </p>
+<p>A Moral hazard is a situation in which one party gets involved in a risky event knowing that it is protected against the risk. For instance, one may engage with riskier and less secure websites thinking that the anti-malware they have installed will protect them. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>2 marks for definition; 2 marks for example. </p>
+</blockquote>
+<blockquote>
+<p>道德风险是一种情况，即一方在明知自己受到保护的情况下参与到风险事件中。例如，一个人可能会参与风险较大、安全性较低的网站，认为他们所安装的反恶意软件会保护他们</p>
+</blockquote>
+<h4 id="f-What-does-it-mean-for-a-security-control-to-be-preventative-detective-and-reactionary"><a href="#f-What-does-it-mean-for-a-security-control-to-be-preventative-detective-and-reactionary" class="headerlink" title="f. What does it mean for a security control to be preventative, detective and reactionary?"></a>f. What does it mean for a security control to be preventative, detective and reactionary?</h4><p>Syllabus: Security controls </p>
+<p>Preventative security attempts to stop an exploit from being exploited. Detective security tries to discover if an attack is underway. Reactionary tries to respond to an attack and reduce its impact. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>1 mark for each individual definition, 1 mark for overall quality of explanation.</p>
+</blockquote>
+<blockquote>
+<p>预防性安全试图阻止一个漏洞被利用。侦查性安全试图发现一个攻击是否正在进行中。反应性安全试图对攻击作出反应并减少其影响</p>
+</blockquote>
+<h4 id="g-What-are-procedural-controls-Give-one-example-regarding-information-security"><a href="#g-What-are-procedural-controls-Give-one-example-regarding-information-security" class="headerlink" title="g. What are procedural controls? Give one example regarding information security."></a>g. What are procedural controls? Give one example regarding information security.</h4><p>Syllabus: Security Controls. </p>
+<p>Procedural controls are those controls that cover the rules, regulations and policies that an organisation puts in place to help reduce the risk of issues arising. An example is a Clear Screen and Desk Policy. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>3 marks for explaining what procedural controls are, 1 mark if correct example</p>
+</blockquote>
+<blockquote>
+<p>程序性控制是指那些涵盖一个组织为帮助减少问题发生的风险而制定的规则、条例和政策的控制。一个例子是清晰的屏幕和桌面政策</p>
+</blockquote>
+<h4 id="h-What-should-a-disaster-recovery-plan-include"><a href="#h-What-should-a-disaster-recovery-plan-include" class="headerlink" title="h. What should a disaster recovery plan include?"></a>h. What should a disaster recovery plan include?</h4><p>Syllabus: Continuity planning and management. </p>
+<p>A disaster recovery plan should be structured including: </p>
+<ul>
+<li><p>Introduction: – A summary of the objectives and scope of the plan, including IT services and locations covered, the different services, and testing and maintenance activities. Also includes a revision history to track changes. </p>
+</li>
+<li><p>Roles and responsibilities: – A list of the internal and external stakeholders involved in each DR process covered, complete with their contact details and a description of their duties. </p>
+</li>
+<li><p>Incident response: – When should the DR plan be triggered, and how and when should employees, management, partners and customers be notified? </p>
+</li>
+<li><p>DR procedures: – When the DR plan is triggered, the stakeholders can start to action a DR process for each affected IT service. Those procedures are set out step-by-step. </p>
+</li>
+<li><p>Appendices: – A collection of any other lists, forms and documents relevant to the DR plan, such as details on alternate work locations, insurance policies, and the storage and distribution of DR resources. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>1 mark per part well explained (maximum 4).</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>引言： - 计划的目标和范围的摘要，包括涵盖的IT服务和地点，不同的服务，以及测试和维护活动。还包括一个修订历史，以跟踪变化</li>
+<li>角色和责任。- 涵盖的每个DR过程所涉及的内部和外部利益相关者的名单，包括他们的详细联系方式和他们的职责描述</li>
+<li>事件响应。- 什么时候应该触发DR计划，以及如何和何时应该通知员工、管理层、合作伙伴和客户？</li>
+<li>DR程序。- 当DR计划被触发时，利益相关者可以开始为每个受影响的IT服务行动一个DR程序。这些程序是按步骤规定的</li>
+<li>附录。- 与DR计划相关的任何其他清单、表格和文件的集合，例如关于备用工作地点、保险政策以及DR资源的存储和分配的细节</li>
+</ul>
+</blockquote>
+<p>i. What is a Guideline in information security? Give one example. </p>
+<p>Syllabus: Security Organisation and Policies </p>
+<p>They provide advice, direction and best practice in instances where it is often difficult to regulate how something should be done. For example: A code of conduct or working practice when out of the office. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>2 marks for the definition, 2 marks for an appropriate example.</p>
+</blockquote>
+<blockquote>
+<p>在通常难以规定如何做某事的情况下，他们提供建议、指导和最佳做法。比如说。不在办公室时的行为准则或工作惯例</p>
+</blockquote>
+<h4 id="j-What-is-usable-security-Explain-what-it-means-and-give-one-example-of-usable-security-mechanism"><a href="#j-What-is-usable-security-Explain-what-it-means-and-give-one-example-of-usable-security-mechanism" class="headerlink" title="j. What is usable security? Explain what it means and give one example of usable security mechanism."></a>j. What is usable security? Explain what it means and give one example of usable security mechanism.</h4><p>Syllabus: Usable Security and Human Factors. </p>
+<p>According to the computing research association, usable security is “Give end-users security controls they can understand and privacy they can control for the dynamic, pervasive computing environments of the future”. One example could be the indicators in browsers about whether a connection is secure (HTTPS) or insecure (HTTP). </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>2 marks if they give the definition or alternatively can explain it in their own words, 2 marks for an appropriate example.</p>
+</blockquote>
+<blockquote>
+<p>根据计算研究协会的说法，可用的安全是 “为未来的动态、普遍的计算环境提供他们能够理解的安全控制和他们能够控制的隐私”。一个例子是浏览器中关于连接是否安全（HTTPS）或不安全（HTTP）的指标</p>
+</blockquote>
+<h3 id="Question-Two-1"><a href="#Question-Two-1" class="headerlink" title="Question Two"></a>Question Two</h3><p>GANT is an organisation with over 100,000 members world-wide, it operates in 42 countries and its ultimate goal is to preserve the natterjack toad. Over the past year, GANT’s website has suffered several cyberattacks and this has led to usernames, passwords and credit card details for many members being leaked on the internet. To prevent further cyberattacks, GANT is ready to make information security a top priority amongst its workforce and third-party contractors and has already put in place a chief information security officer (CISO). </p>
+<blockquote>
+<p>GANT是一个在全世界拥有超过10万名成员的组织，它在42个国家开展活动，其最终目标是保护纳特杰克蟾蜍。在过去的一年里，GANT的网站遭受了几次网络攻击，这导致许多会员的用户名、密码和信用卡信息在互联网上被泄露。为了防止进一步的网络攻击，GANT公司准备将信息安全作为其员工和第三方承包商的首要任务，并且已经设立了一个首席信息安全官（CISO）</p>
+</blockquote>
+<h4 id="a-1"><a href="#a-1" class="headerlink" title="a."></a>a.</h4><p>Identify and explain four new security roles that will need to exist in GANT in addition to the CISO.</p>
+<blockquote>
+<p>2020/8 question one a.</p>
+</blockquote>
+<h4 id="b-1"><a href="#b-1" class="headerlink" title="b."></a>b.</h4><p>When defining their information security goals and high-level policies, what type of requirements imposed externally should GANT consider? Explain the type of requirements and give one example per type</p>
+<p>Syllabus: Security Policies and Organisation </p>
+<p>GANT should consider statutory, regulatory, and advisory requirements.</p>
+<p>Statutory requirements are legal requirements that must be fulfilled. For instance law enforcement agencies must be contacted should certain laws be broken or are suspected of being broken. The downloading of child pornography would be such a case. Compliance with these requirements may influence how an enterprise’s incident reporting procedures are organised. For example how, when and by whom should the authorities be contacted? Privacy legislation such as the Data Protection Act will influence how information is stored and managed within the enterprise and how resources are deployed to ensure that it complies with this legislation.</p>
+<p>Regulatory requirements are often imposed by trade bodies, and they specify how an enterprise should operate to conform to certain standards. Although they are not legal obligations, regulatory bodies have extensive powers, and failure to comply could lead to possible fines or, in extreme cases, exclusion from trading in a particular environment. The finance sector is a good example of this as it maintains strict controls to prevent financial malpractices such as fraud or money laundering.</p>
+<p>Advisory requirements may arise from government agencies or utility companies and may provide advice as to what arrangements should be put into place to help cope with instances such as fires, natural disasters and acts of terrorism. These requirements are not legally binding and are generally issued to help encourage best practice.</p>
+<blockquote>
+<p>Marking scheme </p>
+<p>Up to 3 marks per requirement well explained, and 1 mark per example</p>
+</blockquote>
+<h4 id="c"><a href="#c" class="headerlink" title="c."></a>c.</h4><p>As part of their efforts to improve information security management, GANT has decided to put in place a business continuity plan. What steps should the plan include to make it work? Explain them.</p>
+<p>Syllabus: Continuity Planning and Management </p>
+<p>It is a three step process, including: </p>
+<ol>
+<li><p>Assigning Responsibilities </p>
+<ul>
+<li><p>Senior management must approve the plan. </p>
+</li>
+<li><p>Likely an appointment at boardroom or executive level to oversee, and an appointment to take the programme forward. </p>
+</li>
+</ul>
+</li>
+<li><p>Establishing and Implementing the Plan </p>
+<ul>
+<li>Scope, aim and objectives, and the activities required if the plan is triggered, i.e. What are the likely problems that will pop up? How can we deal with them? </li>
+</ul>
+</li>
+<li><p>Ongoing Management </p>
+<ul>
+<li>Regular review of the continuity plan (i.e. it can easily become out of date and no longer reflect real business operations). Similar to the Plan-Do-Check-Act model. </li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>Marking scheme </p>
+<p>3 marks for enumerating the steps, one per step. 6 marks for explaining the steps, 2 per step. 1 mark if the explanation has explicit links to other models like Plan-Do-Check-Act.</p>
+</blockquote>
+<h3 id="Question-Three"><a href="#Question-Three" class="headerlink" title="Question Three"></a>Question Three</h3><p>SEM Ltd. is a company that operates an online service 24/7 all days of the year serving 10,000 customers all over the world. SEM Ltd. suffered 80 Denial of Service (DoS) attacks since they started operating 4 years ago. Every time this attack happens, it causes losses of £1 per customer, as their services are not available to their customers until SEM Ltd.’s IT team manage to relaunch the online platform.</p>
+<blockquote>
+<p>SEM有限公司是一家全年24小时运营在线服务的公司，为世界各地的10,000名客户提供服务。SEM有限公司自4年前开始运营以来，遭受了80次拒绝服务（DoS）攻击。每次这种攻击发生，都会给每个客户造成1英镑的损失，因为他们的服务无法提供给客户，直到SEM有限公司的IT团队设法重新启动在线平台</p>
+</blockquote>
+<h4 id="a-2"><a href="#a-2" class="headerlink" title="a."></a>a.</h4><p>Explain what is the Annual Loss Expectancy (ALE) and calculate it for this risk.</p>
+<p>The Annual Loss Expectancy (ALE) is a business-friendly measure of a risk in a quantitative risk assessment approach. It is calculated based on the annual rate of occurrence (ARO) and the single loss expectancy (SLE) for each risk. </p>
+<p>For this risk, the ARO is 80/4 = 20 attacks/year as above and the SLE is £10,000 (10,000 customers at £1 each per attack). Therefore, ALE = ARO × SLE = 20 × 10, 000 = £200,000. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>1 mark if they describe well what ALE is. 2 marks if they identified the ARO and the impact correctly. 2 marks if they are able to calculate the total ALE correctly for this particular case</p>
+</blockquote>
+<h4 id="b-2"><a href="#b-2" class="headerlink" title="b."></a>b.</h4><p>If an off-the-shelf DoS mitigation appliance costs £45,000 per year, what type of risk treatment would you recommend?  Explain why and include the specific name of the risk treatment type, together with the particular action recommended for this risk.</p>
+<p>Given that the ALE for this risk is £200,000 and the off-the-shelf DoS mitigation appliance costs £45,000, the most reasonable risk treatment type is reduce the risk by buying and installing the appliance.</p>
+<blockquote>
+<p>Marking scheme </p>
+<p>2 marks for identifying the name of the risk treatment type as reduce, 3 marks depending on the detail and correctness of the rationale given for explaining the treatment</p>
+</blockquote>
+<blockquote>
+<p>鉴于这种风险的ALE是200,000英镑，而现成的DoS缓解设备成本为45,000英镑，最合理的风险处理类型是通过购买和安装设备来降低风险</p>
+</blockquote>
+<h4 id="c-1"><a href="#c-1" class="headerlink" title="c."></a>c.</h4><p>If the off-the-shelf DoS mitigation appliance costs £199,000 per year, what type of risk treatment would you recommend? Explain why and include the specific name of the risk treatment type, together with the particular action recommended for this risk.</p>
+<p>Given that the ALE for this risk is £200,000 and the off-the-shelf DoS mitigation appliance costs £199,000, the most reasonable risk treatment type is accept the risk, as it will be costing the company roughly the same. However, this is open to interpretation and one could think that other risk treatment options are possible, in particular reduce if students mention other motives including maintaining customer confidence. Alternative answers should be fine as long as the name of the particular risk treatment type suggested is correct, and there is a well-explained rationale to support it.</p>
+<blockquote>
+<p>Marking scheme </p>
+<p>3 marks for identifying the name of the risk treatment type; 5 marks depending on the detail and correctness of the rationale given for explaining the treatment.</p>
+</blockquote>
+<blockquote>
+<p>鉴于这一风险的ALE是200,000英镑，而现成的DoS缓解设备的成本是199,000英镑，最合理的风险处理类型是接受风险，因为它将使公司的成本大致相同。然而，这是可以解释的，人们可以认为其他的风险处理方案是可能的，特别是如果学生提到其他的动机，包括保持客户的信心，就会减少。只要建议的特定风险处理类型的名称是正确的，并且有充分解释的理由来支持它，其他答案应该是可以的</p>
+</blockquote>
+<h4 id="d"><a href="#d" class="headerlink" title="d."></a>d.</h4><p>As an alternative to the off-the-shelf DoS mitigation appliance, SEM Ltd. are also exploring cloud computing, so that they could elastically expand the instances of their service as a way of replicating it and becoming less vulnerable to DoS. </p>
+<p>What would be the legal implications and security risks if SEM Ltd. relied on cloud computing for their infrastructure?</p>
+<blockquote>
+<p>作为现成的DoS缓解设备的替代方案，SEM有限公司也在探索云计算，这样他们就可以弹性地扩展他们的服务实例，作为一种复制的方式，从而减少对DoS的伤害。</p>
+<p>如果SEM有限公司的基础设施依赖云计算，会有什么法律影响和安全风险？</p>
+</blockquote>
+<p>Syllabus: Security Controls </p>
+<p>Legal implications: They must consider the physical location of services (Data Protection Rules), access to information (cloud provider can read all data), if GANT can audit the cloud provider (verify if the cloud is keeping the data secure) and legal issues around the cloud providers sub-contractors. </p>
+<p>Security Risks: Cloud providers can be hacked and the information is leaked publicly. This is an example of risk-sharing as while the cloud provider is liable - the data leaked can be embarassing to the organisation. Also the data can be deleted/lost if the cloud provider suffers a crash and does not keep regular backups. Or the data could not be deleted completely when needed. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>4 marks for explaining the legal implications and 4 marks for the security risks.</p>
+</blockquote>
+<blockquote>
+<p>法律影响。他们必须考虑服务的物理位置（数据保护规则），对信息的访问（云供应商可以读取所有数据），GANT是否可以审计云供应商（验证云是否保持数据安全）以及围绕云供应商分包商的法律问题</p>
+<p>安全风险。云供应商可能被黑客攻击，信息被公开泄露。这是一个风险分担的例子，因为虽然云提供商有责任，但泄露的数据可能会使组织感到尴尬。另外，如果云提供商发生崩溃，并且没有保持定期的备份，数据可能会被删除/丢失。或者在需要时不能完全删除数据</p>
+</blockquote>
+<h4 id="e"><a href="#e" class="headerlink" title="e."></a>e.</h4><p>Beyond DoS attacks, SEM Ltd. seem to have received other types of attacks too. In order to know more about what the vulnerabilities are in SEM’s systems, they have hired company, Testers Ltd., to perform a Vulnerability Assessment. At the moment, SEM Ltd does not have a backup infrastructure and any assessments will need to be conducted on the live operational infrastructure. </p>
+<p>What type of Assurance Techniques will be least suitable for this case and why?</p>
+<blockquote>
+<p>除了DoS攻击，SEM公司似乎也收到了其他类型的攻击。为了进一步了解SEM系统的漏洞，他们聘请了Testers Ltd.公司来进行漏洞评估。目前，SEM公司没有一个备份的基础设施，任何评估都需要在运行中的基础设施上进行。</p>
+<p>哪种类型的保证技术最不适合这个案例，为什么？</p>
+</blockquote>
+<p>Syllabus: Vulnerability Assessment </p>
+<p>The least suitable techniques in this case may be testing techniques, such as penetration testing and vulnerability scans, as any issue caused by this more active assurance techniques will entail a risk of information loss and infrastructure unavailability. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>2 marks for identifying testing techniques as not suitable and 2 marks depending on the explanation.</p>
+</blockquote>
+<blockquote>
+<p>在这种情况下，最不适合的技术可能是测试技术，如渗透测试和漏洞扫描，因为这种更积极的保证技术引起的任何问题都会带来信息损失和基础设施不可用的风险</p>
+</blockquote>
+<h2 id="Past-Exam-Paper-2019"><a href="#Past-Exam-Paper-2019" class="headerlink" title="Past Exam Paper 2019"></a>Past Exam Paper 2019</h2><h3 id="Question-One-2"><a href="#Question-One-2" class="headerlink" title="Question One"></a>Question One</h3><h4 id="a-What-is-Information-Security-and-what-is-its-primary-focus"><a href="#a-What-is-Information-Security-and-what-is-its-primary-focus" class="headerlink" title="a. What is Information Security and what is its primary focus?"></a>a. What is Information Security and what is its primary focus?</h4><p>Syllabus: Security concepts and fundamentals </p>
+<p>The practice of preventing unauthorised access, use, disclosure, disruption, modification, inspection, recording or destruction of information. It focuses on confidentiality, integrity and availability of information. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>2 marks for the definition and 2 marks for the CIA triad. </p>
+</blockquote>
+<h4 id="b-What-is-a-threat-vulnerability-risk-and-impact"><a href="#b-What-is-a-threat-vulnerability-risk-and-impact" class="headerlink" title="b. What is a threat, vulnerability, risk and impact?"></a>b. What is a threat, vulnerability, risk and impact?</h4><p>Syllabus: Security concepts and fundamentals </p>
+<p>Threat: A potential cause of an incident that may result in the harm to a system or organisation. </p>
+<p>Vulnerability: A weakness of an asset or group of assets that can be exploited by one or more threats. </p>
+<p>Risk. The potential that a given threat will exploit vulnerabilities of an asset or group of assets and thereby cause harm to the organisation. </p>
+<p>Impact: The result of an information security incident, caused by a threat, which affects assets. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>1 mark for each definition</p>
+</blockquote>
+<h4 id="c-What-is-a-policy-and-procedure-And-how-are-they-different"><a href="#c-What-is-a-policy-and-procedure-And-how-are-they-different" class="headerlink" title="c. What is a policy and procedure? And how are they different?"></a>c. What is a policy and procedure? And how are they different?</h4><p>Syllabus: Security policies. </p>
+<p>Policy is a high level state of an organisation’s values, goals, and objectives in a specific area. A procedure is a set of detailed working instructions that describe what, when, how and by whom something should be done. They are different as a policy sets out the high-level goals and a procedure specifies how something can be done. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>1 mark for each definition. 2 marks for explaining the difference.</p>
+</blockquote>
+<h4 id="d-What-is-an-anti-virus-and-firewall-And-how-are-they-different"><a href="#d-What-is-an-anti-virus-and-firewall-And-how-are-they-different" class="headerlink" title="d. What is an anti-virus and firewall? And how are they different?"></a>d. What is an anti-virus and firewall? And how are they different?</h4><p>Syllabus: Security Controls </p>
+<p>A firewall is a network security system designed to prevent unauthorised access to or from a private network. An anti-virus scans all files on the computer to detect if they look like a known virus. The difference is that an anti-virus is concerned with finding malware and removing it. Firewall does not scan files, but it is designed to prevent unauthorised access from an external source. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>1 mark for each definition. 2 marks for explaining the difference.</p>
+</blockquote>
+<h4 id="e-What-is-a-man-in-the-middle-attack-and-what-technical-control-can-prevent-it"><a href="#e-What-is-a-man-in-the-middle-attack-and-what-technical-control-can-prevent-it" class="headerlink" title="e. What is a man in the middle attack and what technical control can prevent it?"></a>e. What is a man in the middle attack and what technical control can prevent it?</h4><p>Syllabus: Security Controls </p>
+<p>An attack where the attacker secretly relays and possibly alters the communication between two parties who believe they are directly communicating with each other. To prevent it, a secure communication channel must be established using cryptography and public key infrastructure. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>2 mark for definition and 2 marks for explaining how to prevent it.</p>
+</blockquote>
+<h4 id="f-What-is-Residual-Risk-Why-is-it-useful-to-consider-it"><a href="#f-What-is-Residual-Risk-Why-is-it-useful-to-consider-it" class="headerlink" title="f. What is Residual Risk? Why is it useful to consider it?"></a>f. What is Residual Risk? Why is it useful to consider it?</h4><p>Syllabus: Risk Management. </p>
+<p>Residual Risk is the risk left after treating an existing risk (e.g. implementing a security control as a countermeasure). It is useful to consider it to evaluate how much risk is left, as a 100% secure system is impossible to achieve. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>2 marks if residual risk is defined well, 2 marks if it is explained why it is useful correctly</p>
+</blockquote>
+<h4 id="g-Name-8-assurance-techniques-that-can-be-used-for-vulnerability-assessments"><a href="#g-Name-8-assurance-techniques-that-can-be-used-for-vulnerability-assessments" class="headerlink" title="g. Name 8 assurance techniques that can be used for vulnerability assessments."></a>g. Name 8 assurance techniques that can be used for vulnerability assessments.</h4><p>Syllabus: Vulnerability Assessment. </p>
+<p>Any of the following techniques will be accepted at least: Review of Documented Policies, Procedures, and Processes; Review of Client-Completed Self-Assessment Form; Architectural Review; Configuration Review; Source Code Review; Observations; Interviews; Penetration Test; Read Team Exercise; Vulnerability Scan; Social Engineering Testing; Static Analysis; Dynamic Analysis; Fuzzing; Formal Verification; Cryptographic Validation; Emanation Analysis; Witnessed Test; Public Review. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>0.5 marks per correct assurance technique named.</p>
+</blockquote>
+<h4 id="h-What-are-the-differences-between-qualitative-and-quantitative-risk-assessment"><a href="#h-What-are-the-differences-between-qualitative-and-quantitative-risk-assessment" class="headerlink" title="h. What are the differences between qualitative and quantitative risk assessment?"></a>h. What are the differences between qualitative and quantitative risk assessment?</h4><p>Syllabus: Risk Assessment. </p>
+<p>Quantitative risk assessment aims to produce reliable statistic evidence, with quantitative probabilities for risk likelihood and quantitative risk impact. A usual methodology is to calculate the annual loss expectancy, which includes the annual rate of occurrence and the single loss expectancy for each risk (ALE = ARO × SLE). Qualitative risk assessment avoids the over simplification to numbers, which helps to draw together the apparently inconsequential bits of information. It considers qualitative probabilities and qualitative/quantitative impacts.</p>
+<blockquote>
+<p>Marking scheme </p>
+<p>1 mark for appropriate description of each risk assessment approach (x2), 2 marks if they highlight well the difference between the two.</p>
+</blockquote>
+<h4 id="i-What-is-a-Market-for-Lemons-and-how-does-it-apply-to-security-economics"><a href="#i-What-is-a-Market-for-Lemons-and-how-does-it-apply-to-security-economics" class="headerlink" title="i. What is a Market for Lemons and how does it apply to security economics?"></a>i. What is a Market for Lemons and how does it apply to security economics?</h4><blockquote>
+<p>“Security Controls Legislation, Cloud Security, Security Economics” Quiz Q4</p>
+</blockquote>
+<blockquote>
+<p>Marking scheme </p>
+<p>1 mark for relationship to asymmetric information, 1 mark for relationship with how good cyber security products might or might not be, 1 mark if lemons example explained well, 1 mark if example of how it applies to security economics</p>
+<p>与不对称信息的关系1分，与好的网络安全产品可能或不可能的关系1分，如果柠檬的例子解释得好，1分，如果它如何适用于安全经济学的例子1分</p>
+</blockquote>
+<h4 id="j-What-does-compliance-with-ISO27001-mean-Does-it-certify-the-state-of-security-of-an-organisation-Explain"><a href="#j-What-does-compliance-with-ISO27001-mean-Does-it-certify-the-state-of-security-of-an-organisation-Explain" class="headerlink" title="j. What does compliance with ISO27001 mean? Does it certify the state of security of an organisation? Explain."></a>j. What does compliance with ISO27001 mean? Does it certify the state of security of an organisation? Explain.</h4><p>Syllabus: Standards and Compliance. </p>
+<p>27001 compliance means that the information security management process described by the ISO27000-series of standards is in place, but it does not certify the state of security an organisation has. That is an organisation compliant with 27001 is not free from cyber security issues. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>2 marks for correctly stating what compliance means; 2 marks for explaining well why it does not certify the state of security of an organisation.</p>
+</blockquote>
+<blockquote>
+<p>27001合规性意味着ISO27000系列标准所描述的信息安全管理流程已经到位，但它并不能证明一个组织的安全状况。也就是说，一个符合27001标准的组织并不是没有网络安全问题的</p>
+</blockquote>
+<h3 id="Question-Two-2"><a href="#Question-Two-2" class="headerlink" title="Question Two"></a>Question Two</h3><p>GANT is an organisation with over 100,000 members world-wide, it operates in 42 countries and its ultimate goal is to preserve the natterjack toad. Over the past year, GANT’s website has suffered several cyberattacks and this has led to usernames, passwords and credit card details for many members being leaked on the internet. To prevent further cyberattacks, GANT is ready to make information security a top priority amongst its workforce and third-party contractors and has already put in place a chief information security officer (CISO). </p>
+<h4 id="a-3"><a href="#a-3" class="headerlink" title="a."></a>a.</h4><p>What is the purpose of a chief information security officer (CISO)?</p>
+<p>Syllabus: Security Policies and Organisation </p>
+<p>Responsible for protecting their organisation’s computers, networks and data against threats, such as security breaches, computer viruses or attacks by cyber-criminals. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>6 marks if they explain the purpose of a CISO well.</p>
+</blockquote>
+<blockquote>
+<p>负责保护其组织的计算机、网络和数据免受威胁，如安全漏洞、计算机病毒或网络犯罪分子的攻击</p>
+</blockquote>
+<h4 id="b-3"><a href="#b-3" class="headerlink" title="b."></a>b.</h4><p>Identify and explain four new security roles that will need to exist in GANT in addition to the CISO. </p>
+<blockquote>
+<p>2020/8 question one a.</p>
+</blockquote>
+<h4 id="c-2"><a href="#c-2" class="headerlink" title="c."></a>c.</h4><p>The C-level executives at GANT believe cloud computing can be used to help protect against cyber attacks. </p>
+<p>What is cloud computing and why is it useful? What are the legal implications and security risks if the organisation relies on cloud computing for their infrastructure? </p>
+<blockquote>
+<p>GANT公司的C级管理人员认为，云计算可以用来帮助防范网络攻击。</p>
+<p>什么是云计算，为什么它是有用的？如果组织的基础设施依赖云计算，有什么法律影响和安全风险？</p>
+</blockquote>
+<p>Syllabus: Security Policies and Controls </p>
+<p>Cloud computing is the practice of using a network of remote serves hosted on the Internet to store, manage, and process data, rather than a local server or a personal computer. It is useful as it allows a small company to gain access to powerful computers that would normally be out of reach. </p>
+<p>Legal implications: They must consider the physical location of services (Data Protection Rules), access to information (cloud provider can read all data), if GANT can audit the cloud provider (verify if the cloud is keeping the data secure) and legal issues around the cloud providers sub-contractors. </p>
+<p>Security Risks: Cloud providers can be hacked and the information is leaked publicly. This is an example of risk-sharing as while the cloud provider is liable - the data leaked can be embarassing to the organisation. Also the data can be deleted/lost if the cloud provider suffers a crash and does not keep regular backups. Or the data could not be deleted completely when needed. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>4 marks for a definition of cloud computing and explaining why it is useful. 4 marks for explaining the legal implications and 4 marks for the security risks.</p>
+</blockquote>
+<h3 id="Question-Three-1"><a href="#Question-Three-1" class="headerlink" title="Question Three"></a>Question Three</h3><p>SEM Ltd. is a company that operates an online service 24/7 all days of the year serving 10,000 customers all over the world. SEM Ltd. suffered 90 Denial of Service (DoS) attacks since they started operating 3 years ago. Every time this attack happens, it causes loses of £1 per customer, as their services are not available to their customers until SEM Ltd.’s IT team manage to relaunch the online platform. </p>
+<h4 id="a-4"><a href="#a-4" class="headerlink" title="a."></a>a.</h4><p>What is the Annualized Rate of Occurrence (ARO) for this risk?</p>
+<p>The Annualized Rate of Occurrence (ARO) is a business-friendly measure of the probability of occurrence of an event that measures how likely an event is to happen during a year. For this risk the ARO is 90/3 = 30 attacks/year. </p>
+<blockquote>
+<p>Marking scheme </p>
+<p>2 marks if they describe well what ARO is. 1 mark if they are able to calculate it correctly for this particular case.</p>
+</blockquote>
+<h4 id="b-4"><a href="#b-4" class="headerlink" title="b."></a>b.</h4><p>What is the Annual Loss Expectancy (ALE) for this risk?</p>
+<p>The Annual Loss Expectancy (ALE) is a business-friendly measure of a risk in a quantitative risk assessment approach. It is calculated based on the annual rate of occurrence (ARO) and the single loss expectancy (SLE) for each risk. For this risk, the ARO is as above and the SLE is £10,000 (10,000 customers at £1 each per attack). Therefore, ALE = ARO×SLE = 30×10, 000 = £300,000.</p>
+<blockquote>
+<p>Marking scheme</p>
+<p>2 marks if they describe well what ALE is. 2 marks if they identified the impact correctly. 2 marks if they are able to calculate the total ALE correctly for this particular case</p>
+</blockquote>
+<h4 id="c-3"><a href="#c-3" class="headerlink" title="c."></a>c.</h4><p>If an off-the-shelf DoS mitigation appliance costs £50,000 per year, what type of risk treatment would you recommend? Explain why and include the specific name of the risk treatment type, together with the particular action recommended for this risk.</p>
+<blockquote>
+<p>如果一个现成的DoS缓解设备每年花费50,000英镑，你会建议哪种类型的风险处理？解释一下原因，包括风险处理类型的具体名称，以及为该风险建议的具体行动</p>
+</blockquote>
+<p>Given that the ALE for this risk is £300,000 and the off-the-shelf DoS mitigation appliance costs £50,000, the most reasonable risk treatment type is reduce the risk by buying and installing the appliance. </p>
+<blockquote>
+<p>鉴于该风险的ALE为300,000英镑，现成的DoS缓解设备成本为50,000英镑，最合理的风险处理类型是通过购买和安装该设备来降低风险</p>
+</blockquote>
+<blockquote>
+<p>Marking scheme </p>
+<p>2 marks for identifying the name of the risk treatment type as reduce, 2 marks depending on the detail and correctness of the rationale given for explaining the treatment.</p>
+</blockquote>
+<h4 id="d-1"><a href="#d-1" class="headerlink" title="d."></a>d.</h4><p>If the off-the-shelf DoS mitigation appliance costs £300,000 per year, what type of risk treatment would you recommend? Explain why and include the specific name of the risk treatment type, together with the particular action recommended for this risk.</p>
+<p>Given that the ALE for this risk is £300,000 and the off-the-shelf DoS mitigation appliance costs £300,000, the most reasonable risk treatment type is accept the risk, as it will be costing the company the same. However, this is open to interpretation and one could think that other risk treatment options are possible. Alternative answers should be fine as long as the name of the particular risk treatment type suggested is correct, and there is a well-explained rationale to support it. </p>
+<blockquote>
+<p>鉴于这一风险的ALE是300,000英镑，而现成的DoS缓解设备的成本是300,000英镑，最合理的风险处理类型是接受这一风险，因为它将给公司带来同样的成本。然而，这是可以解释的，人们可以认为其他的风险处理方案是可能的。只要建议的特定风险处理类型的名称是正确的，并有充分解释的理由来支持它，其他答案应该是可以的</p>
+</blockquote>
+<blockquote>
+<p>Marking scheme </p>
+<p>2 marks for identifying the name of the risk treatment type; 4 marks depending on the detail and correctness of the rationale given for explaining the treatment.</p>
+</blockquote>
+<h4 id="e-1"><a href="#e-1" class="headerlink" title="e."></a>e.</h4><p>If the off-the-shelf DoS mitigation appliance costs £300,000 per year and SEM Ltd. would like to maintain customer confidence, what type of risk treatment would you recommend? Explain why and include the specific name of the risk treatment type, together with the particular action recommended for this risk.</p>
+<blockquote>
+<p>如果现成的DoS缓解设备每年花费300,000英镑，而SEM有限公司希望保持客户的信心，你会建议哪种类型的风险处理？解释一下原因，包括风险处理类型的具体名称，以及为该风险建议的具体行动</p>
+</blockquote>
+<p>Given that the ALE for this risk is £300,000, the off-the-shelf DoS mitigation appliance costs £300,000, and the fact that SEM Ltd. would like to maintain customer confidence, the most reasonable risk treatment type is reduce the risk, as even if it may be costing the company the same, buying and installing the appliance will certainly improve user experience which will help maintain customer confidence in the infrastructure. However, this is open to interpretation and one could think that other risk treatment options are possible. This should be fine as long as the particular risk treatment type name is identified and a well-explained rationale is given for this. </p>
+<blockquote>
+<p>鉴于该风险的ALE为300,000英镑，现成的DoS缓解设备成本为300,000英镑，以及SEM有限公司希望保持客户信心的事实，最合理的风险处理类型是减少风险，因为即使它可能花费公司相同的成本，购买和安装设备肯定会改善用户体验，这将有助于保持客户对基础设施的信心。然而，这一点是可以解释的，人们可以认为其他的风险处理方案是可能的。这应该是没有问题的，只要确定了特定的风险处理类型名称，并为此给出了充分解释的理由</p>
+</blockquote>
+<blockquote>
+<p>Marking scheme </p>
+<p>2 marks for identifying the name of the risk treatment type; 4 marks depending on the detail and correctness of the rationale given for explaining the treatment.</p>
+</blockquote>
+<h4 id="f"><a href="#f" class="headerlink" title="f."></a>f.</h4><p>Beyond DoS attacks, SEM Ltd. seem to have received other types of attacks too. In order to know more about who might be interested in attacking them, they have hired company Testers Ltd. to perform a Threat Assessment. This will hopefully inform them of the Threat Agents that might be interested in attacking them. Imagine that you are Testers Ltd., what are the characteristics you would need to study for each Threat Agent to characterise them? Enumerate and explain them.</p>
+<blockquote>
+<p>除了DoS攻击，SEM有限公司似乎也收到了其他类型的攻击。为了更多地了解谁可能对攻击他们感兴趣，他们聘请了Testers Ltd.公司来进行威胁评估。这将有望告知他们可能对攻击他们感兴趣的威胁代理。假设你是Testers Ltd.，你需要研究每个威胁代理的哪些特征，以确定他们的特点？列举并解释它们</p>
+</blockquote>
+<p>Threat agent Characteristics:</p>
+<p>Motivation - Why are they doing this?, </p>
+<p>Capability - Can they do it and to what level?, </p>
+<p>Catalyst - What set them off?, </p>
+<p>Inhibitors - What has/could put them off?, </p>
+<p>Amplifiers - What has/could push them on? </p>
+<blockquote>
+<p>威胁代理人的特征：</p>
+<p>动机–他们为什么要这样做？ 能力–他们能做到吗，达到什么程度？</p>
+</blockquote>
+<blockquote>
+<p>Marking scheme </p>
+<p>1 marks per each correct characteristic and explanation.</p>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">ezy</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://ezy0812.github.io/2021/12/10/security-management-revision-0x02/">https://ezy0812.github.io/2021/12/10/security-management-revision-0x02/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">ezy</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/security-management/">
+                                    <span class="chip bg-color">security-management</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/12/10/security-management-revision-0x02/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="security-management-revision-0x02">
+                        
+                        <span class="card-title">security-management-revision-0x02</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/kcl%E5%A4%8D%E4%B9%A0/" class="post-category">
+                                    kcl复习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/security-management/">
+                        <span class="chip bg-color">security-management</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/12/08/security-management-revision-0x01/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="security-management-revision-0x01">
+                        
+                        <span class="card-title">security-management-revision-0x01</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/kcl%E5%A4%8D%E4%B9%A0/" class="post-category">
+                                    kcl复习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/security-management/">
+                        <span class="chip bg-color">security-management</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <a href="/about" target="_blank">ezy</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2019";
+                        var startMonth = "6";
+                        var startDate = "28";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/ezy0812" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
