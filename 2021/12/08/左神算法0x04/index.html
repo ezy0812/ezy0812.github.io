@@ -362,7 +362,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-12-08
+                    2021-12-11
                 </div>
                 
 
@@ -764,7 +764,7 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
         <span class="token comment">// 如果i在r外，只能向两边扩，所以至少自身这个字符是不需要检查的，至少不用检查的区域就是1</span>
         <span class="token comment">// i在r内的情况，综合3种子情况来看，至少不用检查的区域第一种情况是arr[i']，比r-i小</span>
         <span class="token comment">// 而第二种和第三种情况至少不用检查的区域就是r-i</span>
-        arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token operator">></span> r <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>r<span class="token operator">-</span>i<span class="token punctuation">,</span> arr<span class="token punctuation">[</span><span class="token number">2</span><span class="token operator">*</span>c<span class="token operator">-</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>
+        arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token operator">&lt;</span> r <span class="token operator">?</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>r<span class="token operator">-</span>i<span class="token punctuation">,</span> arr<span class="token punctuation">[</span><span class="token number">2</span><span class="token operator">*</span>c<span class="token operator">-</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
 
         <span class="token comment">// 下面不管哪种情况，都开始往外扩检查</span>
         <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">+</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> chars<span class="token punctuation">.</span>length <span class="token operator">&amp;&amp;</span> i <span class="token operator">-</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
