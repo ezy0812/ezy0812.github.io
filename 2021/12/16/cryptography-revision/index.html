@@ -443,25 +443,29 @@
 <p>Availability: No unauthorized impairment of functionality 没有未经授权的功能损害</p>
 </blockquote>
 <p>机密性就是保证没有未授权下的访问，完整性就是信息没有被修改，可用性就是没有对服务/功能造成损害导致不可用</p>
-<h3 id="quiz"><a href="#quiz" class="headerlink" title="quiz"></a>quiz</h3><p>Charlie forges Bob’s signature on a deed</p>
+<h3 id="quiz"><a href="#quiz" class="headerlink" title="quiz"></a>quiz</h3><ol>
+<li>Charlie forges Bob’s signature on a deed</li>
+</ol>
 <p>Answer: violation of integrity.</p>
-<p>Give a brief description of each of the following security properties, and explain, whenever it makes sense, the role of the sender Alice, the receiver Bob and the attackers Eve (eavesdropper) and Charlie (active attacker). Also: give an example of violation for each of the properties</p>
+<ol>
+<li>Give a brief description of each of the following security properties, and explain, whenever it makes sense, the role of the sender Alice, the receiver Bob and the attackers Eve (eavesdropper) and Charlie (active attacker). Also: give an example of violation for each of the properties</li>
+</ol>
 <p>Confidentiality. Privacy. Anonymity. Integrity. Availability. Authentication. Non-repudiation. Accountability.</p>
-<p>Confidentiality: information is not learned by unauthorized principals. Alice encrypts (e.g., with Bob’s public key) the message for Bob, who decrypts it (e.g., with his private key). Eve (eavesdropper) and Charlie (active attacker) can intercept and replay the message, but are not able to decrypt it. </p>
+<p><strong>Confidentiality</strong>: information is not learned by unauthorized principals. Alice encrypts (e.g., with Bob’s public key) the message for Bob, who decrypts it (e.g., with his private key). Eve (eavesdropper) and Charlie (active attacker) can intercept and replay the message, but are not able to decrypt it. </p>
 <p>Several examples of violation are possible, e.g., your medical records are obtained by a potential employer without your permission.</p>
-<p>Privacy: you choose what you let other people know, i.e., confidentiality of information that you don’t want to share. </p>
+<p><strong>Privacy</strong>: you choose what you let other people know, i.e., confidentiality of information that you don’t want to share. </p>
 <p>Several examples of violation are possible, e.g., somebody applies for a job and does not include their date of birth in the application, but the interview panel (somehow) finds out the date.</p>
-<p>Anonymity: confidentiality of your identity. </p>
+<p><strong>Anonymity</strong>: confidentiality of your identity. </p>
 <p>Several examples of violation are possible, e.g., a lecturer finding out the true identity of a student when marking the exams.</p>
-<p>Integrity: data has not been (maliciously) altered. Alice encrypts (e.g., with her private key or with a MAC, sending also the message in the clear) the message and sends it to Bob, who verifies that it has not been altered (e.g., he decrypts it with Alice’s public key and verifies the signature, or he verifies the MAC). Eve and Charlie can read, intercept and replay the message, but are not able to alter it. </p>
+<p><strong>Integrity</strong>: data has not been (maliciously) altered. Alice encrypts (e.g., with her private key or with a MAC, sending also the message in the clear) the message and sends it to Bob, who verifies that it has not been altered (e.g., he decrypts it with Alice’s public key and verifies the signature, or he verifies the MAC). Eve and Charlie can read, intercept and replay the message, but are not able to alter it. </p>
 <p>Several examples of violation are possible, e.g., an on-line payment system alters an electronic cheque to read £ 10,000 instead of £ 100.</p>
-<p>Availability: data/services can be accessed when desired. Alice and Bob are able to exchange messages (or Alice is able to access the resource provided by Bob), and Eve and Charlie cannot disrupt the service. </p>
+<p><strong>Availability</strong>: data/services can be accessed when desired. Alice and Bob are able to exchange messages (or Alice is able to access the resource provided by Bob), and Eve and Charlie cannot disrupt the service. </p>
 <p>Several examples of violation are possible, e.g., a distributed DoS (DDoS) attack against some on-line service.</p>
-<p>Authentication: principals or data origin can be identified accurately. Alice encrypts (e.g., with her private key or with a MAC, sending also the message in the clear) the message and sends it to Bob, who can verify that it really comes from Alice. Eve and Charlie can read, intercept and replay the message, but are not able to alter the identity of the sender. Using protocols for authentication is also possible. </p>
+<p><strong>Authentication</strong>: principals or data origin can be identified accurately. Alice encrypts (e.g., with her private key or with a MAC, sending also the message in the clear) the message and sends it to Bob, who can verify that it really comes from Alice. Eve and Charlie can read, intercept and replay the message, but are not able to alter the identity of the sender. Using protocols for authentication is also possible. </p>
 <p>Several examples of violation are possible, e.g., purporting to be somebody else (identity theft) by faking email, IP spoofing, or stealing a private key and signing documents.</p>
-<p>Non-repudiation: actions can be traced to responsible principals, who cannot deny their actions. </p>
+<p><strong>Non-repudiation</strong>: actions can be traced to responsible principals, who cannot deny their actions. </p>
 <p>Alice and Bob cannot deny having sent and received the messages. In this case, the protection is more against internal attackers than with respect to external attackers such as Eve and Charlie. Several examples of violation are possible, e.g., the signer of an online contract denies to have signed it.</p>
-<p>Accountability: Actions are recorded and can be traced to the party responsible. If prevention methods and access controls fail, we may fall back to detection: keeping a secure audit trail is important so that actions affecting security can be traced back to the responsible party. Creating an audit trail with machine logs is a tricky problem: if a system is compromised, the logs may also be tampered with. Ways around that problem are to send log messages to an append-only file, a separate server, or even a physically isolated printer. </p>
+<p><strong>Accountability</strong>: Actions are recorded and can be traced to the party responsible. If prevention methods and access controls fail, we may fall back to detection: keeping a secure audit trail is important so that actions affecting security can be traced back to the responsible party. Creating an audit trail with machine logs is a tricky problem: if a system is compromised, the logs may also be tampered with. Ways around that problem are to send log messages to an append-only file, a separate server, or even a physically isolated printer. </p>
 <p>Example violation: an audit trail is tampered with, lost, or cannot establish where a security breach occurred.</p>
 <h2 id="一般加密模式"><a href="#一般加密模式" class="headerlink" title="一般加密模式"></a>一般加密模式</h2><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/cryptography/f1.png" alt=""></p>
 <p>key1用来加密，key2用来解密</p>
