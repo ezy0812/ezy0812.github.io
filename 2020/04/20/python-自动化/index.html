@@ -1342,7 +1342,7 @@ contents<span class="token operator">=</span><span class="token punctuation">[</
 yag<span class="token punctuation">.</span>send<span class="token punctuation">(</span><span class="token string">'a@163.com'</span><span class="token punctuation">,</span><span class="token string">'an-email'</span><span class="token punctuation">,</span>contents<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <blockquote>
-<p>如果需要群发，修改yag.send参数即可，yag.send([‘<a href="mailto:&#97;&#64;&#x31;&#54;&#x33;&#x2e;&#x63;&#x6f;&#x6d;">&#97;&#64;&#x31;&#54;&#x33;&#x2e;&#x63;&#x6f;&#x6d;</a>‘,‘<a href="mailto:&#97;&#x40;&#97;&#46;&#x63;&#111;&#x6d;">&#97;&#x40;&#97;&#46;&#x63;&#111;&#x6d;</a>‘],’an-email’,contents)</p>
+<p>如果需要群发，修改yag.send参数即可，yag.send([‘<a href="mailto:&#97;&#x40;&#49;&#54;&#51;&#46;&#99;&#x6f;&#x6d;">&#97;&#x40;&#49;&#54;&#51;&#46;&#99;&#x6f;&#x6d;</a>‘,‘<a href="mailto:&#x61;&#64;&#97;&#46;&#99;&#x6f;&#x6d;">&#x61;&#64;&#97;&#46;&#99;&#x6f;&#x6d;</a>‘],’an-email’,contents)</p>
 </blockquote>
 <h3 id="读取邮件"><a href="#读取邮件" class="headerlink" title="读取邮件"></a>读取邮件</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> keyring
 
@@ -1364,7 +1364,7 @@ password<span class="token operator">=</span>keyring<span class="token punctuati
 <p>message.sent_from     发件人<br>message.sent_to       收件人<br>message.subject       主题<br>message.date          时间<br>message.body[‘plain’] 文本格式内容<br>message.body[‘html’]  HTML格式内容<br>message.attachements  附件</p>
 </blockquote>
 <blockquote>
-<p>imbox.messages(unread=True)           查看未读邮件<br>imbox.messages(flagged=True)          查看红旗邮件<br>imbox.messages(sent_from=‘<a href="mailto:&#x61;&#64;&#97;&#x2e;&#x63;&#111;&#109;">&#x61;&#64;&#97;&#x2e;&#x63;&#111;&#109;</a>‘)   查看某发件人邮件<br>imbox.messages(sent_to=‘<a href="mailto:&#x61;&#64;&#97;&#46;&#x63;&#111;&#x6d;">&#x61;&#64;&#97;&#46;&#x63;&#111;&#x6d;</a>‘)     查看某收件人邮件<br>imbox.messages(data_lt=datetime.data(2019,10,8))          具体日期某天前(import datetime)<br>imbox.messages(data_gt=datetime.data(2019,10,8))          具体日期某天后<br>imbox.messages(data_on=datetime.data(2019,10,8))          指定某一天</p>
+<p>imbox.messages(unread=True)           查看未读邮件<br>imbox.messages(flagged=True)          查看红旗邮件<br>imbox.messages(sent_from=‘<a href="mailto:&#x61;&#64;&#x61;&#x2e;&#99;&#111;&#109;">&#x61;&#64;&#x61;&#x2e;&#99;&#111;&#109;</a>‘)   查看某发件人邮件<br>imbox.messages(sent_to=‘<a href="mailto:&#97;&#64;&#97;&#x2e;&#99;&#111;&#x6d;">&#97;&#64;&#97;&#x2e;&#99;&#111;&#x6d;</a>‘)     查看某收件人邮件<br>imbox.messages(data_lt=datetime.data(2019,10,8))          具体日期某天前(import datetime)<br>imbox.messages(data_gt=datetime.data(2019,10,8))          具体日期某天后<br>imbox.messages(data_on=datetime.data(2019,10,8))          指定某一天</p>
 </blockquote>
 <h3 id="标记已读和删除邮件"><a href="#标记已读和删除邮件" class="headerlink" title="标记已读和删除邮件"></a>标记已读和删除邮件</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">for</span> uid<span class="token punctuation">,</span>message <span class="token keyword">in</span> all_inbox_messages<span class="token punctuation">:</span>
     <span class="token keyword">if</span> 某种条件<span class="token punctuation">:</span>
