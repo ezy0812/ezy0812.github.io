@@ -451,7 +451,6 @@
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="布隆过滤器"><a href="#布隆过滤器" class="headerlink" title="布隆过滤器"></a>布隆过滤器</h3><p>用途：假如需要一个黑名单，含有大量（100亿）url，当访问到黑名单的url时，必须被过滤掉</p>
 <p>那么布隆过滤器的作用就是</p>
 <p>1）对于黑名单中的url，必须能查到，所以可以过滤掉</p>
@@ -471,7 +470,6 @@
 arr<span class="token punctuation">[</span>numIndex<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>numIndex<span class="token punctuation">]</span> <span class="token operator">|</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> bitIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// 将178bit上的状态改为0</span>
 arr<span class="token punctuation">[</span>numIndex<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>numIndex<span class="token punctuation">]</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token operator">~</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> bitIndex<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>布隆过滤器就是一个大的位图，有m个bit，k个哈希函数，输入一个url，然后通过k个哈希函数得到k个值，%m之后放到位图中，即将位图中k个数置1。当判断某个url时，同样做k个哈希运算，如果得到的那些bit位都是1，那么该url一定是黑名单，如果有一个不是1，那么就不是黑名单</p>
 <p>所以m和k的选择是非常重要的，m选的小就意味着对于大数据量来说置1的bit位多，导致大量不在黑名单中的有可能被误判为黑名单，k选的大即哈希函数过多，那么每次哈希出来的数量也是置1的bit位较多，导致误判</p>
 <p>m和k通过以下公式确定（注意都要向上取整，往大了取整）</p>
@@ -510,10 +508,9 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
             <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> res<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="2-0"><a href="#2-0" class="headerlink" title="2.0"></a>2.0</h3><p>如何使用并行算法解决该问题？</p>
 <p>首先考虑两个CPU的情况</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f1.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f1.png" alt=""></p>
 <p>将矩阵分割开，一个CPU搞一半，同样进行上面的感染过程，得出左侧两个岛，右侧两个岛，然后两个CPU还需要进行额外的工作，即对边界情况保存该点是由哪个点感染来的，可以看出左侧边界第一行第4列是由第一行第一列感染来的，都记为A，B, C, D都是如此，最后再对左右两侧进行合并，检查边界情况，从第一行开始看，第一行第4列属于A集合，第5列属于C集合，查询到不属于同一个集合，进行union操作，然后总岛数-1，第三行，union集合B和C，总岛数-1，第5行，union集合B和D，总岛数-1，最后一行，看到A和D属于同一集合，结束</p>
 <p>多个CPU情况类似，将矩阵分N块，然后每个CPU额外收集边界信息，最后归并即可</p>
 <h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>对于a, b, c, d, e</p>
@@ -530,7 +527,6 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
         <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> val<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>fatherMap 记录每个节点的父节点（即指向关系，节点指向父节点）</p>
 <p>sizeMap 只记录代表节点，value则为该代表节点所在集合的元素个数</p>
 <p>显然，如果集合中某个链过长的话，查询是否同一集合则会变得较慢，所以为了加速union过程，可以在往上找父节点的时候，同时记录路途中遍历到的节点，放在栈里，找到代表节点的时候，把途中的节点全都改成直接指向代表节点，这就处理了某个链过长的情况</p>
@@ -582,9 +578,8 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><p>str1，str2 检测str2是否是str1的子串</p>
-<p>显然str1长度&lt;str2长度的话，肯定不是其子串</p>
+<p>显然str1长度\&lt;str2长度的话，肯定不是其子串</p>
 <p>经典暴力方法：</p>
 <p>str1从0开始，str2从0开始，都开始比对，出现不一样的，</p>
 <p>就str1从1开始，str2再次从0开始，出现不一样的，</p>
@@ -593,6 +588,7 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
 <p>arr[i] 代表str2的第i位置不看，研究前面所有的i个字母，计算得出这i个字母的同样长度的前缀和后缀全部相等的最大的一个长度</p>
 <blockquote>
 <p>对于字符串”abbabbk”，看字母k往前的所有字母</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -604,7 +600,8 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
 <th>5</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>前缀</td>
 <td>a</td>
 <td>ab</td>
@@ -620,11 +617,14 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
 <td>babb</td>
 <td>bbabb</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>显然3是最大的长度，长度为6即包含了整个前面的字母，那么前后缀一定相等，所以不考虑长度6</p>
 </blockquote>
 <p>对于str2”aabaabsaabaabst”</p>
 <p>数组arr</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -637,7 +637,8 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
 <th>…</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>arr[index]</td>
 <td>固定值-1，0</td>
 <td>1</td>
@@ -646,20 +647,22 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
 <td>2</td>
 <td>…</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>str1 i, i+1, …, x</p>
 <p>str2 0, 1, … y</p>
 <p>比对过程中在x和y处发现不一样（即x之前的所有和y之前的所有完全一样），经典算法会选择str1回到i+1，str2回到0，然而KMP算法则不是这样</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f2.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f2.png" alt=""></p>
 <p>str1会继续在x位置，str2则会回到最大前缀的下一个字符的位置，然后位置x和新的位置y开始进行比对</p>
 <p>两个实质：</p>
 <p>1）相当于str1从j位置开始，str2从0位置开始检查，但是由于前缀后缀相等的缘故，可以省略位置j到位置x-1的比对，直接比对x和新的位置y</p>
 <p>2）从位置i到位置j之间的任何一个位置k开始，都一定不能配出str2</p>
 <blockquote>
 <p>证明：假设能配出str2的话，那么至少位置k到位置x-1是与str2的前(x-k)个字符是完全相等的，又已知x之前的所有和y之前的所有完全一样，即位置k到位置x-1是与str2从位置y往前移(x-k)个字符开始的串是完全一样的，这就说明一个更长的前缀后缀长度出现了，悖论！</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f3.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f3.png" alt=""></p>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f4.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f4.png" alt=""></p>
 <p>图解过程：</p>
 <p>首先第一次是e和w不一样，然后str2回到字母t，重新比对，</p>
 <p>e跟t又不一样，str2回到字母s重新比对，</p>
@@ -685,13 +688,12 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token comment">// 跳出循环的结果是要么i2越界即i2全部比对成功，否则就是失败</span>
     <span class="token keyword">return</span> i2 <span class="token operator">==</span> chars2<span class="token punctuation">.</span>length <span class="token operator">?</span> i1 <span class="token operator">-</span> i2 <span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>那么如何求数组arr</p>
 <p>首先arr[0]和arr[1]都是固定值-1，0</p>
 <p>arr[i]需要用到arr[i-1]，假设arr[i-1]记为cn，我们比较位置cn处的字母（即前缀后面的第一个字母）与i-1处的字母，如果相等，则arr[i]=cn+1</p>
 <p>否则cn往前跳，cn=arr[cn]，重复之前的操作，比较位置cn处的字母与位置i-1，如果相等，则arr[i]=cn+1</p>
 <p>跳到-1还不行就为0</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f5.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f5.png" alt=""></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getArray</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> str<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">int</span> len <span class="token operator">=</span> str<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>len <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
@@ -709,7 +711,6 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> arr<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="Manacher"><a href="#Manacher" class="headerlink" title="Manacher"></a>Manacher</h2><p>求解字符串的最长回文子串长度</p>
 <h3 id="1-0-1"><a href="#1-0-1" class="headerlink" title="1.0"></a>1.0</h3><p>经典解法，对于字符串”1221ab”，插入特殊字符”#”，-&gt; “#1#2#2#1#a#b#”，然后从头开始，每个字母往两边扩，记录长度然后/2即为真正的以该字母为中心的（对于偶数长度回文子串就是以一个虚轴为中心）回文子串，显然这种暴力方法时间复杂度为O(n2)</p>
 <blockquote>
@@ -734,13 +735,13 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
 </li>
 <li><p>以i’为中心的回文子串严格在l外部，(…, l, …, i’, .).., c, …, i, …, r ，那么位置i的答案回文半径就是i - r这一段，(…, l, …, i’, .).., c, ..(…, i, …, r)</p>
 <blockquote>
-<p>证明：<img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f6.png"></p>
+<p>证明：<img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f6.png" alt=""></p>
 <p>l关于i’对称点l’，r关于i对称点r’，则甲乙两区域一定都是回文，因为在l和r之间关于c对称</p>
 <p>x = y = z, x不等于p，所以z不等于p，所以回文子串只有r’到r</p>
 </blockquote>
 </li>
 <li><p>以i’为中心的回文子串正好与l压线，那么位置r’到r这一段一定是回文，但是需要再往外扩检查是否是回文</p>
-<p> <img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f7.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f7.png" alt=""></p>
 </li>
 </ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">manacherString</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
@@ -785,7 +786,6 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token comment">// 带着特殊字符的回文半径-1即是真正回文子串长度</span>
     <span class="token keyword">return</span> res <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <blockquote>
 <p>Manacher算法最重要的部分是回文半径数组，这个数组可以帮助我们解决很多问题</p>
 </blockquote>
@@ -830,7 +830,6 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> res<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h2><p>数组，对每一个数，求这个数左边最近的比它大的位置，右边最近的比它大的位置</p>
 <h3 id="1-0-无重复数字"><a href="#1-0-无重复数字" class="headerlink" title="1.0 无重复数字"></a>1.0 无重复数字</h3><p>设立一个栈，存储数组下标，从栈底到栈顶的值是从大到小，遍历数组</p>
 <p>1）该值小于栈顶，入栈</p>
@@ -854,7 +853,6 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> res<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="2-0-有重复数字"><a href="#2-0-有重复数字" class="headerlink" title="2.0 有重复数字"></a>2.0 有重复数字</h3><p>栈存放关于下标的链表，依然是从栈底到栈顶的值是从大到小</p>
 <p>遇到相等的值则存放到同样值的链表尾部</p>
 <p>当出栈后，需要用到新栈顶的信息时，选择栈顶链表的尾部作为左边最近的比它大的</p>
@@ -893,7 +891,6 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> res<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h3><p>正数数组，数组中所有数的和与最小值的乘积叫做指标A。求数组的子数组中，指标A的最大值</p>
 <p>对于数组每个数arr[i]，得到以该数为最小值的子数组的指标A的值</p>
 <p>借鉴单调栈的思想，想得到以每个数为最小值的子数组，只需要得到每个数左边和右边最近的比它小的位置，那么想得到的子数组就是从左边求得的位置+1，到右边求得的位置-1</p>
@@ -923,7 +920,6 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> max<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="大数据问题"><a href="#大数据问题" class="headerlink" title="大数据问题"></a>大数据问题</h2><h3 id="利用分段统计思想节省空间"><a href="#利用分段统计思想节省空间" class="headerlink" title="利用分段统计思想节省空间"></a>利用分段统计思想节省空间</h3><p>32位无符号整数的范围是0~4,294,967,295（42亿+），现在有一个正好包含40亿个无符号整数的文件，所以在整个范围中必然存在没出现过的数。可以使用最多1GB的内存，怎么找到所有未出现过的数？</p>
 <h4 id="1-0-2"><a href="#1-0-2" class="headerlink" title="1.0"></a>1.0</h4><p>使用2^32个bit去标记，哪个数出现过就标记哪个bit为1，这样做的空间为2^32 bits = 2^29 Bytes = 2^19 KB = 2^9 MB (512 MB)</p>
 <h4 id="2-0-2"><a href="#2-0-2" class="headerlink" title="2.0"></a>2.0</h4><p>内存限制为3KB，但是只用找到一个没出现过的数即可</p>
@@ -964,14 +960,12 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
 <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">sign</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> <span class="token function">flip</span><span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token operator">>></span><span class="token number">31</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="1-0-3"><a href="#1-0-3" class="headerlink" title="1.0"></a>1.0</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">getMax1</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">int</span> c <span class="token operator">=</span> a <span class="token operator">-</span> b<span class="token punctuation">;</span>
     <span class="token keyword">int</span> returnA <span class="token operator">=</span> <span class="token function">sign</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// a>=b 为1，a&lt;b 为0</span>
     <span class="token keyword">int</span> returnB <span class="token operator">=</span> <span class="token function">flip</span><span class="token punctuation">(</span>returnA<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> a <span class="token operator">*</span> returnA <span class="token operator">+</span> b <span class="token operator">*</span> returnB<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <blockquote>
 <p>利用互斥思想，+号两边两个条件互斥，一个成立另一个一定不成立，即要么返回a，要么返回b</p>
 <p>这里的函数是有问题的，当a和b异号时，会出现溢出的可能性，导致判断错误</p>
@@ -989,21 +983,18 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token keyword">int</span> returnB <span class="token operator">=</span> <span class="token function">flip</span><span class="token punctuation">(</span>returnA<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> a <span class="token operator">*</span> returnA <span class="token operator">+</span> b <span class="token operator">*</span> returnB<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="0x02-2的次幂"><a href="#0x02-2的次幂" class="headerlink" title="0x02 2的次幂"></a>0x02 2的次幂</h3><p>判断一个32位正数是不是2的幂、4的幂</p>
 <p>对于2的幂，数字特征为所有bit上只有1个bit为1</p>
-<p>一个方法是取出最右边的1（(~n+1)&amp;n）看是否与原数相等</p>
+<p>一个方法是取出最右边的1（(~n+1)\&amp;n）看是否与原数相等</p>
 <p>另一个方法是，直接减1，那么如果是2的幂，则那个为1的bit位变为0，右边所有bit都会为1，那么与原数相与，看是否为0</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">is2Power</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>n <span class="token operator">&amp;</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
 <p>对于4的幂，首先看是否是2的幂，这就确定了只有1个bit位为1</p>
 <p>4的幂数字特征为”为1的bit位只在0，2，4，8，… bit位上”，所以让原数与(010101…0101)相与，结果如果为0说明1在1, 3, 5, …,bit位上，为1说明在0, 2, 4, 8, … bit位上</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">is4Power</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>n <span class="token operator">&amp;</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>n <span class="token operator">&amp;</span> <span class="token number">0x55555555</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="0x03-基本四则运算"><a href="#0x03-基本四则运算" class="headerlink" title="0x03 基本四则运算"></a>0x03 基本四则运算</h3><p>给定两个有符号32位整数a和b，不能使用算术运算符，分别实现a和b的加、减、乘、除运算（如果给定a、b执行加减乘除的运算结果就会导致数据的溢出，那么你实现的函数不必对此负责，除此之外请保证计算过程不发生溢出）</p>
 <h4 id="加"><a href="#加" class="headerlink" title="加"></a>加</h4><p>13 - 01101</p>
 <p>7   - 00111</p>
@@ -1022,13 +1013,12 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> a<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="减"><a href="#减" class="headerlink" title="减"></a>减</h4><p>减法就是a + (-b)</p>
 <p>-b就是补码，取反+1</p>
 <h4 id="乘"><a href="#乘" class="headerlink" title="乘"></a>乘</h4><p>二进制乘法，跟正常十进制乘法完全类似</p>
 <p>10010</p>
 <p>*  101</p>
-<p>=</p>
+<p>\=</p>
 <p>10010</p>
 <p>+ 000000 （a左移1位，b右移1位）</p>
 <p>+ 1001000 （a再左移1位，b再右移1位）</p>
@@ -1042,7 +1032,6 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> res<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="除"><a href="#除" class="headerlink" title="除"></a>除</h4><p>示例：</p>
 <p>a = 0110111</p>
 <p>b = 0000011</p>
@@ -1073,7 +1062,6 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>a <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>b <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token function">negNum</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">:</span> res<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="暴力递归-gt-DP"><a href="#暴力递归-gt-DP" class="headerlink" title="暴力递归 -&gt; DP"></a>暴力递归 -&gt; DP</h2><p>通过尝试写出暴力递归版本 -&gt;</p>
 <p>抛开题目，观察暴力版本，加缓存写出记忆化搜索版本 -&gt;</p>
 <p>通过观察数组中各个数的关系，写出严格表版本</p>
@@ -1102,11 +1090,10 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
 <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token class-name">RobotWalk1</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token class-name">N</span><span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token class-name">E</span><span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token class-name">K</span><span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token class-name">S</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token class-name">N</span><span class="token punctuation">,</span> <span class="token class-name">E</span><span class="token punctuation">,</span> <span class="token class-name">K</span><span class="token punctuation">,</span> <span class="token class-name">S</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="2-0-记忆化搜索"><a href="#2-0-记忆化搜索" class="headerlink" title="2.0 记忆化搜索"></a>2.0 记忆化搜索</h4><blockquote>
 <p>假设 N = 5, E = 4, S = 2, K = 4</p>
 <p>通过上面写的暴力递归版本画出递归过程的草图</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f8.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f8.png" alt=""></p>
 <p>可以看到f(2,2)被分别调用，分别独立计算多次，导致消耗更多的时间，如果我们将已经算出来过的结果缓存起来，再次调用的时候，直接返回，而不是重新计算，就会节省大量时间</p>
 </blockquote>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token class-name">N</span><span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token class-name">E</span><span class="token punctuation">,</span> <span class="token keyword">int</span> rest<span class="token punctuation">,</span> <span class="token keyword">int</span> cur<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dp<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
@@ -1128,32 +1115,27 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
             dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token class-name">N</span><span class="token punctuation">,</span> <span class="token class-name">E</span><span class="token punctuation">,</span> <span class="token class-name">K</span><span class="token punctuation">,</span> <span class="token class-name">S</span><span class="token punctuation">,</span> dp<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="3-0-严格表结构"><a href="#3-0-严格表结构" class="headerlink" title="3.0 严格表结构"></a>3.0 严格表结构</h4><p>画出二维表，整理表中各个数的依赖关系</p>
 <p>N = 5, E = 4, S = 2, K = 4</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f9.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f9.png" alt=""></p>
 <p>1）首先观察base case</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">if</span><span class="token punctuation">(</span>rest <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         dp<span class="token punctuation">[</span>rest<span class="token punctuation">]</span><span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">=</span> cur <span class="token operator">==</span> <span class="token class-name">E</span> <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> dp<span class="token punctuation">[</span>rest<span class="token punctuation">]</span><span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>即rest为0的话，可以确定dp[0]整个一行的值，即4那一列为1，其它列都为0</p>
 <blockquote>
 <p>注意cur不可能为0，因为只能从1 - N，所以cur为0的一列没有意义</p>
 </blockquote>
 <p>2）继续看下面的语句</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">if</span><span class="token punctuation">(</span>cur <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> dp<span class="token punctuation">[</span>rest<span class="token punctuation">]</span><span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token class-name">N</span><span class="token punctuation">,</span> <span class="token class-name">E</span><span class="token punctuation">,</span> rest <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> dp<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <p>cur为1的这一列，每一行都由右上角决定</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f10.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f10.png" alt=""></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>cur <span class="token operator">==</span> <span class="token class-name">N</span><span class="token punctuation">)</span> dp<span class="token punctuation">[</span>rest<span class="token punctuation">]</span><span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token class-name">N</span><span class="token punctuation">,</span> <span class="token class-name">E</span><span class="token punctuation">,</span> rest <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token class-name">N</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> dp<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <p>cur为N的这一列，每一行都由左上角决定</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">else</span> dp<span class="token punctuation">[</span>rest<span class="token punctuation">]</span><span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">=</span>  <span class="token function">f2</span><span class="token punctuation">(</span><span class="token class-name">N</span><span class="token punctuation">,</span> <span class="token class-name">E</span><span class="token punctuation">,</span> rest <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> cur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> dp<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token class-name">N</span><span class="token punctuation">,</span> <span class="token class-name">E</span><span class="token punctuation">,</span> rest <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> cur <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> dp<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <p>cur为2-4的情况，即由左上角 + 右上角决定</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f11.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f11.png" alt=""></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token class-name">RobotWalk3</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token class-name">N</span><span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token class-name">E</span><span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token class-name">K</span><span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token class-name">S</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token class-name">K</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token class-name">N</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token class-name">E</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
@@ -1165,11 +1147,8 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
         <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> dp<span class="token punctuation">[</span><span class="token class-name">K</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token class-name">S</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <blockquote>
 <p>本题目其实严格表结构和记忆化搜索时间复杂度是相同的，都是O(K*N)</p>
-</blockquote>
-<blockquote>
 <p>改写为严格表结构的步骤：</p>
 <p>1）确定可变参数，几个可变参数就搞几维数组</p>
 <p>2）确定最终目标</p>
@@ -1205,7 +1184,6 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token keyword">if</span><span class="token punctuation">(</span>arr <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> arr<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> aim <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token function">process</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> aim<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="2-0-记忆化搜索-1"><a href="#2-0-记忆化搜索-1" class="headerlink" title="2.0 记忆化搜索"></a>2.0 记忆化搜索</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">process2</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">,</span> <span class="token keyword">int</span> rest<span class="token punctuation">,</span> <span class="token keyword">int</span> index<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dp<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">[</span>rest<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">return</span> dp<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">[</span>rest<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>index <span class="token operator">==</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -1229,9 +1207,8 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
             dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token function">process2</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> aim<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> dp<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="3-0-严格表结构-1"><a href="#3-0-严格表结构-1" class="headerlink" title="3.0 严格表结构"></a>3.0 严格表结构</h4><h5 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h5><p>每个数由下一行的减去k个该index位置的面值的结果决定，取当前k+下一行的每个决定值的最小值</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f15.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f15.png" alt=""></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token class-name">CoinsMin4</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">,</span> <span class="token keyword">int</span> aim<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>arr <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> arr<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> aim <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token keyword">int</span> <span class="token class-name">N</span> <span class="token operator">=</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
@@ -1247,9 +1224,8 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
         <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>aim<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h5 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h5><p>然而我们其实不需要遍历k，因为我们可以看出想得到某个数据，该数是由a, b, c, d, … 决定出来的，而rest-arr[i]是由b, c, d, … 决定出来的，所以我们就可以通过a和rest-arr[i]直接决定该数，从而少了一层循环</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f12.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f12.png" alt=""></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token class-name">CoinsMin3</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">,</span> <span class="token keyword">int</span> aim<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>arr <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> arr<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> aim <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token keyword">int</span> <span class="token class-name">N</span> <span class="token operator">=</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
@@ -1271,7 +1247,6 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
         <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>aim<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="0x03-题目三"><a href="#0x03-题目三" class="headerlink" title="0x03 题目三"></a>0x03 题目三</h3><p>左神算法0x03中暴力递归下的分数最高问题</p>
 <h4 id="1-0-暴力递归-2"><a href="#1-0-暴力递归-2" class="headerlink" title="1.0 暴力递归"></a>1.0 暴力递归</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">,</span> <span class="token keyword">int</span> l<span class="token punctuation">,</span> <span class="token keyword">int</span> r<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>l <span class="token operator">==</span> r<span class="token punctuation">)</span> <span class="token keyword">return</span> arr<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -1287,13 +1262,12 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token keyword">if</span><span class="token punctuation">(</span>arr <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> arr<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token function">f</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> arr<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">s</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> arr<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="3-0-严格表结构-2"><a href="#3-0-严格表结构-2" class="headerlink" title="3.0 严格表结构"></a>3.0 严格表结构</h4><blockquote>
 <p>1）确定可变参数</p>
 <p>2个可变参数，l和r</p>
 <p>2）确定最终目标</p>
 <p>f一张表，s一张表，都是求(0,3)位置的值，可以看到l一定不会大于r，所以表的左下部分废弃</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f13.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f13.png" alt=""></p>
 <p>3）base case</p>
 <p>f的base case <code>l == r</code> -&gt; <code>arr[l]</code></p>
 <p>s的base case <code>l == r</code> -&gt; <code>0</code></p>
@@ -1322,7 +1296,6 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token class-name">N</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token class-name">N</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="0x04-题目四"><a href="#0x04-题目四" class="headerlink" title="0x04 题目四"></a>0x04 题目四</h3><p>象棋中马的跳法，请想象一个象棋的棋盘，然后把整个棋盘放入第一象限，棋盘的最左下角是(0,0)位置。那么整个棋盘就是横坐标上9条线、纵坐标上10条线的一个区域</p>
 <p>给你三个 参数，x，y，k，返回如果“马”从(0,0)位置出发，必须走k步，最后落在(x,y)上的方法数有多少种</p>
 <h4 id="1-0-4"><a href="#1-0-4" class="headerlink" title="1.0"></a>1.0</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 表示目的地为(x,y) 走k步</span>
@@ -1345,8 +1318,7 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
 <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token class-name">HorseJump</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> <span class="token function">process</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="3-0-1"><a href="#3-0-1" class="headerlink" title="3.0"></a>3.0</h4><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f14.png"></p>
+<h4 id="3-0-1"><a href="#3-0-1" class="headerlink" title="3.0"></a>3.0</h4><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm4_f14.png" alt=""></p>
 <p>三个可变参数，所以是三维数组，越界即长方体外部则为0</p>
 <p>base case为k=0，第0层，只有(0,0)为1，其他点都为0</p>
 <p>从下往上一层一层往上算，每层的点都由下层的8个点之和决定</p>
@@ -1374,7 +1346,6 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token keyword">if</span><span class="token punctuation">(</span>x <span class="token operator">&lt;</span>  <span class="token number">0</span> <span class="token operator">||</span> x <span class="token operator">></span> <span class="token number">8</span> <span class="token operator">||</span> y <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> y <span class="token operator">></span> <span class="token number">9</span> <span class="token operator">||</span> k <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> dp<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="0x05-题目五"><a href="#0x05-题目五" class="headerlink" title="0x05 题目五"></a>0x05 题目五</h3><p>给定五个参数n,m,i,j,k</p>
 <p>表示在一个N*M的区域，Bob处在(i,j)点，每次Bob等概率的向上、下、左、右四个方向移动一步，Bob必须走K步</p>
 <p>如果走完之后，Bob还停留在这个区域上， 就算Bob存活，否则就算Bob死亡</p>
@@ -1399,7 +1370,6 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token keyword">long</span> gcd <span class="token operator">=</span> <span class="token function">gcd</span><span class="token punctuation">(</span>live<span class="token punctuation">,</span> all<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token punctuation">(</span>live<span class="token operator">/</span>gcd<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"/"</span> <span class="token operator">+</span> <span class="token punctuation">(</span>all<span class="token operator">/</span>gcd<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="3-0-2"><a href="#3-0-2" class="headerlink" title="3.0"></a>3.0</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token class-name">BobDie2</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> m<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>n<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span>m<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> row<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>row<span class="token operator">&lt;</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>row<span class="token operator">++</span><span class="token punctuation">)</span>
@@ -1418,7 +1388,6 @@ arr<span class="token punctuation">[</span>numIndex<span class="token punctuatio
     <span class="token keyword">long</span> gcd <span class="token operator">=</span> <span class="token function">gcd</span><span class="token punctuation">(</span>live<span class="token punctuation">,</span> all<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token punctuation">(</span>live<span class="token operator">/</span>gcd<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"/"</span> <span class="token operator">+</span> <span class="token punctuation">(</span>all<span class="token operator">/</span>gcd<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>DP数组需要注意的是，可变的参数一定要满足</p>
 <p>1）都是整型，即一维，而不应该是更高维的如数组</p>
 <p>2）参数个数尽量少</p>

@@ -422,15 +422,12 @@
 <h2 id="linux应急"><a href="#linux应急" class="headerlink" title="linux应急"></a>linux应急</h2><h3 id="系统信息-1"><a href="#系统信息-1" class="headerlink" title="系统信息"></a>系统信息</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">uname</span> -a
 <span class="token function">cat</span> /proc/version
 lsmod<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="用户信息"><a href="#用户信息" class="headerlink" title="用户信息"></a>用户信息</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">useradd</span> userdel的命令时间变化，是否包含可疑信息
 <span class="token function">cat</span> /etc/passwd
 <span class="token environment constant">UID</span>为0
 登录用户 /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="历史命令"><a href="#历史命令" class="headerlink" title="历史命令"></a>历史命令</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">history</span>
 <span class="token function">cat</span> /root/.bash_history<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
 <blockquote>
 <p>通过查看命令操作痕迹，可能关联到如下信息：</p>
 <p><code>wget</code>远程某主机</p>
@@ -441,15 +438,12 @@ lsmod<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 <h3 id="启动项"><a href="#启动项" class="headerlink" title="启动项"></a>启动项</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">/etc/init.d/rc.local
 /etc/rc.local
 /etc/init.d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="计划任务"><a href="#计划任务" class="headerlink" title="计划任务"></a>计划任务</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">crontab</span> -l <span class="token comment">#列出计划任务</span>
 <span class="token function">crontab</span> -e <span class="token comment">#编辑计划任务</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
 <h3 id="进程-1"><a href="#进程-1" class="headerlink" title="进程"></a>进程</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">netstat</span> -ltunp <span class="token comment">#找出可疑PID</span>
 <span class="token function">ls</span> -alh /proc/pid
 <span class="token function">lsof</span> -p pid
 <span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="时间点"><a href="#时间点" class="headerlink" title="时间点"></a>时间点</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">find</span> 
 -mtime -n +n file-modify-time -n within-n-days +n before-n-days
 -atime -n +n file-access-time -n within-n-days +n before-n-days
@@ -459,7 +453,6 @@ lsmod<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 <span class="token function">find</span> / -ctime <span class="token number">0</span> -name <span class="token string">".sh"</span>
 <span class="token comment">#find webshell</span>
 <span class="token function">find</span> /var/www/ -name <span class="token string">"*.php"</span> <span class="token operator">|</span> xray <span class="token function">egrep</span> <span class="token string">"eval|base64|assert"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="日志分析"><a href="#日志分析" class="headerlink" title="日志分析"></a>日志分析</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token number">1</span><span class="token punctuation">)</span>/var/log/secure <span class="token comment">#记录登录系统存取数据的文件;</span>
 <span class="token comment">#例如:pop3，ssh，telnet，ftp等都会记录在此.</span>
 <span class="token number">2</span><span class="token punctuation">)</span>/ar/log/btmp <span class="token comment">#记录登录的信息记录，被编码过，所以必须以last解析;</span>
@@ -484,7 +477,6 @@ lastb <span class="token operator">|</span> <span class="token function">awk</sp
 <span class="token number">20</span><span class="token punctuation">)</span>/var/log/daemon.log <span class="token comment">#系统监控程序产生的信息;</span>
 <span class="token number">21</span><span class="token punctuation">)</span>/var/log/kern <span class="token comment">#内核产生的信息;</span>
 <span class="token number">22</span><span class="token punctuation">)</span>/var/log/lpr <span class="token comment">#行打印机假脱机系统产生的信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="内存分析"><a href="#内存分析" class="headerlink" title="内存分析"></a>内存分析</h3><ol>
 <li>基于用户模式程序的内存获取 </li>
 <li>基于内核模式程序的内存获取 </li>
@@ -511,7 +503,6 @@ lastb <span class="token operator">|</span> <span class="token function">awk</sp
 <span class="token header-name keyword">https:</span>//www.emsisoft.com/ransomware-decryption-tools/ 
 <span class="token header-name keyword">https:</span>//www.avast.com/en-us/ransomware-decryption-tools 
 <span class="token header-name keyword">https:</span>//www.quickheal.com/free-ransomware-decryption-tool/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 
                 
             </div>

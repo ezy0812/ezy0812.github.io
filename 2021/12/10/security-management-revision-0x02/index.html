@@ -409,7 +409,7 @@ preventative - stop an explo">
 <blockquote>
 <ul>
 <li>预防性 - 阻止漏洞被利用</li>
-<li>侦查性–如果发生不好的事情，将通知负责人</li>
+<li>侦查性—如果发生不好的事情，将通知负责人</li>
 <li>反应性 - 我们可以执行应急计划，以尽量减少漏洞的影响</li>
 </ul>
 </blockquote>
@@ -433,7 +433,7 @@ preventative - stop an explo">
 <blockquote>
 <p>木马通常附在一个合法程序上，这样当用户执行它时，合法程序似乎在正常工作，然而，在引擎盖下有一个所谓的 “投放器”。这段代码会在用户没有注意到或怀疑到木马的情况下安装和运行恶意软件</p>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/security-management/f11.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/security-management/f11.png" alt=""></p>
 <h5 id="Backdoor"><a href="#Backdoor" class="headerlink" title="Backdoor"></a>Backdoor</h5><p>A way of bypassing a system’s normal authentication controls. 绕过系统的正常认证控制的一种方式</p>
 <p>Backdoors are usually installed after a successful infection, for example, by means of a trojan. Backdoors can be installed through software or hardware.</p>
 <blockquote>
@@ -499,19 +499,19 @@ preventative - stop an explo">
 <li>Set policy</li>
 </ol>
 <p>Start by defining your policy, identifying which files on which devices need to be monitored. 从定义你的策略开始，确定哪些设备上的哪些文件需要被监控</p>
-<ol start="2">
+<ol>
 <li>Baseline files</li>
 </ol>
 <p>Ensure the files you assess are in a known good state. This may involve evaluating versions, creation and modification dates, or any other file attributes. 确保你评估的文件处于一个已知的良好状态。这可能涉及评估版本、创建和修改日期，或任何其他文件属性 </p>
-<ol start="3">
+<ol>
 <li>Monitor and reconcile changes</li>
 </ol>
 <p>A file might undergo hundreds of changes on a normal day on a single system. Knowing a good change from a bad one is essential. 在一个系统中，一个文件在正常的一天中可能会经历数百次的变化。知道一个好的变化和一个坏的变化是至关重要的 </p>
-<ol start="4">
+<ol>
 <li>Alert</li>
 </ol>
 <p>When unauthorised changes are detected, focus on the highest priority alerts and take corrective action before more damage is done. 当检测到未经授权的更改时，关注最高优先级的警报，并在造成更多损害之前采取纠正措施</p>
-<ol start="5">
+<ol>
 <li>Report</li>
 </ol>
 <p>FIM is required for PCI compliance and most other standards. Clear reports with the ability to drill-down are important both for operational processes and audit compliance. FIM是符合PCI和大多数其他标准的要求。清晰的报告和深入分析的能力对操作流程和审计合规性都很重要</p>
@@ -561,30 +561,34 @@ preventative - stop an explo">
 <li>managing the topology of the network.</li>
 </ul>
 <h5 id="Cryptography-based-controls"><a href="#Cryptography-based-controls" class="headerlink" title="Cryptography-based controls"></a>Cryptography-based controls</h5><p>Cryptography - The practice and study of techniques for secure communication in the presence of third parties called adversaries. 在有被称为对手的第三方存在的情况下，对安全通信技术的实践和研究</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left">Term</th>
-<th align="left">Definition</th>
+<th style="text-align:left">Term</th>
+<th style="text-align:left">Definition</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">Confidentiality</td>
-<td align="left">Nobody else can see the plain text.</td>
+<tbody>
+<tr>
+<td style="text-align:left">Confidentiality</td>
+<td style="text-align:left">Nobody else can see the plain text.</td>
 </tr>
 <tr>
-<td align="left">Integrity</td>
-<td align="left">The data has not been changed, deleted or inserted.</td>
+<td style="text-align:left">Integrity</td>
+<td style="text-align:left">The data has not been changed, deleted or inserted.</td>
 </tr>
 <tr>
-<td align="left">Authentication</td>
-<td align="left">The person is who they claim to be.</td>
+<td style="text-align:left">Authentication</td>
+<td style="text-align:left">The person is who they claim to be.</td>
 </tr>
 <tr>
-<td align="left">Non-repudiation</td>
-<td align="left">The sender cannot later deny sending the message or its content.</td>
+<td style="text-align:left">Non-repudiation</td>
+<td style="text-align:left">The sender cannot later deny sending the message or its content.</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>Cryptographical mostly base on utilising <strong>public key infrastructure</strong> (PKI). PKI provides a mechanism for two communicating computers to authenticate each other. This is required to establish an authenticated and end-to-end communication channel. Beyond authentication, it also provides <strong>end-to-end encryption</strong> (E2EE), which is a system of communication where only the communicating users can read the messages.</p>
 <blockquote>
 <p>密码学主要基于利用公钥基础设施（PKI）。PKI为两台通信的计算机提供了一个相互认证的机制。这是建立一个认证和端到端通信渠道所必需的。除了认证，它还提供端到端加密（E2EE），这是一个只有通信用户可以阅读信息的通信系统</p>
@@ -637,7 +641,7 @@ preventative - stop an explo">
 <blockquote>
 <p>还有必要考虑攻击者的潜在技能和资源，如开锁、解除警报、无线电干扰器、攀爬等。他们是否可能对设施有详细的了解？内部人员的协助情况如何？</p>
 </blockquote>
-<ol start="2">
+<ol>
 <li>What are you trying to protect?</li>
 </ol>
 <p>The choice of control will also depend on what you are trying to protect: 控制方式的选择也将取决于你试图保护的东西</p>
@@ -794,6 +798,7 @@ preventative - stop an explo">
 </blockquote>
 <h4 id="Q5"><a href="#Q5" class="headerlink" title="Q5"></a>Q5</h4><p>The chairman of GANT, Ms Rachel Jackson, is going to follow the advice about buying anti-malware security controls, but she is lost on which products to buy. Do you have any tips for Ms Jackson on how to pick a suitable product?</p>
 <p>Choosing a good security product is difficult. However, some tips include:</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -801,7 +806,8 @@ preventative - stop an explo">
 <th>Does it have a high degree of effectiveness in detecting and removing malware?</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>Frequency of updates</strong></td>
 <td>Is the scanner still maintained? Is it aware of new malware threats?</td>
 </tr>
@@ -817,7 +823,9 @@ preventative - stop an explo">
 <td><strong>Impact on operations</strong></td>
 <td>If the scanner will mean your employees can no longer do their work, you’ll need to find another solution.</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h4 id="Q6"><a href="#Q6" class="headerlink" title="Q6"></a>Q6</h4><p>The officers of GANT have decided that they need to establish a better means for Information Security. They are now convinced they need to buy security products to achieve this (eg anti-virus). However, they seem to think that simply by using these products they will achieve security.</p>
 <p>What <strong>other</strong> types of security controls would you suggest GANT should look at? For each type, give one example.</p>
 <blockquote>
@@ -857,38 +865,42 @@ preventative - stop an explo">
 <blockquote>
 <p>立法适用于所有类型的安全控制：技术、物理和程序。无论是编写政策、设计闭路电视或其他监控系统，还是从第三方采购存储和备份，一切都需要对照相关法律进行检查</p>
 </blockquote>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left">Act</th>
-<th align="left">Relevance</th>
+<th style="text-align:left">Act</th>
+<th style="text-align:left">Relevance</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">Data Protection Act (DPA)</td>
-<td align="left">Recently updated in 2018 with GDPR. It defines how data should be protected and used.</td>
+<tbody>
+<tr>
+<td style="text-align:left">Data Protection Act (DPA)</td>
+<td style="text-align:left">Recently updated in 2018 with GDPR. It defines how data should be protected and used.</td>
 </tr>
 <tr>
-<td align="left">Human Rights Act (HRA)</td>
-<td align="left">All security controls and policies must respect human rights.</td>
+<td style="text-align:left">Human Rights Act (HRA)</td>
+<td style="text-align:left">All security controls and policies must respect human rights.</td>
 </tr>
 <tr>
-<td align="left">Financial Services Act (FSA)</td>
-<td align="left">A new regulatory framework for the financial system and financial services in the UK. It’s important if you work in the financial industry.</td>
+<td style="text-align:left">Financial Services Act (FSA)</td>
+<td style="text-align:left">A new regulatory framework for the financial system and financial services in the UK. It’s important if you work in the financial industry.</td>
 </tr>
 <tr>
-<td align="left">Official Secrets Act (OSA)</td>
-<td align="left">Required for government and defence projects.</td>
+<td style="text-align:left">Official Secrets Act (OSA)</td>
+<td style="text-align:left">Required for government and defence projects.</td>
 </tr>
 <tr>
-<td align="left">Markets in Financial Instruments Directive (MiFID)</td>
-<td align="left">Investment intermediaries that provide services to clients around shares, bonds, units in collective investment schemes and derivatives. 向客户提供股票、债券、集体投资计划单位和衍生品相关服务的投资中介机构</td>
+<td style="text-align:left">Markets in Financial Instruments Directive (MiFID)</td>
+<td style="text-align:left">Investment intermediaries that provide services to clients around shares, bonds, units in collective investment schemes and derivatives. 向客户提供股票、债券、集体投资计划单位和衍生品相关服务的投资中介机构</td>
 </tr>
 <tr>
-<td align="left">Freedom of Information Act</td>
-<td align="left">A public ‘right of access’ to information held by public authorities.</td>
+<td style="text-align:left">Freedom of Information Act</td>
+<td style="text-align:left">A public ‘right of access’ to information held by public authorities.</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>Privacy laws exist to protect the <strong>rights of individuals</strong>. Most organisations hold and process your data, but compliance restricts what can be done with it. Organisations need to ensure that all information is surrounded by robust security controls and working practices, processes are implemented to ensure data is entered correctly (or can be corrected), and that paper records are locked away, computer screens turned off, and information is destroyed securely.</p>
 <blockquote>
 <p>隐私法的存在是为了保护个人的权利。大多数组织都持有和处理你的数据，但合规性限制了可以用它做什么。组织需要确保所有的信息都被强大的安全控制和工作实践所包围，实施各种程序以确保数据被正确输入（或可以被纠正），并确保纸质记录被锁起来，计算机屏幕被关闭，信息被安全地销毁</p>
@@ -977,22 +989,26 @@ preventative - stop an explo">
 </blockquote>
 </li>
 </ol>
-<h4 id="Conventional-and-cloud-based-storage-compared"><a href="#Conventional-and-cloud-based-storage-compared" class="headerlink" title="Conventional and cloud-based storage, compared"></a>Conventional and cloud-based storage, compared</h4><table>
+<h4 id="Conventional-and-cloud-based-storage-compared"><a href="#Conventional-and-cloud-based-storage-compared" class="headerlink" title="Conventional and cloud-based storage, compared"></a>Conventional and cloud-based storage, compared</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">Conventional</th>
-<th align="left">Cloud-based</th>
+<th style="text-align:left">Conventional</th>
+<th style="text-align:left">Cloud-based</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">**Benefits:**organisations retain full end-to-end control of their service/data. 组织保留对其服务/数据的全部端到端控制</td>
-<td align="left"><strong>Benefits:</strong> 1. this approach is cheaper than purchasing hardware and hiring staff to maintain it 2. speed of implementation: cloud systems can be deployed in a few hours (ie there is no delivery or set-up time). 1. 这种方法比购买硬件和雇佣员工来维护它更便宜 2. 实施速度：云系统可以在几小时内部署（即没有交付或设置时间）</td>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Benefits:</strong>organisations retain full end-to-end control of their service/data. 组织保留对其服务/数据的全部端到端控制</td>
+<td style="text-align:left"><strong>Benefits:</strong> 1. this approach is cheaper than purchasing hardware and hiring staff to maintain it 2. speed of implementation: cloud systems can be deployed in a few hours (ie there is no delivery or set-up time). 1. 这种方法比购买硬件和雇佣员工来维护它更便宜 2. 实施速度：云系统可以在几小时内部署（即没有交付或设置时间）</td>
 </tr>
 <tr>
-<td align="left"><strong>Disadvantages:</strong> 1. there is an overhead and financial cost for selecting, implementing, maintaining, securing and upgrading components 2. internal staff dedicated to protecting information are required. 1. 选择、实施、维护、保护和升级组件需要一定的开销和财务成本 2. 需要专门保护信息的内部人员</td>
-<td align="left"><strong>Disadvantages:</strong> 1. shared risk with a trusted third party; managing the risk can be difficult 2. regulatory oversight is also a problem (as above). 1. 与受信任的第三方共享风险；管理风险可能很困难 2. 监管监督也是一个问题</td>
+<td style="text-align:left"><strong>Disadvantages:</strong> 1. there is an overhead and financial cost for selecting, implementing, maintaining, securing and upgrading components 2. internal staff dedicated to protecting information are required. 1. 选择、实施、维护、保护和升级组件需要一定的开销和财务成本 2. 需要专门保护信息的内部人员</td>
+<td style="text-align:left"><strong>Disadvantages:</strong> 1. shared risk with a trusted third party; managing the risk can be difficult 2. regulatory oversight is also a problem (as above). 1. 与受信任的第三方共享风险；管理风险可能很困难 2. 监管监督也是一个问题</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h4 id="Assured-deletion-in-the-Cloud"><a href="#Assured-deletion-in-the-Cloud" class="headerlink" title="Assured deletion in the Cloud"></a>Assured deletion in the Cloud</h4><p>Assured Deletion: “Rendering data completely irrecoverable”  使数据完全不可恢复</p>
 <ul>
 <li><p>Completely removing data from the storage media. </p>
@@ -1032,18 +1048,14 @@ preventative - stop an explo">
 </ul>
 <blockquote>
 <ul>
-<li><p>不破坏服务的可用性 </p>
-</li>
+<li>不破坏服务的可用性 </li>
 <li><p>使数据无法访问或完全删除 </p>
 </li>
 <li><p>影响所有副本 </p>
 </li>
-<li><p>是细粒度的 </p>
-</li>
-<li><p>立即发生，没有错误 </p>
-</li>
-<li><p>可向用户证明</p>
-</li>
+<li>是细粒度的 </li>
+<li>立即发生，没有错误 </li>
+<li>可向用户证明</li>
 </ul>
 </blockquote>
 <h5 id="Challenges-–-Honest-cloud-provider"><a href="#Challenges-–-Honest-cloud-provider" class="headerlink" title="Challenges – Honest cloud provider"></a>Challenges – Honest cloud provider</h5><p>Main cloud features pose different challenges </p>
@@ -1137,14 +1149,14 @@ preventative - stop an explo">
 <blockquote>
 <p>归根结底，必须由高级管理层批准该计划。主要责任人很可能是在董事会或执行层面上的任命，以监督，并任命其推动该计划的实施</p>
 </blockquote>
-<ol start="2">
+<ol>
 <li>Establishing and implementing the plan</li>
 </ol>
 <p>This includes defining the scope, aim and objectives, and the activities required if the plan is triggered – that is, what are the likely problems that will pop up? How can we deal with them?</p>
 <blockquote>
-<p>这包括定义范围、目的和目标，以及如果计划被触发所需的活动–也就是说，可能会冒出什么问题？我们如何处理它们？</p>
+<p>这包括定义范围、目的和目标，以及如果计划被触发所需的活动—也就是说，可能会冒出什么问题？我们如何处理它们？</p>
 </blockquote>
-<ol start="3">
+<ol>
 <li>Ongoing management</li>
 </ol>
 <p>Business continuity plans need to be regularly reviewed. This is because it could easily become out of date and no longer reflect real business operations.</p>
@@ -1268,34 +1280,38 @@ preventative - stop an explo">
 <p>灾难恢复是业务连续性的一部分，它解决了在业务受到威胁后恢复IT服务、语音服务和数据的需要。它将那些对业务至关重要的服务和信息列为优先事项。它包括对危机情况的规划，以及拥有识别事件、控制和恢复事件的手段</p>
 </blockquote>
 <p>The main goals for a disaster recovery plan are:</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left">To minimise interruptions to the normal operations</th>
+<th style="text-align:left">To minimise interruptions to the normal operations</th>
 <th>In other words to maintain business operations as normal.</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">To limit the extent of disruption and damage</td>
+<tbody>
+<tr>
+<td style="text-align:left">To limit the extent of disruption and damage</td>
 <td>A disaster can severely damage an organisation.</td>
 </tr>
 <tr>
-<td align="left">To minimise the economic impact of the disaster</td>
+<td style="text-align:left">To minimise the economic impact of the disaster</td>
 <td>If you can’t access the office for a few weeks, can you still make a profit?</td>
 </tr>
 <tr>
-<td align="left">To establish means of operations in advance</td>
+<td style="text-align:left">To establish means of operations in advance</td>
 <td>Signing contracts with backup establishments or keeping redundant copies of data for later use.</td>
 </tr>
 <tr>
-<td align="left">To train personnel in emergency procedures</td>
+<td style="text-align:left">To train personnel in emergency procedures</td>
 <td>Where are the emergency procedures kept? What if they can’t be accessed?</td>
 </tr>
 <tr>
-<td align="left">To provide smooth and rapid restoration of services</td>
+<td style="text-align:left">To provide smooth and rapid restoration of services</td>
 <td>How to prevent long term fallout for the business?</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>A disaster recovery plan usually mentions the following people, resources and activities.</p>
 <ul>
 <li><strong>IT services</strong><br>Which business processes are supported by which systems? What are the risks here?</li>
@@ -1335,23 +1351,23 @@ preventative - stop an explo">
 <p>One response might be to move the team to a mobile site such as a trailer while the office is out of action. How do we plan for such an eventuality? 一种应对措施可能是在办公室停止工作时，将团队转移到一个移动的地方，如拖车。我们如何为这种可能的情况做计划？</p>
 <p>Step 1: Notify senior management and prepare purchase for backup equipment 通知高级管理层，准备购买备用设备</p>
 <ol>
-<li>Notify _______ of the nature of the disaster and the need to select the mobile site plan. 通知_______ 灾害的性质和选择移动站点计划的必要性</li>
-<li>Confirm in writing the substance of the telephone notification to _______ within 48 hours of the telephone notification. 在电话通知的48小时内以书面形式确认电话通知的内容，_______</li>
+<li>Notify <strong>___</strong> of the nature of the disaster and the need to select the mobile site plan. 通知<strong>___</strong> 灾害的性质和选择移动站点计划的必要性</li>
+<li>Confirm in writing the substance of the telephone notification to <strong>___</strong> within 48 hours of the telephone notification. 在电话通知的48小时内以书面形式确认电话通知的内容，<strong>___</strong></li>
 <li>Confirm all needed backup media are available to load the backup machine. 确认所有需要的备份介质都可以装入备份机</li>
-<li>Prepare a purchase order to cover the use of backup equipment. Notify _______ of plans for a trailer and its placement. 准备一份采购订单，以涵盖备份设备的使用。通知_______ 有关拖车的计划和安置</li>
+<li>Prepare a purchase order to cover the use of backup equipment. Notify <strong>___</strong> of plans for a trailer and its placement. 准备一份采购订单，以涵盖备份设备的使用。通知<strong>___</strong> 有关拖车的计划和安置</li>
 </ol>
 <p>Step 2: Do communication lines/channels need to be re-routed? 通信线路/渠道是否需要改道？</p>
 <ol>
-<li><p>Depending on communication needs, notify the telephone company _______ of possible emergency line changes. 根据通信需要，通知电话公司_______，可能的紧急线路改变</p>
+<li><p>Depending on communication needs, notify the telephone company <strong>___</strong> of possible emergency line changes. 根据通信需要，通知电话公司<strong>___</strong>，可能的紧急线路改变</p>
 </li>
-<li><p>Begin setting up power and communications at <em><strong><strong><strong>. 开始设置电源和通信，</strong></strong></strong></em></p>
+<li><p>Begin setting up power and communications at <strong>___</strong>. 开始设置电源和通信，<strong>___</strong></p>
 </li>
 <li><ol>
 <li>Power and communications are prearranged to hook into when the trailer arrives. 电力和通讯都是预先安排好的，在拖车到达时挂上</li>
-<li>At the point where telephone lines come into the building (<em><strong><strong><strong>) break the current linkage to the administration controllers (</strong></strong></strong></em>). 在电话线进入大楼的地方(<em><strong><strong><strong>)，切断目前与行政部门控制器的联系(</strong></strong></strong></em>)</li>
+<li>At the point where telephone lines come into the building (<strong>___</strong>) break the current linkage to the administration controllers (<strong>___</strong>). 在电话线进入大楼的地方(<strong>___</strong>)，切断目前与行政部门控制器的联系(<strong>___</strong>)</li>
 <li>These lines are rerouted to lines going to the mobile site. They are linked to modems at the mobile site. 这些线路被改道为通往移动站点的线路。它们被连接到移动站点的调制解调器上</li>
-<li>The lines currently going from _______ to _______ would then be linked to the mobile unit via modems. 目前从_______ 到_______ 的线路将通过调制解调器连接到移动装置</li>
-<li>This can conceivably require _______ to redirect lines at _______ to a more secure area in case of disaster. 可以想象，这需要_______，在发生灾难时将线路重新定向到一个更安全的地方</li>
+<li>The lines currently going from <strong>___</strong> to <strong>___</strong> would then be linked to the mobile unit via modems. 目前从<strong>___</strong> 到<strong>___</strong> 的线路将通过调制解调器连接到移动装置</li>
+<li>This can conceivably require <strong>___</strong> to redirect lines at <strong>___</strong> to a more secure area in case of disaster. 可以想象，这需要<strong>___</strong>，在发生灾难时将线路重新定向到一个更安全的地方</li>
 </ol>
 </li>
 </ol>
@@ -1468,7 +1484,7 @@ preventative - stop an explo">
 </blockquote>
 <p>Let’s consider a real example of the implications of ‘unusable encryption’: the case of Edward Snowden. As part of his attempts to make public sensitive information about the US government’s infringements on privacy while needing to maintain his own secrecy, he attempted to securely contact a journalist, Glenn Greenwald:</p>
 <p>Snowden wanted to send a message to Greenwald but worried that others might want to intercept his messages. He asked Greenwald for his PGP key.</p>
-<p>But Greenwald still refused to study security protocols, saying ‘the more he sent me, the more difficult it seemed,’ he says. ‘I mean, now I had to watch a f***ing video . . . ?’</p>
+<p>But Greenwald still refused to study security protocols, saying ‘the more he sent me, the more difficult it seemed,’ he says. ‘I mean, now I had to watch a f<em>*</em>ing video . . . ?’</p>
 <p>Snowden ended up reaching out to a different journalist, Laura Poitras, instead.</p>
 <blockquote>
 <p>让我们考虑一个关于 “无法使用的加密”的影响的真实例子：爱德华-斯诺登的案例。作为他试图公开美国政府侵犯隐私的敏感信息的一部分，同时需要保持自己的秘密，他试图安全地联系一位记者Glenn Greenwald</p>
@@ -1525,7 +1541,7 @@ preventative - stop an explo">
 </blockquote>
 <h4 id="Make-security-understandable"><a href="#Make-security-understandable" class="headerlink" title="Make security understandable"></a>Make security understandable</h4><p>Of course, there may be cases where security needs to be visible, such as when the user needs to make some kind of decision – eg whether a website is trustworthy. In that case, we need to help users <strong>understand</strong> security. A good example, for instance, is the connection security indicators present in most modern browsers, which can communicate to the user whether the HTTP connection is secure.</p>
 <blockquote>
-<p>当然，在有些情况下，安全需要是可见的，例如当用户需要做出某种决定时–例如一个网站是否值得信赖。在这种情况下，我们需要帮助用户理解安全。例如，一个很好的例子是大多数现代浏览器中的连接安全指标，它可以向用户传达HTTP连接是否安全</p>
+<p>当然，在有些情况下，安全需要是可见的，例如当用户需要做出某种决定时—例如一个网站是否值得信赖。在这种情况下，我们需要帮助用户理解安全。例如，一个很好的例子是大多数现代浏览器中的连接安全指标，它可以向用户传达HTTP连接是否安全</p>
 </blockquote>
 <p>Note, however, that correct understanding is crucial since the mere fact of a site using HTTPS does not mean that everything is suddenly secure. There are plenty of things that could still go wrong with a website that uses HTTPS to communicate with the user, which can be found in the list below.</p>
 <blockquote>
@@ -1540,29 +1556,33 @@ preventative - stop an explo">
 <li>the certificate authority was compromised and issued an invalid certificate.</li>
 </ul>
 <blockquote>
-<p>网站上有恶意软件<br>用户的电脑上可能已经有了键盘记录器<br>可能存在恶意的第三方广告或跟踪器<br>该网站可能不是用户认为的网站–也许证书是有效的，但不是你所期望的公司（网络钓鱼）<br>证书颁发机构受到影响，并颁发了一个无效的证书</p>
+<p>网站上有恶意软件<br>用户的电脑上可能已经有了键盘记录器<br>可能存在恶意的第三方广告或跟踪器<br>该网站可能不是用户认为的网站—也许证书是有效的，但不是你所期望的公司（网络钓鱼）<br>证书颁发机构受到影响，并颁发了一个无效的证书</p>
 </blockquote>
 <p>Beyond understandability, users’ decisions need to be supported. Crucially, users should only be bothered when their input is required. For instance, if one can automatically assess the probability of danger, the user may only need to intervene in the cases that are not clear, which instantly minimises required user intervention (and avoids the constantly annoying warnings in the Microsoft-Apple advert, for instance).</p>
 <blockquote>
 <p>除了可理解性，用户的决定也需要得到支持。最重要的是，只有在需要用户投入的时候才应该打扰他们。例如，如果可以自动评估危险的概率，用户可能只需要在不清楚的情况下进行干预，这就立即将需要的用户干预降到了最低（例如，避免了微软-苹果广告中不断出现的烦人的警告）</p>
 </blockquote>
 <p>A good rule of thumb: 一个好的经验法则</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left">High probability of danger</th>
+<th style="text-align:left">High probability of danger</th>
 <th>Block automatically 自动屏蔽</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">Moderate possibility of danger</td>
+<tbody>
+<tr>
+<td style="text-align:left">Moderate possibility of danger</td>
 <td>User must decide</td>
 </tr>
 <tr>
-<td align="left">Very little possibility of danger</td>
+<td style="text-align:left">Very little possibility of danger</td>
 <td>Allow without bothering the user</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h4 id="Train-the-user"><a href="#Train-the-user" class="headerlink" title="Train the user"></a>Train the user</h4><p>Training and awareness is important in helping people understand why measures are needed and how they help manage security </p>
 <ul>
 <li>Tell people about existing threats and how they were stopped </li>
@@ -1596,8 +1616,6 @@ preventative - stop an explo">
 <blockquote>
 <p>《网络钓鱼大师》培训实验表明，训练人们区分网络钓鱼和合法邮件是可行的</p>
 <p>接受过《网络钓鱼大师》培训的人仍然会点击合法链接<br>但接受过《网络钓鱼大师》培训的人更不可能点击钓鱼网站的链接，即使在培训28天后也是如此</p>
-</blockquote>
-<blockquote>
 <p>Security versus usability is a myth! You need both security and usability to go hand-in-hand.</p>
 <p>安全性与可用性的关系是一个神话! 你需要安全和可用性并驾齐驱</p>
 </blockquote>
@@ -1629,8 +1647,6 @@ preventative - stop an explo">
 <p>Marking scheme </p>
 <p>Up to 8 marks for the CISO and its explanation, 4 marks for the Security Forum, up to 4 marks for each role, and up to 4 marks for an explanation of the role. </p>
 <p>CISO及其解释最多8分，安全论坛最多4分，每个角色最多4分，对角色的解释最多4分</p>
-</blockquote>
-<blockquote>
 <p>安全管理员。管理计算机系统或特定电子通信服务运行的人。</p>
 <p>安全审计员。与一家公司合作，对该公司使用的安全系统进行审计的人。</p>
 <p>安全用户。一个与系统互动的人，通常是通过一个接口，以提取一些功能的好处。</p>
@@ -1644,8 +1660,6 @@ preventative - stop an explo">
 <blockquote>
 <p> Marking scheme </p>
 <p>5 marks per threat/vulnerability</p>
-</blockquote>
-<blockquote>
 <p>威胁强调了一个问题，如果它出现将导致不良后果。这可能包括：1）关于成员的信息可能被未经授权的人获取。2）关于Natterjack蟾蜍的栖息地的信息可能被那些不愿意支持其持续存在的人使用。3）网站可能被破坏，并被加入非官方的信息</p>
 <p>漏洞是系统中可能允许威胁发生的一个弱点。这可能包括：1）成员的记录存储在一个不可靠的计算机系统中，将来可能会崩溃。2）关于蟾蜍的栖息地的信息可能储存在一个基于互联网的不安全的旧服务器上。3）网站的管理员密码从未从默认密码中更改</p>
 </blockquote>
@@ -1664,8 +1678,6 @@ preventative - stop an explo">
 <p>Marking scheme </p>
 <p>5 marks for ARO (2 marks if they describe it well, 3 if they are able to calculate it correctly for this particular case); 3 marks for SLE; 10 marks for ALE (5 marks if they describe it well, 5 if they are able to calculate it correctly for this particular case); 12 marks per adequate risk treatment (4 marks for the risk treatment type; 8 marks depending on the detail and correctness of the rationale given for explaining the treatment).</p>
 <p>ARO得5分（如果描述得好得2分，如果能够针对这个特定案例正确计算得3分）；SLE得3分；ALE得10分（如果描述得好得5分，如果能够针对这个特定案例正确计算得5分）；每个适当的风险处理得12分（风险处理类型得4分；8分取决于解释处理的理由的细节和正确性）</p>
-</blockquote>
-<blockquote>
 <p>年发生率（ARO）是对事件发生概率的一种商业友好的衡量标准，衡量一个事件在一年内发生的可能性。对于这种风险，ARO是90/3=30次攻击/年</p>
 <p>年度损失预期（ALE）是定量风险评估方法中对风险的一种商业友好的衡量标准。它是根据每个风险的年度发生率（ARO）和单一损失预期（SLE）来计算的。对于这个风险，ARO如上，SLE为10,000英镑（10,000个客户，每次攻击1英镑）。因此，ALE = ARO×SLE = 30×10，000 = 300，000英镑</p>
 <p>鉴于这种风险的ALE是300,000英镑，而现成的DoS缓解设备成本为300,000英镑，最合理的风险处理类型是接受风险，因为它将给公司带来相同的成本。然而，这是可以解释的，人们可以认为其他的风险处理方案是可能的。只要建议的特定风险处理类型的名称是正确的，并有充分解释的理由来支持它，其他答案应该是可以的</p>
@@ -1679,8 +1691,6 @@ preventative - stop an explo">
 <p>Marking scheme </p>
 <p>20 marks per depth and rationale of explanation.</p>
 <p>每个解释的深度和理由得20分</p>
-</blockquote>
-<blockquote>
 <p>学生应该彻底解释并扩展以下几点。</p>
 <p>数据的多个副本；</p>
 <p>虚拟化；</p>
@@ -1700,8 +1710,6 @@ preventative - stop an explo">
 <blockquote>
 <p>Marking scheme </p>
 <p>1 mark per point </p>
-</blockquote>
-<blockquote>
 <ul>
 <li>威胁和它们可能利用的弱点 </li>
 <li>评估的影响和可能性，以及根据这些计算出的总体风险 </li>
@@ -1714,8 +1722,6 @@ preventative - stop an explo">
 <blockquote>
 <p>Marking scheme </p>
 <p>2 marks per definition; 2 marks for example.</p>
-</blockquote>
-<blockquote>
 <p>对机器学习模型的规避攻击，是指那些故意改造恶意对象以使机器学习模型做出错误预测的攻击。例如，一个软件的二进制文件可以被操纵，使基于机器学习的反恶意软件模型预测它不是恶意软件</p>
 </blockquote>
 <h4 id="c-Name-4-generic-types-of-assurance-techniques-that-can-be-used-for-vulnerability-assessments"><a href="#c-Name-4-generic-types-of-assurance-techniques-that-can-be-used-for-vulnerability-assessments" class="headerlink" title="c. Name 4 generic types of assurance techniques that can be used for vulnerability assessments."></a>c. Name 4 generic types of assurance techniques that can be used for vulnerability assessments.</h4><p>Syllabus: Vulnerability Assessment. </p>
@@ -1723,8 +1729,6 @@ preventative - stop an explo">
 <blockquote>
 <p>Marking scheme </p>
 <p>1 mark per correct generic type of assurance technique named</p>
-</blockquote>
-<blockquote>
 <p>至少要接受以下任何一种技术。审查、测试、访谈、观察和独立验证。请注意，该问题并不要求特定的保证技术，如渗透测试，而是要求它们所属的通用类型，在这种情况下就是测试</p>
 </blockquote>
 <h4 id="d-Can-an-organisation-self-determine-whether-it-is-following-an-information-security-standard-Justify-your-answer"><a href="#d-Can-an-organisation-self-determine-whether-it-is-following-an-information-security-standard-Justify-your-answer" class="headerlink" title="d. Can an organisation self-determine whether it is following an information security standard? Justify your answer."></a>d. Can an organisation self-determine whether it is following an information security standard? Justify your answer.</h4><p>Syllabus: Compliance and Certifications. </p>
@@ -1732,8 +1736,6 @@ preventative - stop an explo">
 <blockquote>
 <p>Marking scheme </p>
 <p>1 mark for answer; 3 marks for explanation.</p>
-</blockquote>
-<blockquote>
 <p>当然可以。一个组织可以根据任何标准进行内部合规性检查。合规性只需要由一个独立的（外部）方来检查，以达到认证的目的</p>
 </blockquote>
 <h4 id="e-What-is-a-Moral-Hazard-and-how-does-it-apply-to-Information-Security-Give-one-example"><a href="#e-What-is-a-Moral-Hazard-and-how-does-it-apply-to-Information-Security-Give-one-example" class="headerlink" title="e. What is a Moral Hazard and how does it apply to Information Security? Give one example."></a>e. What is a Moral Hazard and how does it apply to Information Security? Give one example.</h4><p>Syllabus: Security Economics. </p>
@@ -1741,8 +1743,6 @@ preventative - stop an explo">
 <blockquote>
 <p>Marking scheme </p>
 <p>2 marks for definition; 2 marks for example. </p>
-</blockquote>
-<blockquote>
 <p>道德风险是一种情况，即一方在明知自己受到保护的情况下参与到风险事件中。例如，一个人可能会参与风险较大、安全性较低的网站，认为他们所安装的反恶意软件会保护他们</p>
 </blockquote>
 <h4 id="f-What-does-it-mean-for-a-security-control-to-be-preventative-detective-and-reactionary"><a href="#f-What-does-it-mean-for-a-security-control-to-be-preventative-detective-and-reactionary" class="headerlink" title="f. What does it mean for a security control to be preventative, detective and reactionary?"></a>f. What does it mean for a security control to be preventative, detective and reactionary?</h4><p>Syllabus: Security controls </p>
@@ -1750,8 +1750,6 @@ preventative - stop an explo">
 <blockquote>
 <p>Marking scheme </p>
 <p>1 mark for each individual definition, 1 mark for overall quality of explanation.</p>
-</blockquote>
-<blockquote>
 <p>预防性安全试图阻止一个漏洞被利用。侦查性安全试图发现一个攻击是否正在进行中。反应性安全试图对攻击作出反应并减少其影响</p>
 </blockquote>
 <h4 id="g-What-are-procedural-controls-Give-one-example-regarding-information-security"><a href="#g-What-are-procedural-controls-Give-one-example-regarding-information-security" class="headerlink" title="g. What are procedural controls? Give one example regarding information security."></a>g. What are procedural controls? Give one example regarding information security.</h4><p>Syllabus: Security Controls. </p>
@@ -1759,8 +1757,6 @@ preventative - stop an explo">
 <blockquote>
 <p>Marking scheme </p>
 <p>3 marks for explaining what procedural controls are, 1 mark if correct example</p>
-</blockquote>
-<blockquote>
 <p>程序性控制是指那些涵盖一个组织为帮助减少问题发生的风险而制定的规则、条例和政策的控制。一个例子是清晰的屏幕和桌面政策</p>
 </blockquote>
 <h4 id="h-What-should-a-disaster-recovery-plan-include"><a href="#h-What-should-a-disaster-recovery-plan-include" class="headerlink" title="h. What should a disaster recovery plan include?"></a>h. What should a disaster recovery plan include?</h4><p>Syllabus: Continuity planning and management. </p>
@@ -1796,8 +1792,6 @@ preventative - stop an explo">
 <blockquote>
 <p>Marking scheme </p>
 <p>2 marks for the definition, 2 marks for an appropriate example.</p>
-</blockquote>
-<blockquote>
 <p>在通常难以规定如何做某事的情况下，他们提供建议、指导和最佳做法。比如说。不在办公室时的行为准则或工作惯例</p>
 </blockquote>
 <h4 id="j-What-is-usable-security-Explain-what-it-means-and-give-one-example-of-usable-security-mechanism"><a href="#j-What-is-usable-security-Explain-what-it-means-and-give-one-example-of-usable-security-mechanism" class="headerlink" title="j. What is usable security? Explain what it means and give one example of usable security mechanism."></a>j. What is usable security? Explain what it means and give one example of usable security mechanism.</h4><p>Syllabus: Usable Security and Human Factors. </p>
@@ -1805,8 +1799,6 @@ preventative - stop an explo">
 <blockquote>
 <p>Marking scheme </p>
 <p>2 marks if they give the definition or alternatively can explain it in their own words, 2 marks for an appropriate example.</p>
-</blockquote>
-<blockquote>
 <p>根据计算研究协会的说法，可用的安全是 “为未来的动态、普遍的计算环境提供他们能够理解的安全控制和他们能够控制的隐私”。一个例子是浏览器中关于连接是否安全（HTTPS）或不安全（HTTP）的指标</p>
 </blockquote>
 <h3 id="Question-Two-1"><a href="#Question-Two-1" class="headerlink" title="Question Two"></a>Question Two</h3><p>GANT is an organisation with over 100,000 members world-wide, it operates in 42 countries and its ultimate goal is to preserve the natterjack toad. Over the past year, GANT’s website has suffered several cyberattacks and this has led to usernames, passwords and credit card details for many members being leaked on the internet. To prevent further cyberattacks, GANT is ready to make information security a top priority amongst its workforce and third-party contractors and has already put in place a chief information security officer (CISO). </p>
@@ -1839,13 +1831,11 @@ preventative - stop an explo">
 </li>
 </ul>
 </li>
-<li><p>Establishing and Implementing the Plan </p>
-<ul>
+<li>Establishing and Implementing the Plan <ul>
 <li>Scope, aim and objectives, and the activities required if the plan is triggered, i.e. What are the likely problems that will pop up? How can we deal with them? </li>
 </ul>
 </li>
-<li><p>Ongoing Management </p>
-<ul>
+<li>Ongoing Management <ul>
 <li>Regular review of the continuity plan (i.e. it can easily become out of date and no longer reflect real business operations). Similar to the Plan-Do-Check-Act model. </li>
 </ul>
 </li>
@@ -1870,8 +1860,6 @@ preventative - stop an explo">
 <blockquote>
 <p>Marking scheme </p>
 <p>2 marks for identifying the name of the risk treatment type as reduce, 3 marks depending on the detail and correctness of the rationale given for explaining the treatment</p>
-</blockquote>
-<blockquote>
 <p>鉴于这种风险的ALE是200,000英镑，而现成的DoS缓解设备成本为45,000英镑，最合理的风险处理类型是通过购买和安装设备来降低风险</p>
 </blockquote>
 <h4 id="c-1"><a href="#c-1" class="headerlink" title="c."></a>c.</h4><p>If the off-the-shelf DoS mitigation appliance costs £199,000 per year, what type of risk treatment would you recommend? Explain why and include the specific name of the risk treatment type, together with the particular action recommended for this risk.</p>
@@ -1879,8 +1867,6 @@ preventative - stop an explo">
 <blockquote>
 <p>Marking scheme </p>
 <p>3 marks for identifying the name of the risk treatment type; 5 marks depending on the detail and correctness of the rationale given for explaining the treatment.</p>
-</blockquote>
-<blockquote>
 <p>鉴于这一风险的ALE是200,000英镑，而现成的DoS缓解设备的成本是199,000英镑，最合理的风险处理类型是接受风险，因为它将使公司的成本大致相同。然而，这是可以解释的，人们可以认为其他的风险处理方案是可能的，特别是如果学生提到其他的动机，包括保持客户的信心，就会减少。只要建议的特定风险处理类型的名称是正确的，并且有充分解释的理由来支持它，其他答案应该是可以的</p>
 </blockquote>
 <h4 id="d"><a href="#d" class="headerlink" title="d."></a>d.</h4><p>As an alternative to the off-the-shelf DoS mitigation appliance, SEM Ltd. are also exploring cloud computing, so that they could elastically expand the instances of their service as a way of replicating it and becoming less vulnerable to DoS. </p>
@@ -1895,8 +1881,6 @@ preventative - stop an explo">
 <blockquote>
 <p>Marking scheme </p>
 <p>4 marks for explaining the legal implications and 4 marks for the security risks.</p>
-</blockquote>
-<blockquote>
 <p>法律影响。他们必须考虑服务的物理位置（数据保护规则），对信息的访问（云供应商可以读取所有数据），GANT是否可以审计云供应商（验证云是否保持数据安全）以及围绕云供应商分包商的法律问题</p>
 <p>安全风险。云供应商可能被黑客攻击，信息被公开泄露。这是一个风险分担的例子，因为虽然云提供商有责任，但泄露的数据可能会使组织感到尴尬。另外，如果云提供商发生崩溃，并且没有保持定期的备份，数据可能会被删除/丢失。或者在需要时不能完全删除数据</p>
 </blockquote>
@@ -1911,8 +1895,6 @@ preventative - stop an explo">
 <blockquote>
 <p>Marking scheme </p>
 <p>2 marks for identifying testing techniques as not suitable and 2 marks depending on the explanation.</p>
-</blockquote>
-<blockquote>
 <p>在这种情况下，最不适合的技术可能是测试技术，如渗透测试和漏洞扫描，因为这种更积极的保证技术引起的任何问题都会带来信息损失和基础设施不可用的风险</p>
 </blockquote>
 <h2 id="Past-Exam-Paper-2019"><a href="#Past-Exam-Paper-2019" class="headerlink" title="Past Exam Paper 2019"></a>Past Exam Paper 2019</h2><h3 id="Question-One-2"><a href="#Question-One-2" class="headerlink" title="Question One"></a>Question One</h3><h4 id="a-What-is-Information-Security-and-what-is-its-primary-focus"><a href="#a-What-is-Information-Security-and-what-is-its-primary-focus" class="headerlink" title="a. What is Information Security and what is its primary focus?"></a>a. What is Information Security and what is its primary focus?</h4><p>Syllabus: Security concepts and fundamentals </p>
@@ -1968,8 +1950,6 @@ preventative - stop an explo">
 </blockquote>
 <h4 id="i-What-is-a-Market-for-Lemons-and-how-does-it-apply-to-security-economics"><a href="#i-What-is-a-Market-for-Lemons-and-how-does-it-apply-to-security-economics" class="headerlink" title="i. What is a Market for Lemons and how does it apply to security economics?"></a>i. What is a Market for Lemons and how does it apply to security economics?</h4><blockquote>
 <p>“Security Controls Legislation, Cloud Security, Security Economics” Quiz Q4</p>
-</blockquote>
-<blockquote>
 <p>Marking scheme </p>
 <p>1 mark for relationship to asymmetric information, 1 mark for relationship with how good cyber security products might or might not be, 1 mark if lemons example explained well, 1 mark if example of how it applies to security economics</p>
 <p>与不对称信息的关系1分，与好的网络安全产品可能或不可能的关系1分，如果柠檬的例子解释得好，1分，如果它如何适用于安全经济学的例子1分</p>
@@ -1979,8 +1959,6 @@ preventative - stop an explo">
 <blockquote>
 <p>Marking scheme </p>
 <p>2 marks for correctly stating what compliance means; 2 marks for explaining well why it does not certify the state of security of an organisation.</p>
-</blockquote>
-<blockquote>
 <p>27001合规性意味着ISO27000系列标准所描述的信息安全管理流程已经到位，但它并不能证明一个组织的安全状况。也就是说，一个符合27001标准的组织并不是没有网络安全问题的</p>
 </blockquote>
 <h3 id="Question-Two-2"><a href="#Question-Two-2" class="headerlink" title="Question Two"></a>Question Two</h3><p>GANT is an organisation with over 100,000 members world-wide, it operates in 42 countries and its ultimate goal is to preserve the natterjack toad. Over the past year, GANT’s website has suffered several cyberattacks and this has led to usernames, passwords and credit card details for many members being leaked on the internet. To prevent further cyberattacks, GANT is ready to make information security a top priority amongst its workforce and third-party contractors and has already put in place a chief information security officer (CISO). </p>
@@ -1990,8 +1968,6 @@ preventative - stop an explo">
 <blockquote>
 <p>Marking scheme </p>
 <p>6 marks if they explain the purpose of a CISO well.</p>
-</blockquote>
-<blockquote>
 <p>负责保护其组织的计算机、网络和数据免受威胁，如安全漏洞、计算机病毒或网络犯罪分子的攻击</p>
 </blockquote>
 <h4 id="b-3"><a href="#b-3" class="headerlink" title="b."></a>b.</h4><p>Identify and explain four new security roles that will need to exist in GANT in addition to the CISO. </p>
@@ -2032,8 +2008,6 @@ preventative - stop an explo">
 <p>Given that the ALE for this risk is £300,000 and the off-the-shelf DoS mitigation appliance costs £50,000, the most reasonable risk treatment type is reduce the risk by buying and installing the appliance. </p>
 <blockquote>
 <p>鉴于该风险的ALE为300,000英镑，现成的DoS缓解设备成本为50,000英镑，最合理的风险处理类型是通过购买和安装该设备来降低风险</p>
-</blockquote>
-<blockquote>
 <p>Marking scheme </p>
 <p>2 marks for identifying the name of the risk treatment type as reduce, 2 marks depending on the detail and correctness of the rationale given for explaining the treatment.</p>
 </blockquote>
@@ -2041,8 +2015,6 @@ preventative - stop an explo">
 <p>Given that the ALE for this risk is £300,000 and the off-the-shelf DoS mitigation appliance costs £300,000, the most reasonable risk treatment type is accept the risk, as it will be costing the company the same. However, this is open to interpretation and one could think that other risk treatment options are possible. Alternative answers should be fine as long as the name of the particular risk treatment type suggested is correct, and there is a well-explained rationale to support it. </p>
 <blockquote>
 <p>鉴于这一风险的ALE是300,000英镑，而现成的DoS缓解设备的成本是300,000英镑，最合理的风险处理类型是接受这一风险，因为它将给公司带来同样的成本。然而，这是可以解释的，人们可以认为其他的风险处理方案是可能的。只要建议的特定风险处理类型的名称是正确的，并有充分解释的理由来支持它，其他答案应该是可以的</p>
-</blockquote>
-<blockquote>
 <p>Marking scheme </p>
 <p>2 marks for identifying the name of the risk treatment type; 4 marks depending on the detail and correctness of the rationale given for explaining the treatment.</p>
 </blockquote>
@@ -2053,8 +2025,6 @@ preventative - stop an explo">
 <p>Given that the ALE for this risk is £300,000, the off-the-shelf DoS mitigation appliance costs £300,000, and the fact that SEM Ltd. would like to maintain customer confidence, the most reasonable risk treatment type is reduce the risk, as even if it may be costing the company the same, buying and installing the appliance will certainly improve user experience which will help maintain customer confidence in the infrastructure. However, this is open to interpretation and one could think that other risk treatment options are possible. This should be fine as long as the particular risk treatment type name is identified and a well-explained rationale is given for this. </p>
 <blockquote>
 <p>鉴于该风险的ALE为300,000英镑，现成的DoS缓解设备成本为300,000英镑，以及SEM有限公司希望保持客户信心的事实，最合理的风险处理类型是减少风险，因为即使它可能花费公司相同的成本，购买和安装设备肯定会改善用户体验，这将有助于保持客户对基础设施的信心。然而，这一点是可以解释的，人们可以认为其他的风险处理方案是可能的。这应该是没有问题的，只要确定了特定的风险处理类型名称，并为此给出了充分解释的理由</p>
-</blockquote>
-<blockquote>
 <p>Marking scheme </p>
 <p>2 marks for identifying the name of the risk treatment type; 4 marks depending on the detail and correctness of the rationale given for explaining the treatment.</p>
 </blockquote>
@@ -2070,9 +2040,7 @@ preventative - stop an explo">
 <p>Amplifiers - What has/could push them on? </p>
 <blockquote>
 <p>威胁代理人的特征：</p>
-<p>动机–他们为什么要这样做？ 能力–他们能做到吗，达到什么程度？</p>
-</blockquote>
-<blockquote>
+<p>动机—他们为什么要这样做？ 能力—他们能做到吗，达到什么程度？</p>
 <p>Marking scheme </p>
 <p>1 marks per each correct characteristic and explanation.</p>
 </blockquote>

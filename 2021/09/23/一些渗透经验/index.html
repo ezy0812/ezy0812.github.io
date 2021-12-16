@@ -405,7 +405,7 @@
 <h2 id="看网站是什么脚本？"><a href="#看网站是什么脚本？" class="headerlink" title="看网站是什么脚本？"></a>看网站是什么脚本？</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>网站根目录里<br> index.php<br> index.asp<br> index.aspx<br> index.jsp<br> index.do （jsp）</p>
 <p>如果访问正常就说明 是属于哪一类的脚本程序</p>
 <h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>利用 google.com</p>
-<p>如搜索 <a target="_blank" rel="noopener" href="http://www.xx.com/">www.xx.com</a> aspx</p>
+<p>如搜索 www.xx.com aspx</p>
 <h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>burpsuit爬虫</p>
 <h3 id="方法四"><a href="#方法四" class="headerlink" title="方法四"></a>方法四</h3><p>目录扫描工具</p>
 <h2 id="判断是否内网"><a href="#判断是否内网" class="headerlink" title="判断是否内网"></a>判断是否内网</h2><h3 id="首先要确认真实IP"><a href="#首先要确认真实IP" class="headerlink" title="首先要确认真实IP"></a>首先要确认真实IP</h3><h4 id="思路1"><a href="#思路1" class="headerlink" title="思路1"></a>思路1</h4><p>有的网站会记录网站历史IP 如站长之家之类的</p>
@@ -427,7 +427,7 @@
 <p>或者 wsbm.rar, wsbm1.rar, wsbmwsbm.rar </p>
 <p>如果没有，我们再回到根目录<a target="_blank" rel="noopener" href="http://www.zzrsks.com.cn/">http://www.zzrsks.com.cn/</a></p>
 <p>把注意力转向到zzrsks这里<a target="_blank" rel="noopener" href="http://www.zzrsks.com.cn/zzrsks">http://www.zzrsks.com.cn/zzrsks</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.zzrsks.com.cn/webzzrsks">http://www.zzrsks.com.cn/webzzrsks</a><br><a target="_blank" rel="noopener" href="http://www.zzrsks.com.cn/">http://www.zzrsks.com.cn/</a>** (管理员的QQ号 或者他的名字 如果目录没有 就试试备份文件后缀)</p>
+<p><a target="_blank" rel="noopener" href="http://www.zzrsks.com.cn/webzzrsks">http://www.zzrsks.com.cn/webzzrsks</a><br><a target="_blank" rel="noopener" href="http://www.zzrsks.com.cn/**">http://www.zzrsks.com.cn/**</a> (管理员的QQ号 或者他的名字 如果目录没有 就试试备份文件后缀)</p>
 <p><a target="_blank" rel="noopener" href="http://www.zzrsks.com.cn/zzrsks.rar">http://www.zzrsks.com.cn/zzrsks.rar</a>, <a target="_blank" rel="noopener" href="http://www.zzrsks.com.cn/webzzrsks.rar">http://www.zzrsks.com.cn/webzzrsks.rar</a> </p>
 <h2 id="检测目标站"><a href="#检测目标站" class="headerlink" title="检测目标站"></a>检测目标站</h2><p>我们知道了他开放3个http端口80, 8081, 8083</p>
 <h3 id="先从默认80端口安全检测"><a href="#先从默认80端口安全检测" class="headerlink" title="先从默认80端口安全检测"></a>先从默认80端口安全检测</h3><h4 id="检测SQL漏洞"><a href="#检测SQL漏洞" class="headerlink" title="检测SQL漏洞"></a>检测SQL漏洞</h4><p>经典注入 静态注入 登陆框注入 搜索框注入 等</p>
@@ -435,9 +435,9 @@
 <h4 id="检测XSS漏洞"><a href="#检测XSS漏洞" class="headerlink" title="检测XSS漏洞"></a>检测XSS漏洞</h4><p>先来个反射型XSS，看看过滤严不严，如果过滤了什么符号，就想办法绕过去来XSS跨站等备份，或者直接拿shell。PS：如果不精通XSS的朋友们 就盲打吧= = 看看收获点什么</p>
 <h4 id="检测上传漏洞"><a href="#检测上传漏洞" class="headerlink" title="检测上传漏洞"></a>检测上传漏洞</h4><p>注册会员啊，扫目录看看存不存在FCK 或者 eWebEditor上传页面，如果有eWebEditor上传页面的话，就利用对应的0day进行一次上传</p>
 <h4 id="测试其他漏洞"><a href="#测试其他漏洞" class="headerlink" title="测试其他漏洞"></a>测试其他漏洞</h4><p>比如用google搜索敏感信息，比如txt, bak什么的，我记得我就有1次利用GOOGLE爆了目标站的root密码</p>
-<h3 id="如果失败就换下一个端口"><a href="#如果失败就换下一个端口" class="headerlink" title="如果失败就换下一个端口"></a>如果失败就换下一个端口</h3><p>假设为8081端口，<a target="_blank" rel="noopener" href="http://www.xx.com:8081/">www.xx.com:8081/</a><br>然后我们用程序指纹来扫是属于哪里的cms，到是哪里的cms后，进行0day exp 利用。</p>
+<h3 id="如果失败就换下一个端口"><a href="#如果失败就换下一个端口" class="headerlink" title="如果失败就换下一个端口"></a>如果失败就换下一个端口</h3><p>假设为8081端口，www.xx.com:8081/<br>然后我们用程序指纹来扫是属于哪里的cms，到是哪里的cms后，进行0day exp 利用。</p>
 <h4 id="如果扫不出来-怎么办呢？"><a href="#如果扫不出来-怎么办呢？" class="headerlink" title="如果扫不出来 怎么办呢？"></a>如果扫不出来 怎么办呢？</h4><p>没关系，还可以试试另外一种方法。</p>
-<p>打开网站后随便打开一个网站程序文件，如：<a target="_blank" rel="noopener" href="http://www.x.com/xindong/kkks.aspx">www.x.com/xindong/kkks.aspx</a><br>那么在google那里 搜索一下（利用google 语句 如：intitle:   inurl：  intext: Filetype: Site：等等的语句）xindong/kkks.aspx   文件</p>
+<p>打开网站后随便打开一个网站程序文件，如：www.x.com/xindong/kkks.aspx<br>那么在google那里 搜索一下（利用google 语句 如：intitle:   inurl：  intext: Filetype: Site：等等的语句）xindong/kkks.aspx   文件</p>
 <blockquote>
 <p>site:xx.com inurl:admin</p>
 <p>site:xx.com intext:用户名</p>
@@ -447,13 +447,13 @@
 <h4 id="在google搜不到怎么办？"><a href="#在google搜不到怎么办？" class="headerlink" title="在google搜不到怎么办？"></a>在google搜不到怎么办？</h4><p>第一：这程序是私人写的 没公布<br>解决方法：只能慢慢安全检测了</p>
 <p>第二：这程序目录 文件夹名 文件名 被改了<br>解决方法：查看原代码 搜索一段代码，或者利用google搜索他的CSS、JS文件 </p>
 <h3 id="如果端口都没有漏洞"><a href="#如果端口都没有漏洞" class="headerlink" title="如果端口都没有漏洞"></a>如果端口都没有漏洞</h3><p>只能爆破了 组合好强大的字典 进行爆破 http后台 FTP MYSQL MSSQL 等等端口</p>
-<h3 id="傻瓜式渗透"><a href="#傻瓜式渗透" class="headerlink" title="傻瓜式渗透"></a>傻瓜式渗透</h3><p>比如<a target="_blank" rel="noopener" href="http://www.x.com的一个站,先爬行得到他的目录/">www.x.com的一个站，先爬行得到他的目录</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.x.com/1">www.x.com/1</a><br><a target="_blank" rel="noopener" href="http://www.x.com/2">www.x.com/2</a><br><a target="_blank" rel="noopener" href="http://www.x.com/3">www.x.com/3</a><br>先记录下来，然后把你组合的强大字典 ASPX ASP PHP JSP 4类程序，全部拉在一起，一起扫描</p>
+<h3 id="傻瓜式渗透"><a href="#傻瓜式渗透" class="headerlink" title="傻瓜式渗透"></a>傻瓜式渗透</h3><p>比如www.x.com的一个站，先爬行得到他的目录</p>
+<p>www.x.com/1<br>www.x.com/2<br>www.x.com/3<br>先记录下来，然后把你组合的强大字典 ASPX ASP PHP JSP 4类程序，全部拉在一起，一起扫描</p>
 <p>先扫描网站根目录，再次得到一些你不知道的目录</p>
-<p><a target="_blank" rel="noopener" href="http://www.x.com/1mn">www.x.com/1mn</a><br><a target="_blank" rel="noopener" href="http://www.x.com/xindong">www.x.com/xindong</a></p>
+<p>www.x.com/1mn<br>www.x.com/xindong</p>
 <p>然后又记录下来，然后跟爬行得出的目录放在一起</p>
-<p><a target="_blank" rel="noopener" href="http://www.x.com/1">www.x.com/1</a><br><a target="_blank" rel="noopener" href="http://www.x.com/2">www.x.com/2</a><br><a target="_blank" rel="noopener" href="http://www.x.com/3">www.x.com/3</a><br><a target="_blank" rel="noopener" href="http://www.x.com/1mn">www.x.com/1mn</a><br><a target="_blank" rel="noopener" href="http://www.x.com/xindong">www.x.com/xindong</a></p>
-<p>然后把重复的内容去掉，然后放在进去扫描目录，然后又得出新目录跟文件<br><a target="_blank" rel="noopener" href="http://www.x.com/1/xss/">www.x.com/1/xss/</a><br><a target="_blank" rel="noopener" href="http://www.x.com/2/qqww/">www.x.com/2/qqww/</a><br><a target="_blank" rel="noopener" href="http://www.x.com/3/asdasd/">www.x.com/3/asdasd/</a><br><a target="_blank" rel="noopener" href="http://www.x.com/1mn/ssaq/">www.x.com/1mn/ssaq/</a><br><a target="_blank" rel="noopener" href="http://www.x.com/xindong/admin.asp">www.x.com/xindong/admin.asp</a><br>然后又把<br><a target="_blank" rel="noopener" href="http://www.x.com/1/xss/">www.x.com/1/xss/</a><br><a target="_blank" rel="noopener" href="http://www.x.com/2/qqww/">www.x.com/2/qqww/</a><br><a target="_blank" rel="noopener" href="http://www.x.com/3/asdasd/">www.x.com/3/asdasd/</a><br><a target="_blank" rel="noopener" href="http://www.x.com/1mn/ssaq/">www.x.com/1mn/ssaq/</a><br>再次进行扫描，相信大家都理解了吧</p>
+<p>www.x.com/1<br>www.x.com/2<br>www.x.com/3<br>www.x.com/1mn<br>www.x.com/xindong</p>
+<p>然后把重复的内容去掉，然后放在进去扫描目录，然后又得出新目录跟文件<br>www.x.com/1/xss/<br>www.x.com/2/qqww/<br>www.x.com/3/asdasd/<br>www.x.com/1mn/ssaq/<br>www.x.com/xindong/admin.asp<br>然后又把<br>www.x.com/1/xss/<br>www.x.com/2/qqww/<br>www.x.com/3/asdasd/<br>www.x.com/1mn/ssaq/<br>再次进行扫描，相信大家都理解了吧</p>
 <blockquote>
 <p>之前利用傻瓜式 丢在服务器里跑 结果发现个备份文件，下载打开一看发现是sa用户跟密码<br>PS：如果发现密码不对，可以用这个密码，去试试登录FTP、服务器、后台什么的，或者再次利用这个密码来组合密码字典来爆破</p>
 </blockquote>

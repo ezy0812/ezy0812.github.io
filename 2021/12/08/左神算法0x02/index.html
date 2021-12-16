@@ -420,7 +420,6 @@ public static class Node &amp;#123;
         value <span class="token operator">=</span> val<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="0x01-判断回文"><a href="#0x01-判断回文" class="headerlink" title="0x01 判断回文"></a>0x01 判断回文</h3><p>给定单链表头结点head，判断一个链表是否为回文</p>
 <blockquote>
 <p>1-&gt;2-&gt;1 true</p>
@@ -441,7 +440,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="2-0"><a href="#2-0" class="headerlink" title="2.0"></a>2.0</h4><p>找到链表中间，然后开始压入栈，这样只需要一半空间，O(n/2)</p>
 <p>那么怎么找到中间位置，利用快慢指针，即从头建立两个指针，一个每次走2步，一个每次走1步，当快指针走到结尾，那么满指针就走到中间了</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isPalindrome2</span><span class="token punctuation">(</span><span class="token class-name">Node</span> head<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
@@ -464,7 +462,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="3-0"><a href="#3-0" class="headerlink" title="3.0"></a>3.0</h4><p>同样利用快慢指针，慢指针到达中间时，将中间的这个节点的next指到null，然后原来的next的next指到这个中间的节点，依次逆序过来，完成之后，开始一一比对，这样的空间复杂度O(1)，不要忘记最后将右边一半恢复</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isPalindrome3</span><span class="token punctuation">(</span><span class="token class-name">Node</span> head<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> head<span class="token punctuation">.</span>next <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
@@ -505,7 +502,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> res<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="0x02-链表的荷兰国旗问题"><a href="#0x02-链表的荷兰国旗问题" class="headerlink" title="0x02 链表的荷兰国旗问题"></a>0x02 链表的荷兰国旗问题</h3><p>将单链表按某值划分为左边小，中间相等，右边大的形式</p>
 <h4 id="1-0-1"><a href="#1-0-1" class="headerlink" title="1.0"></a>1.0</h4><p>将链表放到辅助Node数组，于是变成了荷兰国旗问题，空间复杂度O(n)</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Node</span> <span class="token function">lessEqualMore1</span><span class="token punctuation">(</span><span class="token class-name">Node</span> head<span class="token punctuation">,</span> <span class="token keyword">int</span> value<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
@@ -541,7 +537,6 @@ public static class Node &amp;#123;
     arr<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">.</span>value <span class="token operator">=</span> arr<span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span>
     arr<span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token punctuation">.</span>value <span class="token operator">=</span> temp<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="2-0-1"><a href="#2-0-1" class="headerlink" title="2.0"></a>2.0</h4><p>只需要六个变量，小于区域的头节点LH，尾节点LT，等于区域的头节点EH，尾节点ET，大于区域的头节点MH，尾节点MT，遍历单链表，第一次遇到小于的，就将LH和LT都指向它，第二次遇到小于的，就将LT的next指向它，然后LT指向它，其它区域同样，遍历完成之后，将SH、ST、EH、ET、MH、MT依次连接，同时注意空指针的情况，即有可能不存在小于区域，或者其它区域，导致没有next节点，如果不处理，则会报出异常</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Node</span> <span class="token function">lessEqualMore2</span><span class="token punctuation">(</span><span class="token class-name">Node</span> head<span class="token punctuation">,</span> <span class="token keyword">int</span> value<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token class-name">Node</span> LH <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
@@ -578,7 +573,6 @@ public static class Node &amp;#123;
     <span class="token keyword">if</span><span class="token punctuation">(</span>ET<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span> ET<span class="token punctuation">.</span>next <span class="token operator">=</span> MH<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>LH<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">?</span>LH<span class="token operator">:</span><span class="token punctuation">(</span>EH<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">?</span>EH<span class="token operator">:</span>MH<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="0x03-复制链表"><a href="#0x03-复制链表" class="headerlink" title="0x03 复制链表"></a>0x03 复制链表</h3><p>复制含有随机指针节点的链表</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">public</span> <span class="token keyword">int</span> value<span class="token punctuation">;</span>
@@ -589,7 +583,6 @@ public static class Node &amp;#123;
         <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> data<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="1-0-2"><a href="#1-0-2" class="headerlink" title="1.0"></a>1.0</h4><p>使用哈希表，key为旧链表的节点，value为它的克隆节点，完成哈希表建立之后，遍历旧链表，节点的next即为节点对应value的next，rand同理</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Node</span> <span class="token class-name">CopyListWithRandom1</span><span class="token punctuation">(</span><span class="token class-name">Node</span> head<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Node</span><span class="token punctuation">,</span> <span class="token class-name">Node</span><span class="token punctuation">></span></span> hash <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -606,7 +599,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> hash<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="2-0-2"><a href="#2-0-2" class="headerlink" title="2.0"></a>2.0</h4><p>1-&gt;2-&gt;3</p>
 <p>遍历链表，每个旧节点的next指向为该节点的克隆节点，结果即为1-&gt;1’-&gt;2-&gt;2’-&gt;3-&gt;3’</p>
 <p>对于rand，如果1的rand指向3，那么1’的rand顺理成章指向1的rand的next，其它节点同理</p>
@@ -635,7 +627,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> res<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="0x04-两个单链表相交"><a href="#0x04-两个单链表相交" class="headerlink" title="0x04 两个单链表相交"></a>0x04 两个单链表相交</h3><p>两个可能有环也可能无环的单链表，如果相交（即内存地址相同），则返回相交的第一个节点，否则返回null</p>
 <h4 id="一）首先需要判断两个链表是否有环"><a href="#一）首先需要判断两个链表是否有环" class="headerlink" title="一）首先需要判断两个链表是否有环"></a>一）首先需要判断两个链表是否有环</h4><p><code>getLoopNode(Node head)</code>有环则返回入环节点（即第一个进入环中的节点），否则返回null</p>
 <p>使用快慢指针</p>
@@ -658,7 +649,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> fast<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="二）分情况讨论"><a href="#二）分情况讨论" class="headerlink" title="二）分情况讨论"></a>二）分情况讨论</h4><p>a）两个都无环的链表（loop1 == null &amp;&amp; loop2 == null）分别遍历两个链表，得到两个链表的长度差值和尾部节点，首先比较尾部节点是否为同一个（如果同一个则一定相交，下面开始找相交的第一个节点，反之，不是同一个的话，一定不相交），然后从长的开始遍历差值步，然后与短的链表一起继续向后遍历，遍历到相同内存地址，则为相交的第一个节点</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Node</span> <span class="token function">noLoop</span><span class="token punctuation">(</span><span class="token class-name">Node</span> head1<span class="token punctuation">,</span> <span class="token class-name">Node</span> head2<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token comment">// 只使用一个变量n来获得两个链表的差值，省空间大师</span>
@@ -691,9 +681,8 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>b）两个都有环的链表（loop1 != null &amp;&amp; loop2 != null）总共就分3种情况，即为下图</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm2_f1.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm2_f1.png" alt=""></p>
 <p>图中第二种情况即为loop1 == loop2，寻找这种情况的第一个相交节点则与<code>a）</code>情况两个都无环链表类似，将loop1或者loop2节点当做两个链表的尾部节点即可采用完全相同的代码</p>
 <p>那么如果两者不相等，则从loop1开始向后遍历，如果相交，则一定会遍历到loop2，返回loop1或者loop2都满足题意，否则一定不相交</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Node</span> <span class="token function">bothLoop</span><span class="token punctuation">(</span><span class="token class-name">Node</span> head1<span class="token punctuation">,</span> <span class="token class-name">Node</span> head2<span class="token punctuation">,</span> <span class="token class-name">Node</span> loop1<span class="token punctuation">,</span> <span class="token class-name">Node</span> loop2<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
@@ -733,7 +722,6 @@ public static class Node &amp;#123;
         <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>c）剩下的情况则是有一个链表为无环，另一个则为有环，这种情况一定不会相交</p>
 <blockquote>
 <p>一定记住前提为单链表，即每个节点只有一个next指针，所以以上情况完全囊括了全部可能性</p>
@@ -746,7 +734,6 @@ public static class Node &amp;#123;
     <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>loop1 <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> loop2 <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">bothLoop</span><span class="token punctuation">(</span>head1<span class="token punctuation">,</span> head2<span class="token punctuation">,</span> loop1<span class="token punctuation">,</span> loop2<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><h3 id="遍历问题"><a href="#遍历问题" class="headerlink" title="遍历问题"></a>遍历问题</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Node</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">public</span> <span class="token keyword">int</span> value<span class="token punctuation">;</span>
     <span class="token keyword">public</span> <span class="token class-name">Node</span> left<span class="token punctuation">;</span>
@@ -756,7 +743,6 @@ public static class Node &amp;#123;
         <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> data<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token class-name">Node</span> head<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
     <span class="token comment">// 第一次回到当前子树的根节点</span>
@@ -765,7 +751,6 @@ public static class Node &amp;#123;
     <span class="token function">f</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment">// 第三次回到当前子树的根节点</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <blockquote>
 <p>显然，对于先序、中序、后序遍历的递归实现往对应的注释出添加打印语句即可</p>
 </blockquote>
@@ -786,7 +771,6 @@ public static class Node &amp;#123;
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h4><p>由前面的先序遍历可知先压右后压左得出的结果为（根、左、右），那么先压左后压右则得出（根、右、左），所以将（根、右、左）放在另一个栈里，再弹出，则为左、右、根</p>
 <p>首先准备两个栈，先压入根节点到栈A中，循环以下操作</p>
 <p>1）弹出一个节点，即为cur</p>
@@ -807,7 +791,6 @@ public static class Node &amp;#123;
         <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>stackB<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>stackB<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token operator">+</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h4><p>对于中序来说，入栈顺序则为左、右、根</p>
 <p>1）将以该节点为根节点的树的左子节点全部入栈（即整棵树的左边界入栈）</p>
 <p>2）弹出cur</p>
@@ -828,7 +811,6 @@ public static class Node &amp;#123;
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="宽度优先遍历"><a href="#宽度优先遍历" class="headerlink" title="宽度优先遍历"></a>宽度优先遍历</h4><p>使用队列结构，首先压入根节点，然后循环以下操作</p>
 <p>1）弹出</p>
 <p>2）打印</p>
@@ -845,7 +827,6 @@ public static class Node &amp;#123;
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="0x01-求二叉树的宽度"><a href="#0x01-求二叉树的宽度" class="headerlink" title="0x01 求二叉树的宽度"></a>0x01 求二叉树的宽度</h3><h4 id="1-0-3"><a href="#1-0-3" class="headerlink" title="1.0"></a>1.0</h4><p>采用哈希表，存储每一个节点对应在第几层，从根节点在第一层开始，按照宽度优先遍历的步骤，使用变量存储当前在第几层、当前层数已经遍历的节点数量、当前已知的最大宽度(max)</p>
 <p>从第一层开始，将根节点入队，出队发现当前在第一层，出队的节点查表得知在第一层，所以开始累积第一层已经遍历的节点数量，为1，跟随宽度优先遍历，入队的同时，也将节点的宽度入表</p>
 <p>到了第二层，查表发现出队的节点的层数与当前层数不一致，当前层数的节点遍历完毕，可以结算节点的数量，与max比较即可，当前的层数来到第二层，当前层数已经遍历的节点数量也刷新（这里注意，因为现在到了第二层，遍历完了第一个节点，所以刷新值为1而不是0），循环下去即可</p>
@@ -880,7 +861,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="2-0-3"><a href="#2-0-3" class="headerlink" title="2.0"></a>2.0</h4><p>不使用哈希表，只使用队列，额外变量记录当前层的最后一个节点、下一层的最后一个节点、当前层的节点数量、当前已知的最大宽度(max)</p>
 <p>根节点入队，出队，当前层的最后一个节点赋为根节点，下一层的最后一个节点赋为空，然后开始左右节点入队，保持下一层的最后一个节点总是为最后入队的节点（即队尾的节点），当到达当前层的最后一个节点时，结算，进行下一轮</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">getMaxWidthTwo</span><span class="token punctuation">(</span><span class="token class-name">Node</span> head<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
@@ -914,7 +894,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="0x02-判断搜索二叉树"><a href="#0x02-判断搜索二叉树" class="headerlink" title="0x02 判断搜索二叉树"></a>0x02 判断搜索二叉树</h3><p>搜索二叉树即左子树的值都比根节点小，右子树的值都比根节点大，一棵经典的搜索二叉树是没有重复值的</p>
 <p>使用中序遍历即可，中序遍历搜索二叉树即为升序，所以如果一旦遇到逆序的，则不是搜索二叉树，需要在中序遍历的打印处修改为判断结构即可</p>
 <h4 id="1-0-递归的改写"><a href="#1-0-递归的改写" class="headerlink" title="1.0 递归的改写"></a>1.0 递归的改写</h4><p>需要一个全局变量记录遍历到的前一个值，然后与遍历的值比较即可</p>
@@ -927,7 +906,6 @@ public static class Node &amp;#123;
     pre <span class="token operator">=</span> head<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token function">isBSTOne</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="2-0-迭代的改写"><a href="#2-0-迭代的改写" class="headerlink" title="2.0 迭代的改写"></a>2.0 迭代的改写</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isBSTTwo</span><span class="token punctuation">(</span><span class="token class-name">Node</span> head<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>head <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">Stack</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Node</span><span class="token punctuation">></span></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -946,7 +924,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="0x03-判断完全二叉树"><a href="#0x03-判断完全二叉树" class="headerlink" title="0x03 判断完全二叉树"></a>0x03 判断完全二叉树</h3><p>即要么所有层都是满的，要么最后一层即使不满也是从左到右依次占满</p>
 <p>显然可以使用宽度遍历，遍历过程中进入如下判断</p>
 <p>1）如果有右无左，false</p>
@@ -970,7 +947,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="0x04-二叉树的递归套路（树型DP）"><a href="#0x04-二叉树的递归套路（树型DP）" class="headerlink" title="0x04 二叉树的递归套路（树型DP）"></a>0x04 二叉树的递归套路（树型DP）</h3><p>左树提供什么信息，右树提供什么信息，然后怎么整合返回给上一层的递归</p>
 <p>使用前提： 如果题目求解目标是S规则，则求解流程可以定成以每一个节点为头节点的子树在S规则下的每一个答案，并且最终答案一定在其中</p>
 <blockquote>
@@ -1006,7 +982,6 @@ public static class Node &amp;#123;
     <span class="token keyword">int</span> height <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>lreturn<span class="token punctuation">.</span>height<span class="token punctuation">,</span> rreturn<span class="token punctuation">.</span>height<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">returnType</span><span class="token punctuation">(</span>isBalanced<span class="token punctuation">,</span> height<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="判断搜索二叉树"><a href="#判断搜索二叉树" class="headerlink" title="判断搜索二叉树"></a>判断搜索二叉树</h4><p>这里需要左子树提供1）是否为搜索二叉树，2）该树最大值（需要小于根节点），右子树提供1）是否为搜索二叉树，2）该树最小值（需要大于根节点）</p>
 <p>然而，我们需要递归返回同样的信息，现在出现一个需要最大值，一个需要最小值，所以我们选择将两者都返回</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> returnData<span class="token punctuation">&#123;</span>
@@ -1045,7 +1020,6 @@ public static class Node &amp;#123;
     <span class="token keyword">if</span><span class="token punctuation">(</span>rData <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> isBST <span class="token operator">=</span> isBST <span class="token operator">&amp;&amp;</span> rData<span class="token punctuation">.</span>isBST <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>rData<span class="token punctuation">.</span>min <span class="token operator">></span> head<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">returnData</span><span class="token punctuation">(</span>isBST<span class="token punctuation">,</span> max<span class="token punctuation">,</span> min<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="判断满二叉树"><a href="#判断满二叉树" class="headerlink" title="判断满二叉树"></a>判断满二叉树</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> returnData<span class="token punctuation">&#123;</span>
     <span class="token keyword">public</span> <span class="token keyword">int</span> height<span class="token punctuation">;</span>
     <span class="token keyword">public</span> <span class="token keyword">int</span> nodes<span class="token punctuation">;</span>
@@ -1067,7 +1041,6 @@ public static class Node &amp;#123;
     returnData rData <span class="token operator">=</span> <span class="token function">process</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">returnData</span><span class="token punctuation">(</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>lData<span class="token punctuation">.</span>height<span class="token punctuation">,</span> rData<span class="token punctuation">.</span>height<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> lData<span class="token punctuation">.</span>nodes <span class="token operator">+</span> rData<span class="token punctuation">.</span>nodes <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="二叉树节点间最大距离"><a href="#二叉树节点间最大距离" class="headerlink" title="二叉树节点间最大距离"></a>二叉树节点间最大距离</h4><p>从二叉树的节点a出发，可以向上或者向下走，但沿途的节点只能经过一次，到达节点b时路径上的节点个数叫作a到b的距离，那么二叉树任何两个节点之间都有距离，求整棵树上的最 大距离</p>
 <p>想得到以x为根节点的树的最大距离，该距离分为两种情况</p>
 <p>1）距离经过了x（x参与），那么想得到最大距离就必须是左子树高度+1+右子树高度</p>
@@ -1096,13 +1069,11 @@ public static class Node &amp;#123;
     <span class="token keyword">int</span> hei <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>height<span class="token punctuation">,</span> right<span class="token punctuation">.</span>height<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">returnData</span><span class="token punctuation">(</span>hei<span class="token punctuation">,</span> dis<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="最大快乐值（多叉树）"><a href="#最大快乐值（多叉树）" class="headerlink" title="最大快乐值（多叉树）"></a>最大快乐值（多叉树）</h4><p>员工信息的定义如下: </p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Employee</span> <span class="token punctuation">&#123;</span> 
     <span class="token keyword">public</span> <span class="token keyword">int</span> happy<span class="token punctuation">;</span> <span class="token comment">// 这名员工可以带来的快乐值 </span>
     <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">></span></span> subordinates<span class="token punctuation">;</span> <span class="token comment">// 这名员工有哪些直接下级 </span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>公司的每个员工都符合 Employee 类的描述。整个公司的人员结构可以看作是一棵标准的、 没有环的多叉树。树的头节点是公司唯一的老板。除老板之外的每个员工都有唯一的直接上级。 叶节点是没有任何下属的基层员工(subordinates列表为空)，除基层员工外，每个员工都有一个或多个直接下级。 </p>
 <p>这个公司现在要办party，你可以决定哪些员工来，哪些员工不来。但是要遵循如下规则</p>
 <p>1）如果某个员工来了，那么这个员工的所有直接下级都不能来 </p>
@@ -1138,7 +1109,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">returnData</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="最低公共祖先节点"><a href="#最低公共祖先节点" class="headerlink" title="最低公共祖先节点"></a>最低公共祖先节点</h3><p>给定两个二叉树的节点node1和node2，找到他们的最低公共祖先节点</p>
 <p>如果有公共祖先，只有下面两种情况</p>
 <p>1）node1和node2，其中一个是另一个的祖先</p>
@@ -1153,7 +1123,6 @@ public static class Node &amp;#123;
     <span class="token keyword">if</span><span class="token punctuation">(</span>left <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> head<span class="token punctuation">;</span>
     <span class="token keyword">return</span> left <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">?</span> left <span class="token operator">:</span> right<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="后继节点"><a href="#后继节点" class="headerlink" title="后继节点"></a>后继节点</h3><p>即中序遍历中的下一个节点</p>
 <p>节点类型添加了一个指向父节点的指针，根节点的父节点为null</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">&#123;</span>
@@ -1165,7 +1134,6 @@ public static class Node &amp;#123;
         value <span class="token operator">=</span> val<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>显然题意并不想让我们中序遍历整棵树，从而得出后继节点，这样的复杂度是O（n），但是有了父节点的帮助，我们可以优化到O（k），k为该节点与后继节点的高度差</p>
 <p>这就需要我们理解树的结构，节点分为两种情况</p>
 <p>1）该节点有右子树 - 返回右子树的最左边的子节点</p>
@@ -1187,7 +1155,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> par<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="二叉树序列化"><a href="#二叉树序列化" class="headerlink" title="二叉树序列化"></a>二叉树序列化</h3><p>序列化为一个字符串，先序中序后序按层都可以，道理一样，以下划线分割，null则记为”#”</p>
 <p>这里采用先序遍历</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">serial</span><span class="token punctuation">(</span><span class="token class-name">Node</span> head<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
@@ -1196,7 +1163,6 @@ public static class Node &amp;#123;
     <span class="token class-name">String</span> right <span class="token operator">=</span> <span class="token function">serial</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> head<span class="token punctuation">.</span>value <span class="token operator">+</span> <span class="token string">"_"</span> <span class="token operator">+</span> left <span class="token operator">+</span> right<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>反序列化的思路就是先将该字符串按下划线分开，全部放到队列中，然后按照出队顺序构建整棵树</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Node</span> <span class="token function">unserial</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nodes <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"_"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1213,13 +1179,12 @@ public static class Node &amp;#123;
     head<span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token function">process</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> head<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="折纸问题"><a href="#折纸问题" class="headerlink" title="折纸问题"></a>折纸问题</h3><blockquote>
 <p> 一段长纸条，从下边向上方对折1次，压出折痕后展开。此时折痕是凹下去的，即折痕突起的方向指向纸条的背面。如果从纸条的下边向上方连续对折2次，压出折痕后展开，此时有三条折痕，从 上到下依次是下折痕、下折痕和上折痕。</p>
 <p>给定一个输入参数N，代表纸条都从下边向上方连续对折N次。 请从上到下打印所有折痕的方向。 例如:N=1时，打印: down N=2时，打印: down down up</p>
 </blockquote>
 <p>对折纸条的过程中，从第一条折痕开始，折第二次时，第一条折痕上侧出现down，下侧出现up，折第三次时，第二条位于上侧的折痕上侧出现down，下侧出现up，第二条位于下侧的折痕同理，形成一个规律，这个规律构建了一棵假想的二叉树，对该树进行中序遍历即为答案</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm2_f2.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm2_f2.png" alt=""></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">paperFold</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token function">process</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
@@ -1231,7 +1196,6 @@ public static class Node &amp;#123;
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>down <span class="token operator">?</span> <span class="token string">"down "</span> <span class="token operator">:</span> <span class="token string">"up "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">process</span><span class="token punctuation">(</span>level <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="Morris遍历"><a href="#Morris遍历" class="headerlink" title="Morris遍历"></a>Morris遍历</h3><p>一种遍历二叉树的方式，并且时间复杂度O(N)，额外空间复杂度O(1) </p>
 <p>通过利用原树中大量空闲指针的方式，达到节省空间的目的</p>
 <p>Morris遍历细节 </p>
@@ -1268,7 +1232,6 @@ public static class Node &amp;#123;
         cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>right<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="先序遍历-1"><a href="#先序遍历-1" class="headerlink" title="先序遍历"></a>先序遍历</h4><p>对于先序来说，对于</p>
 <p>1）只到达一次的节点，就直接打印</p>
 <p>2）会到达两次的节点，只打印第一次</p>
@@ -1301,7 +1264,6 @@ public static class Node &amp;#123;
         cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>right<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="中序遍历-1"><a href="#中序遍历-1" class="headerlink" title="中序遍历"></a>中序遍历</h4><p>对于中序来说，对于</p>
 <p>1）只到达一次的节点，就直接打印</p>
 <p>2）会到达两次的节点，只打印第二次</p>
@@ -1331,7 +1293,6 @@ public static class Node &amp;#123;
         cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>right<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="后序遍历-1"><a href="#后序遍历-1" class="headerlink" title="后序遍历"></a>后序遍历</h4><p>对于后序来说，</p>
 <p>当第二次到达节点时，逆序打印该节点左子树的右边界（不含该节点），morris遍历完成之后，再逆序打印整棵树的右边界</p>
 <p>如何逆序打印一棵树的右边界？修改右边界的右指针全都指向父，根节点指向空，打印之后再改回来</p>
@@ -1354,7 +1315,6 @@ public static class Node &amp;#123;
     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">Node</span> cur <span class="token operator">=</span> tail<span class="token punctuation">;</span>cur <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>right<span class="token punctuation">)</span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">reverse</span><span class="token punctuation">(</span>tail<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">morrisPos</span><span class="token punctuation">(</span><span class="token class-name">Node</span> head<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
     <span class="token class-name">Node</span> cur <span class="token operator">=</span> head<span class="token punctuation">;</span>
@@ -1380,7 +1340,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token function">printEdge</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="判断搜索二叉树-1"><a href="#判断搜索二叉树-1" class="headerlink" title="判断搜索二叉树"></a>判断搜索二叉树</h4><p>改写中序遍历即可</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isBST</span><span class="token punctuation">(</span><span class="token class-name">Node</span> head<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
         <span class="token keyword">if</span><span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
@@ -1408,7 +1367,6 @@ public static class Node &amp;#123;
         <span class="token punctuation">&#125;</span>
         <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>使用树形DP：方法必须做第三次信息的强整合（一个节点必须要完左子树的信息，要完右子树的信息，然后回到该节点，做整合），必须用树形DP</p>
 <p>使用Morris遍历：不需要强整合，可以用树形DP，但是Morris遍历是最优解（因为Morris遍历不能第三次回到某个节点）</p>
 <h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><p>对于图的表达方式有很多，如邻接表法，邻接矩阵法，对于特定的问题也可以用一个数组，方式多种多样，但是图问题使用的算法是一样的，所以我们可以自己把一种表达方式练熟所有算法即可，将该表达方式作为模板，这样，遇到别的表达方式时，只需要将该表达方式转化为我们熟悉的模板即可</p>
@@ -1426,7 +1384,6 @@ public static class Node &amp;#123;
         edges <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p><code>点结构</code></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">ArrayList</span><span class="token punctuation">;</span>
 
@@ -1445,7 +1402,6 @@ public static class Node &amp;#123;
         edges <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p><code>边结构</code></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Edge</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">public</span> <span class="token keyword">int</span> weight<span class="token punctuation">;</span> <span class="token comment">// 权重</span>
@@ -1458,12 +1414,11 @@ public static class Node &amp;#123;
         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token keyword">to</span> <span class="token operator">=</span> <span class="token keyword">to</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <blockquote>
 <p>这里不需要考虑有向还是无向，因为无向图就是特殊的有向图</p>
 </blockquote>
 <p>假设题目给定的表达方式如图</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm2_f3.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/zuoshen-algorithm/algorithm2_f3.png" alt=""></p>
 <p>那么将该表达方式转化为模板代码如下</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Graph</span> <span class="token function">createGraph</span><span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token class-name">Graph</span> graph <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Graph</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1488,7 +1443,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> graph<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="宽度优先遍历-1"><a href="#宽度优先遍历-1" class="headerlink" title="宽度优先遍历"></a>宽度优先遍历</h3><p>建立一个队列和一个哈希set，从给定节点开始，入队，出队，打印，入队的同时注意在哈希set里也将其加入，为了防止A指向C，C又指向A，死循环，可以理解为节点进入了set，就相当于已经注册了</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">BFS</span><span class="token punctuation">(</span><span class="token class-name">Node</span> n<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
@@ -1507,7 +1461,6 @@ public static class Node &amp;#123;
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h3><p>不使用队列，使用栈。从给定节点开始入栈，然后弹出，当遇到没有注册过的节点，将弹出的节点重新压入，将这个没有注册过的压入，注册之后，重新进行循环</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">DFS</span><span class="token punctuation">(</span><span class="token class-name">Node</span> n<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
@@ -1529,7 +1482,6 @@ public static class Node &amp;#123;
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3><p>即图中某些点依赖于其他的点，具体到问题中是需要先完成某些事，才能做其他的某些事，所以需要找到最先能够不依赖别的事情的事，完成它们，然后才能完成其他的事，这就形成了一个顺序，即为拓扑排序</p>
 <blockquote>
 <p>前提是没有环，即不存在事件A依赖于事件B，事件B又依赖于事件A</p>
@@ -1559,7 +1511,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> result<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="最小生成树问题"><a href="#最小生成树问题" class="headerlink" title="最小生成树问题"></a>最小生成树问题</h3><p>即保证图连通，并且所有边加起来权重最小，下面的两个算法适用于无向图</p>
 <h4 id="K-kruskal-算法"><a href="#K-kruskal-算法" class="headerlink" title="K (kruskal) 算法"></a>K (kruskal) 算法</h4><p>即初始状态下每个点为独立的一个集合，将所有边按权重从小到大排列，然后遍历整个边集，从最小的开始，如果边的from和to不在一个集合中，则合并为一个集合</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> mySets<span class="token punctuation">&#123;</span>
@@ -1612,7 +1563,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> result<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <blockquote>
 <p>可以使用并查集替代<code>mySets</code>，更加高效</p>
 </blockquote>
@@ -1638,10 +1588,8 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> result<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <blockquote>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">Edge</span> each<span class="token operator">:</span><span class="token keyword">to</span><span class="token punctuation">.</span>edges<span class="token punctuation">)</span> pq<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>each<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <p>该行代码会重复把同一条边加入堆中，但是并不影响结果，而且边是有限的，外一层每次循环都会弹出一个，不会造成死循环</p>
 </blockquote>
 <h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><p>给定一个出发点，算法会得出从该点到其他点的最小距离，该算法只适用于权重为正数的边</p>
@@ -1681,7 +1629,6 @@ public static class Node &amp;#123;
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> minNode<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h4 id="2-0-堆优化方案"><a href="#2-0-堆优化方案" class="headerlink" title="2.0 堆优化方案"></a>2.0 堆优化方案</h4><p>改写小根堆，使堆增加如下性质：</p>
 <p>可以修改堆中某个节点的值，经过调整，仍然是小根堆</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> nodeRecord<span class="token punctuation">&#123;</span>

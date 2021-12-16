@@ -401,10 +401,10 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>PHP爆路径的一些方法</p>
-<h2 id="单引号爆路径"><a href="#单引号爆路径" class="headerlink" title="单引号爆路径"></a>单引号爆路径</h2><p>直接在URL后面加单引号，要求单引号没有被过滤(gpc=off)且服务器默认返回错误信息<br><a target="_blank" rel="noopener" href="http://www.xxx.com/news.php?id=149%E2%80%B2">www.xxx.com/news.php?id=149′</a></p>
-<h2 id="错误参数值爆路径"><a href="#错误参数值爆路径" class="headerlink" title="错误参数值爆路径"></a>错误参数值爆路径</h2><p>将要提交的参数值改成错误值，比如-1。-99999单引号被过滤时不妨试试<br><a target="_blank" rel="noopener" href="http://www.xxx.com/researcharchive.php?id=-1">www.xxx.com/researcharchive.php?id=-1</a></p>
+<h2 id="单引号爆路径"><a href="#单引号爆路径" class="headerlink" title="单引号爆路径"></a>单引号爆路径</h2><p>直接在URL后面加单引号，要求单引号没有被过滤(gpc=off)且服务器默认返回错误信息<br>www.xxx.com/news.php?id=149′</p>
+<h2 id="错误参数值爆路径"><a href="#错误参数值爆路径" class="headerlink" title="错误参数值爆路径"></a>错误参数值爆路径</h2><p>将要提交的参数值改成错误值，比如-1。-99999单引号被过滤时不妨试试<br>www.xxx.com/researcharchive.php?id=-1</p>
 <h2 id="Google爆路径"><a href="#Google爆路径" class="headerlink" title="Google爆路径"></a>Google爆路径</h2><p>结合关键字和site语法搜索出错页面的网页快照，常见关键字有warning和fatal error。注意，如果目标站点是二级域名，site接的是其对应的顶级域名，这样得到的信息要多得多<br>Site:xxx.edu.tw warning<br>Site:xxx.com.tw “fatal error”</p>
-<h2 id="测试文件爆路径"><a href="#测试文件爆路径" class="headerlink" title="测试文件爆路径"></a>测试文件爆路径</h2><p>很多网站的根目录下都存在测试文件，脚本代码通常都是phpinfo()。<br><a target="_blank" rel="noopener" href="http://www.xxx.com/test.php">www.xxx.com/test.php</a><br><a target="_blank" rel="noopener" href="http://www.xxx.com/ceshi.php">www.xxx.com/ceshi.php</a><br><a target="_blank" rel="noopener" href="http://www.xxx.com/info.php">www.xxx.com/info.php</a><br><a target="_blank" rel="noopener" href="http://www.xxx.com/phpinfo.php">www.xxx.com/phpinfo.php</a><br><a target="_blank" rel="noopener" href="http://www.xxx.com/php_info.php">www.xxx.com/php_info.php</a><br><a target="_blank" rel="noopener" href="http://www.xxx.com/1.php">www.xxx.com/1.php</a></p>
+<h2 id="测试文件爆路径"><a href="#测试文件爆路径" class="headerlink" title="测试文件爆路径"></a>测试文件爆路径</h2><p>很多网站的根目录下都存在测试文件，脚本代码通常都是phpinfo()。<br>www.xxx.com/test.php<br>www.xxx.com/ceshi.php<br>www.xxx.com/info.php<br>www.xxx.com/phpinfo.php<br>www.xxx.com/php_info.php<br>www.xxx.com/1.php</p>
 <h2 id="phpmyadmin爆路径"><a href="#phpmyadmin爆路径" class="headerlink" title="phpmyadmin爆路径"></a>phpmyadmin爆路径</h2><p>一旦找到phpmyadmin的管理页面，再访问该目录下的某些特定文件，就很有可能爆出物理路径。至于phpmyadmin的地址可以用wwwscan这类的工具去扫，也可以选择google。PS：有些BT网站会写成phpMyAdmin</p>
 <ol>
 <li>/phpmyadmin/libraries/lect_lang.lib.php</li>

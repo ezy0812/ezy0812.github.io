@@ -12,8 +12,7 @@ MISC小姐姐
 想复杂了，想改变图片高度宽度之类的，淦
 
 
-或者使用strings命令
-kali@kali:~&amp;#x2F;Desktop$ strings x">
+或者使用strings命令kali@kali:~&amp;#x2F;Desktop$ strings xi">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -371,7 +370,7 @@ kali@kali:~&amp;#x2F;Desktop$ strings x">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    441
+                    439
                 </div>
                 
 
@@ -407,30 +406,26 @@ kali@kali:~&amp;#x2F;Desktop$ strings x">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>一次CTF比赛记录</p>
-<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="小姐姐"><a href="#小姐姐" class="headerlink" title="小姐姐"></a>小姐姐</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f1.jpeg"></p>
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="小姐姐"><a href="#小姐姐" class="headerlink" title="小姐姐"></a>小姐姐</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f1.jpeg" alt=""></p>
 <p>可以看到图片中间明显错位，直接UltraEdit搜索BJD</p>
 <blockquote>
 <p>想复杂了，想改变图片高度宽度之类的，淦</p>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f2.png"></p>
-<p>或者使用strings命令</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kali@kali:~&#x2F;Desktop$ strings xiaojiejie.jpeg | grep &quot;BJD&quot;
-BJD&#123;haokanma_xjj&#125;|&#x2F;|<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
+<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f2.png" alt=""></p>
+<p>或者使用strings命令<br><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kali@kali:~&#x2F;Desktop$ strings xiaojiejie.jpeg | grep &quot;BJD&quot;
+BJD&#123;haokanma_xjj&#125;|&#x2F;|<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></p>
 <h3 id="简单的MISC"><a href="#简单的MISC" class="headerlink" title="简单的MISC"></a>简单的MISC</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/CTF-files/secret.zip">题目</a><br>先是zip伪加密</p>
 <blockquote>
 <p>拿到一个压缩文件，先查看是否是伪加密</p>
-</blockquote>
-<blockquote>
 <p>在压缩文件里的每个文件的文件目录字段有一位专门标识了文件是否加密，将其设置为00，若为伪加密，即可成功解开压缩包</p>
 </blockquote>
-<p>用UltraEdit打开压缩包，搜索目录字段 50 4B 01 02，从50开始计算，第九第十个bit即为加密字段，将其设置为00<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f3.png"><br>成功解开压缩包</p>
-<p>打开secret文件，查看到有IHDR数据块<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f4.png"> </p>
+<p>用UltraEdit打开压缩包，搜索目录字段 50 4B 01 02，从50开始计算，第九第十个bit即为加密字段，将其设置为00<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f3.png" alt=""><br>成功解开压缩包</p>
+<p>打开secret文件，查看到有IHDR数据块<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f4.png" alt=""> </p>
 <blockquote>
 <p>IHDR数据块是PNG文件头数据块，二进制为0D 0A 1A 0A  </p>
 </blockquote>
-<p>缺失了PNG文件头，补上文件头89 50 4E 47<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f5.png"><br>后缀名改成png，可以看到一串字符串<br>尝试16进制解码得到flag</p>
-<h3 id="TARGZ"><a href="#TARGZ" class="headerlink" title="TARGZ"></a>TARGZ</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/CTF-files/hW1ES89jF.tar.gz">题目</a><br>题目中提示解压密码不需要爆破，密码猜想是文件名字<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f6.png"><br>解压之后发现又是一个压缩包，使用Python脚本递归解压</p>
+<p>缺失了PNG文件头，补上文件头89 50 4E 47<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f5.png" alt=""><br>后缀名改成png，可以看到一串字符串<br>尝试16进制解码得到flag</p>
+<h3 id="TARGZ"><a href="#TARGZ" class="headerlink" title="TARGZ"></a>TARGZ</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/CTF-files/hW1ES89jF.tar.gz">题目</a><br>题目中提示解压密码不需要爆破，密码猜想是文件名字<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f6.png" alt=""><br>解压之后发现又是一个压缩包，使用Python脚本递归解压</p>
 <details>
 <summary>python脚本</summary>
 
@@ -450,11 +445,9 @@ p <span class="token operator">=</span> <span class="token string">'hW1ES89jF'</
 <p>注意pwd参数需要转成字节</p>
 </blockquote>
 <p>最后报错得出flag文件</p>
-<h3 id="圣火昭昭"><a href="#圣火昭昭" class="headerlink" title="圣火昭昭"></a>圣火昭昭</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/CTF-files/sheng_huo_zhao_zhao.zip">题目</a><br>题目提示全靠<strong>猜</strong>，使用outguess<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f7.png"><br>查看图片备注信息，是新佛曰，去<a target="_blank" rel="noopener" href="http://hi.pcmoe.net/buddha.html">网站</a>解密得到密码<br>使用outguess解密图片得到flag  </p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">outguess -k &quot;gemlove&quot; -r sheng_huo_zhao_zhao.jpg 1.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h3 id="A-Beautiful-Picture"><a href="#A-Beautiful-Picture" class="headerlink" title="A_Beautiful_Picture"></a>A_Beautiful_Picture</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/CTF-files/Misc-A_Beautiful_Picture-DreamerJack.png"><br>查看图片分辨率为1000 $\times$ 900,修改图片高度为1000<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f8.png">    </p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
+<h3 id="圣火昭昭"><a href="#圣火昭昭" class="headerlink" title="圣火昭昭"></a>圣火昭昭</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/ezy0812/CDN/CTF-files/sheng_huo_zhao_zhao.zip">题目</a><br>题目提示全靠<strong>猜</strong>，使用outguess<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f7.png" alt=""><br>查看图片备注信息，是新佛曰，去<a target="_blank" rel="noopener" href="http://hi.pcmoe.net/buddha.html">网站</a>解密得到密码<br>使用outguess解密图片得到flag<br><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">outguess -k &quot;gemlove&quot; -r sheng_huo_zhao_zhao.jpg 1.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
+<h3 id="A-Beautiful-Picture"><a href="#A-Beautiful-Picture" class="headerlink" title="A_Beautiful_Picture"></a>A_Beautiful_Picture</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/CTF-files/Misc-A_Beautiful_Picture-DreamerJack.png" alt=""><br>查看图片分辨率为1000 $\times$ 900,修改图片高度为1000<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_WriteUp/BJDCTF_f8.png" alt="">    </p>
+<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3>
                 
             </div>
             <hr/>
