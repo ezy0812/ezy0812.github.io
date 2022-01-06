@@ -371,7 +371,7 @@ r1 =">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.2k
+                    3.1k
                 </div>
                 
 
@@ -828,33 +828,30 @@ sel <span class="token operator">=</span> Select<span class="token punctuation">
 
 web<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>当页面内容是通过js或者ajax请求获得的数据时，无法通过查看源代码获得数据，可通过web.page_source获得</p>
-<h3 id="定位元素方式总结"><a href="#定位元素方式总结" class="headerlink" title="定位元素方式总结"></a>定位元素方式总结</h3><ol>
-<li><p>```python<br>inputForm = web.find_element_by_id(‘kw’)<br>inputForm.send_keys(‘python’)</p>
-<pre class="line-numbers language-none"><code class="language-none">
-2. &#96;&#96;&#96;python
-   inputForm &#x3D; web.find_element_by_name(&#39;wd&#39;)
-   inputForm.send_keys(&#39;python&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>```python<br>inputForm = web.find_element_by_class_name(‘cls’)<br>inputForm.send_keys(‘python’)</p>
-<pre class="line-numbers language-none"><code class="language-none">
-4. &#96;&#96;&#96;python
-   inputForm &#x3D; web.find_element_by_xpath(&quot;&#x2F;&#x2F;input[@id&#x3D;&#39;kw&#39;]&quot;)
-   inputForm.send_keys(&#39;python&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>```python<br>inputForm = web.find_element_by_css_selector(“.quickdelete-wrap &gt; input”)<br>inputForm.send_keys(‘python’)</p>
-<pre class="line-numbers language-none"><code class="language-none">
-&gt; &#96;find_element&#96; 获取第一个满足条件的元素，&#96;find_elements&#96;获取满足所有条件的元素
+<h3 id="定位元素方式总结"><a href="#定位元素方式总结" class="headerlink" title="定位元素方式总结"></a>定位元素方式总结</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">inputForm <span class="token operator">=</span> web<span class="token punctuation">.</span>find_element_by_id<span class="token punctuation">(</span><span class="token string">'kw'</span><span class="token punctuation">)</span>
+inputForm<span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'python'</span><span class="token punctuation">)</span>
 
-### 操作表单元素
+inputForm <span class="token operator">=</span> web<span class="token punctuation">.</span>find_element_by_name<span class="token punctuation">(</span><span class="token string">'wd'</span><span class="token punctuation">)</span>
+inputForm<span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'python'</span><span class="token punctuation">)</span>
 
-1. 操作输入框
+inputForm <span class="token operator">=</span> web<span class="token punctuation">.</span>find_element_by_class_name<span class="token punctuation">(</span><span class="token string">'cls'</span><span class="token punctuation">)</span>
+inputForm<span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'python'</span><span class="token punctuation">)</span>
 
-   &#96;&#96;&#96;python
-   inputForm &#x3D; web.find_element_by_id(&quot;kw&quot;)
-   inputForm.send_keys(&#39;python&#39;)
-   time.sleep(5)
-   # 清楚输入框内容
-   inputForm.clear()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+inputForm <span class="token operator">=</span> web<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">"//input[@id='kw']"</span><span class="token punctuation">)</span>
+inputForm<span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'python'</span><span class="token punctuation">)</span>
+
+inputForm <span class="token operator">=</span> web<span class="token punctuation">.</span>find_element_by_css_selector<span class="token punctuation">(</span><span class="token string">".quickdelete-wrap > input"</span><span class="token punctuation">)</span>
+inputForm<span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'python'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p><code>find_element</code> 获取第一个满足条件的元素，<code>find_elements</code>获取满足所有条件的元素</p>
+</blockquote>
+<h3 id="操作表单元素"><a href="#操作表单元素" class="headerlink" title="操作表单元素"></a>操作表单元素</h3><ol>
+<li><p>操作输入框</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">inputForm <span class="token operator">=</span> web<span class="token punctuation">.</span>find_element_by_id<span class="token punctuation">(</span><span class="token string">"kw"</span><span class="token punctuation">)</span>
+inputForm<span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'python'</span><span class="token punctuation">)</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token comment"># 清楚输入框内容</span>
+inputForm<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>操作checkbox</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">checkbox <span class="token operator">=</span> web<span class="token punctuation">.</span>find_element_by_name<span class="token punctuation">(</span><span class="token string">"Fruit"</span><span class="token punctuation">)</span>
