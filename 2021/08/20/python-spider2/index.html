@@ -364,14 +364,14 @@ r1 =">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-11-07
+                    2022-01-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.1k
+                    3.2k
                 </div>
                 
 
@@ -417,10 +417,10 @@ result1 <span class="token operator">=</span> r1<span class="token punctuation">
 result2 <span class="token operator">=</span> r2<span class="token punctuation">.</span>findall<span class="token punctuation">(</span>s<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>result2<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>output</code></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span><span class="token string">'玩儿吃鸡游戏，晚上一起玩游戏，干嘛呢？打游戏'</span><span class="token punctuation">]</span>
-<span class="token punctuation">[</span><span class="token string">'玩儿吃鸡游戏'</span><span class="token punctuation">]</span>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[&#39;玩儿吃鸡游戏，晚上一起玩游戏，干嘛呢？打游戏&#39;]
+[&#39;玩儿吃鸡游戏&#39;]
 
-Process finished with <span class="token builtin class-name">exit</span> code <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+Process finished with exit code 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>贪婪匹配会尽可能多的匹配内容，而懒惰匹配则相反</p>
 </blockquote>
@@ -431,10 +431,10 @@ c <span class="token operator">=</span> re<span class="token punctuation">.</spa
 <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'b is '</span> <span class="token punctuation">,</span> b<span class="token punctuation">)</span>
 <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'c is '</span> <span class="token punctuation">,</span> c<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>output</code></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">b is  <span class="token punctuation">[</span><span class="token punctuation">]</span>
-c is  <span class="token punctuation">[</span><span class="token string">'lsdlfsdfiooefo:\n877898989'</span><span class="token punctuation">]</span>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">b is  []
+c is  [&#39;lsdlfsdfiooefo:\n877898989&#39;]
 
-Process finished with <span class="token builtin class-name">exit</span> code <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+Process finished with exit code 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>如果不使用re.S参数，则只在每一行内进行匹配，如果一行没有，就换下一行重新开始。</p>
 <p>而使用re.S参数以后，正则表达式会将这个字符串作为一个整体，在整体中进行匹配。</p>
@@ -593,7 +593,7 @@ divs <span class="token operator">=</span> html<span class="token punctuation">.
         <span class="token keyword">pass</span>
 
 resp<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="requests库使用Cookie"><a href="#requests库使用Cookie" class="headerlink" title="requests库使用Cookie"></a><code>requests</code>库使用Cookie</h2><h5 id="使用session"><a href="#使用session" class="headerlink" title="使用session"></a>使用session</h5><pre class="line-numbers language-python" data-language="python"><code class="language-python">headers <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+<h2 id="requests库使用Cookie"><a href="#requests库使用Cookie" class="headerlink" title="requests库使用Cookie"></a>requests库使用Cookie</h2><h5 id="使用session"><a href="#使用session" class="headerlink" title="使用session"></a>使用session</h5><pre class="line-numbers language-python" data-language="python"><code class="language-python">headers <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
     <span class="token string">"User-Agent"</span><span class="token punctuation">:</span> <span class="token string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) "</span>
                   <span class="token string">"AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.12 Safari/537.36"</span>
 <span class="token punctuation">&#125;</span>
@@ -755,7 +755,7 @@ resp2 <span class="token operator">=</span> requests<span class="token punctuati
         <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'video/</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">.ts'</span></span><span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> e<span class="token punctuation">:</span>
             f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>e<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
-<h2 id="selenium模块"><a href="#selenium模块" class="headerlink" title="selenium模块"></a><code>selenium</code>模块</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver <span class="token keyword">import</span> Chrome
+<h2 id="selenium模块"><a href="#selenium模块" class="headerlink" title="selenium模块"></a>selenium模块</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver <span class="token keyword">import</span> Chrome
 <span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>keys <span class="token keyword">import</span> Keys
 <span class="token keyword">import</span> time
 
@@ -777,7 +777,7 @@ li_list <span class="token operator">=</span> web<span class="token punctuation"
     company <span class="token operator">=</span> li<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'./div[1]/div[2]/div[1]/a'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>text
     <span class="token keyword">print</span><span class="token punctuation">(</span>company<span class="token punctuation">,</span> job_name<span class="token punctuation">,</span> job_salary<span class="token punctuation">)</span>
 web<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="切换窗口方法1"><a href="#切换窗口方法1" class="headerlink" title="切换窗口方法1"></a>切换窗口方法1</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver <span class="token keyword">import</span> Chrome
+<h3 id="切换窗口方法1"><a href="#切换窗口方法1" class="headerlink" title="切换窗口方法1"></a>切换窗口方法1</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver <span class="token keyword">import</span> Chrome
 <span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>keys <span class="token keyword">import</span> Keys
 <span class="token keyword">import</span> time
 
@@ -797,13 +797,13 @@ job_detail <span class="token operator">=</span> web<span class="token punctuati
 web<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
 web<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>window<span class="token punctuation">(</span>web<span class="token punctuation">.</span>window_handles<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 web<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="切换窗口方法2-用于含有iframe标签的页面"><a href="#切换窗口方法2-用于含有iframe标签的页面" class="headerlink" title="切换窗口方法2(用于含有iframe标签的页面)"></a>切换窗口方法2(用于含有iframe标签的页面)</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">web<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://91kanju.com/vod-play/541-1-1.html"</span><span class="token punctuation">)</span>
+<h3 id="切换窗口方法2-用于含有iframe标签的页面"><a href="#切换窗口方法2-用于含有iframe标签的页面" class="headerlink" title="切换窗口方法2(用于含有iframe标签的页面)"></a>切换窗口方法2(用于含有iframe标签的页面)</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">web<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://91kanju.com/vod-play/541-1-1.html"</span><span class="token punctuation">)</span>
 time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
 iframe <span class="token operator">=</span> web<span class="token punctuation">.</span>find_element_by_xpath<span class="token punctuation">(</span><span class="token string">'//*[@id="player_iframe"]'</span><span class="token punctuation">)</span>
 web<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>frame<span class="token punctuation">(</span>iframe<span class="token punctuation">)</span>
 time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
 web<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>default_content<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="无头浏览器（即不显示出打开浏览器的过程，使其在后台运行）"><a href="#无头浏览器（即不显示出打开浏览器的过程，使其在后台运行）" class="headerlink" title="无头浏览器（即不显示出打开浏览器的过程，使其在后台运行）"></a>无头浏览器（即不显示出打开浏览器的过程，使其在后台运行）</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver <span class="token keyword">import</span> Chrome
+<h3 id="无头浏览器（即不显示出打开浏览器的过程，使其在后台运行）"><a href="#无头浏览器（即不显示出打开浏览器的过程，使其在后台运行）" class="headerlink" title="无头浏览器（即不显示出打开浏览器的过程，使其在后台运行）"></a>无头浏览器（即不显示出打开浏览器的过程，使其在后台运行）</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver <span class="token keyword">import</span> Chrome
 <span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support<span class="token punctuation">.</span>select <span class="token keyword">import</span> Select
 <span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>chrome<span class="token punctuation">.</span>options <span class="token keyword">import</span> Options
 <span class="token keyword">import</span> time
@@ -827,7 +827,8 @@ sel <span class="token operator">=</span> Select<span class="token punctuation">
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"========================="</span><span class="token punctuation">)</span>
 
 web<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="当页面内容是通过js或者ajax请求获得的数据时，无法通过查看源代码获得数据，可通过web-page-source获得"><a href="#当页面内容是通过js或者ajax请求获得的数据时，无法通过查看源代码获得数据，可通过web-page-source获得" class="headerlink" title="当页面内容是通过js或者ajax请求获得的数据时，无法通过查看源代码获得数据，可通过web.page_source获得"></a>当页面内容是通过js或者ajax请求获得的数据时，无法通过查看源代码获得数据，可通过<code>web.page_source</code>获得</h5><h4 id="定位元素方式总结"><a href="#定位元素方式总结" class="headerlink" title="定位元素方式总结"></a>定位元素方式总结</h4><ol>
+<p>当页面内容是通过js或者ajax请求获得的数据时，无法通过查看源代码获得数据，可通过web.page_source获得</p>
+<h3 id="定位元素方式总结"><a href="#定位元素方式总结" class="headerlink" title="定位元素方式总结"></a>定位元素方式总结</h3><ol>
 <li><p>```python<br>inputForm = web.find_element_by_id(‘kw’)<br>inputForm.send_keys(‘python’)</p>
 <pre class="line-numbers language-none"><code class="language-none">
 2. &#96;&#96;&#96;python
@@ -844,7 +845,7 @@ web<span class="token punctuation">.</span>close<span class="token punctuation">
 <pre class="line-numbers language-none"><code class="language-none">
 &gt; &#96;find_element&#96; 获取第一个满足条件的元素，&#96;find_elements&#96;获取满足所有条件的元素
 
-#### 操作表单元素
+### 操作表单元素
 
 1. 操作输入框
 
@@ -885,7 +886,7 @@ time<span class="token punctuation">.</span>sleep<span class="token punctuation"
 web<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ol>
-<h4 id="行为链"><a href="#行为链" class="headerlink" title="行为链"></a>行为链</h4><p>页面操作分为多步，可以使用鼠标行为链类<code>ActionChains</code>完成</p>
+<h3 id="行为链"><a href="#行为链" class="headerlink" title="行为链"></a>行为链</h3><p>页面操作分为多步，可以使用鼠标行为链类<code>ActionChains</code>完成</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>action_chains <span class="token keyword">import</span> ActionChains
 web<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.baidu.com/"</span><span class="token punctuation">)</span>
 inputForm <span class="token operator">=</span> web<span class="token punctuation">.</span>find_element_by_id<span class="token punctuation">(</span><span class="token string">'kw'</span><span class="token punctuation">)</span>
@@ -909,7 +910,7 @@ web<span class="token punctuation">.</span>quit<span class="token punctuation">(
 </ul>
 <p>更多方法参考 <a target="_blank" rel="noopener" href="https://selenium-python.readthedocs.io/api.html">https://selenium-python.readthedocs.io/api.html</a></p>
 </blockquote>
-<h4 id="操作cookie"><a href="#操作cookie" class="headerlink" title="操作cookie"></a>操作cookie</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 获取所有cookie</span>
+<h3 id="操作cookie"><a href="#操作cookie" class="headerlink" title="操作cookie"></a>操作cookie</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 获取所有cookie</span>
 <span class="token keyword">for</span> cookie <span class="token keyword">in</span> web<span class="token punctuation">.</span>get_cookies<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>cookie<span class="token punctuation">)</span>
 <span class="token comment"># 针对某个key获取value</span>
@@ -918,7 +919,7 @@ web<span class="token punctuation">.</span>quit<span class="token punctuation">(
 web<span class="token punctuation">.</span>delete_cookie<span class="token punctuation">(</span><span class="token string">"PSTM"</span><span class="token punctuation">)</span>
 
 web<span class="token punctuation">.</span>delete_all_cookies<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="页面等待"><a href="#页面等待" class="headerlink" title="页面等待"></a>页面等待</h4><p>隐式等待 - 调用<code>implicitly_wait</code>，在获取不可用的元素之前，会先等待一些时间</p>
+<h3 id="页面等待"><a href="#页面等待" class="headerlink" title="页面等待"></a>页面等待</h3><p>隐式等待 - 调用<code>implicitly_wait</code>，在获取不可用的元素之前，会先等待一些时间</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">web<span class="token punctuation">.</span>implicitly_wait<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
 web<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.baidu.com/"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>显式等待 - 表明某个条件成立后才执行获取元素的操作，也可以在等待中指定一个最大的时间，如果超过这个时间，就会抛出异常。使用<code>selenium.webdriver.support.ui.WebDriverWait</code> 和 <code>selenium.webdriver.support.expected_conditions</code>配合完成</p>
@@ -929,7 +930,7 @@ web<span class="token punctuation">.</span>get<span class="token punctuation">(<
     element <span class="token operator">=</span> WebDriverWait<span class="token punctuation">(</span>web<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span>expected_conditions<span class="token punctuation">.</span>presence_of_element_located<span class="token punctuation">(</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> <span class="token string">"myelement"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">finally</span><span class="token punctuation">:</span>
     web<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="切换页面"><a href="#切换页面" class="headerlink" title="切换页面"></a>切换页面</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">web<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.baidu.com/"</span><span class="token punctuation">)</span>
+<h3 id="切换页面"><a href="#切换页面" class="headerlink" title="切换页面"></a>切换页面</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">web<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.baidu.com/"</span><span class="token punctuation">)</span>
 <span class="token comment"># 调用js语法打开新的页面</span>
 web<span class="token punctuation">.</span>execute_script<span class="token punctuation">(</span><span class="token string">"window.open('https://www.douban.com/')"</span><span class="token punctuation">)</span>
 <span class="token comment"># 切换到该页面中</span>
@@ -937,12 +938,12 @@ web<span class="token punctuation">.</span>switch_to<span class="token punctuati
 <span class="token keyword">print</span><span class="token punctuation">(</span>web<span class="token punctuation">.</span>current_url<span class="token punctuation">)</span>
 time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
 web<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+<h3 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
 options <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>ChromeOptions<span class="token punctuation">(</span><span class="token punctuation">)</span>
 options<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">"--proxy-server=http://ip:port"</span><span class="token punctuation">)</span>
 web <span class="token operator">=</span> Chrome<span class="token punctuation">(</span>chrome_options<span class="token operator">=</span>options<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="保存页面截图"><a href="#保存页面截图" class="headerlink" title="保存页面截图"></a>保存页面截图</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">web<span class="token punctuation">.</span>save_screenshot<span class="token punctuation">(</span><span class="token string">'a.jpg'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="爬取百度校招职位"><a href="#爬取百度校招职位" class="headerlink" title="爬取百度校招职位"></a>爬取百度校招职位</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+<h3 id="保存页面截图"><a href="#保存页面截图" class="headerlink" title="保存页面截图"></a>保存页面截图</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">web<span class="token punctuation">.</span>save_screenshot<span class="token punctuation">(</span><span class="token string">'a.jpg'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="爬取百度校招职位"><a href="#爬取百度校招职位" class="headerlink" title="爬取百度校招职位"></a>爬取百度校招职位</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
 <span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>by <span class="token keyword">import</span> By
 <span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support<span class="token punctuation">.</span>ui <span class="token keyword">import</span> WebDriverWait
 <span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support <span class="token keyword">import</span> expected_conditions
@@ -1305,7 +1306,7 @@ driver<span class="token punctuation">.</span>get<span class="token punctuation"
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2021</span>
+                <span id="year">2019-2022</span>
             
             <a href="/about" target="_blank">ezy</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
