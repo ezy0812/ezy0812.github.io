@@ -368,21 +368,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-07
+                    2022-09-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    493
+                    647
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -402,72 +402,77 @@
         
 
         
-        <!-- 代码块折行 -->
-        <style type="text/css">
-            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
-        </style>
-        
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>作为红队，首先要做到隐藏自身，防止被溯源</p>
 <h2 id="不需要实名的VPS"><a href="#不需要实名的VPS" class="headerlink" title="不需要实名的VPS"></a>不需要实名的VPS</h2><p>vultr</p>
 <p>可以使用CentOS SELinux 7 x64</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># yum install net-tools</span>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@vultr ~]# yum install net-tools
 
-<span class="token comment"># 安装msf</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># chmod +x msfinstall </span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># ./msfinstall </span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># rm -rf msfinstall</span>
+# 安装msf
+[root@vultr ~]# curl https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;rapid7&#x2F;metasploit-omnibus&#x2F;master&#x2F;config&#x2F;templates&#x2F;metasploit-framework-wrappers&#x2F;msfupdate.erb &gt; msfinstall
+[root@vultr ~]# chmod +x msfinstall 
+[root@vultr ~]# .&#x2F;msfinstall 
+[root@vultr ~]# rm -rf msfinstall
 
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># yum install nc -y</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># yum install nmap -y</span>
+[root@vultr ~]# yum install nc -y
+[root@vultr ~]# yum install nmap -y
 
-<span class="token comment"># sqlmap</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># wget https://codeload.github.com/sqlmapproject/sqlmap/legacy.tar.gz/master</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># tar -zxvf master</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># mv sqlmapproject-sqlmap-97b88b0 sqlmap</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># rm -rf master</span>
+# sqlmap
+[root@vultr ~]# wget https:&#x2F;&#x2F;codeload.github.com&#x2F;sqlmapproject&#x2F;sqlmap&#x2F;legacy.tar.gz&#x2F;master
+[root@vultr ~]# tar -zxvf master
+[root@vultr ~]# mv sqlmapproject-sqlmap-97b88b0 sqlmap
+[root@vultr ~]# rm -rf master
 
-<span class="token comment"># 安装java</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># wget https://repo.huaweicloud.com/java/jdk/8u171-b11/jdk-8u171-linux-x64.tar.gz</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># tar -zxvf jdk-8u171-linux-x64.tar.gz -C /usr/lib/</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># echo "export JAVA_HOME=/usr/lib/jdk1.8.0_171/" >> /etc/profile</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># echo "export JRE_HOME=/usr/lib/jdk1.8.0_171/jre" >> /etc/profile</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># echo "export PATH=\$JAVA_HOME/bin:\$JAVA_HOME/jre/bin:\$PATH" >> /etc/profile</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># echo "export CLASSPATH=\$CLASSPATH:.:\$JAVA_HOME/lib:\$JAVA_HOME/jre/lib" >> /etc/profile</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># source /etc/profile</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># java -version</span>
-java version <span class="token string">"1.8.0_171"</span>
-Java<span class="token punctuation">(</span>TM<span class="token punctuation">)</span> SE Runtime Environment <span class="token punctuation">(</span>build <span class="token number">1.8</span>.0_171-b11<span class="token punctuation">)</span>
-Java HotSpot<span class="token punctuation">(</span>TM<span class="token punctuation">)</span> <span class="token number">64</span>-Bit Server VM <span class="token punctuation">(</span>build <span class="token number">25.171</span>-b11, mixed mode<span class="token punctuation">)</span>
+# 安装java
+[root@vultr ~]# wget https:&#x2F;&#x2F;repo.huaweicloud.com&#x2F;java&#x2F;jdk&#x2F;8u171-b11&#x2F;jdk-8u171-linux-x64.tar.gz
+[root@vultr ~]# tar -zxvf jdk-8u171-linux-x64.tar.gz -C &#x2F;usr&#x2F;lib&#x2F;
+[root@vultr ~]# echo &quot;export JAVA_HOME&#x3D;&#x2F;usr&#x2F;lib&#x2F;jdk1.8.0_171&#x2F;&quot; &gt;&gt; &#x2F;etc&#x2F;profile
+[root@vultr ~]# echo &quot;export JRE_HOME&#x3D;&#x2F;usr&#x2F;lib&#x2F;jdk1.8.0_171&#x2F;jre&quot; &gt;&gt; &#x2F;etc&#x2F;profile
+[root@vultr ~]# echo &quot;export PATH&#x3D;\$JAVA_HOME&#x2F;bin:\$JAVA_HOME&#x2F;jre&#x2F;bin:\$PATH&quot; &gt;&gt; &#x2F;etc&#x2F;profile
+[root@vultr ~]# echo &quot;export CLASSPATH&#x3D;\$CLASSPATH:.:\$JAVA_HOME&#x2F;lib:\$JAVA_HOME&#x2F;jre&#x2F;lib&quot; &gt;&gt; &#x2F;etc&#x2F;profile
+[root@vultr ~]# source &#x2F;etc&#x2F;profile
+[root@vultr ~]# java -version
+java version &quot;1.8.0_171&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_171-b11)
+Java HotSpot(TM) 64-Bit Server VM (build 25.171-b11, mixed mode)
 
-<span class="token comment"># 安装CS （客户端需要java版本1.8，高版本不行）</span>
-<span class="token comment"># 先安装一个传输工具，上传cobaltstrike4.3.zip</span>
-<span class="token comment"># 运行前先关闭防火墙</span>
-<span class="token punctuation">[</span>root@vultr cobaltstrike4.3<span class="token punctuation">]</span><span class="token comment"># systemctl stop firewalld.service</span>
-<span class="token punctuation">[</span>root@vultr cobaltstrike4.3<span class="token punctuation">]</span><span class="token comment"># systemctl disable firewalld.service</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># yum -y install lrzsz</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># rz -y</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># yum install unzip</span>
-<span class="token punctuation">[</span>root@vultr ~<span class="token punctuation">]</span><span class="token comment"># unzip cobaltstrike4.3.zip </span>
-<span class="token punctuation">[</span>root@vultr cobaltstrike4.3<span class="token punctuation">]</span><span class="token comment"># chmod +x teamserver</span>
-<span class="token punctuation">[</span>root@vultr cobaltstrike4.3<span class="token punctuation">]</span><span class="token comment"># ./teamserver ip password</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# 安装CS （客户端需要java版本1.8，高版本不行）
+# 先安装一个传输工具，上传cobaltstrike4.3.zip
+# 运行前先关闭防火墙
+[root@vultr cobaltstrike4.3]# systemctl stop firewalld.service
+[root@vultr cobaltstrike4.3]# systemctl disable firewalld.service
+[root@vultr ~]# yum -y install lrzsz
+[root@vultr ~]# rz -y
+[root@vultr ~]# yum install unzip
+[root@vultr ~]# unzip cobaltstrike4.3.zip 
+[root@vultr cobaltstrike4.3]# chmod +x teamserver
+[root@vultr cobaltstrike4.3]# .&#x2F;teamserver ip password<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="钓鱼域名"><a href="#钓鱼域名" class="headerlink" title="钓鱼域名"></a>钓鱼域名</h2><p><a target="_blank" rel="noopener" href="https://my.freenom.com/clientarea.php?action=domains">https://my.freenom.com/clientarea.php?action=domains</a></p>
 <p>注册一个域名</p>
+<p>该网站的my details里面地区设为vpn的地区</p>
 <h2 id="注册CDN"><a href="#注册CDN" class="headerlink" title="注册CDN"></a>注册CDN</h2><p><a target="_blank" rel="noopener" href="https://www.cloudflare.com/zh-cn/">https://www.cloudflare.com/zh-cn/</a></p>
-<p>在账号中添加注册的域名，然后添加A记录，解析到VPS的IP地址，去域名管理商里修改Nameservers为cloudflare的域名即可</p>
+<p>在账号中添加注册的域名，然后添加A记录，解析到VPS的IP地址</p>
+<p>去域名管理商里修改Nameservers为cloudflare的域名即可</p>
 <p>去缓存的配置界面开启CDN的开发模式（3小时自动失效，还需要自己手动开启）+ Always Online™Beta</p>
 <p>SSL/TLS 加密模式要为灵活</p>
-<h2 id="上线端口"><a href="#上线端口" class="headerlink" title="上线端口"></a>上线端口</h2><p>cloudflare可用的上线端口：</p>
+<p>设置完之后去全国ping里面ping一下是否有CDN</p>
+<h2 id="渗透使用全英文的操作系统"><a href="#渗透使用全英文的操作系统" class="headerlink" title="渗透使用全英文的操作系统"></a>渗透使用全英文的操作系统</h2><h2 id="上线端口"><a href="#上线端口" class="headerlink" title="上线端口"></a>上线端口</h2><p>cloudflare可用的上线端口：</p>
 <ul>
 <li><p>对于http 80 8080 8880 2052 2082</p>
 </li>
 <li><p>对于https 443 2053 2083 2096</p>
 </li>
 </ul>
-<p>不要用reverse_tcp上线，否则会暴露服务器真实IP，使用http和https上线为CDN的IP</p>
+<p>不要用reverse_tcp上线，否则会暴露服务器真实IP，使用http和https上线才是CDN的IP</p>
+<h2 id="cs使用"><a href="#cs使用" class="headerlink" title="cs使用"></a>cs使用</h2><h3 id="设置监听器"><a href="#设置监听器" class="headerlink" title="设置监听器"></a>设置监听器</h3><p>name随便填</p>
+<p>Http Hosts和Http Host填CDN域名</p>
+<p>Http Host Header填google.com</p>
+<h3 id="上线交互"><a href="#上线交互" class="headerlink" title="上线交互"></a>上线交互</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">加速命令回显
+<span class="token function">sleep</span> <span class="token number">0</span>
+
+shell <span class="token string">"whoami"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
