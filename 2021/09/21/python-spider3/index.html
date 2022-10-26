@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="keywords" content="python-spider3, ezy&#39;s blog">
     <meta name="description" content="scrapy
-create project fileE:\Desktop\python-project\spider-project&amp;gt;scrapy startproject scrapydemo
-New Scrapy project ">
+create project fileE:\Desktop\python-project\spider-project&gt;scrapy startproject scrapydemo
+New Scrapy project &#39;sc">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -398,21 +398,26 @@ New Scrapy project ">
         
 
         
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><code>scrapy</code></p>
-<h2 id="create-project-file"><a href="#create-project-file" class="headerlink" title="create project file"></a>create project file</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">E:\Desktop\python-project\spider-project&gt;scrapy startproject scrapydemo
-New Scrapy project &#39;scrapydemo&#39;, using template directory &#39;f:\python39\lib\site-packages\scrapy\templates\project&#39;, created in:
-    E:\Desktop\python-project\spider-project\scrapydemo
+<h2 id="create-project-file"><a href="#create-project-file" class="headerlink" title="create project file"></a>create project file</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">E:<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>python-project<span class="token punctuation">\</span>spider-project<span class="token operator">></span>scrapy startproject scrapydemo
+New Scrapy project <span class="token string">'scrapydemo'</span>, using template directory <span class="token string">'f:\python39\lib\site-packages\scrapy\templates\project'</span>, created in:
+    E:<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>python-project<span class="token punctuation">\</span>spider-project<span class="token punctuation">\</span>scrapydemo
 
 You can start your first spider with:
-    cd scrapydemo
+    <span class="token builtin class-name">cd</span> scrapydemo
     scrapy genspider example example.com
-E:\Desktop\python-project\spider-project&gt;cd qsbk
+E:<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>python-project<span class="token punctuation">\</span>spider-project<span class="token operator">></span>cd qsbk
 
-E:\Desktop\python-project\spider-project\qsbk&gt;scrapy genspider demo &quot;qiushibaike.com&quot;
-Created spider &#39;demo&#39; using template &#39;basic&#39; in module:
+E:<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>python-project<span class="token punctuation">\</span>spider-project<span class="token punctuation">\</span>qsbk<span class="token operator">></span>scrapy genspider demo <span class="token string">"qiushibaike.com"</span>
+Created spider <span class="token string">'demo'</span> using template <span class="token string">'basic'</span> <span class="token keyword">in</span> module:
   qsbk.spiders.demo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>demo</code>即为爬虫的名字</p>
 <h2 id="some-configuration-before-spider"><a href="#some-configuration-before-spider" class="headerlink" title="some configuration before spider"></a>some configuration before spider</h2><p>将<code>settings.py</code>中的<code>ROBOTSTXT_OBEY</code>设置为<code>False</code>，即不遵循robots协议</p>
@@ -429,7 +434,7 @@ ROBOTSTXT_OBEY <span class="token operator">=</span> <span class="token boolean"
 <p><code>settings.py</code> - 设置文件，如User-Agent</p>
 <h2 id="execute-the-spider"><a href="#execute-the-spider" class="headerlink" title="execute the spider"></a>execute the spider</h2><ol>
 <li><p>cmd </p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">E:\Desktop\python-project\spider-project\qsbk&gt;scrapy crawl demo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">E:<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>python-project<span class="token punctuation">\</span>spider-project<span class="token punctuation">\</span>qsbk<span class="token operator">></span>scrapy crawl demo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>在<code>qsbk</code>中新建<code>start.py</code></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> scrapy <span class="token keyword">import</span> cmdline
@@ -519,8 +524,8 @@ cmdline<span class="token punctuation">.</span>execute<span class="token punctua
 </blockquote>
 <h2 id="CrawlSpider"><a href="#CrawlSpider" class="headerlink" title="CrawlSpider"></a>CrawlSpider</h2><p>继承自<code>spider</code>，增加了新的功能，可以定义爬取的url的规则，使scrapy碰到满足条件的url都进行爬取，而不需要手动<code>yield Request</code></p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">scrapy startproject wxapp
-cd wxapp
-scrapy genspider -t crawl wxapp_spider &quot;wxapp-union.com&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token builtin class-name">cd</span> wxapp
+scrapy genspider -t crawl wxapp_spider <span class="token string">"wxapp-union.com"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><code>wxapp_spider.py</code></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> scrapy
 <span class="token keyword">from</span> scrapy<span class="token punctuation">.</span>linkextractors <span class="token keyword">import</span> LinkExtractor

