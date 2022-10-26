@@ -403,8 +403,8 @@
 <li><p>图片验证码可设置为空，如：code=undefined</p>
 </li>
 <li><p>模板注入，在中输入的命令参数可被执行，如：</p>
-<pre class="language-shell" data-language="shell"><code class="language-shell">www.baidu.com/<span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span><span class="token number">1</span>+1<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
-以Python为例，列出当前目录下所有文件的Payload：<span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span><span class="token string">''</span>.__class__.__mro__<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>.__subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">71</span><span class="token punctuation">]</span>.__init__.__globals__<span class="token punctuation">[</span><span class="token string">'os'</span><span class="token punctuation">]</span>.listdir<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">www.baidu.com/<span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span><span class="token number">1</span>+1<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+以Python为例，列出当前目录下所有文件的Payload：<span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span><span class="token string">''</span>.__class__.__mro__<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>.__subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">71</span><span class="token punctuation">]</span>.__init__.__globals__<span class="token punctuation">[</span><span class="token string">'os'</span><span class="token punctuation">]</span>.listdir<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
 <li><p>信息收集，在搜狗搜索中选择微信可以搜索相关企业相关公众号资产</p>
 </li>
@@ -413,7 +413,7 @@
 <li><p>swagger接口常见路径：</p>
 </li>
 </ol>
-<pre class="language-none"><code class="language-none">&#x2F;swagger&#x2F;
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;swagger&#x2F;
 &#x2F;api&#x2F;swagger&#x2F;
 &#x2F;swagger&#x2F;ui&#x2F;
 &#x2F;api&#x2F;swagger&#x2F;ui&#x2F;
@@ -425,7 +425,7 @@
 &#x2F;libs&#x2F;swaggerui&#x2F;
 &#x2F;api&#x2F;swaggerui&#x2F;
 &#x2F;swagger-resources&#x2F;configuration&#x2F;ui&#x2F;
-&#x2F;swagger-resources&#x2F;configuration&#x2F;security&#x2F;</code></pre>
+&#x2F;swagger-resources&#x2F;configuration&#x2F;security&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol>
 <li><p>swagger组件特征固定title：Swagger UI</p>
 </li>
@@ -441,22 +441,22 @@
 <li><p>CentOS 7系统利用suid提权获取Root Shell <a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/system/244627.html">https://www.freebuf.com/articles/system/244627.html</a></p>
 </li>
 <li><p>可使用下面命令查看是否处在docker虚拟机中</p>
-<pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">cat</span> /proc/1/cgroup</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">cat</span> /proc/1/cgroup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>CORS（跨域资源共享）漏洞验证，可以使用curl来验证：</p>
-<pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> https://www.xxxx.com -H <span class="token string">"Origin: https://test.com"</span> -I
-检查返回包的 Access-Control-Allow-Origin 字段是否为https://test.com</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> https://www.xxxx.com -H <span class="token string">"Origin: https://test.com"</span> -I
+检查返回包的 Access-Control-Allow-Origin 字段是否为https://test.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
 <li><p>使用正则获取网站中所包含的其他URL：</p>
-<pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">cat</span> <span class="token function">file</span> <span class="token operator">|</span> <span class="token function">grep</span> -Eo <span class="token string">"(http|https)://[a-zA-Z0-9./?=_-]*"</span>*
-<span class="token function">curl</span> http://host.xx/file.js <span class="token operator">|</span> <span class="token function">grep</span> -Eo <span class="token string">"(http|https)://[a-zA-Z0-9./?=_-]*"</span>*</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">cat</span> <span class="token function">file</span> <span class="token operator">|</span> <span class="token function">grep</span> -Eo <span class="token string">"(http|https)://[a-zA-Z0-9./?=_-]*"</span>*
+<span class="token function">curl</span> http://host.xx/file.js <span class="token operator">|</span> <span class="token function">grep</span> -Eo <span class="token string">"(http|https)://[a-zA-Z0-9./?=_-]*"</span>*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
 <li><p>几个常用的Google语法：</p>
-<pre class="language-shell" data-language="shell"><code class="language-shell">inurl:example.com intitle:<span class="token string">"index of"</span>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">inurl:example.com intitle:<span class="token string">"index of"</span>
 inurl:example.com intitle:<span class="token string">"index of /"</span> <span class="token string">"*key.pem"</span>
 inurl:example.com ext:log
 inurl:example.com intitle:<span class="token string">"index of"</span> ext:sql<span class="token operator">|</span>xls<span class="token operator">|</span>xml<span class="token operator">|</span>json<span class="token operator">|</span>csv
-inurl:example.com <span class="token string">"MYSQL_ROOT_PASSWORD:"</span> ext:env OR ext:yml -git</code></pre>
+inurl:example.com <span class="token string">"MYSQL_ROOT_PASSWORD:"</span> ext:env OR ext:yml -git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>在JavaScript文件中可以找一些隐藏的GET参数</p>
 <blockquote>
@@ -480,19 +480,19 @@ inurl:example.com <span class="token string">"MYSQL_ROOT_PASSWORD:"</span> ext:e
 <li><p>获取短信验证码时，用逗号隔开两个手机号，有可能两个手机号能获取到同一个验证码。</p>
 </li>
 <li><p>使用python快速开启http服务器：</p>
-<pre class="language-shell" data-language="shell"><code class="language-shell">基于python2.x，命令如下：
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">基于python2.x，命令如下：
 python -m SimpleHTTPServer <span class="token number">8000</span>
 <span class="token comment"># 在当前目录起个 8000 端口的 HTTP 服务</span>
 基于python3.x，命令如下：
-python -m http.server <span class="token number">8000</span></code></pre>
+python -m http.server <span class="token number">8000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>渗透时尽量不要暴露自己的 IP 地址，挂代理是必须的。</p>
 <p>linux 下要查看自己终端是否走代理可以 curl ifconfig.me/ 看下返回的 IP 地址，</p>
 <p>windows 就直接访问ifconfig.me/即可</p>
 </li>
 <li><p>整理字典时，推荐用linux下的工具快速合并和去重。</p>
-<pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">cat</span> file1.txt file2.txt fileN.txt <span class="token operator">></span> out.txt
-<span class="token function">sort</span> out.txt <span class="token operator">|</span> <span class="token function">uniq</span> <span class="token operator">></span> out2.txt</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">cat</span> file1.txt file2.txt fileN.txt <span class="token operator">></span> out.txt
+<span class="token function">sort</span> out.txt <span class="token operator">|</span> <span class="token function">uniq</span> <span class="token operator">></span> out2.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
 </ol>
 <h2 id="端口渗透"><a href="#端口渗透" class="headerlink" title="端口渗透"></a>端口渗透</h2><h3 id="文件共享服务端口渗透"><a href="#文件共享服务端口渗透" class="headerlink" title="文件共享服务端口渗透"></a>文件共享服务端口渗透</h3><h4 id="ftp服务"><a href="#ftp服务" class="headerlink" title="ftp服务"></a>ftp服务</h4><p>分为两种情况，第一种是使用系统软件来配置，比如IIS中的FTP文件共享或Linux中的默认服务软件；</p>
@@ -508,7 +508,7 @@ python -m http.server <span class="token number">8000</span></code></pre>
 </blockquote>
 <p>嗅探：ftp使用明文传输技术（但是嗅探给予局域网并需要欺骗或监听网关）</p>
 <p>后门技术：在linux的vsftp某一版本中，存在着一个后门程序，只要在用户名后面加上”：）“（笑脸符号）就会在6200上打开一个监听Shell，我们可以使用telnet直接连接</p>
-<pre class="language-shell" data-language="shell"><code class="language-shell">msf5 <span class="token operator">></span> use exploit/unix/ftp/vsftpd_234_backdoor</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">msf5 <span class="token operator">></span> use exploit/unix/ftp/vsftpd_234_backdoor<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>远程溢出漏洞：IIS 5.0、IIS 5.1、IIS 6.0 IIS FTP远程溢出漏洞 <a target="_blank" rel="noopener" href="https://www.secpulse.com/archives/82410.html">https://www.secpulse.com/archives/82410.html</a></p>
 <p>跳转攻击：（Bounce Attacks）攻击者发送一个FTP”PORT”命令给目标FTP服务器，其中包含该主机的网络地址和被攻击的服务的端口号。这样，客户端就能命令FTP服务器发一个文件给被攻击的服务。</p>
 <p>这个文件可能包括根被攻击的服务有关的命令（如SMTP,NNTP等）。由于是命令第三方去连接到一种服务，而不是直接连接，就使得跟踪攻击者变得困难，并且还避开了基于网络地址的访问限制。</p>

@@ -340,15 +340,15 @@
 <h3 id="文件排查"><a href="#文件排查" class="headerlink" title="文件排查"></a>文件排查</h3><p>敏感目录， 后门文件</p>
 <h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><p>tasklist, netstat, powershell, wmic, 任务管理器</p>
 <h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3><p>eventvwr</p>
-<h2 id="linux应急"><a href="#linux应急" class="headerlink" title="linux应急"></a>linux应急</h2><h3 id="系统信息-1"><a href="#系统信息-1" class="headerlink" title="系统信息"></a>系统信息</h3><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">uname</span> -a
+<h2 id="linux应急"><a href="#linux应急" class="headerlink" title="linux应急"></a>linux应急</h2><h3 id="系统信息-1"><a href="#系统信息-1" class="headerlink" title="系统信息"></a>系统信息</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">uname</span> -a
 <span class="token function">cat</span> /proc/version
-lsmod</code></pre>
-<h3 id="用户信息"><a href="#用户信息" class="headerlink" title="用户信息"></a>用户信息</h3><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">useradd</span> userdel的命令时间变化，是否包含可疑信息
+lsmod<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="用户信息"><a href="#用户信息" class="headerlink" title="用户信息"></a>用户信息</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">useradd</span> userdel的命令时间变化，是否包含可疑信息
 <span class="token function">cat</span> /etc/passwd
 <span class="token environment constant">UID</span>为0
-登录用户 /bin/bash</code></pre>
-<h3 id="历史命令"><a href="#历史命令" class="headerlink" title="历史命令"></a>历史命令</h3><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">history</span>
-<span class="token function">cat</span> /root/.bash_history</code></pre>
+登录用户 /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="历史命令"><a href="#历史命令" class="headerlink" title="历史命令"></a>历史命令</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">history</span>
+<span class="token function">cat</span> /root/.bash_history<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <blockquote>
 <p>通过查看命令操作痕迹，可能关联到如下信息：</p>
 <p><code>wget</code>远程某主机</p>
@@ -356,16 +356,16 @@ lsmod</code></pre>
 <p>打包某敏感数据或代码， <code>tar zip</code>类命令</p>
 <p>对系统进行配置，包括命令修改、远控木马类</p>
 </blockquote>
-<h3 id="启动项"><a href="#启动项" class="headerlink" title="启动项"></a>启动项</h3><pre class="language-shell" data-language="shell"><code class="language-shell">/etc/init.d/rc.local
+<h3 id="启动项"><a href="#启动项" class="headerlink" title="启动项"></a>启动项</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">/etc/init.d/rc.local
 /etc/rc.local
-/etc/init.d</code></pre>
-<h3 id="计划任务"><a href="#计划任务" class="headerlink" title="计划任务"></a>计划任务</h3><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">crontab</span> -l <span class="token comment">#列出计划任务</span>
-<span class="token function">crontab</span> -e <span class="token comment">#编辑计划任务</span></code></pre>
-<h3 id="进程-1"><a href="#进程-1" class="headerlink" title="进程"></a>进程</h3><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">netstat</span> -ltunp <span class="token comment">#找出可疑PID</span>
+/etc/init.d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="计划任务"><a href="#计划任务" class="headerlink" title="计划任务"></a>计划任务</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">crontab</span> -l <span class="token comment">#列出计划任务</span>
+<span class="token function">crontab</span> -e <span class="token comment">#编辑计划任务</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="进程-1"><a href="#进程-1" class="headerlink" title="进程"></a>进程</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">netstat</span> -ltunp <span class="token comment">#找出可疑PID</span>
 <span class="token function">ls</span> -alh /proc/pid
 <span class="token function">lsof</span> -p pid
-<span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> xxx</code></pre>
-<h3 id="时间点"><a href="#时间点" class="headerlink" title="时间点"></a>时间点</h3><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">find</span> 
+<span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="时间点"><a href="#时间点" class="headerlink" title="时间点"></a>时间点</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">find</span> 
 -mtime -n +n file-modify-time -n within-n-days +n before-n-days
 -atime -n +n file-access-time -n within-n-days +n before-n-days
 -ctime -n +n file-create-time -n within-n-days +n before-n-days
@@ -373,8 +373,8 @@ lsmod</code></pre>
 <span class="token comment">#找出新增的文件</span>
 <span class="token function">find</span> / -ctime <span class="token number">0</span> -name <span class="token string">".sh"</span>
 <span class="token comment">#find webshell</span>
-<span class="token function">find</span> /var/www/ -name <span class="token string">"*.php"</span> <span class="token operator">|</span> xray <span class="token function">egrep</span> <span class="token string">"eval|base64|assert"</span></code></pre>
-<h3 id="日志分析"><a href="#日志分析" class="headerlink" title="日志分析"></a>日志分析</h3><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token number">1</span><span class="token punctuation">)</span>/var/log/secure <span class="token comment">#记录登录系统存取数据的文件;</span>
+<span class="token function">find</span> /var/www/ -name <span class="token string">"*.php"</span> <span class="token operator">|</span> xray <span class="token function">egrep</span> <span class="token string">"eval|base64|assert"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="日志分析"><a href="#日志分析" class="headerlink" title="日志分析"></a>日志分析</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token number">1</span><span class="token punctuation">)</span>/var/log/secure <span class="token comment">#记录登录系统存取数据的文件;</span>
 <span class="token comment">#例如:pop3，ssh，telnet，ftp等都会记录在此.</span>
 <span class="token number">2</span><span class="token punctuation">)</span>/ar/log/btmp <span class="token comment">#记录登录的信息记录，被编码过，所以必须以last解析;</span>
 lastb <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'&#123; print $3&#125;'</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token operator">|</span> <span class="token function">uniq</span> -c <span class="token operator">|</span> <span class="token function">sort</span> -nr <span class="token operator">|</span> <span class="token function">more</span>
@@ -397,7 +397,7 @@ lastb <span class="token operator">|</span> <span class="token function">awk</sp
 <span class="token number">19</span><span class="token punctuation">)</span>/var/log/mail.warn <span class="token comment">#邮件警告信息；</span>
 <span class="token number">20</span><span class="token punctuation">)</span>/var/log/daemon.log <span class="token comment">#系统监控程序产生的信息;</span>
 <span class="token number">21</span><span class="token punctuation">)</span>/var/log/kern <span class="token comment">#内核产生的信息;</span>
-<span class="token number">22</span><span class="token punctuation">)</span>/var/log/lpr <span class="token comment">#行打印机假脱机系统产生的信息</span></code></pre>
+<span class="token number">22</span><span class="token punctuation">)</span>/var/log/lpr <span class="token comment">#行打印机假脱机系统产生的信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="内存分析"><a href="#内存分析" class="headerlink" title="内存分析"></a>内存分析</h3><ol>
 <li>基于用户模式程序的内存获取 </li>
 <li>基于内核模式程序的内存获取 </li>
@@ -414,7 +414,7 @@ lastb <span class="token operator">|</span> <span class="token function">awk</sp
 <h3 id="Event-Log-Explorer"><a href="#Event-Log-Explorer" class="headerlink" title="Event Log Explorer"></a>Event Log Explorer</h3><p>是一款检测系统安全的软件。查看，监视和分析跟事件记录，包括安全，系统，应 用程序和其他微软Windows 的记录被记载的事件。</p>
 <h3 id="FullEventLogView"><a href="#FullEventLogView" class="headerlink" title="FullEventLogView"></a>FullEventLogView</h3><p>是一个轻量级的日志检索工具，特点是绿色版，免安装，同时检索功能比 windows自带的检索工具要快，展示要好。功能大家在用的时候探索一下就好，比较简单。</p>
 <h3 id="Log-Parser"><a href="#Log-Parser" class="headerlink" title="Log Parser"></a>Log Parser</h3><p>是微软工程师写的一个日志分析工具，功能很强大，支持SQL 查询语法的 日志查询工具。</p>
-<h2 id="勒索病毒及解密工具查询网站"><a href="#勒索病毒及解密工具查询网站" class="headerlink" title="勒索病毒及解密工具查询网站"></a>勒索病毒及解密工具查询网站</h2><pre class="language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">https:</span>//lesuobingdu.qianxin.com/ 
+<h2 id="勒索病毒及解密工具查询网站"><a href="#勒索病毒及解密工具查询网站" class="headerlink" title="勒索病毒及解密工具查询网站"></a>勒索病毒及解密工具查询网站</h2><pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header-name keyword">https:</span>//lesuobingdu.qianxin.com/ 
 <span class="token header-name keyword">http:</span>//lesuobingdu.360.cn/ 
 <span class="token header-name keyword">https:</span>//guanjia.qq.com/pr/ls/#navi_0 
 <span class="token header-name keyword">https:</span>//id-ransomware.malwarehunterteam.com/ 
@@ -423,7 +423,7 @@ lastb <span class="token operator">|</span> <span class="token function">awk</sp
 <span class="token header-name keyword">https:</span>//noransom.kaspersky.com/ 
 <span class="token header-name keyword">https:</span>//www.emsisoft.com/ransomware-decryption-tools/ 
 <span class="token header-name keyword">https:</span>//www.avast.com/en-us/ransomware-decryption-tools 
-<span class="token header-name keyword">https:</span>//www.quickheal.com/free-ransomware-decryption-tool/</code></pre>
+<span class="token header-name keyword">https:</span>//www.quickheal.com/free-ransomware-decryption-tool/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>

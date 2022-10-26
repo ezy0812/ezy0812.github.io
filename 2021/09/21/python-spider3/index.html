@@ -326,7 +326,7 @@ New Scrapy project &#39;sc">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><code>scrapy</code></p>
-<h2 id="create-project-file"><a href="#create-project-file" class="headerlink" title="create project file"></a>create project file</h2><pre class="language-shell" data-language="shell"><code class="language-shell">E:<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>python-project<span class="token punctuation">\</span>spider-project<span class="token operator">></span>scrapy startproject scrapydemo
+<h2 id="create-project-file"><a href="#create-project-file" class="headerlink" title="create project file"></a>create project file</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">E:<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>python-project<span class="token punctuation">\</span>spider-project<span class="token operator">></span>scrapy startproject scrapydemo
 New Scrapy project <span class="token string">'scrapydemo'</span>, using template directory <span class="token string">'f:\python39\lib\site-packages\scrapy\templates\project'</span>, created in:
     E:<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>python-project<span class="token punctuation">\</span>spider-project<span class="token punctuation">\</span>scrapydemo
 
@@ -337,32 +337,32 @@ E:<span class="token punctuation">\</span>Desktop<span class="token punctuation"
 
 E:<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>python-project<span class="token punctuation">\</span>spider-project<span class="token punctuation">\</span>qsbk<span class="token operator">></span>scrapy genspider demo <span class="token string">"qiushibaike.com"</span>
 Created spider <span class="token string">'demo'</span> using template <span class="token string">'basic'</span> <span class="token keyword">in</span> module:
-  qsbk.spiders.demo</code></pre>
+  qsbk.spiders.demo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>demo</code>即为爬虫的名字</p>
 <h2 id="some-configuration-before-spider"><a href="#some-configuration-before-spider" class="headerlink" title="some configuration before spider"></a>some configuration before spider</h2><p>将<code>settings.py</code>中的<code>ROBOTSTXT_OBEY</code>设置为<code>False</code>，即不遵循robots协议</p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># Obey robots.txt rules</span>
-ROBOTSTXT_OBEY <span class="token operator">=</span> <span class="token boolean">False</span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Obey robots.txt rules</span>
+ROBOTSTXT_OBEY <span class="token operator">=</span> <span class="token boolean">False</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>设置<code>UA</code></p>
-<pre class="language-python" data-language="python"><code class="language-python">DEFAULT_REQUEST_HEADERS <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">DEFAULT_REQUEST_HEADERS <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
   <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span><span class="token punctuation">,</span>
   <span class="token string">'Accept-Language'</span><span class="token punctuation">:</span> <span class="token string">'en'</span><span class="token punctuation">,</span>
   <span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4655.6 Safari/537.36'</span>
-<span class="token punctuation">&#125;</span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="meaning-of-files-in-the-project"><a href="#meaning-of-files-in-the-project" class="headerlink" title="meaning of files in the project"></a>meaning of files in the project</h2><p><code>item.py</code> - 设置要爬取的字段</p>
 <p><code>pipelines.py</code> - 设置保存爬取内容</p>
 <p><code>settings.py</code> - 设置文件，如User-Agent</p>
 <h2 id="execute-the-spider"><a href="#execute-the-spider" class="headerlink" title="execute the spider"></a>execute the spider</h2><ol>
 <li><p>cmd </p>
-<pre class="language-shell" data-language="shell"><code class="language-shell">E:<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>python-project<span class="token punctuation">\</span>spider-project<span class="token punctuation">\</span>qsbk<span class="token operator">></span>scrapy crawl demo</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">E:<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>python-project<span class="token punctuation">\</span>spider-project<span class="token punctuation">\</span>qsbk<span class="token operator">></span>scrapy crawl demo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>在<code>qsbk</code>中新建<code>start.py</code></p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> scrapy <span class="token keyword">import</span> cmdline
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> scrapy <span class="token keyword">import</span> cmdline
 
-cmdline<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string">"scrapy crawl demo"</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+cmdline<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string">"scrapy crawl demo"</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
 </ol>
 <h2 id="coding-get-糗事百科段子"><a href="#coding-get-糗事百科段子" class="headerlink" title="coding - get 糗事百科段子"></a>coding - get 糗事百科段子</h2><p><code>demo.py</code></p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> scrapy
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> scrapy
 <span class="token keyword">from</span> qsbk<span class="token punctuation">.</span>items <span class="token keyword">import</span> QsbkItem
 
 
@@ -387,9 +387,9 @@ cmdline<span class="token punctuation">.</span>execute<span class="token punctua
             <span class="token keyword">return</span>
         <span class="token keyword">else</span><span class="token punctuation">:</span>
             <span class="token keyword">yield</span> scrapy<span class="token punctuation">.</span>Request<span class="token punctuation">(</span><span class="token string">"https://www.qiushibaike.com/"</span><span class="token operator">+</span>next_url<span class="token punctuation">,</span> callback<span class="token operator">=</span>self<span class="token punctuation">.</span>parse<span class="token punctuation">)</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>items.py</code></p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># Define here the models for your scraped items</span>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Define here the models for your scraped items</span>
 <span class="token comment">#</span>
 <span class="token comment"># See documentation in:</span>
 <span class="token comment"># https://docs.scrapy.org/en/latest/topics/items.html</span>
@@ -401,9 +401,9 @@ cmdline<span class="token punctuation">.</span>execute<span class="token punctua
     <span class="token comment"># define the fields for your item here like:</span>
     <span class="token comment"># name = scrapy.Field()</span>
     author <span class="token operator">=</span> scrapy<span class="token punctuation">.</span>Field<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    content <span class="token operator">=</span> scrapy<span class="token punctuation">.</span>Field<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+    content <span class="token operator">=</span> scrapy<span class="token punctuation">.</span>Field<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>pipelines.py</code></p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># Define your item pipelines here</span>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Define your item pipelines here</span>
 <span class="token comment">#</span>
 <span class="token comment"># Don't forget to add your pipeline to the ITEM_PIPELINES setting</span>
 <span class="token comment"># See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html</span>
@@ -431,22 +431,22 @@ cmdline<span class="token punctuation">.</span>execute<span class="token punctua
 
     <span class="token comment"># 爬虫完成时调用的函数</span>
     <span class="token keyword">def</span> <span class="token function">close_spider</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>fp<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+        self<span class="token punctuation">.</span>fp<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>想要<code>pipelines</code>运行，需要在<code>settings</code>中<code>ITEM_PIPELINES</code>取消注释</p>
-<pre class="language-python" data-language="python"><code class="language-python">ITEM_PIPELINES <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">ITEM_PIPELINES <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
    <span class="token string">'qsbk.pipelines.QsbkPipeline'</span><span class="token punctuation">:</span> <span class="token number">300</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><code>300</code>指优先级数字，可以自己修改，因为该项目中只有一个爬虫，所以不需要修改</p>
 <p><code>DOWNLOAD_DELAY</code>可以设置爬虫延时，防止爬取过快</p>
-<pre class="language-python" data-language="python"><code class="language-python">DOWNLOAD_DELAY <span class="token operator">=</span> <span class="token number">1</span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">DOWNLOAD_DELAY <span class="token operator">=</span> <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </blockquote>
 <h2 id="CrawlSpider"><a href="#CrawlSpider" class="headerlink" title="CrawlSpider"></a>CrawlSpider</h2><p>继承自<code>spider</code>，增加了新的功能，可以定义爬取的url的规则，使scrapy碰到满足条件的url都进行爬取，而不需要手动<code>yield Request</code></p>
-<pre class="language-shell" data-language="shell"><code class="language-shell">scrapy startproject wxapp
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">scrapy startproject wxapp
 <span class="token builtin class-name">cd</span> wxapp
-scrapy genspider -t crawl wxapp_spider <span class="token string">"wxapp-union.com"</span></code></pre>
+scrapy genspider -t crawl wxapp_spider <span class="token string">"wxapp-union.com"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><code>wxapp_spider.py</code></p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> scrapy
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> scrapy
 <span class="token keyword">from</span> scrapy<span class="token punctuation">.</span>linkextractors <span class="token keyword">import</span> LinkExtractor
 <span class="token keyword">from</span> scrapy<span class="token punctuation">.</span>spiders <span class="token keyword">import</span> CrawlSpider<span class="token punctuation">,</span> Rule
 <span class="token keyword">from</span> wxapp<span class="token punctuation">.</span>items <span class="token keyword">import</span> WxappItem
@@ -470,12 +470,12 @@ scrapy genspider -t crawl wxapp_spider <span class="token string">"wxapp-union.c
         content <span class="token operator">=</span> response<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//td[@id="article_content"]//text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>getall<span class="token punctuation">(</span><span class="token punctuation">)</span>
         content <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
         item <span class="token operator">=</span> WxappItem<span class="token punctuation">(</span>title<span class="token operator">=</span>title<span class="token punctuation">,</span> author<span class="token operator">=</span>author<span class="token punctuation">,</span> pub_time<span class="token operator">=</span>pub_time<span class="token punctuation">,</span> content<span class="token operator">=</span>content<span class="token punctuation">)</span>
-        <span class="token keyword">yield</span> item</code></pre>
+        <span class="token keyword">yield</span> item<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>LinkExtractor链接提取器中注意<code>allow</code>（想要爬取的url规则），<code>follow</code>（在当前页面中碰到同样规则的url是否需要继续跟进爬取），<code>callback</code>（对于爬取到的页面要执行的回调函数）</p>
 </blockquote>
 <h2 id="scrapy-shell"><a href="#scrapy-shell" class="headerlink" title="scrapy shell"></a>scrapy shell</h2><p>进入项目文件夹</p>
-<pre class="language-powershell" data-language="powershell"><code class="language-powershell">E:\Desktop\python<span class="token operator">-</span>project\spider<span class="token operator">-</span>project>cd wxapp
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">E:\Desktop\python<span class="token operator">-</span>project\spider<span class="token operator">-</span>project>cd wxapp
 
 E:\Desktop\python<span class="token operator">-</span>project\spider<span class="token operator">-</span>project\wxapp><span class="token function">dir</span>
  驱动器 E 中的卷是 资料
@@ -495,7 +495,7 @@ E:\Desktop\python<span class="token operator">-</span>project\spider<span class=
 
 E:\Desktop\python<span class="token operator">-</span>project\spider<span class="token operator">-</span>project\wxapp>scrapy shell https:<span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>wxapp<span class="token operator">-</span>union<span class="token punctuation">.</span>com<span class="token operator">/</span>article<span class="token operator">-</span>7167<span class="token operator">-</span>1<span class="token punctuation">.</span>html
 >>> response<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//h1[@class="ph"]//text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'微信小程序开发时absolute定位偏移和宽高问题 '</span></code></pre>
+<span class="token string">'微信小程序开发时absolute定位偏移和宽高问题 '</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>

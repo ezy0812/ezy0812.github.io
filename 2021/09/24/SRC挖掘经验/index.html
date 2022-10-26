@@ -364,7 +364,7 @@
 <li><p>敏感目录：网站后台目录／一些登录地址／一些接口目录</p>
 <blockquote>
 <p>dirsearch</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">python3 dirsearch.py -u www.xxx.com -e * -t <span class="token number">2</span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python3 dirsearch.py -u www.xxx.com -e * -t <span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>线程数-t设置小一点</p>
 </blockquote>
 </li>
@@ -378,8 +378,8 @@
 <li>员工号：很多oa、um、sso系统都是采用员工号登录的，所以知道员工号的规则很多时候能帮助我们进行撞库。</li>
 <li>商家信息：如果是一些具有商家系统的，能收集到一些商家账户（自己搞去，可以注册，注册资料请百度）就可以进入很多系统来测试了。</li>
 </ul>
-<h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> nmap -sS -Pn -n --open --min-hostgroup <span class="token number">4</span> --min-parallelism <span class="token number">1024</span> --host-timeout <span class="token number">30</span> -T4 -v  examples.com
-<span class="token function">sudo</span> nmap -sS -Pn -n --open --min-hostgroup <span class="token number">4</span> --min-parallelism <span class="token number">1024</span> --host-timeout <span class="token number">30</span> -T4 -v -p <span class="token number">1</span>-65535 examples.com</code></pre>
+<h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> nmap -sS -Pn -n --open --min-hostgroup <span class="token number">4</span> --min-parallelism <span class="token number">1024</span> --host-timeout <span class="token number">30</span> -T4 -v  examples.com
+<span class="token function">sudo</span> nmap -sS -Pn -n --open --min-hostgroup <span class="token number">4</span> --min-parallelism <span class="token number">1024</span> --host-timeout <span class="token number">30</span> -T4 -v -p <span class="token number">1</span>-65535 examples.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="小结一下"><a href="#小结一下" class="headerlink" title="小结一下"></a>小结一下</h3><p>其实很多时候，我们通过信息收集能得到不少的漏洞了，我这里举几个简单的案例：</p>
 <ul>
 <li>通过搜索引擎获取系统管理页面，直接越权访问；</li>
