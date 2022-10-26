@@ -18,12 +18,13 @@
 .toc-fixed {
     position: fixed;
     top: 64px;
+    overflow-y: auto;
+    max-height: 500px;
 }
 
 .toc-widget {
     width: 345px;
     padding-left: 20px;
-    overflow-y: auto;
 }
 
 .toc-widget .toc-title {
