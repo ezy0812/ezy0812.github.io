@@ -252,7 +252,10 @@
 
     .toc-widget {
         width: 345px;
-        padding-left: 20px;
+    padding-left: 20px;
+    background-color: rgb(255, 255, 255,0.7);
+    border-radius: 10px;
+    box-shadow: 0 10px 35px 2px rgba(0, 0, 0, .15), 0 5px 15px rgba(0, 0, 0, .07), 0 2px 5px -5px rgba(0, 0, 0, .1) !important;
     }
 
     .toc-widget .toc-title {
@@ -754,7 +757,7 @@ python -m http.server <span class="token number">8000</span><span aria-hidden="t
 <p>本地提权：rsync默认以root运行，利用rsync上传一个文件，只要这个文件具有s权限，我们执行我们的攻击脚本就可以具有root权限</p>
 <h4 id="Socket代理"><a href="#Socket代理" class="headerlink" title="Socket代理"></a>Socket代理</h4><p>默认端口：1080</p>
 <p>Socket代理针对代理来说没有什么漏洞，一般只是在渗透过程中作为我们的代理，进入内网，或者渗透域和林的时候有帮助。这里不做过多描述，但是可以尝试爆破一下代理的用户名和密码，万一运气好能登录，不也~~~~</p>
-
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
             <hr/>

